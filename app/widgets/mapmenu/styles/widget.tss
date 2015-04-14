@@ -1,41 +1,42 @@
 "#mapmenu": {
 	layout: 'vertical',
-	height: '80dp',
-	visible : false,
-	bottom : 0,
-	opacity : 0.8
+	height: '100dp',
+	visible: false,
+	bottom: 0,
+	opacity: 0.8
 }
 
 "#maptypeView": {
 	layout: 'horizontal',
-	height: '25dp',
+	height: '40dp',
 	backgroundColor: 'white',
-	opacity : 1
+	opacity: 1
 }
 
 "#selectIconView": {
 	layout: 'horizontal',
 	backgroundColor: 'white',
-	opacity : 1
+	opacity: 1
 }
 
-".btnChange" : {
-	height : '35dp',
-	width : '35dp'
+".btnChange": {
+	height: '35dp',
+	width: '35dp'
 }
 
-".lblChange" : {
-	font : {
-		fontSize : 14
+".lblChange": {
+	font: {
+		fontSize: 14
 	},
-	left : '5dp'
+	left: '10dp'
 }
 
 "#btnView": {
 	layout: 'horizontal',
-	opacity : 1
+	opacity: 1,
+	height: '20dp'
 }
 
-"#btnClean" : {
-	right : '5dp'
+"#btnClean": {
+	right: '5dp'
 }

@@ -19,5 +19,6 @@
 	width : '40dp',
 	backgroundColor : 'white',
 	opacity : 0.8,
-	visible : true
+	visible : true,
+	borderRadius : 3
 }
