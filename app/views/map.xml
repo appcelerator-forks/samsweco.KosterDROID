@@ -8,6 +8,6 @@
 		
 		<View id="mapView"></View>
 		<Widget src="mapmenu" name="widget"></Widget>
-		
+		<View id="btnMenu" backgroundImage="/images/hamburger.png" onClick="showMenuWidget"></View>
 	</View>
 </Alloy>

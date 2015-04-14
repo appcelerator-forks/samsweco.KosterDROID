@@ -15,3 +15,12 @@
 	layout: 'horizontal'
 }
 
+"#btnMenu":{
+	top : 0,
+	left : 0,
+	height : '50dp',
+	width : '50dp',
+	backgroundColor : 'white',
+	opacity : 0.8,
+	visible : true
+}
