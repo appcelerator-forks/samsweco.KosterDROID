@@ -181,12 +181,6 @@ function showTorrdass() {
 
 function showMenuWidget(){
 	if(!menuVisible){
-// 		
-		// var slideDown = Ti.UI.createAnimation({
-			// bottom : 0,
-			// curve : Ti.UI.ANIMATION_CURVE_EASE_IN,
-			// duration : 1500
-		// });
 		$.mapmenu.show();
 		menuVisible = true;
 	}
