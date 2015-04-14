@@ -16,8 +16,8 @@
 }
 
 "#btnMenu":{
-	top : '15dp',
-	left : '15dp',
+	top : '10dp',
+	left : '10dp',
 	height : '40dp',
 	width : '40dp',
 	backgroundColor : 'white',

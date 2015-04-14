@@ -37,7 +37,7 @@ function showMap() {
 				latitudeDelta : 0.03,
 				longitudeDelta : 0.03
 			},
-			height : '90%',
+			height : '100%',
 			width : Ti.UI.FILL
 		});
 
@@ -216,4 +216,9 @@ try {
 	});
 } catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - addEventListener");
+}
+
+function showMapMenu(){
+	// $.menuwidget.show();
+	Alloy.Globals.showMenuWidget();
 }

@@ -9,7 +9,7 @@
 				<Label id="btnSatellit" class="lblChange" onClick="satelliteMap">Satellit</Label>
 				<Label id="btnShowMarkers" class="lblChange" onClick="displayTrailMarkers">Visa leder</Label>
 				<Label id="btnShowHotspots" class="lblChange" onClick="displayMarkers">Visa Hotspots</Label>
-
+				<Label id="btnClean" class="lblChange" onClick="removeAnnotations" >Rensa</Label>
 			</View>
 			<View id="selectIconView">
 				<Button id="btnShowWC" class="btnChange" backgroundImage="/images/wc.png" onClick="showWC"></Button>
@@ -21,7 +21,7 @@
 				<Button id="btnShowTaltplats" class="btnChange" backgroundImage="/images/taltplats.png" onClick="showTaltplats"></Button>
 				<Button id="btnShowUtsiktsplats" class="btnChange" backgroundImage="/images/utsiktsplats.png" onClick="showUtkiksplats"></Button>
 				<Button id="btnShowTorrdass" class="btnChange" backgroundImage="/images/torrdass.png" onClick="showTorrdass"></Button>
-				<Button id="btnClean" class="btnChange" onClick="removeAnnotations" >Rensa kartan</Button>
+				
 			</View>
 		</View>
 </Alloy>

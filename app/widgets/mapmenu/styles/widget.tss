@@ -20,17 +20,22 @@
 }
 
 ".btnChange" : {
-	height : '30dp',
-	width : '30dp'
+	height : '35dp',
+	width : '35dp'
 }
 
 ".lblChange" : {
 	font : {
-		fontSize : 12
-	}
+		fontSize : 14
+	},
+	left : '5dp'
 }
 
 "#btnView": {
 	layout: 'horizontal',
 	opacity : 1
+}
+
+"#btnClean" : {
+	right : '5dp'
 }
