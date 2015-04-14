@@ -16,11 +16,13 @@
 }
 
 "#btnMenu":{
-	top : 0,
-	left : 0,
-	height : '50dp',
-	width : '50dp',
+	top : '15dp',
+	left : '15dp',
+	height : '40dp',
+	width : '40dp',
 	backgroundColor : 'white',
 	opacity : 0.8,
 	visible : true
 }
+
+

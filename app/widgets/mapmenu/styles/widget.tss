@@ -20,11 +20,14 @@
 }
 
 ".btnChange" : {
-		font : {
+	height : '30dp',
+	width : '30dp'
+}
+
+".lblChange" : {
+	font : {
 		fontSize : 12
-		
-	},
-	opacity : 1
+	}
 }
 
 "#btnView": {

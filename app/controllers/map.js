@@ -348,3 +348,14 @@ baseMap.addEventListener('click', function(evt) {
 
 });
 
+function showMapMenu(){
+	// $.menuwidget.show();
+	Alloy.Globals.showMenuWidget();
+}
+
+// $.btnMenu.addEventListener('click', function() {
+	// Alloy.Globals.showMenuWidget();
+// }
+// );
+
+

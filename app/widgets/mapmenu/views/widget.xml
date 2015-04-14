@@ -4,11 +4,11 @@
 	<Collection src="infospotModel"></Collection>
 	<View id="mapmenu">
 			<View id="maptypeView">
-				<Label id="btnNormal" class="btnChange" onClick="normalMap">Normal</Label>
-				<Label id="btnHybrid" class="btnChange" onClick="hybridMap">Hybrid</Label>
-				<Label id="btnSatellit" class="btnChange" onClick="satelliteMap">Satellit</Label>
-				<Label id="btnShowMarkers" class="btnChange" onClick="displayTrailMarkers">Visa leder</Label>
-				<Label id="btnShowHotspots" class="btnChange" onClick="displayMarkers">Visa Hotspots</Label>
+				<Label id="btnNormal" class="lblChange" onClick="normalMap">Normal</Label>
+				<Label id="btnHybrid" class="lblChange" onClick="hybridMap">Hybrid</Label>
+				<Label id="btnSatellit" class="lblChange" onClick="satelliteMap">Satellit</Label>
+				<Label id="btnShowMarkers" class="lblChange" onClick="displayTrailMarkers">Visa leder</Label>
+				<Label id="btnShowHotspots" class="lblChange" onClick="displayMarkers">Visa Hotspots</Label>
 
 			</View>
 			<View id="selectIconView">

@@ -13,7 +13,7 @@
 		</Tab>
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
 			<Window id="mapWin" onOpen="toMap">
-				<RightNavButton title="klick" onClick="showMapMenu"></RightNavButton>
+				<!-- <RightNavButton title="klick" onClick="showMapMenu"></RightNavButton> -->
 				<!-- <Widget id="menuwidget" src="mapmenu" name="widget"></Widget> -->
 			</Window>
 		</Tab>
