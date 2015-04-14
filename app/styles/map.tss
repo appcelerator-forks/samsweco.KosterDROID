@@ -1,13 +1,13 @@
 "font": {
 	fontFamily: 'Gotham Rounded'
 }
-
-".container": {
-	layout: 'vertical'
-}
+// 
+// ".container": {
+	// layout: 'vertical'
+// }
 
 "#mapView": {
-	height: '90%',
+	height: '100%',
 	width: '100%'
 }
 

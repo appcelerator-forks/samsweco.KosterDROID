@@ -12,7 +12,10 @@
 			<Window id="hikeWin" title="Vandringsleder" onOpen="toTrails" />
 		</Tab>
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
-			<Window id="mapWin" onOpen="toMap" navBarHidden="true" />
+			<Window id="mapWin" onOpen="toMap">
+				<RightNavButton title="klick" onClick="showMapMenu"></RightNavButton>
+				<!-- <Widget id="menuwidget" src="mapmenu" name="widget"></Widget> -->
+			</Window>
 		</Tab>
 		<Tab id="quiz" class="tabbar" title="Quiz" icon="/images/quizMenu.png">
 			<Window id="quizWin" onOpen="toQuiz" />

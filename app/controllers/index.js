@@ -27,3 +27,9 @@ function toInfo() {
 	var info = Alloy.createController('infoList').getView();
 	$.infoWin.add(info);
 }
+
+// var mapWidget = require('/mapmenu/widget');
+function showMapMenu(){
+	// $.menuwidget.show();
+	Alloy.Globals.showMenuWidget();
+}
