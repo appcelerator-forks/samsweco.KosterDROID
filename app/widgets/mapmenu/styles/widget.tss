@@ -62,5 +62,6 @@
 	font: {
 		fontSize: 15
 	},
-	color: "#FF9966"
+	color: "#FF9966",
+	opacity: 1
 }
