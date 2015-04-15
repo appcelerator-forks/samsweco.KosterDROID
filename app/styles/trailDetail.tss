@@ -129,6 +129,11 @@
 
 "#btnTrailOnMap": {
 	right: 0,
-	width: Titanium.UI.SIZE
+	width: Titanium.UI.SIZE,
+		font: {
+		fontSize: 14,
+		fontFamily: 'Gotham Rounded'
+	},
+	color: '#FF9966'
 }
 

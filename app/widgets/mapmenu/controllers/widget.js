@@ -34,7 +34,7 @@ function displayTrailMarkers() {
 				title : jsonObj[i].name,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
 				rightButton : '/images/arrow.png',
-				pincolor : MapModule.ANNOTATION_BLUE,
+				pincolor : MapModule.ANNOTATION_AZURE,
 				name : 'trail'
 			});
 
@@ -63,7 +63,7 @@ function displayMarkers() {
 					longitude : markersJSON[u].ykoord,
 					title : markersJSON[u].name,
 					subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-					pincolor : MapModule.ANNOTATION_ORANGE,
+					pincolor : MapModule.ANNOTATION_ROSE,
 					rightButton : '/images/arrow.png',
 					name : 'hotspot'
 				});
