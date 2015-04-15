@@ -20,13 +20,12 @@
 	height: '93%'
 }
 
-"#lblWelcome": {
-		color: 'white',
-		right : '0dp',
+"#lblFramText" : {
+	color: "white",
+	right: 20,
 	font : {
-		fontSize : '12dp'
+		fontSize: 10 
 	}
-	
 }
 
 
