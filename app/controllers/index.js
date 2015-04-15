@@ -2,6 +2,8 @@ $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toQuiz = toQuiz;
 
+var theWindow = Titanium.UI.currentTab.window;
+alert(theWindow);
 
 //-----------------------------------------------------------
 // Metoder för navigering
