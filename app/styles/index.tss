@@ -20,4 +20,14 @@
 	height: '93%'
 }
 
+"#lblWelcome": {
+		color: 'white',
+		right : '0dp',
+	font : {
+		fontSize : '12dp'
+	}
+	
+}
+
+
 
