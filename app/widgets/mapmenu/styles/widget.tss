@@ -43,12 +43,6 @@
 	color: "#FF9966",
 	top: '5dp'
 }
-// "#btnShowMarkers":{
-	// top: '5dp'
-// }
-// "#btnShowHotspots":{
-	// top: '30dp'
-// }
 
 "#btnView": {
 	layout: 'horizontal',
