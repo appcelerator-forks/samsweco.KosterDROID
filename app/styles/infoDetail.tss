@@ -51,8 +51,9 @@
 }
 
 "#lblInfoLink": {
-	left: '10dp',
-	top: '0dp',
+	left: '15dp',
+	top: '5dp',
+	color : 'blue',
 	font: {
 		fontFamily: 'Gotham Rounded'
 	}
@@ -69,6 +70,7 @@
 }
 
 "#lblText" : {
-	left : '15dp'
+	left : '15dp',
+	color : '#FF9966'
 }
 
