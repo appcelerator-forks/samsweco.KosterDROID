@@ -2,9 +2,6 @@ $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toQuiz = toQuiz;
 
-var theWindow = Titanium.UI.currentTab.window;
-alert(theWindow);
-
 //-----------------------------------------------------------
 // Metoder för navigering
 //-----------------------------------------------------------
@@ -18,7 +15,6 @@ function toQuiz() {
 	var quizDetail = Alloy.createController('quizDetail').getView();
 	$.quizWin.add(quizDetail);
 }
-
 
 function toTrails() {
 	var trails = Alloy.createController('trails').getView();
