@@ -12,7 +12,7 @@ var menuVisible = false;
 var infospotsNotVisible = true;
 var hotspotsNotVisible = true;
 
-var MapModule = require('ti.map');
+//var MapModule = require('ti.map');
 var trailsCollection = getTrailsCollection();
 var hotspotCollection = getHotspotCollection();
 
@@ -34,6 +34,7 @@ function displayTrailMarkers() {
 				title : jsonObj[i].name,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
 				rightButton : '/images/arrow.png',
+				pincolor : MapModule.ANNOTATION_BLUE,
 				name : 'trail'
 			});
 
@@ -55,19 +56,6 @@ function displayMarkers() {
 		var markersJSON = hotspotCollection.toJSON();
 		for (var u = 0; u < markersJSON.length; u++) {
 
-			if (OS_IOS) {
-				var marker = MapModule.createAnnotation({
-					id : markersJSON[u].name,
-					latitude : markersJSON[u].xkoord,
-					longitude : markersJSON[u].ykoord,
-					title : markersJSON[u].name,
-					subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-					pincolor : 'red',
-					rightButton : '/images/arrow.png',
-					name : 'hotspot'
-				});
-			}
-
 			if (OS_ANDROID) {
 				var marker = MapModule.createAnnotation({
 					id : markersJSON[u].name,
@@ -75,7 +63,7 @@ function displayMarkers() {
 					longitude : markersJSON[u].ykoord,
 					title : markersJSON[u].name,
 					subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-					pincolor : Titanium.Map.ANNOTATION_ORANGE,
+					pincolor : MapModule.ANNOTATION_ORANGE,
 					rightButton : '/images/arrow.png',
 					name : 'hotspot'
 				});
