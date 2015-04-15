@@ -7,6 +7,7 @@ var zoomLat = args.zoomlat;
 var route;
 var radius = 10;
 var MapModule = require('ti.map');
+Alloy.Globals.MapModule = MapModule;
 
 var infospotsNotVisible = true;
 var hotspotsNotVisible = true;
@@ -130,7 +131,7 @@ function createMapRoutes(file, name, color) {
 				name : name,
 				points : points,
 				color : color,
-				width : 2.0
+				width : 3.0
 			};
 			baseMap.addRoute(MapModule.createRoute(route));
 		}
@@ -250,11 +251,16 @@ function displayTrailMarkers() {
 
 		var jsonObj = trailsCollection.toJSON();
 		for (var i = 0; i < jsonObj.length; i++) {
+			
+			color = jsonObj[i].color.toUpperCase();
+			
+			
 			var markerAnnotation = MapModule.createAnnotation({
 				id : jsonObj[i].name,
 				latitude : jsonObj[i].pinLat,
 				longitude : jsonObj[i].pinLon,
 				title : jsonObj[i].name,
+				pincolor : Alloy.Globals.MapModule.ANNOTATION_+color,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
 				rightButton : '/pins/arrow.png',
 				name : 'trail',
@@ -262,6 +268,8 @@ function displayTrailMarkers() {
 					fontFamily: 'Gotham Rounded'
 				}
 			});
+			
+			// markerAnnotation.pincolor = Alloy.Globals.MapModule.ANNOTATION_GREEN;
 
 			baseMap.addAnnotation(markerAnnotation);
 		}
