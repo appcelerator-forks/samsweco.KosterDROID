@@ -131,7 +131,7 @@
 	right: 0,
 	width: Titanium.UI.SIZE,
 		font: {
-		fontSize: 14,
+		fontSize: '14dp',
 		fontFamily: 'Gotham Rounded'
 	},
 	color: '#FF9966'
