@@ -1,9 +1,9 @@
 "font": {
 	fontFamily: 'Gotham Rounded'
 }
-// 
+//
 // ".container": {
-	// layout: 'vertical'
+// layout: 'vertical'
 // }
 
 "#mapView": {
@@ -16,14 +16,15 @@
 }
 
 "#btnMenu":{
-	top : '10dp',
-	left : '10dp',
-	height : '40dp',
-	width : '40dp',
-	backgroundColor : 'white',
-	opacity : 0.8,
-	visible : true,
-	borderRadius : 3
+	top: '60dp',
+	right: '12dp',
+	height: '39dp',
+	width: '39dp',
+	backgroundColor: '#ebebeb',
+	opacity: 0.8,
+	visible: true,
+	borderRadius: 2,
+	borderWidth: 1
 }
 
 
