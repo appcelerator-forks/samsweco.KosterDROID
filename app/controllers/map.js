@@ -263,7 +263,7 @@ function displayTrailMarkers() {
 				title : jsonObj[i].name,
 				pincolor : MapModule.ANNOTATION_AZURE,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
-				rightButton : '/pins/arrow.png',
+				rightButton : '/pins/androidarrow.png',
 				name : 'trail',
 				font : {
 					fontFamily: 'Gotham Rounded'
@@ -346,7 +346,7 @@ baseMap.addEventListener('click', function(evt) {
 		}
 	}
 	if (OS_ANDROID) {
-		if (evt.clicksource == 'rightButton') {//'rightPane') {
+		if (evt.clicksource == 'rightPane') {//'rightPane') {
 			if (evt.annotation.name == 'hotspot') {
 				showHotspot(evt.annotation.id);
 			} else {

@@ -33,7 +33,7 @@ function displayTrailMarkers() {
 				longitude : jsonObj[i].pinLon,
 				title : jsonObj[i].name,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
-				rightButton : '/images/arrow.png',
+				rightButton : '/images/androidarrow.png',
 				pincolor : MapModule.ANNOTATION_AZURE,
 				name : 'trail'
 			});
@@ -56,18 +56,16 @@ function displayMarkers() {
 		var markersJSON = hotspotCollection.toJSON();
 		for (var u = 0; u < markersJSON.length; u++) {
 
-			if (OS_ANDROID) {
-				var marker = MapModule.createAnnotation({
-					id : markersJSON[u].name,
-					latitude : markersJSON[u].xkoord,
-					longitude : markersJSON[u].ykoord,
-					title : markersJSON[u].name,
-					subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-					pincolor : MapModule.ANNOTATION_ROSE,
-					rightButton : '/images/arrow.png',
-					name : 'hotspot'
-				});
-			}
+			var marker = MapModule.createAnnotation({
+				id : markersJSON[u].name,
+				latitude : markersJSON[u].xkoord,
+				longitude : markersJSON[u].ykoord,
+				title : markersJSON[u].name,
+				subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
+				pincolor : MapModule.ANNOTATION_ROSE,
+				rightButton : '/images/androidarrow.png',
+				name : 'hotspot'
+			});
 
 			markerArray.push(marker);
 		}
@@ -167,15 +165,13 @@ function showTorrdass() {
 	baseMap.addAnnotations(displayInfoSpots("torrdass"));
 }
 
-function showMenuWidget(){
-	if(!menuVisible){
+function showMenuWidget() {
+	if (!menuVisible) {
 		$.mapmenu.show();
 		menuVisible = true;
-	}
-	else{
+	} else {
 		$.mapmenu.hide();
 		menuVisible = false;
 	}
 };
-
 Alloy.Globals.showMenuWidget = showMenuWidget;
