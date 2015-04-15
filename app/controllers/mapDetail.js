@@ -20,7 +20,6 @@ var trailsCollection = getTrailsCollection();
 //-----------------------------------------------------------
 showMap();
 setRoute();
-displayTrailMarkers();
 
 //-----------------------------------------------------------
 // Läsa in kartvyn
@@ -136,7 +135,7 @@ function createMapRoutes(file, name, color) {
 				name : name,
 				points : coordArray,
 				color : color,
-				width : 2.0
+				width : 3.0
 			};
 			baseMap.addRoute(MapModule.createRoute(route));
 		}
@@ -165,31 +164,6 @@ function getFile() {
 	}
 }
 
-//-----------------------------------------------------------
-// Sätter ut en marker för den valda vandringsleden
-//-----------------------------------------------------------
-function displayTrailMarkers() {
-	try {
-		trailsCollection.fetch({
-			query : 'SELECT name, pin, pinLon, pinLat FROM trailsModel where id ="' + zoomId + '"'
-		});
-
-		var jsonObj = trailsCollection.toJSON();
-		for (var i = 0; i < jsonObj.length; i++) {
-			var markerAnnotation = MapModule.createAnnotation({
-				id : jsonObj[i].name,
-				latitude : jsonObj[i].pinLat,
-				longitude : jsonObj[i].pinLon,
-				title : jsonObj[i].name,
-				subtitle : jsonObj[i].name + ' startar här!'
-			});
-
-			baseMap.addAnnotation(markerAnnotation);
-		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - displayTrailMarkers");
-	}
-}
  
 //-----------------------------------------------------------
 // Lägger till eventlistener för klick på hotspot

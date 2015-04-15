@@ -253,6 +253,7 @@ function displayTrailMarkers() {
 		for (var i = 0; i < jsonObj.length; i++) {
 			
 			color = jsonObj[i].color.toUpperCase();
+			Ti.API.info(JSON.stringify(color));
 			
 			
 			var markerAnnotation = MapModule.createAnnotation({
@@ -260,7 +261,7 @@ function displayTrailMarkers() {
 				latitude : jsonObj[i].pinLat,
 				longitude : jsonObj[i].pinLon,
 				title : jsonObj[i].name,
-				pincolor : Alloy.Globals.MapModule.ANNOTATION_+color,
+				pincolor : Alloy.Globals.MapModule.ANNOTATION_BLUE,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
 				rightButton : '/pins/arrow.png',
 				name : 'trail',
