@@ -6,7 +6,7 @@ var zoomLat = args.zoomlat;
 
 var route;
 var radius = 10;
-var MapModule = require('ti.map');
+//var MapModule = require('ti.map');
 Alloy.Globals.MapModule = MapModule;
 
 var infospotsNotVisible = true;
@@ -261,7 +261,7 @@ function displayTrailMarkers() {
 				latitude : jsonObj[i].pinLat,
 				longitude : jsonObj[i].pinLon,
 				title : jsonObj[i].name,
-				pincolor : Alloy.Globals.MapModule.ANNOTATION_BLUE,
+				pincolor : MapModule.ANNOTATION_AZURE,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
 				rightButton : '/pins/arrow.png',
 				name : 'trail',
