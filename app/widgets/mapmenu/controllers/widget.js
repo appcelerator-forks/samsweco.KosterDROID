@@ -175,6 +175,11 @@ function showMenuWidget() {
 	}
 }
 
+function closeMapMenu(){
+		$.mapmenu.hide();
+		menuVisible = false;
+}
+
 $.mapmenu.addEventListener('swipe', function() {
 	closeMapMenu();
 	Ti.API.info("close map menu clicked");
