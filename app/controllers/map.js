@@ -240,10 +240,6 @@ function showMap() {
 	}
 }
 
-baseMap.addEventListener('singletap', function() {
-	closeMapMenu();
-});
-
 //-----------------------------------------------------------
 // Visar markers för vandringslederna
 //-----------------------------------------------------------
@@ -349,7 +345,6 @@ baseMap.addEventListener('click', function(evt) {
 			}
 		}
 });
-
 
 function showMapMenu(){
 	Alloy.Globals.showMenuWidget();

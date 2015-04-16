@@ -175,4 +175,9 @@ function showMenuWidget() {
 	}
 }
 
+$.mapmenu.addEventListener('swipe', function() {
+	showMenuWidget();
+	Ti.API.info("close map menu clicked");
+});
+
 Alloy.Globals.showMenuWidget = showMenuWidget;
