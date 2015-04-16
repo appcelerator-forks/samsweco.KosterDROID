@@ -2,14 +2,6 @@ $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toQuiz = toQuiz;
 
-$.tabs.addEventListener('focus', function(e){
-	Alloy.CFG.tabs._activeTab = e.tab;
-	
-	Ti.API.info('tab : ' + Alloy.CFG.tabs._activeTab.title);
-	
-});
-
-
 //-----------------------------------------------------------
 // Metoder för navigering
 //-----------------------------------------------------------
@@ -36,5 +28,20 @@ function toInfo() {
 
 $.mapWin.addEventListener('blur', function(){
 	$.mapWin = null;
-	Ti.API.info('win null : ' + $.mapWin);
+});
+
+$.quizWin.addEventListener('blur', function(){
+	$.quizWin = null;
+});
+
+$.hikeWin.addEventListener('blur', function(){
+	$.hikeWin = null;
+});
+
+$.infoWin.addEventListener('blur', function(){
+	$.infoWin = null;
+});
+
+$.koster.addEventListener('blur', function(){
+	$.koster = null;
 });

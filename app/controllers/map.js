@@ -20,6 +20,10 @@ var hotspotCollection = getHotspotCollection();
 var jsonFileCollection = getJSONfiles();
 // var infospotCollection = getInfospotCollection();
 
+
+Ti.API.info('win : ' + JSON.stringify($.mapvy));
+
+
 //-----------------------------------------------------------
 // Hämtar enhetens senaste GPS-position
 // FUNGERAR MEN ÄR SJUKT STRÖRANDE
@@ -361,10 +365,5 @@ function showMapMenu(){
 	// $.menuwidget.show();
 	Alloy.Globals.showMenuWidget();
 }
-
-// $.btnMenu.addEventListener('click', function() {
-	// Alloy.Globals.showMenuWidget();
-// }
-// );
 
 
