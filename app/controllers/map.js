@@ -336,35 +336,22 @@ function showHotspot(myId) {
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
 baseMap.addEventListener('click', function(evt) {
-	if (OS_IOS) {
-		if (evt.clicksource == 'rightButton') {
-			if (evt.annotation.name == 'hotspot') {
-				showHotspot(evt.annotation.id);
-			} else {
-				showTrail(evt.annotation.id);
-			}
-		}
-	}
-	if (OS_ANDROID) {
-		if (evt.clicksource == 'rightPane') {//'rightPane') {
-			if (evt.annotation.name == 'hotspot') {
-				showHotspot(evt.annotation.id);
-			} else {
-				showTrail(evt.annotation.id);
-			}
-		}
-	}
 
+		if (evt.clicksource == 'rightPane') {
+			if (evt.annotation.name == 'hotspot') {
+				showHotspot(evt.annotation.id);
+			} else {
+				showTrail(evt.annotation.id);
+			}
+		}
 });
 
 function showMapMenu(){
-	// $.menuwidget.show();
 	Alloy.Globals.showMenuWidget();
 }
 
-// $.btnMenu.addEventListener('click', function() {
-	// Alloy.Globals.showMenuWidget();
-// }
-// );
+baseMap.addEventListener('singletap', function() {
+	Alloy.Globals.closeMapMenu();
+});
 
 
