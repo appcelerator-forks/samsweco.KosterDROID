@@ -4,7 +4,8 @@
 	visible: false,
 	bottom: 0,
 	backgroundColor: 'white',
-	opacity: 0.8
+	opacity: 0.8,
+	animate : true
 }
 
 ".mapHorizontalView": {
