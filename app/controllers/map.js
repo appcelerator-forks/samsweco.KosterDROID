@@ -350,11 +350,8 @@ function showMapMenu(){
 	Alloy.Globals.showMenuWidget();
 }
 
-<<<<<<< HEAD
-=======
 baseMap.addEventListener('singletap', function() {
 	Alloy.Globals.closeMapMenu();
 });
 
->>>>>>> origin/master
 
