@@ -101,12 +101,3 @@ function showDialog() {
 var lettersArray = [];
 var word = 'KOSTERHAVET';
 var globalTrailID = 0;
-
-
-//-----------------------------------------------------------
-// Funktion för att lagra id på den aktiva taben.
-//-----------------------------------------------------------
-
-
-// Ti.API.info('activetab : ' + activetab);
-

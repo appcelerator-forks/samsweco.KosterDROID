@@ -26,6 +26,10 @@ function toInfo() {
 	$.infoWin.add(info);
 }
 
+//-----------------------------------------------------------
+// Null'ar varje fönster när man trycker på en annan tab.
+//-----------------------------------------------------------
+
 $.mapWin.addEventListener('blur', function(){
 	$.mapWin = null;
 });
