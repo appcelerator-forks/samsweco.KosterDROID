@@ -238,7 +238,12 @@ function showMap() {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - showMap");
 	}
-};
+}
+
+baseMap.addEventListener('singletap', function() {
+	Alloy.Globals.closeMapMenu();
+	Ti.API.info("close map menu clicked");
+});
 
 //-----------------------------------------------------------
 // Visar markers för vandringslederna
@@ -346,12 +351,10 @@ baseMap.addEventListener('click', function(evt) {
 		}
 });
 
+
 function showMapMenu(){
 	Alloy.Globals.showMenuWidget();
 }
 
-baseMap.addEventListener('singletap', function() {
-	Alloy.Globals.closeMapMenu();
-});
 
 
