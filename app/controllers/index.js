@@ -17,7 +17,6 @@ $.tabs.addEventListener('focus', function(e){
 function toMap() {
 	var mapWind = Alloy.createController('map').getView();
 	$.mapWin.add(mapWind);
-	Ti.API.info('win : ' + JSON.stringify($.mapWin));
 }
 
 function toQuiz() {
