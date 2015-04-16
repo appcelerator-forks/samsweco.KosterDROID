@@ -1,6 +1,6 @@
 "#mapmenu": {
 	layout: 'vertical',
-	height: '150dp',
+	height: '160dp',
 	visible: false,
 	bottom: 0,
 	backgroundColor: 'white',
@@ -10,7 +10,7 @@
 
 ".mapHorizontalView": {
 	layout: 'horizontal',
-	height: '50dp',
+	height: '60dp',
 	backgroundColor: 'white'
 }
 
@@ -19,7 +19,7 @@
 	backgroundColor: 'white',
 	opacity: 1,
 	height: Titanium.UI.SIZE,
-	top: '15dp'
+	top: '5dp'
 }
 
 "#centerHorizontalView":{
@@ -27,6 +27,10 @@
 	layout: 'horizontal',
 	backgroundColor: 'white',
 	height: '25dp'
+}
+
+"#arrowdown": {
+	opacity: 0.9
 }
 
 ".btnChange": {
@@ -52,7 +56,7 @@
 }
 
 "#btnClean": {
-	top: '10dp',
+	top: '5dp',
 	left: '37%',
 	font: {
 		fontSize: 15

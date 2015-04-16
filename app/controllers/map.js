@@ -263,7 +263,7 @@ function displayTrailMarkers() {
 				title : jsonObj[i].name,
 				pincolor : MapModule.ANNOTATION_AZURE,
 				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
-				rightButton : '/pins/androidarrow.png',
+				rightButton : '/pins/androidarrow2.png',
 				name : 'trail',
 				font : {
 					fontFamily: 'Gotham Rounded'

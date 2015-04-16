@@ -3,6 +3,7 @@
 	<Collection src="trailsModel" />
 	<Collection src="infospotModel"></Collection>
 	<View id="mapmenu">
+		<ImageView id="arrowdown" image="/pins/icon-arrow.png"></ImageView>
 		<View class="mapHorizontalView">
 			<View id="centerHorizontalView" class="mapHorizontalView">
 				<Label id="btnNormal" class="lblChange" onClick="normalMap">Normal</Label>
