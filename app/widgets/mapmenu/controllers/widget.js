@@ -176,7 +176,7 @@ function showMenuWidget() {
 }
 
 $.mapmenu.addEventListener('swipe', function() {
-	showMenuWidget();
+	closeMapMenu();
 	Ti.API.info("close map menu clicked");
 });
 
