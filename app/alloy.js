@@ -101,3 +101,8 @@ function showDialog() {
 var lettersArray = [];
 var word = 'KOSTERHAVET';
 var globalTrailID = 0;
+
+function closeMapMenu(){
+		$.mapmenu.hide();
+		menuVisible = false;
+}

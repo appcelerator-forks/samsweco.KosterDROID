@@ -173,12 +173,6 @@ function showMenuWidget() {
 		$.mapmenu.hide();
 		menuVisible = false;
 	}
-};
-
-function closeMapMenu(){
-		$.mapmenu.hide();
-		menuVisible = false;
 }
 
 Alloy.Globals.showMenuWidget = showMenuWidget;
-Alloy.Globals.closeMapMenu = closeMapMenu;

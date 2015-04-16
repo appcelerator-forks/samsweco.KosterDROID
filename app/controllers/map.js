@@ -241,8 +241,7 @@ function showMap() {
 }
 
 baseMap.addEventListener('singletap', function() {
-	Alloy.Globals.closeMapMenu();
-	Ti.API.info("close map menu clicked");
+	closeMapMenu();
 });
 
 //-----------------------------------------------------------
