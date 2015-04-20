@@ -21,14 +21,13 @@
 }
 
 "#imgABC" : {
-	height : '60dp',
-	width : '60dp'
+	height : '70dp',
+	width : '110dp'
 }
 
 "#txtLetter" : {
 	height : '35dp',
-	width : Titanium.UI.FILL,
+	width : '50dp',
 	tintColor : 'blue',
-	text : 'Fyll i din bokstav här!',
-	color : 'blue'
+	text : 'Fyll i din bokstav här!'
 }
