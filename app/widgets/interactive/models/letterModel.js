@@ -1,5 +1,6 @@
 exports.definition = {
 	config: {
+
 		adapter: {
 			type: "sql",
 			collection_name: "letterModel",
