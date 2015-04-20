@@ -3,7 +3,8 @@ exports.definition = {
 
 		adapter: {
 			type: "sql",
-			collection_name: "letterModel"
+			collection_name: "letterModel",
+			db_file : "/dbKostervandring.sqlite"
 		}
 	},
 	extendModel: function(Model) {
