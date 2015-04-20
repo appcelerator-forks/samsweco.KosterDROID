@@ -89,6 +89,14 @@ function displayInfoSpots(type) {
 				image : '/images/map_' + infoJSON[u].icon
 			});
 
+			if (infoJSON[u].name == 'taltplats') {
+				marker.title = 'Tältplats';
+			} else if (infoJSON[u].name == 'wc') {
+				marker.title = 'WC';
+			} else {
+				marker.title = capitalizeFirstLetter(infoJSON[u].name);
+			}
+
 			markerArray.push(marker);
 		}
 
@@ -96,6 +104,10 @@ function displayInfoSpots(type) {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - displayInfoSpots");
 	}
+}
+
+function capitalizeFirstLetter(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function removeAnnotations() {
