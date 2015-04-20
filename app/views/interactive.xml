@@ -1,4 +1,4 @@
-<Alloy>
+S<Alloy>
 	<Collection src="gameLetterModel"></Collection>
 	<View id="interactiveWin">
 		<ScrollView class="headView" scrollType="vertical">
