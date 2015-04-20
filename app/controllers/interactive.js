@@ -115,3 +115,29 @@ function checkWord() {
 		alert("Nej du, nu blev det fel...");
 	}
 }
+
+//-----------------------------------------
+ // Zoomar in kartan på äventyrsleden
+ //-----------------------------------------
+function showMap() {
+	try {
+		familyMap = MapModule.createView({
+			userLocation : true,
+			mapType : MapModule.HYBRID_TYPE,
+			animate : true,
+			region : {
+				latitude : 58.893471,
+				longitude : 11.042395,
+				latitudeDelta : 0.01,
+				longitudeDelta : 0.01
+			},
+			height : '100%',
+			width : Ti.UI.FILL
+		});
+		$.showFamilyTrail.add(familyMap);
+
+	 } catch(e) {
+		 newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - showMap");
+	 }
+}
+
