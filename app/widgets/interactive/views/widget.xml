@@ -1,3 +1,11 @@
 <Alloy>
-	<Label>I'm the default widget</Label>
+	<View id="interactiveView">
+		<View id="horizontalView">
+		<ImageView id="imgABC" image="/pics/abc.png"></ImageView>
+		<Label id="lblClue">En ny bokstav finns i närheten! (Ledtråd här)</Label>
+		</View>
+		<TextField id="txtLetter">text...</TextField>
+		<Label>Textfält</Label>
+		<Label>Textfält2</Label>
+	</View>
 </Alloy>
