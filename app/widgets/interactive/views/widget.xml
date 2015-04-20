@@ -1,5 +1,5 @@
 <Alloy>
-	<Collection src="letterModel"></Collection>
+	<Collection src="letterModel" />
 	<View id="interactiveView">
 		<View id="horizontalView">
 			<ImageView id="imgABC" image="/pics/abc.png"></ImageView>

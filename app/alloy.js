@@ -50,10 +50,10 @@ function getInfospotCollection(){
 	return infospotCollection;
 }
 
-function getLetterCollection(){
-	var letterCollection = Alloy.Collections.letterModel;
-	return letterCollection;
-}
+// function getLetterCollection(){
+	// var letterCollection = Alloy.Collections.letterModel;
+	// return letterCollection;
+// }
 
 //-----------------------------------------------------------
 // Felhantering
@@ -84,31 +84,7 @@ var globalTrailID = 0;
 
 var interactiveVisible = false;
 
-function sendLetter() {
-	checkLetter(getLetter());
-}
 
-function getLetter() {
-	var letter = $.txtLetter.text;
-	return letter;
-}
-
-function checkLetter(letterToCheck) {
-	
-	var letters = getLetterCollection();
-	letters.fetch();
-	
-	var letterJSON = letters.toJSON();
-	
-	for (var i = 0; i < letterJSON.length; i++) {
-		if (letterJSON[i].letter == letterToCheck) {
-			//Save letter
-			lettersArray.push(letterJSON[i].letter);
-			$.lblLetters.text += letterJSON[i].letter;
-			alert(letterJSON[i].letter);
-		}
-	}
-}
 
 function showInteractive() {
 	if (!interactiveVisible) {

@@ -1,16 +1,19 @@
+var letters = Alloy.Collections.letterModel;
+letters.fetch();
+
+Ti.API.info(JSON.stringify(letters));
+	
 function sendLetter() {
 	checkLetter(getLetter());
 }
 
 function getLetter() {
 	var letter = $.txtLetter.value;
-	return letter;
+	alert(letter);
+	return letter.toUpperCase();
 }
 
 function checkLetter(letterToCheck) {
-	
-	var letters = getLetterCollection();
-	letters.fetch();
 	
 	var letterJSON = letters.toJSON();
 	
