@@ -1,7 +1,7 @@
-var letterCollection = Alloy.Collections.letterModel;
-letterCollection.fetch();
-
-var letterJSON = letterCollection.toJSON();
+// var letterCollection = Alloy.Collections.letterModel;
+// letterCollection.fetch();
+// 
+// var letterJSON = letterCollection.toJSON();
 
 function sendLetter() {
 	checkLetter(getLetter());

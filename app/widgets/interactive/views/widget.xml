@@ -1,7 +1,6 @@
 <Alloy>
 	<Collection src="letterModel"></Collection>
 	<View id="interactiveView">
-		<Label id="lblClue">(Ledtråd här)</Label>
 		<View id="horizontalView">
 			<ImageView id="imgABC" image="/pics/abc.png"></ImageView>
 			<Label id="lblClue">(Ledtråd här)</Label>

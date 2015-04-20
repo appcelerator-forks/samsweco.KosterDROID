@@ -79,6 +79,11 @@ var globalTrailID = 0;
 
 var interactiveVisible = false;
 
+var letterCollection = Alloy.Collections.letterModel;
+letterCollection.fetch();
+
+var letterJSON = letterCollection.toJSON();
+
 function showInteractive() {
 	if (!interactiveVisible) {
 		$.interactive.show();
