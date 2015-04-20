@@ -1,18 +1,9 @@
-var snorkel = true;
-var torrdass = true;
-var utsiktsplats = true;
-var wc = true;
-var rastplats = true;
-var taltplats = true;
-var badplats = true;
-var information = true;
-var eldplats = true;
+
 var menuVisible = false;
 
 var infospotsNotVisible = true;
 var hotspotsNotVisible = true;
 
-//var MapModule = require('ti.map');
 var trailsCollection = getTrailsCollection();
 var hotspotCollection = getHotspotCollection();
 
@@ -91,6 +82,7 @@ function displayInfoSpots(type) {
 
 		var infoJSON = infospotCollection.toJSON();
 		for (var u = 0; u < infoJSON.length; u++) {
+			
 			var marker = MapModule.createAnnotation({
 				latitude : infoJSON[u].latitude,
 				longitude : infoJSON[u].longitude,
@@ -130,7 +122,7 @@ function showHotspots() {
 }
 
 function showWC() {
-	baseMap.addAnnotations(displayInfoSpots("wc"));
+		baseMap.addAnnotations(displayInfoSpots("wc"));
 }
 
 function showEldplats() {
@@ -182,7 +174,7 @@ function closeMapMenu(){
 
 $.mapmenu.addEventListener('swipe', function() {
 	closeMapMenu();
-	Ti.API.info("close map menu clicked");
 });
 
 Alloy.Globals.showMenuWidget = showMenuWidget;
+Alloy.Globals.closeMapManu = closeMapMenu;
