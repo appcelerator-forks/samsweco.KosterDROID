@@ -1,6 +1,6 @@
 $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
-exports.toQuiz = toQuiz;
+exports.toInteractive = toInteractive;
 
 //-----------------------------------------------------------
 // Metoder för navigering
@@ -11,9 +11,9 @@ function toMap() {
 	$.mapWin.add(mapWind);
 }
 
-function toQuiz() {
-	var quizDetail = Alloy.createController('quizDetail').getView();
-	$.quizWin.add(quizDetail);
+function toInteractive() {
+	var interactive = Alloy.createController('interactive').getView();
+	$.interactiveWin.add(interactive);
 }
 
 function toTrails() {
@@ -34,8 +34,8 @@ $.mapWin.addEventListener('blur', function(){
 	$.mapWin = null;
 });
 
-$.quizWin.addEventListener('blur', function(){
-	$.quizWin = null;
+$.interactiveWin.addEventListener('blur', function(){
+	$.interactiveWin = null;
 });
 
 $.hikeWin.addEventListener('blur', function(){

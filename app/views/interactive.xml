@@ -1,8 +1,19 @@
 <Alloy>
-	<Window id="interactive">
+	<Collection src="gameLetterModel"></Collection>
+	<View id="interactiveWin">
 		<ScrollView class="headView" scrollType="vertical">
-					<Label id="showInteractive" onClick="showInteractive"></Label>
-					<Widget src="interactive" name="widget"></Widget>
+			<View id="ShowFamilyTrail">
+				<Label> Karta här</Label>
+			</View>
+			<View id="ViewChooseLetter" class="views">
+				<!-- <Label id="lblVisaFraga" text="Fyll i den bokstav du hittat: "></Label>
+				<TextField id="letter" borderColor="#000"></TextField>
+				<Button id="btnSaveLetter" onClick="saveLetter">OK</Button> -->
+				<Label id="lblInfo">Nedan kan du se de bokstäver du hittat än så länge:</Label>
+				<Label id="lblSavedLetters"></Label>
+				<TextField id="word" borderColor="#000"></TextField>
+				<Button id="btnCheckWord" onClick="showAlert">Rätta!</Button>
+			</View>
 		</ScrollView>
-	</Window>
+	</View>
 </Alloy>

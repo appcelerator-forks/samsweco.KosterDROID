@@ -17,8 +17,8 @@
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
 			<Window id="mapWin" onOpen="toMap" />
 		</Tab>
-		<Tab id="quiz" class="tabbar" title="Quiz" icon="/images/quizMenu.png">
-			<Window id="quizWin" onOpen="toQuiz" />
+		<Tab id="interactive" class="tabbar" title="Interactive" icon="/images/quizMenu.png">
+			<Window id="interactiveWin" onOpen="toInteractive" />
 		</Tab>
 		<Tab id="info" class="tabbar" title="Info" icon="/images/infoMenu.png">
 			<Window id="infoWin" title="Information" onOpen="toInfo" />
