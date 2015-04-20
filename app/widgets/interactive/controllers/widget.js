@@ -1,18 +1,19 @@
-// var letterCollection = Alloy.Collections.letterModel;
-// letterCollection.fetch();
-// 
-// var letterJSON = letterCollection.toJSON();
-
 function sendLetter() {
 	checkLetter(getLetter());
 }
 
 function getLetter() {
-	var letter = $.txtLetter.text;
+	var letter = $.txtLetter.value;
 	return letter;
 }
 
 function checkLetter(letterToCheck) {
+	
+	var letters = getLetterCollection();
+	letters.fetch();
+	
+	var letterJSON = letters.toJSON();
+	
 	for (var i = 0; i < letterJSON.length; i++) {
 		if (letterJSON[i].letter == letterToCheck) {
 			//Save letter

@@ -1,5 +1,5 @@
-S<Alloy>
-	<Collection src="gameLetterModel"></Collection>
+<Alloy>
+
 	<View id="interactiveWin">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="ShowFamilyTrail">
