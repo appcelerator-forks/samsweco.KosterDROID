@@ -4,6 +4,7 @@ var args = arguments[0] || {};
 showMap();
 createMapRoute();
 displayTrailMarkers();
+addClueZone();
 
 //-----------------------------------------------------------
 // Öppnar vy och läser in nästa fråga
@@ -257,4 +258,14 @@ function displayTrailMarkers() {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - displayTrailMarkers");
 	}
+}
+
+function addClueZone() {
+	var markerAnnotation = MapModule.createAnnotation({
+		latitude : 58.892271,
+		longitude : 11.041772,
+		image : '/images/zoneicontransparent.png'
+	});
+
+	familyMap.addAnnotation(markerAnnotation);
 }

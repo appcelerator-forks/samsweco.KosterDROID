@@ -9,7 +9,7 @@
     <copyright>2015 by Madelenejohnsson</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
     <guid>6790420a-8bc9-4d55-8850-1847d1e5c906</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
