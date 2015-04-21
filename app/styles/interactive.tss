@@ -8,6 +8,11 @@
 
 "#showFamilyTrail": {
 	top: 0,
-	height: '200dp',
+	height: '250dp',
 	width: Titanium.UI.FILL
 }
+
+ "#infoView": {
+ 	top: '255dp',
+ 	layout: 'vertical'
+ }

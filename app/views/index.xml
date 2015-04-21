@@ -2,7 +2,7 @@
 	<Collection src="hotspotModel" />
 	<TabGroup id="tabs" backgroundColor="#fff" height="100%" tintColor="#FF9966">
 		<Tab id="koster" class="tabbar" title="Hem" icon="/images/kosterStarMenu.png" >
-			<Window id="koster" class="container" backgroundImage="/pics/front.png" navBarHidden="true">
+			<Window id="koster" class="container" backgroundImage="/pics/front.png">
 				<View class="headView">
 					<ImageView class="imgKoster" image="/pics/kosterhavet_logga.png"></ImageView>
 					<Label id="lblFramText">- Här kan man se och uppleva Koster</Label>
@@ -16,7 +16,7 @@
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
 			<Window id="mapWin" onOpen="toMap" />
 		</Tab>
-		<Tab id="interactive" class="tabbar" title="Interactive" icon="/images/quizMenu.png">
+		<Tab id="interactive" class="tabbar" title="Spela" icon="/images/quizMenu.png">
 			<Window id="interactiveWin" onOpen="toInteractive" />
 		</Tab>
 		<Tab id="info" class="tabbar" title="Info" icon="/images/infoMenu.png">

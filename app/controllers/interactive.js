@@ -3,6 +3,7 @@ var args = arguments[0] || {};
 
 showMap();
 createMapRoute();
+displayTrailMarkers();
 
 //-----------------------------------------------------------
 // Öppnar vy och läser in nästa fråga
@@ -10,30 +11,30 @@ createMapRoute();
 function openNextQuestion() {
 	try {
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "quizDetail - openQuiz");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - openQuiz");
 	}
 }
 
 exports.openNextQuestion = openNextQuestion;
 
 // function saveLetter() {
-// 
-	// var save = $.letter.value;
-	// stor = save.toUpperCase();
-	// $.lblSavedLetters.text = '';
-// 
-	// if (save == "") {
-		// alert("Fyll i den bokstav du hittat");
-	// }
-	// if (save.length > 1) {
-		// alert("Du får enbart fylla i en bokstav");
-	// } else {
-		// lettersArray.push(stor);
-		// for (var i = 0; i < lettersArray.length; i++) {
-// 
-			// $.lblSavedLetters.text += lettersArray[i];
-		// }
-	// }
+//
+// var save = $.letter.value;
+// stor = save.toUpperCase();
+// $.lblSavedLetters.text = '';
+//
+// if (save == "") {
+// alert("Fyll i den bokstav du hittat");
+// }
+// if (save.length > 1) {
+// alert("Du får enbart fylla i en bokstav");
+// } else {
+// lettersArray.push(stor);
+// for (var i = 0; i < lettersArray.length; i++) {
+//
+// $.lblSavedLetters.text += lettersArray[i];
+// }
+// }
 // }
 
 //-----------------------------------------------------------
@@ -85,7 +86,7 @@ function showAlert() {
 				dialog.show();
 			} else {
 				lettersArray.push(e.text);
-				
+
 				for (var i = 0; i < lettersArray.length; i++) {
 
 					$.lblSavedLetters.text += lettersArray[i];
@@ -120,8 +121,8 @@ function checkWord() {
 }
 
 //-----------------------------------------
- // Zoomar in kartan på äventyrsleden
- //-----------------------------------------
+// Zoomar in kartan på äventyrsleden
+//-----------------------------------------
 function showMap() {
 	try {
 		familyMap = MapModule.createView({
@@ -139,9 +140,9 @@ function showMap() {
 		});
 		$.showFamilyTrail.add(familyMap);
 
-	 } catch(e) {
-		 newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - showMap");
-	 }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - showMap");
+	}
 }
 
 //-----------------------------------------------------------
@@ -178,13 +179,13 @@ function calculateMapRegion(trailCoordinates) {
 				longitude : poiCenter.lon,
 				latitudeDelta : delta,
 				longitudeDelta : delta
-				
+
 			};
 		}
 		return region;
-		
+
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - calculateMapRegion");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - calculateMapRegion");
 	}
 
 }
@@ -218,15 +219,42 @@ function createMapRoute() {
 				name : 'Äventyrsleden',
 				points : coordArray,
 				color : 'purple',
-				width : 3.0
+				width : 4.0
 			};
-			
+
 			familyMap.addRoute(MapModule.createRoute(route));
 		}
 
 		familyMap.region = calculateMapRegion(coordArray);
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - createMapRoute");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - createMapRoute");
 	}
 }
 
+//-----------------------------------------------------------
+// Visar marker för vandringsleden
+//-----------------------------------------------------------
+function displayTrailMarkers() {
+	try {
+		var trailsCollection = Alloy.Collections.trailsModel;
+		trailsCollection.fetch({
+			query : 'SELECT name, pinLon, pinLat FROM trailsModel WHERE name ="' + 'Äventyrsleden' + '"'
+		});
+
+		var jsonObj = trailsCollection.toJSON();
+		var markerAnnotation = MapModule.createAnnotation({
+			latitude : jsonObj[0].pinLat,
+			longitude : jsonObj[0].pinLon,
+			title : jsonObj[0].name,
+			pincolor : MapModule.ANNOTATION_PURPLE,
+			subtitle : jsonObj[0].name + ' startar här!',
+			font : {
+				fontFamily : 'Gotham Rounded'
+			}
+		});
+
+		familyMap.addAnnotation(markerAnnotation);
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - displayTrailMarkers");
+	}
+}
