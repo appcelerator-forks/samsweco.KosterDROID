@@ -170,7 +170,7 @@ function calculateMapRegion(trailCoordinates) {
 
 			delta = Math.max(deltaLat, deltaLon);
 			// Ändra om det ska vara mer zoomat
-			delta = delta * 0.4;
+			delta = delta * 0.6;
 
 			poiCenter.lat = maxLat - parseFloat((maxLat - minLat) / 2);
 			poiCenter.lon = maxLon - parseFloat((maxLon - minLon) / 2);
@@ -244,8 +244,8 @@ function displayTrailMarkers() {
 
 		var jsonObj = trailsCollection.toJSON();
 		var markerAnnotation = MapModule.createAnnotation({
-			latitude : jsonObj[0].pinLat,
-			longitude : jsonObj[0].pinLon,
+			latitude : 58.893198,
+			longitude : 11.047852,
 			title : jsonObj[0].name,
 			pincolor : MapModule.ANNOTATION_PURPLE,
 			subtitle : jsonObj[0].name + ' startar här!',
@@ -255,6 +255,7 @@ function displayTrailMarkers() {
 		});
 
 		familyMap.addAnnotation(markerAnnotation);
+		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - displayTrailMarkers");
 	}
@@ -262,9 +263,9 @@ function displayTrailMarkers() {
 
 function addClueZone() {
 	var markerAnnotation = MapModule.createAnnotation({
-		latitude : 58.892271,
-		longitude : 11.041772,
-		image : '/images/zoneicontransparent.png'
+		latitude : 58.893467,
+		longitude : 11.046966,
+		image : '/images/circlered.png'
 	});
 
 	familyMap.addAnnotation(markerAnnotation);
