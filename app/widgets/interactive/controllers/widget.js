@@ -1,5 +1,5 @@
 var letters = Alloy.Collections.letterModel;
-letters.fetch();
+letters.fetch({query : 'select * from letterModel'});
 
 Ti.API.info(JSON.stringify(letters));
 	
