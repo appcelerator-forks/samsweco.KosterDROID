@@ -264,9 +264,9 @@ function displayTrailMarkers() {
 function addClueZone() {
 	var markerAnnotation = MapModule.createAnnotation({
 		id : 1,
-		latitude : 58.893467,
-		longitude : 11.046966,
-		image : '/images/circlered.png'
+		latitude : 58.891454,
+		longitude : 11.041194,
+		image : '/images/zoneicontransparent.png'
 	});
 
 	familyMap.addAnnotation(markerAnnotation);
