@@ -1,6 +1,9 @@
 var args = arguments[0] || {};
 //var id = 1;
 
+showMap();
+createMapRoute();
+
 //-----------------------------------------------------------
 // Öppnar vy och läser in nästa fråga
 //-----------------------------------------------------------
@@ -215,7 +218,7 @@ function createMapRoute() {
 				name : 'Äventyrsleden',
 				points : coordArray,
 				color : 'purple',
-				width : 2.0
+				width : 3.0
 			};
 			
 			familyMap.addRoute(MapModule.createRoute(route));
