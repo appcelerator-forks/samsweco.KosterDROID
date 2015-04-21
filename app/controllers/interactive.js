@@ -266,7 +266,7 @@ function addClueZone() {
 		id : 1,
 		latitude : 58.891454,
 		longitude : 11.041194,
-		image : '/images/zoneicontransparent.png'
+		image : '/images/green.png'
 	});
 
 	familyMap.addAnnotation(markerAnnotation);
