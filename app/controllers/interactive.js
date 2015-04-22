@@ -6,6 +6,20 @@ createMapRoute();
 displayTrailMarkers();
 addClueZone();
 
+
+
+
+
+var clueCollection = Alloy.Collections.letterModel;
+clueCollection.fetch({
+	query : 'SELECT * FROM letterModel'
+});
+
+var jsonObjLetter = clueCollection.toJSON();
+
+
+
+
 //-----------------------------------------------------------
 // Öppnar vy och läser in nästa fråga
 //-----------------------------------------------------------
@@ -262,27 +276,16 @@ function displayTrailMarkers() {
 }
 
 function addClueZone() {
-	var clueCollection = Alloy.Collections.letterModel;
-	clueCollection.fetch({
-		query : 'SELECT found, letter, latitude, longitude FROM letterModel'
-	});
-
-	var jsonObjLetter = clueCollection.toJSON();
-
 	for (var c = 0; c < jsonObjLetter.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
 			id : 1,
 			latitude : jsonObjLetter[c].latitude,
-			longitude : jsonObjLetter[c].longitude,
-			centerOffset : {
-				x : 80,
-				y : 90
-			}
+			longitude : jsonObjLetter[c].longitude
 		});
-		
-		if(jsonObjLetter[c].found == 0){
+
+		if (jsonObjLetter[c].found == 0) {
 			markerAnnotation.image = '/images/red.png';
-		}else{
+		} else {
 			markerAnnotation.image = '/images/green.png';
 		}
 
