@@ -10,7 +10,7 @@ addClueZone();
 
 
 
-var clueCollection = Alloy.Collections.letterModel;
+var clueCollection = getLetterCollection();
 clueCollection.fetch({
 	query : 'SELECT * FROM letterModel'
 });
