@@ -1,5 +1,10 @@
-"font": {
-	fontFamily: 'Gotham Rounded'
+"Label": {
+	left: '10dp',
+	font: {
+		fontSize: 14,
+		fontFamily: 'Gotham Rounded'
+		
+	},
 }
 
 "Window": {
@@ -41,12 +46,7 @@
 	right : 0
 }
 
-"Label": {
-	left: '10dp',
-	font: {
-		fontSize: 12
-	}
-}
+
 
 ".container": {
 	top: 0,
@@ -57,7 +57,7 @@
 "#lblTrailName": {
 	left: '15dp',
 	font: {
-		fontSize: 16,
+		fontSize: '20dp',
 		fontFamily: 'Gotham Rounded'
 		
 	},
@@ -101,20 +101,12 @@
 
 "#lblTrailInfo": {
 	left: '15dp',
-	font: {
-		fontSize: 12,
-		fontFamily: 'Gotham Rounded'
-	},
 	top: '10dp'
 }
 
 "#lblLangsVagen": {
 	top: '20dp',
 	left: '10dp',
-	font: {
-		fontSize: 13,
-		fontFamily: 'Gotham Rounded'
-	},
 	top: '10dp'
 }
 
@@ -127,8 +119,7 @@
 
 "#lblTrailLength": {
 	font : {
-		fontStyle: 'Italic',
-		fontFamily: 'Gotham Rounded'
+		fontStyle: 'Italic'
 	},
 	top : '10dp',
 	left : '15dp'
@@ -138,9 +129,9 @@
 	right: 0,
 	width: Titanium.UI.SIZE,
 		font: {
-		fontSize: '14dp',
-		fontFamily: 'Gotham Rounded'
-	},
+		fontSize: '16dp',
 	color: '#FF9966'
 }
+}
+
 
