@@ -1,0 +1,44 @@
+"#interactiveView": {
+	layout: 'vertical',
+	height: '180dp',
+	visible: false,
+	backgroundColor: 'white',
+	opacity: 0.8
+}
+
+"#horizontalView":{
+	layout: 'horizontal',
+	backgroundColor: 'white',
+	height : '70dp',
+	width : Titanium.UI.FILL
+}
+
+"Label": {
+	font: {
+		fontSize: 10,
+		
+	},
+	color: "#000000"
+}
+
+"#lblClue": {
+	left : '5dp',
+	font: {
+		fontSize: 15,
+		fontStyle : 'italic'
+	},
+	color: "#000000"
+}
+
+"#imgABC" : {
+	height : '70dp',
+	width : '110dp'
+}
+
+"#txtLetter" : {
+	height : '35dp',
+	width : '70dp',
+	tintColor : 'blue',
+	borderWidth : '1dp',
+	borderRadius : '5dp'
+}

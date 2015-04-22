@@ -1,18 +1,89 @@
-"font": {
-	fontFamily: 'Gotham Rounded'
-}
-
 "#interactiveWin": {
+	top: 0,
+	layout: 'vertical',
+	backgroundColor: 'white'
+}
+"#startView": {
 	layout: 'vertical'
 }
 
-"#showFamilyTrail": {
+"#hideView": {
+	layout: 'vertical'
+}
+
+"#lblInfoText": {
 	top: 0,
-	height: '250dp',
+	font: {
+		fontStyle: 'Gotham Rounded',
+		fontSize: '12dp'
+	} ,
+	right: '20dp',
+	left: '20dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+"#showFamilyTrail": {
+	top: '0dp',
+	height: '45%',
 	width: Titanium.UI.FILL
 }
 
- "#infoView": {
- 	top: '255dp',
- 	layout: 'vertical'
- }
+"#lblWelcome": {
+	top: 0,
+	font: {
+		fontStyle: 'Gotham Rounded',
+		fontSize: '20dp'
+	},
+	color: '#FF9966'
+}
+
+"#lblClue": {
+	top: 0,
+	font: {
+		fontStyle: 'Gotham Rounded',
+		fontSize: '20dp'
+	},
+	color: '#FF9966'
+}
+
+"Label": {
+	top: 0,
+	font: {
+		fontSize: 10,
+		fontStyle: 'Gotham Rounded'
+	},
+	color: "#000000"
+}
+
+"#lblClue": {
+	top: 0,
+	left: '5dp',
+	font: {
+		fontSize: 15,
+		fontStyle: 'italic'
+	},
+	color: "#000000"
+}
+
+"#lblLetters": {
+	top: 0,
+	font: {
+		fontSize: 12
+	},
+	color: "#000000",
+	visible: false
+}
+
+"#txtLetter": {
+	top: 0,
+	height: '35dp',
+	width: '70dp',
+	tintColor: 'blue',
+	borderWidth: '1dp',
+	borderRadius: '5dp',
+	visible: false
+}
+
+"#lblCollectedLetters": {
+	visible: false
+}

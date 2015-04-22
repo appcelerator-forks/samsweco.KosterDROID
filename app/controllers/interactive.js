@@ -1,24 +1,13 @@
 var args = arguments[0] || {};
-//var id = 1;
 
 showMap();
 createMapRoute();
+var familyMap;
 displayTrailMarkers();
 addClueZone();
 
-
-
-
-
-var clueCollection = getLetterCollection();
-clueCollection.fetch({
-	query : 'SELECT * FROM letterModel'
-});
-
-var jsonObjLetter = clueCollection.toJSON();
-
-
-
+var letterCollection = getLetterCollection();
+var letterId = foundId;
 
 //-----------------------------------------------------------
 // Kontrollerar det inskickade ordet mot "facit"
@@ -163,6 +152,13 @@ function displayTrailMarkers() {
 }
 
 function addClueZone() {
+	var clueCollection = getLetterCollection();
+	clueCollection.fetch({
+		query : 'SELECT * FROM letterModel'
+	});
+
+	var jsonObjLetter = clueCollection.toJSON();
+
 	for (var c = 0; c < jsonObjLetter.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
 			id : 1,
@@ -181,21 +177,21 @@ function addClueZone() {
 }
 
 //Ändra till rätt id som kommer in vid anrop.
-function loadClue(){
-		letterCollection.fetch({
-			query : 'SELECT * FROM letterModel where id = "' + letterId + '"'
-		});
-	
+function loadClue() {
+	letterCollection.fetch({
+		query : 'SELECT * FROM letterModel where id = "' + 1 + '"'
+	});
+
 	var letterJSON = letterCollection.toJSON();
-	
+
 	$.lblWelcome.text = "Nästa ledtråd: ";
 	$.lblInfoText.text = letterJSON[0].clue;
-	
+
 	$.btnStartQuiz.hide();
 	$.txtLetter.show();
 	$.lblLetters.show();
 	$.lblCollectedLetters.show();
-	
+
 }
 
 function sendLetter() {
@@ -205,23 +201,23 @@ function sendLetter() {
 function getLetter() {
 	var letter = $.txtLetter.value;
 	//if (validate(letter)) {
-		return letter.toUpperCase();
+	return letter.toUpperCase();
 	//};
 }
 
 function checkLetter(letterToCheck) {
 	var correctLetter = false;
-	
+
 	letterCollection.fetch({
-			query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-		});
-	
+		query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+	});
+
 	var letterJSON = letterCollection.toJSON();
 	//Skriv om denna loop så att den kollar id't på bokstaven, alltså platsen i arrayen och kollar om den stämmer...
-	
-		if (letterJSON[0].letter == letterToCheck) {
-			lettersArray.push(letterJSON[0].letter);
-			Ti.API.info(JSON.stringify(lettersArray));
-			$.lblCollectedLetters.text += letterArray;
-		}
+
+	if (letterJSON[0].letter == letterToCheck) {
+		lettersArray.push(letterJSON[0].letter);
+		Ti.API.info(JSON.stringify(lettersArray));
+		$.lblCollectedLetters.text += letterArray;
+	}
 }

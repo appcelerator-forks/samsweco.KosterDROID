@@ -1,0 +1,8 @@
+<Alloy>
+	<Collection src="letterModel"></Collection>
+	<View id="interactiveView">
+		<View id="horizontalView">
+			<Label id="lblClue">Nu börjar du närma dig en bokstav, gå till bokstavsjakten för att läsa ledtråden!</Label>
+		</View>
+	</View>
+</Alloy>

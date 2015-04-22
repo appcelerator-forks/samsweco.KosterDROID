@@ -25,42 +25,42 @@ var jsonFileCollection = getJSONfiles();
 // FUNGERAR MEN ÄR SJUKT STRÖRANDE
 //-----------------------------------------------------------
 // try {
-// 
-	// Ti.Geolocation.getCurrentPosition(function(e) {
-		// if (e.error) {
-			// alert('Get current position' + e.error);
-		// } else {
-		// }
-	// });
-// 
-	// if (Ti.Geolocation.locationServicesEnabled) {
-		// Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
-		// Ti.Geolocation.distanceFilter = 10;
-		// Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
-// 
-		// Ti.Geolocation.addEventListener('location', function(e) {
-			// if (e.error) {
-				// alert('Add eventlistener!' + e.error);
-			// } else {
-				// getPosition(e.coords);
-			// }
-		// });
-	// } else {
-		// alert('Tillåt gpsen, tack');
-	// }
+//
+// Ti.Geolocation.getCurrentPosition(function(e) {
+// if (e.error) {
+// alert('Get current position' + e.error);
+// } else {
+// }
+// });
+//
+// if (Ti.Geolocation.locationServicesEnabled) {
+// Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
+// Ti.Geolocation.distanceFilter = 10;
+// Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
+//
+// Ti.Geolocation.addEventListener('location', function(e) {
+// if (e.error) {
+// alert('Add eventlistener!' + e.error);
+// } else {
+// getPosition(e.coords);
+// }
+// });
+// } else {
+// alert('Tillåt gpsen, tack');
+// }
 // } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - get current position GPS");
+// newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - get current position GPS");
 // }
 
 //-----------------------------------------------------------
 // Onload-funktioner för kartan
 //-----------------------------------------------------------
 // try {
-	showMap();
-	setRoutes();
-	displayTrailMarkers();
+showMap();
+setRoutes();
+displayTrailMarkers();
 // } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
+// newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
 // }
 
 //-----------------------------------------------------------
@@ -206,7 +206,8 @@ function isNearPoint() {
 			var lon = jsonCollection[i].longitude;
 
 			if (isInsideRadius(lat, lon, radius)) {
-				showDialog();
+				Alloy.Globals.showInteractive();
+				foundId = jsonCollection[i].id;
 			}
 		}
 	} catch(e) {
@@ -251,11 +252,10 @@ function displayTrailMarkers() {
 
 		var jsonObjTrails = trailsCollection.toJSON();
 		for (var i = 0; i < jsonObjTrails.length; i++) {
-			
+
 			color = jsonObjTrails[i].color.toUpperCase();
 			Ti.API.info(JSON.stringify(color));
-			
-			
+
 			var markerAnnotation = MapModule.createAnnotation({
 				id : jsonObjTrails[i].name,
 				latitude : jsonObjTrails[i].pinLat,
@@ -266,10 +266,10 @@ function displayTrailMarkers() {
 				rightButton : '/pins/androidarrow2.png',
 				name : 'trail',
 				font : {
-					fontFamily: 'Gotham Rounded'
+					fontFamily : 'Gotham Rounded'
 				}
 			});
-			
+
 			// markerAnnotation.pincolor = Alloy.Globals.MapModule.ANNOTATION_GREEN;
 
 			baseMap.addAnnotation(markerAnnotation);
@@ -337,18 +337,16 @@ function showHotspot(myId) {
 //-----------------------------------------------------------
 baseMap.addEventListener('click', function(evt) {
 
-		if (evt.clicksource == 'rightPane') {
-			if (evt.annotation.name == 'hotspot') {
-				showHotspot(evt.annotation.id);
-			} else {
-				showTrail(evt.annotation.id);
-			}
+	if (evt.clicksource == 'rightPane') {
+		if (evt.annotation.name == 'hotspot') {
+			showHotspot(evt.annotation.id);
+		} else {
+			showTrail(evt.annotation.id);
 		}
+	}
 });
 
-function showMapMenu(){
+function showMapMenu() {
 	Alloy.Globals.showMenuWidget();
 }
-
-
 
