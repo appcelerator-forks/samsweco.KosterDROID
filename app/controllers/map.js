@@ -72,12 +72,12 @@ function setRoutes() {
 			query : 'SELECT id, name, color FROM trailsModel'
 		});
 
-		var jsonObj = trailsCollection.toJSON();
-		for (var i = 0; i < jsonObj.length; i++) {
-			var file = getFile(jsonObj[i].id);
+		var jsonObjRoutes = trailsCollection.toJSON();
+		for (var i = 0; i < jsonObjRoutes.length; i++) {
+			var file = getFile(jsonObjRoutes[i].id);
 
 			for (var u = 0; u < file.length; u++) {
-				createMapRoutes(file[u].filename, jsonObj[i].name, jsonObj[i].color);
+				createMapRoutes(file[u].filename, jsonObjRoutes[i].name, jsonObjRoutes[i].color);
 			}
 		}
 	} catch(e) {
@@ -224,8 +224,8 @@ function showMap() {
 			mapType : MapModule.HYBRID_TYPE,
 			animate : true,
 			region : {
-				latitude : 58.893539,
-				longitude : 11.012579,
+				latitude : 58.886775,
+				longitude : 11.026024,
 				latitudeDelta : 0.08,
 				longitudeDelta : 0.08
 			},
@@ -249,20 +249,20 @@ function displayTrailMarkers() {
 			query : 'SELECT name, pinLon, pinLat, color FROM trailsModel'
 		});
 
-		var jsonObj = trailsCollection.toJSON();
-		for (var i = 0; i < jsonObj.length; i++) {
+		var jsonObjTrails = trailsCollection.toJSON();
+		for (var i = 0; i < jsonObjTrails.length; i++) {
 			
-			color = jsonObj[i].color.toUpperCase();
+			color = jsonObjTrails[i].color.toUpperCase();
 			Ti.API.info(JSON.stringify(color));
 			
 			
 			var markerAnnotation = MapModule.createAnnotation({
-				id : jsonObj[i].name,
-				latitude : jsonObj[i].pinLat,
-				longitude : jsonObj[i].pinLon,
-				title : jsonObj[i].name,
+				id : jsonObjTrails[i].name,
+				latitude : jsonObjTrails[i].pinLat,
+				longitude : jsonObjTrails[i].pinLon,
+				title : jsonObjTrails[i].name,
 				pincolor : MapModule.ANNOTATION_AZURE,
-				subtitle : 'Läs mer om ' + jsonObj[i].name + ' här!',
+				subtitle : 'Läs mer om ' + jsonObjTrails[i].name + ' här!',
 				rightButton : '/pins/androidarrow2.png',
 				name : 'trail',
 				font : {

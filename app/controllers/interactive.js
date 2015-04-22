@@ -170,7 +170,7 @@ function calculateMapRegion(trailCoordinates) {
 
 			delta = Math.max(deltaLat, deltaLon);
 			// Ändra om det ska vara mer zoomat
-			delta = delta * 0.5;
+			delta = delta * 0.6;
 
 			poiCenter.lat = maxLat - parseFloat((maxLat - minLat) / 2);
 			poiCenter.lon = maxLon - parseFloat((maxLon - minLon) / 2);
@@ -264,19 +264,23 @@ function displayTrailMarkers() {
 function addClueZone() {
 	var clueCollection = Alloy.Collections.letterModel;
 	clueCollection.fetch({
-		query : 'SELECT latitude, longitude FROM letterModel'
+		query : 'SELECT found, letter, latitude, longitude FROM letterModel'
 	});
 
-	var jsonObj = clueCollection.toJSON();
+	var jsonObjLetter = clueCollection.toJSON();
 
-	for (var c = 0; c < jsonObj.length; c++) {
+	for (var c = 0; c < jsonObjLetter.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
 			id : 1,
-			latitude : jsonObj[c].latitude,
-			longitude : jsonObj[c].longitude
+			latitude : jsonObjLetter[c].latitude,
+			longitude : jsonObjLetter[c].longitude,
+			centerOffset : {
+				x : 80,
+				y : 90
+			}
 		});
 		
-		if(jsonObj[i].found == 0){
+		if(jsonObjLetter[c].found == 0){
 			markerAnnotation.image = '/images/red.png';
 		}else{
 			markerAnnotation.image = '/images/green.png';

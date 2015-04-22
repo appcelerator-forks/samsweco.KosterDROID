@@ -1,5 +1,6 @@
 <Alloy>
 	<Collection src="trailsModel" />
+	<Collection src="letterModel" />
 	<View id="interactiveWin">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="showFamilyTrail">
