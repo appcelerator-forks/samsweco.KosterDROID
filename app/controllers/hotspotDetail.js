@@ -38,8 +38,9 @@ function selectHotspotPics() {
 
 			var img_view = Ti.UI.createView({
 				backgroundImage : "/pics/" + jsonMedia[i].filename,
-				height : '200dp',
-				width : '300dp',
+								
+				width : Ti.UI.SIZE,
+				height : '250dp',
 				top : '0dp'
 				});
 
