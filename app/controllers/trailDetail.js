@@ -62,7 +62,6 @@ function selectTrailPics() {
 				text : jsonMedia[i].img_txt,
 				color : 'white',
 				font : {
-					fontSize : 12,
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					fontFamily: 'Gotham Rounded'
@@ -125,7 +124,7 @@ function showHotspots() {
 				color : '#FF9966',
 				left : '5dp',
 				font : {
-					fontSize : 14,
+					fontSize : '20dp',
 					fontFamily: 'Gotham Rounded'
 				},
 				text : rows[i].name
@@ -135,7 +134,6 @@ function showHotspots() {
 				left : '5dp',
 				top : '0dp',
 				font : {
-					fontSize : 10,
 					fontFamily: 'Gotham Rounded'
 				},
 				text : 'Läs mer om ' + rows[i].name + " här!"

@@ -37,7 +37,7 @@
 	left: '15dp',
 	right : '15dp',
 	font: {
-		fontSize: 13,
+		fontSize: '14dp',
 		fontFamily: 'Gotham Rounded'
 	}
 }
@@ -47,7 +47,7 @@
 	left: '15dp',
 	color : '#FF9966',
 	font: {
-		fontSize: 16,
+		fontSize: '20dp'
 		
 	}
 }
