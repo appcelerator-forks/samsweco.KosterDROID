@@ -255,19 +255,33 @@ function displayTrailMarkers() {
 		});
 
 		familyMap.addAnnotation(markerAnnotation);
-		
+
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - displayTrailMarkers");
 	}
 }
 
 function addClueZone() {
-	var markerAnnotation = MapModule.createAnnotation({
-		id : 1,
-		latitude : 58.891454,
-		longitude : 11.041194,
-		image : '/images/green.png'
+	var clueCollection = Alloy.Collections.letterModel;
+	clueCollection.fetch({
+		query : 'SELECT latitude, longitude FROM letterModel'
 	});
 
-	familyMap.addAnnotation(markerAnnotation);
+	var jsonObj = clueCollection.toJSON();
+
+	for (var c = 0; c < jsonObj.length; c++) {
+		var markerAnnotation = MapModule.createAnnotation({
+			id : 1,
+			latitude : jsonObj[c].latitude,
+			longitude : jsonObj[c].longitude
+		});
+		
+		if(jsonObj[i].found == 0){
+			markerAnnotation.image = '/images/red.png';
+		}else{
+			markerAnnotation.image = '/images/green.png';
+		}
+
+		familyMap.addAnnotation(markerAnnotation);
+	}
 }
