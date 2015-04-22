@@ -23,7 +23,7 @@
 
 "#slideShowHotspotDetail": {
 	top: '10dp',
-	width: '300dp',
+	width: Titanium.UI.FILL,
 	height: '235dp',
 	backgroundColor: 'black'
 }
@@ -43,7 +43,8 @@
 }
 
 "#lblHotspotName": {
-	left: 15,
+	top : '10dp',
+	left: '15dp',
 	color : '#FF9966',
 	font: {
 		fontSize: 16,
