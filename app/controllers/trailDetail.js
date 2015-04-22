@@ -51,8 +51,8 @@ function selectTrailPics() {
 
 			var img_view = Ti.UI.createView({
 				backgroundImage : "/pics/" + jsonMedia[i].filename,
-				height : '200dp',
-				width : '300dp',
+				width : '100%',
+				height : '235dp' ,
 				top : '0dp'
 			});
 

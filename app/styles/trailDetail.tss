@@ -8,11 +8,25 @@
 	navBarHidden: "false"
 }
 
+// "#slideShowTrails": {
+	// top : '10dp',
+	// width: '296dp',
+	// height: '235dp',
+	// backgroundColor : 'black'
+// }
+
+"#slideView": {
+	backgroundColor: '#000000',
+	height: Titanium.UI.SIZE,
+	width: '100%',
+	layout: 'vertical'
+}
+
 "#slideShowTrails": {
-	top : '10dp',
-	width: '296dp',
-	height: '235dp',
-	backgroundColor : 'black'
+	top: '10dp',
+	width: '100%',
+	height: '255dp',
+	backgroundColor: 'black'
 }
 
 "#horizontalView": {
@@ -25,13 +39,6 @@
 	width : '47%',
 	height : '40dp',
 	right : 0
-}
-
-"#slideView": {
-	backgroundColor: '#000000',
-	height: Titanium.UI.SIZE,
-	width: '100%',
-	layout: 'vertical'
 }
 
 "Label": {
