@@ -49,7 +49,7 @@
 "Label": {
 	top: 0,
 	font: {
-		fontSize: 10,
+		fontSize: '14dp',
 		fontStyle: 'Gotham Rounded'
 	},
 	color: "#000000"
@@ -59,7 +59,7 @@
 	top: 0,
 	left: '5dp',
 	font: {
-		fontSize: 15,
+		fontSize: '14dp',
 		fontStyle: 'italic'
 	},
 	color: "#000000"
@@ -68,7 +68,7 @@
 "#lblLetters": {
 	top: 0,
 	font: {
-		fontSize: 12
+		fontSize: '20dp'
 	},
 	color: "#000000",
 	visible: false
@@ -81,7 +81,8 @@
 	tintColor: 'blue',
 	borderWidth: '1dp',
 	borderRadius: '5dp',
-	visible: false
+	visible: false,
+	color : 'black'
 }
 
 "#lblCollectedLetters": {

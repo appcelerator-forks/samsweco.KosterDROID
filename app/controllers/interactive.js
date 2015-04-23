@@ -7,7 +7,6 @@ displayTrailMarkers();
 addClueZone();
 
 var letterCollection = getLetterCollection();
-var letterId = foundId;
 
 //-----------------------------------------------------------
 // Kontrollerar det inskickade ordet mot "facit"
@@ -176,21 +175,33 @@ function addClueZone() {
 	}
 }
 
-//Ändra till rätt id som kommer in vid anrop.
+function startInteractive(){
+	Alloy.Globals.getGPSpos();
+	loadClue();
+}
+
 function loadClue() {
-	letterCollection.fetch({
-		query : 'SELECT * FROM letterModel where id = "' + 1 + '"'
-	});
+		$.btnStartQuiz.hide();
+		$.txtLetter.show();
+		$.lblLetters.show();
+		$.lblCollectedLetters.show();
+		
+	if (foundId == !null) {
+		letterCollection.fetch({
+			query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+		});
 
-	var letterJSON = letterCollection.toJSON();
+		var letterJSON = letterCollection.toJSON();
 
-	$.lblWelcome.text = "Nästa ledtråd: ";
-	$.lblInfoText.text = letterJSON[0].clue;
+		$.lblWelcome.text = "Nästa ledtråd: ";
+		$.lblInfoText.text = letterJSON[0].clue;
 
-	$.btnStartQuiz.hide();
-	$.txtLetter.show();
-	$.lblLetters.show();
-	$.lblCollectedLetters.show();
+
+	}
+	
+	else{
+		Ti.API.info("foundId är null");
+	}
 
 }
 
@@ -218,6 +229,9 @@ function checkLetter(letterToCheck) {
 	if (letterJSON[0].letter == letterToCheck) {
 		lettersArray.push(letterJSON[0].letter);
 		Ti.API.info(JSON.stringify(lettersArray));
-		$.lblCollectedLetters.text += letterArray;
+		$.lblCollectedLetters.text += lettersArray;
+	}
+	else{
+		alert("Är du säker på att det var rätt bokstav?");
 	}
 }

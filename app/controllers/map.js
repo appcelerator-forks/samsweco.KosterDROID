@@ -21,38 +21,6 @@ var jsonFileCollection = getJSONfiles();
 // var infospotCollection = getInfospotCollection();
 
 //-----------------------------------------------------------
-// Hämtar enhetens senaste GPS-position
-// FUNGERAR MEN ÄR SJUKT STRÖRANDE
-//-----------------------------------------------------------
-// try {
-//
-// Ti.Geolocation.getCurrentPosition(function(e) {
-// if (e.error) {
-// alert('Get current position' + e.error);
-// } else {
-// }
-// });
-//
-// if (Ti.Geolocation.locationServicesEnabled) {
-// Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
-// Ti.Geolocation.distanceFilter = 10;
-// Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
-//
-// Ti.Geolocation.addEventListener('location', function(e) {
-// if (e.error) {
-// alert('Add eventlistener!' + e.error);
-// } else {
-// getPosition(e.coords);
-// }
-// });
-// } else {
-// alert('Tillåt gpsen, tack');
-// }
-// } catch(e) {
-// newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - get current position GPS");
-// }
-
-//-----------------------------------------------------------
 // Onload-funktioner för kartan
 //-----------------------------------------------------------
 // try {
@@ -62,6 +30,43 @@ displayTrailMarkers();
 // } catch(e) {
 // newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
 // }
+
+//-----------------------------------------------------------
+// Hämtar enhetens senaste GPS-position
+// Körs ej i nuläget... fixa till starta interactive?
+//-----------------------------------------------------------
+function getGPSpos(){
+	try {
+
+		Ti.Geolocation.getCurrentPosition(function(e) {
+			if (e.error) {
+				alert('Get current position' + e.error);
+			} else {
+			}
+		});
+
+		if (Ti.Geolocation.locationServicesEnabled) {
+			Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
+			Ti.Geolocation.distanceFilter = 10;
+			Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
+
+			Ti.Geolocation.addEventListener('location', function(e) {
+				if (e.error) {
+					alert('Kan inte sätta eventListener ' + e.error);
+				} else {
+					getPosition(e.coords);
+				}
+			});
+		} else {
+			alert('Tillåt gpsen, tack');
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - get current position GPS");
+	}
+
+}
+
+Alloy.Globals.getGPSpos = getGPSpos;
 
 //-----------------------------------------------------------
 // Sätter ut alla vandringsleder på kartan
@@ -207,7 +212,8 @@ function isNearPoint() {
 
 			if (isInsideRadius(lat, lon, radius)) {
 				Alloy.Globals.showInteractive();
-				foundId = jsonCollection[i].id;
+				foundId = 1;
+				//foundId = jsonCollection[i].id;
 			}
 		}
 	} catch(e) {

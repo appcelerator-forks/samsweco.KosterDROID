@@ -49,3 +49,7 @@ $.infoWin.addEventListener('blur', function(){
 $.koster.addEventListener('blur', function(){
 	$.koster = null;
 });
+
+$.lblShowInteractive.addEventListener('click', function(){
+	Alloy.Globals.showInteractive();
+});
