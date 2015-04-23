@@ -14,7 +14,7 @@
 "#lblInfoText": {
 	top: '0dp',
 	font: {
-		fontStyle: 'Raleway-Light',
+		fontFamily: 'Raleway-Light',
 		fontSize: '12dp'
 	} ,
 	right: '20dp',
@@ -31,7 +31,7 @@
 "#lblWelcome": {
 	top: '0dp',
 	font: {
-		fontStyle: 'Raleway-Medium',
+		fontFamily: 'Raleway-Medium',
 		fontSize: '20dp'
 	},
 	color: '#FF9966'
@@ -40,7 +40,7 @@
 "#lblClue": {
 	top: '0dp',
 	font: {
-		fontStyle: 'Raleway-Light',
+		fontFamily: 'Raleway-Light',
 		fontSize: '20dp'
 	},
 	color: '#FF9966'
@@ -50,7 +50,7 @@
 	top: '0dp',
 	font: {
 		fontSize: '14dp',
-		fontStyle: 'Raleway-Light'
+		fontFamily: 'Raleway-Light'
 	},
 	color: "#000000"
 }
@@ -61,7 +61,9 @@
 	right: '15dp',
 	font: {
 		fontSize: '14dp',
-		fontStyle: 'italic'
+		fontStyle: 'italic',
+		fontFamily: 'Raleway-Light'
+		
 	},
 	color: "#000000"
 }

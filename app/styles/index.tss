@@ -22,7 +22,7 @@
 	right: '20dp',
 	font : {
 		fontSize: 10 ,
-		fontFamily: 'Raleway.Light'
+		fontFamily: 'Raleway-Light'
 	}
 }
 
