@@ -86,5 +86,8 @@
 }
 
 "#lblCollectedLetters": {
-	visible: false
+	visible: false,
+		font: {
+		fontSize: '20dp'
+	},
 }

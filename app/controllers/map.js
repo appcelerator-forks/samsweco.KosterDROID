@@ -5,7 +5,7 @@ var zoomColor = args.color;
 var zoomLat = args.zoomlat;
 
 var route;
-var radius = 10;
+var radius = 20;
 //var MapModule = require('ti.map');
 Alloy.Globals.MapModule = MapModule;
 
@@ -46,9 +46,10 @@ function getGPSpos(){
 		});
 
 		if (Ti.Geolocation.locationServicesEnabled) {
-			Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_BEST;
-			Ti.Geolocation.distanceFilter = 10;
-			Ti.Geolocation.preferredProvider = Ti.Geolocation.PROVIDER_GPS;
+			
+			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+			Titanium.Geolocation.distanceFilter = 10;
 
 			Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
@@ -201,7 +202,7 @@ function isInsideRadius(lat1, lon1, rad) {
 //-----------------------------------------------------------
 function isNearPoint() {
 	try {
-		var coordCollection = Alloy.Collections.coordinates;
+		var coordCollection = Alloy.Collections.letterModel;
 		coordCollection.fetch();
 
 		var jsonCollection = coordCollection.toJSON();
@@ -211,9 +212,9 @@ function isNearPoint() {
 			var lon = jsonCollection[i].longitude;
 
 			if (isInsideRadius(lat, lon, radius)) {
-				Alloy.Globals.showInteractive();
-				foundId = 1;
-				//foundId = jsonCollection[i].id;
+				alert("Du är i punkt : " + jsonCollection[i].id+ "och bokstaven är: " + jsonCollection[i].letter);
+				//Alloy.Globals.showInteractive();
+				foundId = jsonCollection[i].id;
 			}
 		}
 	} catch(e) {
