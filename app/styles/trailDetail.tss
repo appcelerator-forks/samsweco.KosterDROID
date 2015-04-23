@@ -1,10 +1,9 @@
 "Label": {
 	left: '10dp',
 	font: {
-		fontSize: 14,
-		fontFamily: 'Gotham Rounded'
-		
-	},
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Light.ttf'
+	}
 }
 
 "Window": {
@@ -12,13 +11,6 @@
 	layout: 'vertical',
 	navBarHidden: "false"
 }
-
-// "#slideShowTrails": {
-	// top : '10dp',
-	// width: '296dp',
-	// height: '235dp',
-	// backgroundColor : 'black'
-// }
 
 "#slideView": {
 	backgroundColor: '#000000',
@@ -35,18 +27,16 @@
 }
 
 "#horizontalView": {
-	layout : 'horizontal',
-	height : '40dp',
-	width : '100%'
+	layout: 'horizontal',
+	height: '40dp',
+	width: '100%'
 }
 
 "#btnView": {
-	width : '47%',
-	height : '40dp',
-	right : 0
+	width: '47%',
+	height: '40dp',
+	right: '0dp'
 }
-
-
 
 ".container": {
 	top: 0,
@@ -58,8 +48,7 @@
 	left: '15dp',
 	font: {
 		fontSize: '20dp',
-		fontFamily: 'Gotham Rounded'
-		
+		fontFamily: 'Raleway-Medium.ttf'
 	},
 	color: '#FF9966'
 }
@@ -73,7 +62,7 @@
 	right: '10dp',
 	top: '5dp',
 	height: Titanium.UI.SIZE,
-	fontFamily: 'Gotham Rounded'
+	fontFamily: 'Raleway-Light'
 }
 
 "#trail_hotspotView": {
@@ -86,8 +75,7 @@
 }
 
 "#hotspotTable": {
-	height: Titanium.UI.SIZE,
-	footerTitle: ''
+	height: Titanium.UI.SIZE
 }
 
 ".headView": {
@@ -110,24 +98,25 @@
 	layout: 'horizontal',
 	height: '40dp',
 	left: '10dp',
-	width : '47%'
+	width: '47%'
 }
 
 "#lblTrailLength": {
-	font : {
-		fontStyle: 'Italic'
+	font: {
+		fontStyle: 'Italic',
+		fontFamily : 'Raleway-Light'
 	},
-	top : '10dp',
-	left : '15dp'
+	top: '10dp',
+	left: '15dp'
 }
 
 "#btnTrailOnMap": {
 	right: 0,
 	width: Titanium.UI.SIZE,
-		font: {
+	font: {
 		fontSize: '16dp',
-	color: '#FF9966'
-}
+		color: '#FF9966'
+	}
 }
 
 
