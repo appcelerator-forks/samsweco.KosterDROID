@@ -8,6 +8,12 @@ displayTrailMarkers();
 addClueZone();
 
 var letterCollection = getLetterCollection();
+letterCollection.fetch();
+
+// var coordCollection = Alloy.Collections.letterModel;
+// coordCollection.fetch();
+
+var jsonCollection = letterCollection.toJSON();
 
 //-----------------------------------------------------------
 // Kontrollerar det inskickade ordet mot "facit"
@@ -324,10 +330,6 @@ function isInsideRadius(lat1, lon1, rad) {
 //-----------------------------------------------------------
 function isNearPoint() {
 	try {
-		var coordCollection = Alloy.Collections.letterModel;
-		coordCollection.fetch();
-
-		var jsonCollection = coordCollection.toJSON();
 
 		for (var i = 0; i < jsonCollection.length; i++) {
 
