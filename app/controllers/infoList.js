@@ -72,9 +72,9 @@ function setRowData() {
 				top : '2dp',
 				color : '#FF9966',
 				font : {
-					fontSize : 13,
+					fontSize : 14,
 					fontWeight : 'bold',
-					fontFamily: 'Gotham Rounded'
+					fontFamily: 'Raleway-Medium'
 				},
 				text : rows[i].name
 			});
@@ -83,8 +83,8 @@ function setRowData() {
 				left : '10dp',
 				top : '2dp',
 				font : {
-					fontSize : 10,
-					fontFamily: 'Gotham Rounded'
+					fontSize : 12,
+					fontFamily: 'Raleway-Light'
 				},
 				text : rows[i].desc
 			});

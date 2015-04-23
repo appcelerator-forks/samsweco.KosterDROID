@@ -64,7 +64,7 @@ function selectTrailPics() {
 				font : {
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-					fontFamily: 'Gotham Rounded'
+					fontFamily: 'Raleway-Light'
 				},
 
 			});
@@ -125,7 +125,7 @@ function showHotspots() {
 				left : '5dp',
 				font : {
 					fontSize : '20dp',
-					fontFamily: 'Gotham Rounded'
+					fontFamily: 'Raleway-Medium'
 				},
 				text : rows[i].name
 			});
@@ -134,7 +134,7 @@ function showHotspots() {
 				left : '5dp',
 				top : '0dp',
 				font : {
-					fontFamily: 'Gotham Rounded'
+					fontFamily: 'Raleway-Light'
 				},
 				text : 'Läs mer om ' + rows[i].name + " här!"
 			});

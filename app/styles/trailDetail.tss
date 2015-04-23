@@ -2,7 +2,7 @@
 	left: '10dp',
 	font: {
 		fontSize: '14dp',
-		fontFamily: 'Raleway-Light.ttf'
+		fontFamily: 'Raleway-Light'
 	}
 }
 
@@ -48,7 +48,7 @@
 	left: '15dp',
 	font: {
 		fontSize: '20dp',
-		fontFamily: 'Raleway-Medium.ttf'
+		fontFamily: 'Raleway-Medium'
 	},
 	color: '#FF9966'
 }

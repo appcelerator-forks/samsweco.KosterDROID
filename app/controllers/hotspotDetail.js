@@ -53,7 +53,7 @@ function selectHotspotPics() {
 					fontSize : 12,
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-					fontFamily: 'Gotham Rounded'
+					fontFamily: 'Raleway-Light'
 				},
 				
 			});
