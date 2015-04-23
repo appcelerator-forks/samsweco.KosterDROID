@@ -176,17 +176,17 @@ function addClueZone() {
 	}
 }
 
-function startInteractive(){
+function startInteractive() {
 	getGPSpos();
 	loadClue();
 }
 
 function loadClue() {
-		$.btnStartQuiz.hide();
-		$.txtLetter.show();
-		$.lblLetters.show();
-		$.lblCollectedLetters.show();
-		
+	$.btnStartQuiz.hide();
+	$.txtLetter.show();
+	$.lblLetters.show();
+	$.lblCollectedLetters.show();
+
 	if (foundId == !null) {
 		letterCollection.fetch({
 			query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
@@ -197,10 +197,7 @@ function loadClue() {
 		$.lblWelcome.text = "Nästa ledtråd: ";
 		$.lblInfoText.text = letterJSON[0].clue;
 
-
-	}
-	
-	else{
+	} else {
 		Ti.API.info("foundId är null");
 	}
 }
@@ -228,20 +225,18 @@ function checkLetter(letterToCheck) {
 	if (letterJSON[0].letter == letterToCheck) {
 		lettersArray.push(letterJSON[0].letter);
 		$.lblCollectedLetters.text + letterToCheck;
-		
+
 		//Sätta found till true!!
-	}
-	else{
+	} else {
 		alert("Är du säker på att det var rätt bokstav?");
 	}
 }
-
 
 //GEO STUFF
 //------------------
 //-------------------------------------
 
-function getGPSpos(){
+function getGPSpos() {
 	try {
 
 		Ti.Geolocation.getCurrentPosition(function(e) {
@@ -252,7 +247,7 @@ function getGPSpos(){
 		});
 
 		if (Ti.Geolocation.locationServicesEnabled) {
-			
+
 			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
 			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
 			Titanium.Geolocation.distanceFilter = 10;
@@ -272,7 +267,6 @@ function getGPSpos(){
 	}
 
 }
-
 
 //-----------------------------------------------------------
 // Hämtar enhetens position och kontrollerar mot punkter
@@ -336,13 +330,23 @@ function isNearPoint() {
 		var jsonCollection = coordCollection.toJSON();
 
 		for (var i = 0; i < jsonCollection.length; i++) {
-			var lat = jsonCollection[i].latitude;
-			var lon = jsonCollection[i].longitude;
 
-			if (isInsideRadius(lat, lon, radius)) {
-				alert("Du är i punkt : " + jsonCollection[i].id+ " och bokstaven är: " + jsonCollection[i].letter);
-				foundId = jsonCollection[i].id;
-				
+			if (jsonCollection[i].found == 0) {
+				var lat = jsonCollection[i].latitude;
+				var lon = jsonCollection[i].longitude;
+
+				if (isInsideRadius(lat, lon, radius)) {
+					alert("Du är i punkt : " + jsonCollection[i].id + " och bokstaven är: " + jsonCollection[i].letter);
+					foundId = jsonCollection[i].id;
+
+					letterCollection.fetch({
+						query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+					});
+
+					var letterJSON = letterCollection.toJSON();
+					$.lblInfoText.text = letterJSON[0].clue;
+					jsonCollection[i].found = 1;
+				}
 			}
 		}
 	} catch(e) {
