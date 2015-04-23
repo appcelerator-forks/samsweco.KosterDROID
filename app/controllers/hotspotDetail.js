@@ -40,7 +40,7 @@ function selectHotspotPics() {
 				backgroundColor : 'green',
 				backgroundImage : "/pics/" + jsonMedia[i].filename,	
 				width : '100%',
-				height : '235dp' ,
+				height : '240dp' ,
 				top : '0dp'
 				});
 
