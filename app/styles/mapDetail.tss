@@ -1,7 +1,3 @@
-"font": {
-	fontFamily: 'Gotham Rounded'
-}
-
 "#btnView": {
 	layout: 'horizontal'
 }
