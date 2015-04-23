@@ -228,6 +228,8 @@ function checkLetter(letterToCheck) {
 	if (letterJSON[0].letter == letterToCheck) {
 		lettersArray.push(letterJSON[0].letter);
 		$.lblCollectedLetters.text + letterToCheck;
+		
+		//Sätta found till true!!
 	}
 	else{
 		alert("Är du säker på att det var rätt bokstav?");
@@ -338,8 +340,9 @@ function isNearPoint() {
 			var lon = jsonCollection[i].longitude;
 
 			if (isInsideRadius(lat, lon, radius)) {
-				alert("Du är i punkt : " + jsonCollection[i].id+ "och bokstaven är: " + jsonCollection[i].letter);
+				alert("Du är i punkt : " + jsonCollection[i].id+ " och bokstaven är: " + jsonCollection[i].letter);
 				foundId = jsonCollection[i].id;
+				
 			}
 		}
 	} catch(e) {
