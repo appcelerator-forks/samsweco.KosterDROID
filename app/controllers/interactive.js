@@ -177,7 +177,7 @@ function addClueZone() {
 }
 
 function startInteractive(){
-	Alloy.Globals.getGPSpos();
+	getGPSpos();
 	loadClue();
 }
 
@@ -228,7 +228,6 @@ function checkLetter(letterToCheck) {
 
 	if (letterJSON[0].letter == letterToCheck) {
 		lettersArray.push(letterJSON[0].letter);
-		Ti.API.info(JSON.stringify(lettersArray));
 		$.lblCollectedLetters.text += lettersArray;
 	}
 	else{
@@ -262,7 +261,6 @@ function getGPSpos(){
 					alert('Kan inte sätta eventListener ' + e.error);
 				} else {
 					getPosition(e.coords);
-					alert("getPos körs nu");
 				}
 			});
 		} else {
@@ -284,7 +282,6 @@ function getPosition(coordinatesObj) {
 		gLon = coordinatesObj.longitude;
 
 		isNearPoint();
-		alert("i getPosition, kör isNearPoint");
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - getPosition");
 	}
@@ -343,7 +340,6 @@ function isNearPoint() {
 
 			if (isInsideRadius(lat, lon, radius)) {
 				alert("Du är i punkt : " + jsonCollection[i].id+ "och bokstaven är: " + jsonCollection[i].letter);
-				//Alloy.Globals.showInteractive();
 				foundId = jsonCollection[i].id;
 			}
 		}

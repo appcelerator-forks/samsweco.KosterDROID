@@ -250,43 +250,43 @@ function showMap() {
 	}
 }
 
-// //-----------------------------------------------------------
-// // Visar markers för vandringslederna
-// //-----------------------------------------------------------
-// function displayTrailMarkers() {
-	// try {
-		// trailsCollection.fetch({
-			// query : 'SELECT name, pinLon, pinLat, color FROM trailsModel'
-		// });
-// 
-		// var jsonObjTrails = trailsCollection.toJSON();
-		// for (var i = 0; i < jsonObjTrails.length; i++) {
-// 
-			// color = jsonObjTrails[i].color.toUpperCase();
-			// Ti.API.info(JSON.stringify(color));
-// 
-			// var markerAnnotation = MapModule.createAnnotation({
-				// id : jsonObjTrails[i].name,
-				// latitude : jsonObjTrails[i].pinLat,
-				// longitude : jsonObjTrails[i].pinLon,
-				// title : jsonObjTrails[i].name,
-				// pincolor : MapModule.ANNOTATION_AZURE,
-				// subtitle : 'Läs mer om ' + jsonObjTrails[i].name + ' här!',
-				// rightButton : '/pins/androidarrow2.png',
-				// name : 'trail',
-				// font : {
-					// fontFamily : 'Raleway-Light'
-				// }
-			// });
-// 
-			// // markerAnnotation.pincolor = Alloy.Globals.MapModule.ANNOTATION_GREEN;
-// 
-			// baseMap.addAnnotation(markerAnnotation);
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "map - displayTrailMarkers");
-	// }
-// }
+//-----------------------------------------------------------
+// Visar markers för vandringslederna
+//-----------------------------------------------------------
+function displayTrailMarkers() {
+	try {
+		trailsCollection.fetch({
+			query : 'SELECT name, pinLon, pinLat, color FROM trailsModel'
+		});
+
+		var jsonObjTrails = trailsCollection.toJSON();
+		for (var i = 0; i < jsonObjTrails.length; i++) {
+
+			color = jsonObjTrails[i].color.toUpperCase();
+			Ti.API.info(JSON.stringify(color));
+
+			var markerAnnotation = MapModule.createAnnotation({
+				id : jsonObjTrails[i].name,
+				latitude : jsonObjTrails[i].pinLat,
+				longitude : jsonObjTrails[i].pinLon,
+				title : jsonObjTrails[i].name,
+				pincolor : MapModule.ANNOTATION_AZURE,
+				subtitle : 'Läs mer om ' + jsonObjTrails[i].name + ' här!',
+				rightButton : '/pins/androidarrow2.png',
+				name : 'trail',
+				font : {
+					fontFamily : 'Raleway-Light'
+				}
+			});
+
+			// markerAnnotation.pincolor = Alloy.Globals.MapModule.ANNOTATION_GREEN;
+
+			baseMap.addAnnotation(markerAnnotation);
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - displayTrailMarkers");
+	}
+}
 
 //-----------------------------------------------------------
 // Öppnar trailDetail med info om vald vandringsled
