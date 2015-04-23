@@ -224,11 +224,10 @@ function checkLetter(letterToCheck) {
 	});
 
 	var letterJSON = letterCollection.toJSON();
-	//Skriv om denna loop så att den kollar id't på bokstaven, alltså platsen i arrayen och kollar om den stämmer...
 
 	if (letterJSON[0].letter == letterToCheck) {
 		lettersArray.push(letterJSON[0].letter);
-		$.lblCollectedLetters.text += lettersArray;
+		$.lblCollectedLetters.text + letterToCheck;
 	}
 	else{
 		alert("Är du säker på att det var rätt bokstav?");
