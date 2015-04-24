@@ -12,14 +12,65 @@ var familyMap;
 displayTrailMarkers();
 addClueZone();
 
-
-
 // var coordCollection = Alloy.Collections.letterModel;
 // coordCollection.fetch();
 
+function startInteractive() {
+	getGPSpos();
+	loadClue();
+}
 
+function loadClue() {
+	$.btnStartQuiz.hide();
+	$.txtLetter.show();
+	$.lblLetters.show();
+	$.lblCollectedLetters.show();
 
-Ti.API.info("jsonCollection: "+JSON.stringify(jsonCollection));
+	if (foundId == !null) {
+		// letterCollection.fetch({
+			// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+		// });
+// 
+		// var letterJSON = letterCollection.toJSON();
+
+		$.lblWelcome.text = "Nästa ledtråd: ";
+		$.lblInfoText.text = jsonCollection[foundId-1].clue;
+
+	} else {
+		Ti.API.info("foundId är null");
+	}
+}
+
+function sendLetter() {
+	checkLetter(getLetter());
+	familyMap.removeAllAnnotations();
+	addClueZone();
+}
+
+function getLetter() {
+	var letter = $.txtLetter.value;
+	//if (validate(letter)) {
+	return letter.toUpperCase();
+	//};
+}
+
+function checkLetter(letterToCheck) {
+
+	// letterCollection.fetch({
+		// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+	// });
+// 
+	// var letterJSON = letterCollection.toJSON();
+
+	if (Alloy.Globals.jsonCollection[foundId-1].letter == letterToCheck) {
+		lettersArray.push(Alloy.Globals.jsonCollection[foundId-1].letter);
+		$.lblCollectedLetters.text += letterToCheck;
+		Alloy.Globals.jsonCollection[foundId-1].found = 1;
+
+	} else {
+		alert("Är du säker på att det var rätt bokstav?");
+	}
+}
 
 //-----------------------------------------------------------
 // Kontrollerar det inskickade ordet mot "facit"
@@ -31,9 +82,15 @@ function checkWord() {
 	if (check == word) {
 		alert("Bra jobbat!");
 	} else {
-		alert("Nej du, nu blev det fel...");
+		alert("Försök igen!");
 	}
 }
+
+//MAP STUFF
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
 //-----------------------------------------
 // Zoomar in kartan på äventyrsleden
@@ -152,7 +209,7 @@ function displayTrailMarkers() {
 			pincolor : MapModule.ANNOTATION_PURPLE,
 			subtitle : 'Vandringsleden startar här!',
 			font : {
-				fontFamily : 'Gotham Rounded'
+				fontFamily : 'Raleway-Light'
 			}
 		});
 
@@ -173,9 +230,10 @@ function addClueZone() {
 
 	for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
-			id : 1,
 			latitude : Alloy.Globals.jsonCollection[c].latitude,
-			longitude : Alloy.Globals.jsonCollection[c].longitude
+			longitude : Alloy.Globals.jsonCollection[c].longitude,
+			title : Alloy.Globals.jsonCollection[c].id,
+			subtitle : Alloy.Globals.jsonCollection[c].letter
 		});
 
 		if (Alloy.Globals.jsonCollection[c].found == 0) {
@@ -188,67 +246,11 @@ function addClueZone() {
 	}
 }
 
-function startInteractive() {
-	getGPSpos();
-	loadClue();
-	
-}
-
-function loadClue() {
-	$.btnStartQuiz.hide();
-	$.txtLetter.show();
-	$.lblLetters.show();
-	$.lblCollectedLetters.show();
-
-	if (foundId == !null) {
-		// letterCollection.fetch({
-			// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-		// });
-// 
-		// var letterJSON = letterCollection.toJSON();
-
-		$.lblWelcome.text = "Nästa ledtråd: ";
-		$.lblInfoText.text = jsonCollection[foundId-1].clue;
-
-	} else {
-		Ti.API.info("foundId är null");
-	}
-}
-
-function sendLetter() {
-	checkLetter(getLetter());
-	familyMap.removeAllAnnotations();
-	addClueZone();
-}
-
-function getLetter() {
-	var letter = $.txtLetter.value;
-	//if (validate(letter)) {
-	return letter.toUpperCase();
-	//};
-}
-
-function checkLetter(letterToCheck) {
-
-	// letterCollection.fetch({
-		// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-	// });
-// 
-	// var letterJSON = letterCollection.toJSON();
-
-	if (jsonCollection[foundId-1].letter == letterToCheck) {
-		lettersArray.push(jsonCollection[foundId-1].letter);
-		$.lblCollectedLetters.text + letterToCheck;
-		jsonCollection[foundId-1-1].found = 1;
-
-	} else {
-		alert("Är du säker på att det var rätt bokstav?");
-	}
-}
-
 //GEO STUFF
-//------------------
-//-------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
 function getGPSpos() {
 	try {
@@ -353,7 +355,7 @@ function isNearPoint() {
 						// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
 					// });
 
-					var letterJSON = letterCollection.toJSON();
+				//	var letterJSON = letterCollection.toJSON();
 					$.lblInfoText.text = Alloy.Globals.jsonCollection[i].clue;
 				}
 			}
