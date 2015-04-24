@@ -164,10 +164,10 @@ function displayTrailMarkers() {
 }
 
 function addClueZone() {
-	var clueCollection = getLetterCollection();
-	clueCollection.fetch({
-		query : 'SELECT * FROM letterModel'
-	});
+	// var clueCollection = getLetterCollection();
+	// clueCollection.fetch({
+		// query : 'SELECT * FROM letterModel'
+	// });
 
 // jsonObjLetter = clueCollection.toJSON();
 
@@ -201,14 +201,14 @@ function loadClue() {
 	$.lblCollectedLetters.show();
 
 	if (foundId == !null) {
-		letterCollection.fetch({
-			query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-		});
-
-		var letterJSON = letterCollection.toJSON();
+		// letterCollection.fetch({
+			// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+		// });
+// 
+		// var letterJSON = letterCollection.toJSON();
 
 		$.lblWelcome.text = "Nästa ledtråd: ";
-		$.lblInfoText.text = letterJSON[0].clue;
+		$.lblInfoText.text = jsonCollection[foundId-1].clue;
 
 	} else {
 		Ti.API.info("foundId är null");
@@ -217,6 +217,7 @@ function loadClue() {
 
 function sendLetter() {
 	checkLetter(getLetter());
+	familyMap.removeAllAnnotations();
 	addClueZone();
 }
 
@@ -228,17 +229,17 @@ function getLetter() {
 }
 
 function checkLetter(letterToCheck) {
-	var correctLetter = false;
 
-	letterCollection.fetch({
-		query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-	});
+	// letterCollection.fetch({
+		// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+	// });
+// 
+	// var letterJSON = letterCollection.toJSON();
 
-	var letterJSON = letterCollection.toJSON();
-
-	if (letterJSON[0].letter == letterToCheck) {
-		lettersArray.push(letterJSON[0].letter);
+	if (jsonCollection[foundId-1].letter == letterToCheck) {
+		lettersArray.push(jsonCollection[foundId-1].letter);
 		$.lblCollectedLetters.text + letterToCheck;
+		jsonCollection[foundId-1-1].found = 1;
 
 	} else {
 		alert("Är du säker på att det var rätt bokstav?");
@@ -260,18 +261,18 @@ function getGPSpos() {
 		});
 
 		if (Ti.Geolocation.locationServicesEnabled) {
-
 			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
 			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
 			Titanium.Geolocation.distanceFilter = 10;
-
+			
 			Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
-					alert('Kan inte sätta eventListener ' + e.error);
+					Ti.API.info('Kan inte sätta eventListener ' + e.error);
 				} else {
 					getPosition(e.coords);
 				}
 			});
+			
 		} else {
 			alert('Tillåt gpsen, tack');
 		}
@@ -348,13 +349,12 @@ function isNearPoint() {
 					alert("Du är i punkt : " + Alloy.Globals.jsonCollection[i].id + " och bokstaven är: " + Alloy.Globals.jsonCollection[i].letter);
 					foundId = Alloy.Globals.jsonCollection[i].id;
 
-					letterCollection.fetch({
-						query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-					});
+					// letterCollection.fetch({
+						// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
+					// });
 
 					var letterJSON = letterCollection.toJSON();
-					$.lblInfoText.text = letterJSON[0].clue;
-					Alloy.Globals.jsonCollection[i].found = 1;
+					$.lblInfoText.text = Alloy.Globals.jsonCollection[i].clue;
 				}
 			}
 		}
