@@ -11,6 +11,7 @@
 			<TextField id="txtLetter"></TextField>
 			<Label id="lblLetters" onClick="sendLetter">Skicka bokstav!</Label>
 			<Label id="lblCollectedLetters"></Label>
+			<Widget src="interactive" name="widget"></Widget>
 			</View>
 		</View>
 	</View>

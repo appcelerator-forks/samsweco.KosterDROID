@@ -6,6 +6,7 @@
 	<Collection src="hotspot_trailsModel" />
 	<Window class="container">
 		<View id="mapDetailView"></View>
+		<Widget src="interactive" name="widget"></Widget>
 		<Widget src="mapmenu" name="widget"></Widget>
 		<Button id="btnMenu" backgroundImage="/images/hamburger.png" onClick="showMapMenu" />
 	</Window>
