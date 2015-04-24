@@ -53,7 +53,7 @@ function checkLetter(letterToCheck) {
 		Alloy.Globals.jsonCollection[foundId-1].found = 1;
 
 	} else {
-		alert("Är du säker på att det var rätt bokstav?");
+		alert("Är du säker på att "+letterToCheck+ " är rätt bokstav?");
 	}
 }
 

@@ -18,7 +18,6 @@ var hotspotAnnotation;
 var trailsCollection = getTrailsCollection();
 var hotspotCollection = getHotspotCollection();
 var jsonFileCollection = getJSONfiles();
-// var infospotCollection = getInfospotCollection();
 
 //-----------------------------------------------------------
 // Onload-funktioner för kartan
