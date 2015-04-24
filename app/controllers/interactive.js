@@ -158,21 +158,21 @@ function displayTrailMarkers() {
 }
 
 function addClueZone() {
-	var clueCollection = getLetterCollection();
-	clueCollection.fetch({
-		query : 'SELECT * FROM letterModel'
-	});
+	// var clueCollection = getLetterCollection();
+	// clueCollection.fetch({
+		// query : 'SELECT * FROM letterModel'
+	// });
 
-	var jsonObjLetter = clueCollection.toJSON();
+// jsonObjLetter = clueCollection.toJSON();
 
-	for (var c = 0; c < jsonObjLetter.length; c++) {
+	for (var c = 0; c < jsonCollection.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
 			id : 1,
-			latitude : jsonObjLetter[c].latitude,
-			longitude : jsonObjLetter[c].longitude
+			latitude : jsonCollection[c].latitude,
+			longitude : jsonCollection[c].longitude
 		});
 
-		if (jsonObjLetter[c].found == 0) {
+		if (jsonCollection[c].found == 0) {
 			markerAnnotation.image = '/images/red.png';
 		} else {
 			markerAnnotation.image = '/images/green.png';
@@ -185,6 +185,7 @@ function addClueZone() {
 function startInteractive() {
 	getGPSpos();
 	loadClue();
+	
 }
 
 function loadClue() {
@@ -210,6 +211,7 @@ function loadClue() {
 
 function sendLetter() {
 	checkLetter(getLetter());
+	addClueZone();
 }
 
 function getLetter() {
@@ -232,7 +234,6 @@ function checkLetter(letterToCheck) {
 		lettersArray.push(letterJSON[0].letter);
 		$.lblCollectedLetters.text + letterToCheck;
 
-		//Sätta found till true!!
 	} else {
 		alert("Är du säker på att det var rätt bokstav?");
 	}
