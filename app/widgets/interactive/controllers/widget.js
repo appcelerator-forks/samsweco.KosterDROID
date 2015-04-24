@@ -1,6 +1,7 @@
-function showInteractive() {
+function showInteractive(clueTxt) {
 	if (!interactiveVisible) {
 		$.interactiveView.show();
+		$.lblClue.text = clueTxt;
 		interactiveVisible = true;
 	} else {
 		$.interactiveView.hide();
