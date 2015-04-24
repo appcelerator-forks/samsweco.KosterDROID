@@ -12,9 +12,6 @@ var familyMap;
 displayTrailMarkers();
 addClueZone();
 
-// var coordCollection = Alloy.Collections.letterModel;
-// coordCollection.fetch();
-
 function startInteractive() {
 	getGPSpos();
 	loadClue();
@@ -27,11 +24,6 @@ function loadClue() {
 	$.lblCollectedLetters.show();
 
 	if (foundId == !null) {
-		// letterCollection.fetch({
-			// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-		// });
-// 
-		// var letterJSON = letterCollection.toJSON();
 
 		$.lblWelcome.text = "Nästa ledtråd: ";
 		$.lblInfoText.text = jsonCollection[foundId-1].clue;
@@ -49,18 +41,11 @@ function sendLetter() {
 
 function getLetter() {
 	var letter = $.txtLetter.value;
-	//if (validate(letter)) {
 	return letter.toUpperCase();
 	//};
 }
 
 function checkLetter(letterToCheck) {
-
-	// letterCollection.fetch({
-		// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-	// });
-// 
-	// var letterJSON = letterCollection.toJSON();
 
 	if (Alloy.Globals.jsonCollection[foundId-1].letter == letterToCheck) {
 		lettersArray.push(Alloy.Globals.jsonCollection[foundId-1].letter);
@@ -221,12 +206,6 @@ function displayTrailMarkers() {
 }
 
 function addClueZone() {
-	// var clueCollection = getLetterCollection();
-	// clueCollection.fetch({
-		// query : 'SELECT * FROM letterModel'
-	// });
-
-// jsonObjLetter = clueCollection.toJSON();
 
 	for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
@@ -351,11 +330,6 @@ function isNearPoint() {
 					alert("Du är i punkt : " + Alloy.Globals.jsonCollection[i].id + " och bokstaven är: " + Alloy.Globals.jsonCollection[i].letter);
 					foundId = Alloy.Globals.jsonCollection[i].id;
 
-					// letterCollection.fetch({
-						// query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
-					// });
-
-				//	var letterJSON = letterCollection.toJSON();
 					$.lblInfoText.text = Alloy.Globals.jsonCollection[i].clue;
 				}
 			}
