@@ -94,4 +94,6 @@ function showInteractive() {
 		interactiveVisible = false;
 	}
 }
+
+
 //Alloy.Globals.showInteractive = showInteractive;

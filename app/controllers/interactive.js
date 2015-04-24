@@ -1,19 +1,25 @@
 var args = arguments[0] || {};
 var radius = 20;
 
+var letterCollection = getLetterCollection();
+letterCollection.fetch();
+var jsonCollection = letterCollection.toJSON();
+Alloy.Globals.jsonCollection = jsonCollection;
+
 showMap();
 createMapRoute();
 var familyMap;
 displayTrailMarkers();
 addClueZone();
 
-var letterCollection = getLetterCollection();
-letterCollection.fetch();
+
 
 // var coordCollection = Alloy.Collections.letterModel;
 // coordCollection.fetch();
 
-var jsonCollection = letterCollection.toJSON();
+
+
+Ti.API.info("jsonCollection: "+JSON.stringify(jsonCollection));
 
 //-----------------------------------------------------------
 // Kontrollerar det inskickade ordet mot "facit"
@@ -158,21 +164,21 @@ function displayTrailMarkers() {
 }
 
 function addClueZone() {
-	// var clueCollection = getLetterCollection();
-	// clueCollection.fetch({
-		// query : 'SELECT * FROM letterModel'
-	// });
+	var clueCollection = getLetterCollection();
+	clueCollection.fetch({
+		query : 'SELECT * FROM letterModel'
+	});
 
 // jsonObjLetter = clueCollection.toJSON();
 
-	for (var c = 0; c < jsonCollection.length; c++) {
+	for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
 		var markerAnnotation = MapModule.createAnnotation({
 			id : 1,
-			latitude : jsonCollection[c].latitude,
-			longitude : jsonCollection[c].longitude
+			latitude : Alloy.Globals.jsonCollection[c].latitude,
+			longitude : Alloy.Globals.jsonCollection[c].longitude
 		});
 
-		if (jsonCollection[c].found == 0) {
+		if (Alloy.Globals.jsonCollection[c].found == 0) {
 			markerAnnotation.image = '/images/red.png';
 		} else {
 			markerAnnotation.image = '/images/green.png';
@@ -332,15 +338,15 @@ function isInsideRadius(lat1, lon1, rad) {
 function isNearPoint() {
 	try {
 
-		for (var i = 0; i < jsonCollection.length; i++) {
+		for (var i = 0; i < Alloy.Globals.jsonCollection.length; i++) {
 
-			if (jsonCollection[i].found == 0) {
-				var lat = jsonCollection[i].latitude;
-				var lon = jsonCollection[i].longitude;
+			if (Alloy.Globals.jsonCollection[i].found == 0) {
+				var lat = Alloy.Globals.jsonCollection[i].latitude;
+				var lon = Alloy.Globals.jsonCollection[i].longitude;
 
 				if (isInsideRadius(lat, lon, radius)) {
-					alert("Du är i punkt : " + jsonCollection[i].id + " och bokstaven är: " + jsonCollection[i].letter);
-					foundId = jsonCollection[i].id;
+					alert("Du är i punkt : " + Alloy.Globals.jsonCollection[i].id + " och bokstaven är: " + Alloy.Globals.jsonCollection[i].letter);
+					foundId = Alloy.Globals.jsonCollection[i].id;
 
 					letterCollection.fetch({
 						query : 'SELECT * FROM letterModel where id = "' + foundId + '"'
@@ -348,7 +354,7 @@ function isNearPoint() {
 
 					var letterJSON = letterCollection.toJSON();
 					$.lblInfoText.text = letterJSON[0].clue;
-					jsonCollection[i].found = 1;
+					Alloy.Globals.jsonCollection[i].found = 1;
 				}
 			}
 		}
