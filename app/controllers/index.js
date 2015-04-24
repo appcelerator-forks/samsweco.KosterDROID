@@ -50,6 +50,6 @@ $.koster.addEventListener('blur', function(){
 	$.koster = null;
 });
 
-$.lblShowInteractive.addEventListener('click', function(){
-	showInteractive();
+$.lblInteractive.addEventListener('click', function() {
+	Alloy.Globals.showInteractive();
 });

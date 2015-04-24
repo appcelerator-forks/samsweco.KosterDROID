@@ -9,30 +9,33 @@
 "#horizontalView":{
 	layout: 'horizontal',
 	backgroundColor: 'white',
-	height: '70dp',
-	width: Titanium.UI.FILL
+	height : '70dp',
+	width : Titanium.UI.FILL
 }
 
 "Label": {
+	left : 20,
+	top : 20,
 	font: {
-		fontSize: 10
+		fontSize: 10,
+		
 	},
 	color: "#000000"
 }
 
 "#lblClue": {
-	left: '5dp',
+	left : '5dp',
 	font: {
 		fontSize: 15,
-		fontStyle: 'italic'
+		fontStyle : 'italic'
 	},
 	color: "#000000"
 }
 
-"#txtLetter": {
-	height: '35dp',
-	width: '70dp',
-	tintColor: 'blue',
-	borderWidth: '1dp',
-	borderRadius: '5dp'
+"#txtLetter" : {
+	height : '35dp',
+	width : '70dp',
+	tintColor : 'blue',
+	borderWidth : '1dp',
+	borderRadius : '5dp'
 }
