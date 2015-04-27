@@ -158,7 +158,7 @@ function showIcons(id) {
 			left : '0dp'
 		});
 
-			iconImgView.image = '/images/' + selectedIcons[i].icon;
+			iconImgView.image = '/images/' + selectedIcons[i].name+ '.png';
 
 		iconView.add(iconImgView);
 	}
