@@ -174,7 +174,7 @@ function getIcons(trail_id) {
 
 		var infotrailCollection = Alloy.Collections.infospotModel;
 		infotrailCollection.fetch({
-			query : 'SELECT icon from infospotModel join infospot_trailsModel on infospot_trailsModel.infospotID = infospotModel.id where trailsID ="' + id + '"'
+			query : 'SELECT DISTINCT name from infospotCoordinatesModel join infospot_trailsModel on infospot_trailsModel.infospotID = infospotCoordinatesModel.infospotID where trailsID ="' + id + '"'
 		});
 
 		var infoTrails = infotrailCollection.toJSON();
