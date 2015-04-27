@@ -243,7 +243,7 @@ function getGPSpos() {
 
 		if (Ti.Geolocation.locationServicesEnabled) {
 			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
-			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
+			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_HIGH;
 			Titanium.Geolocation.distanceFilter = 3;
 			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
 			

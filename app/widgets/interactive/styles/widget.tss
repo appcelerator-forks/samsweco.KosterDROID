@@ -2,7 +2,7 @@
 	layout: 'vertical',
 	height: '100dp',
 	visible: false,
-	backgroundColor: 'white',
+	backgroundColor: 'yellow',
 	opacity: 0.8
 }
 
