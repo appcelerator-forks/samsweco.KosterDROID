@@ -26,7 +26,7 @@ function loadClue() {
 	if (foundId == !null) {
 
 		$.lblWelcome.text = "Nästa ledtråd: ";
-		$.lblInfoText.text = jsonCollection[foundId-1].clue;
+		$.lblInfoText.text = jsonCollection[foundId - 1].clue;
 
 	} else {
 		Ti.API.info("foundId är null");
@@ -47,13 +47,13 @@ function getLetter() {
 
 function checkLetter(letterToCheck) {
 
-	if (Alloy.Globals.jsonCollection[foundId-1].letter == letterToCheck) {
-		lettersArray.push(Alloy.Globals.jsonCollection[foundId-1].letter);
+	if (Alloy.Globals.jsonCollection[foundId - 1].letter == letterToCheck) {
+		lettersArray.push(Alloy.Globals.jsonCollection[foundId - 1].letter);
 		$.lblCollectedLetters.text += letterToCheck;
-		Alloy.Globals.jsonCollection[foundId-1].found = 1;
+		Alloy.Globals.jsonCollection[foundId - 1].found = 1;
 
 	} else {
-		alert("Är du säker på att "+letterToCheck+ " är rätt bokstav?");
+		alert("Är du säker på att " + letterToCheck + " är rätt bokstav?");
 	}
 }
 
@@ -246,7 +246,7 @@ function getGPSpos() {
 			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_HIGH;
 			Titanium.Geolocation.distanceFilter = 3;
 			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
-			
+
 			Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
 					Ti.API.info('Kan inte sätta eventListener ' + e.error);
@@ -254,7 +254,7 @@ function getGPSpos() {
 					getPosition(e.coords);
 				}
 			});
-			
+
 		} else {
 			alert('Tillåt gpsen, tack');
 		}
@@ -328,7 +328,12 @@ function isNearPoint() {
 				var lon = Alloy.Globals.jsonCollection[i].longitude;
 
 				if (isInsideRadius(lat, lon, radius)) {
-					Alloy.Globals.showInteractive(JSON.stringify(Alloy.Globals.jsonCollection[i].clue));
+					var clue = Ti.UI.createNotification({
+						message : "Ledtråd : " + Alloy.Globals.jsonCollection[i].clue,
+						duration : Ti.UI.NOTIFICATION_DURATION_LONG
+					});
+					clue.show();
+					//Alloy.Globals.showInteractive(JSON.stringify(Alloy.Globals.jsonCollection[i].clue));
 					//alert("Du är i punkt : " + Alloy.Globals.jsonCollection[i].id + " och bokstaven är: " + Alloy.Globals.jsonCollection[i].letter);
 					foundId = Alloy.Globals.jsonCollection[i].id;
 
