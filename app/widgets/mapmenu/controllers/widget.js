@@ -249,14 +249,16 @@ function showMenuWidget() {
 		menuVisible = false;
 	}
 }
+Alloy.Globals.showMenuWidget = showMenuWidget;
 
 function closeMapMenu() {
 	$.mapmenu.hide();
 	menuVisible = false;
 }
 
+Alloy.Globals.closeMapMenu = closeMapMenu;
 $.mapmenu.addEventListener('swipe', function() {
 	closeMapMenu();
+});
 
-Alloy.Globals.showMenuWidget = showMenuWidget;
-Alloy.Globals.closeMapMenu = closeMapMenu;
+

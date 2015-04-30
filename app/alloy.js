@@ -125,7 +125,7 @@ function getGPSpos(type) {
 		});
 
 		if (Ti.Geolocation.locationServicesEnabled) {
-			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+		//	Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
 			Titanium.Geolocation.manualMode = true;
 			Titanium.Geolocation.distanceFilter = 3;
 			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
