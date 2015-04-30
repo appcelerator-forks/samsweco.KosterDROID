@@ -1,66 +1,69 @@
 "#mapmenu": {
-	layout: 'vertical',
-	height: '160dp',
+	layout: 'vertical',,
 	visible: false,
 	bottom: 0,
 	backgroundColor: 'white',
 	opacity: 0.8,
-	animate : true
+	height: '150dp',
+	width: Titanium.UI.FILL
 }
 
-".mapHorizontalView": {
+".lineView": {
+	width: Titanium.UI.FILL,
+	height: '1.5dp',
+	backgroundColor: "#c4c4c4"
+}
+"#lineTwo": {
+	top: '10dp'
+}
+
+".settingsHorizontalView": {
 	layout: 'horizontal',
-	height: '60dp',
-	backgroundColor: 'white'
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	opacity: 1
+}
+
+"#gpsSwitchView":{
+	top: '40dp'
+}
+"#hotSwitchView": {
+	top: '5dp'
 }
 
 "#selectIconView": {
 	layout: 'horizontal',
 	backgroundColor: 'white',
-	opacity: 1,
 	height: Titanium.UI.SIZE,
-	top: '5dp'
+	width: Titanium.UI.FILL,
+	opacity: 1,
+	left: '10%',
+	top: '2dp'
 }
 
-"#centerHorizontalView":{
-	left: '20%',
-	layout: 'horizontal',
-	backgroundColor: 'white',
-	height: '25dp'
+"#lblChoosePikto": {
+	top: '5dp',
+	font: {
+		fontSize: 13,
+		fontFamily: 'Raleway-Medium'
+	}
 }
 
-"#arrowdown": {
-	opacity: 0.7
+"#settingsView": {
+	left: '12%',
+	top: '5dp',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
 }
 
-".btnChange": {
-	height: '35dp',
-	width: '35dp',
-	left: '1%',
-	bottom: '10dp'
+".btnChange":{
+	left: '2%'
 }
 
 ".lblChange": {
-	left: '7%',
 	font: {
-		fontSize: 15
+		fontSize: 16,
+		fontFamily: 'Raleway-Medium'
 	},
-	color: "#FF9966",
-	top: '5dp'
-}
-
-"#btnView": {
-	layout: 'horizontal',
-	opacity: 1,
-	height: '20dp'
-}
-
-"#btnClean": {
-	top: '5dp',
-	left: '37%',
-	font: {
-		fontSize: 15
-	},
-	color: "#FF9966",
-	opacity: 1
+	top: '6dp'
 }
