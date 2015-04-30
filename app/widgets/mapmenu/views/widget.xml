@@ -5,6 +5,7 @@
 	<Collection src="infospotCoordinatesModel"></Collection>
 	<View id="mapmenu">
 		<View class="lineView"></View>
+		<ImageView id="arrowdown" image="/pins/icon-arrow.png"></ImageView>
 		<Label id="lblChoosePikto">Välj vilka informationspunkter du vill se:</Label>
 		<View id="selectIconView">
 			<Button id="btnShowEldplats" class="btnChange" backgroundImage="/images/eldplats.png" onClick="showEldplats"></Button>
