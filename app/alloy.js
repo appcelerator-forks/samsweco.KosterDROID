@@ -21,11 +21,31 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-var alerted = false;
 
 //-----------------------------------------------------------
-// Variabel för kartvyn
+// Globala variabler 
 //-----------------------------------------------------------
+var gLat = 0;
+var gLon = 0;
+var foundId = 1;
+var notify = true;
+var alerted = false;
+
+var lettersArray = [];
+var word = 'RLT';
+var globalTrailID = 0;
+
+var interactiveVisible = false;
+
+var snorkel = false;
+var torrdass = false;
+var utsiktsplats = false;
+var wc = false;
+var rastplats = false;
+var taltplats = false;
+var badplats = false;
+var information = false;
+var eldplats = false;
 
 var MapModule = require('ti.map');
 var baseMap;
@@ -83,33 +103,6 @@ function newError(errorMsg, pageName) {
 	}
 }
 
-//-----------------------------------------------------------
-// Globala variabler för geofencing.
-//-----------------------------------------------------------
-var gLat = 0;
-var gLon = 0;
-var foundId = 1;
-var notify = true;
-
-//-----------------------------------------------------------
-// Array som håller bokstäverna från bokstavsjakten.
-//-----------------------------------------------------------
-var lettersArray = [];
-var word = 'sam';
-var globalTrailID = 0;
-
-var interactiveVisible = false;
-
-var snorkel = false;
-var torrdass = false;
-var utsiktsplats = false;
-var wc = false;
-var rastplats = false;
-var taltplats = false;
-var badplats = false;
-var information = false;
-var eldplats = false;
-
 
 //SANDRA TA BORT SEN, BARA TEST
 
@@ -123,12 +116,13 @@ function getGPSpos(type) {
 		Ti.Geolocation.getCurrentPosition(function(e) {
 			if (e.error) {
 				Ti.API.info('Get current position' + e.error);
-				getGPSpos();
+				getGPSpos('interactive');
 			}
 		});
 
 		if (Ti.Geolocation.locationServicesEnabled) {
-			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+	//		Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+			Titanium.Geolocation.manualMode = true;
 			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
 			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
 			Titanium.Geolocation.distanceFilter = 3;
@@ -136,6 +130,7 @@ function getGPSpos(type) {
 			Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
 					Ti.API.info('Kan inte sätta eventListener ' + e.error);
+					getGPSpos('interactive');
 				} else {
 					getPosition(e.coords, type);
 					// $.coords.text = 'Lat: ' + JSON.stringify(e.coords.latitude + 'Lon: ' + JSON.stringify(e.coords.longitude));
@@ -172,7 +167,7 @@ function getPosition(coordinatesObj, type) {
 function distanceInM(lat1, lon1, GLat, GLon) {
 	try {
 		if (lat1 == null || lon1 == null || GLat == null || GLat == null) {
-			// alert("Det finns inga koordinater att titta efter");
+			 alert("Det finns inga koordinater att titta efter");
 		}
 
 		var R = 6371;
@@ -209,7 +204,7 @@ function isInsideRadius(lat1, lon1, rad) {
 function isNearPoint(type) {
 	// try {
 
-	var dialog = Ti.UI.createAlertDialog();
+	//var dialog = Ti.UI.createAlertDialog();
 
 	if (type == 'hotspot') {
 		var hotspotColl = Alloy.Collections.hotspotModel;
@@ -258,9 +253,9 @@ function isNearPoint(type) {
 
 		// var jsonLetters = letterColl.toJSON();
 		
-		Ti.API.info('jsonLetters : ' + JSON.stringify(Alloy.Globals.jsonCollection));
+		//Ti.API.info('jsonLetters : ' + JSON.stringify(Alloy.Globals.jsonCollection));
 
-		for (var l = 0; l < Alloy.Globals.jsonCollection[0]; l++) {
+		for (var l = 0; l < Alloy.Globals.jsonCollection.length; l++) {
 
 			var letterlati = Alloy.Globals.jsonCollection[l].latitude;
 			var letterlongi = Alloy.Globals.jsonCollection[l].longitude;
@@ -268,9 +263,11 @@ function isNearPoint(type) {
 
 			if (isInsideRadius(letterlati, letterlongi, letterradie)) {
 				if (Alloy.Globals.jsonCollection[l].found == 0 && alerted == false) {
-					dialog.message = 'Nu börjar du närma dig en ny bokstav! Gå tillbaka till spelet för att se den.';
-					dialog.buttonNames = ['Stäng'];
-					dialog.show();
+					var clue = Ti.UI.createNotification({
+						message : "Ledtråd : " + Alloy.Globals.jsonCollection[i].clue,
+						duration : Ti.UI.NOTIFICATION_DURATION_LONG
+					});
+					clue.show();
 
 					Alloy.Globals.jsonCollection[l].found = 1;
 					alerted = true;
