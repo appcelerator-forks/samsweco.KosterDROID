@@ -4,7 +4,7 @@
 	bottom: 0,
 	backgroundColor: 'white',
 	opacity: 0.8,
-	height: '150dp',
+	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL
 }
 
@@ -57,7 +57,9 @@
 }
 
 ".btnChange":{
-	left: '2%'
+	left: '2%',
+	height: '35dp',
+	width: '35dp'
 }
 
 ".lblChange": {
