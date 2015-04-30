@@ -2,9 +2,14 @@ var args = arguments[0] || {};
 var radius = 20;
 
 var letterCollection = getLetterCollection();
-letterCollection.fetch();
+letterCollection.fetch();	
 var jsonCollection = letterCollection.toJSON();
 Alloy.Globals.jsonCollection = jsonCollection;
+
+// var letterCollection = getLetterCollection();
+// letterCollection.fetch();
+// var jsonCollection = letterCollection.toJSON();
+// Alloy.Globals.jsonCollection = jsonCollection;
 
 showMap();
 createMapRoute();

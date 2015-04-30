@@ -21,9 +21,8 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-
 //-----------------------------------------------------------
-// Globala variabler 
+// Globala variabler
 //-----------------------------------------------------------
 var gLat = 0;
 var gLon = 0;
@@ -84,10 +83,16 @@ function getLetterCollection() {
 	return letterCollection;
 }
 
-function getInfoSpotCoordinatesCollection(){
+function getInfoSpotCoordinatesCollection() {
 	var infospotCollection = Alloy.Collections.infospotCoordinatesModel;
 	return infospotCollection;
 }
+
+// var letterCollection = getLetterCollection();
+// letterCollection.fetch();
+//
+// var jsonCollection = letterCollection.toJSON();
+// Alloy.Globals.jsonCollection = jsonCollection;
 
 //-----------------------------------------------------------
 // Felhantering
@@ -103,7 +108,6 @@ function newError(errorMsg, pageName) {
 	}
 }
 
-
 //SANDRA TA BORT SEN, BARA TEST
 
 //GEO STUFF
@@ -115,22 +119,27 @@ function getGPSpos(type) {
 	try {
 		Ti.Geolocation.getCurrentPosition(function(e) {
 			if (e.error) {
-				Ti.API.info('Get current position' + e.error);
+				//Ti.API.info('Get current position' + e.error);
 				getGPSpos('interactive');
 			}
 		});
 
 		if (Ti.Geolocation.locationServicesEnabled) {
-	//		Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
 			Titanium.Geolocation.manualMode = true;
+			Titanium.Geolocation.distanceFilter = 3;
 			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
 			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
-			Titanium.Geolocation.distanceFilter = 3;
 
 			Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
 					Ti.API.info('Kan inte sätta eventListener ' + e.error);
-					getGPSpos('interactive');
+					Ti.Geolocation.getCurrentPosition(function(e) {
+						if (e.error) {
+							//Ti.API.info('Get current position' + e.error);
+							getGPSpos('interactive');
+						}
+					});
 				} else {
 					getPosition(e.coords, type);
 					// $.coords.text = 'Lat: ' + JSON.stringify(e.coords.latitude + 'Lon: ' + JSON.stringify(e.coords.longitude));
@@ -151,14 +160,14 @@ Alloy.Globals.getGPSpos = getGPSpos;
 // Hämtar enhetens position och kontrollerar mot punkter
 //-----------------------------------------------------------
 function getPosition(coordinatesObj, type) {
-	// try {
-	gLat = coordinatesObj.latitude;
-	gLon = coordinatesObj.longitude;
+	try {
+		gLat = coordinatesObj.latitude;
+		gLon = coordinatesObj.longitude;
 
-	isNearPoint(type);
-	// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getPosition");
-	// }
+		isNearPoint(type);
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", " getPosition");
+	}
 }
 
 //-----------------------------------------------------------
@@ -167,7 +176,7 @@ function getPosition(coordinatesObj, type) {
 function distanceInM(lat1, lon1, GLat, GLon) {
 	try {
 		if (lat1 == null || lon1 == null || GLat == null || GLat == null) {
-			 alert("Det finns inga koordinater att titta efter");
+			alert("Det finns inga koordinater att titta efter");
 		}
 
 		var R = 6371;
@@ -202,9 +211,7 @@ function isInsideRadius(lat1, lon1, rad) {
 // Kontrollerar om enheten är innanför en punkt, sänder ut dialog om true
 //-----------------------------------------------------------
 function isNearPoint(type) {
-	// try {
-
-	//var dialog = Ti.UI.createAlertDialog();
+	var radius = 20;
 
 	if (type == 'hotspot') {
 		var hotspotColl = Alloy.Collections.hotspotModel;
@@ -219,11 +226,6 @@ function isNearPoint(type) {
 
 			var lat = jsonHotspot[h].xkoord;
 			var lon = jsonHotspot[h].ykoord;
-			// var name = jsonHotspot[h].name;
-			// var txt = jsonHotspot[h].infoTxt;
-			// var hotid = jsonHotspot[h].id;
-
-			var radius = 10;
 
 			if (isInsideRadius(lat, lon, radius)) {
 				dialog.message = 'Nu börjar du närma dig ' + jsonHotspot[h].name + '!';
@@ -246,38 +248,49 @@ function isNearPoint(type) {
 			}
 		}
 	} else if (type == 'interactive') {
-		// var letterColl = Alloy.Collections.letterModel;
-		// letterColl.fetch({
-			// query : 'SELECT DISTINCT id, latitude, longitude, clue, found, radie FROM letterModel'
-		// });
-
-		// var jsonLetters = letterColl.toJSON();
-		
-		//Ti.API.info('jsonLetters : ' + JSON.stringify(Alloy.Globals.jsonCollection));
 
 		for (var l = 0; l < Alloy.Globals.jsonCollection.length; l++) {
+			if (Alloy.Globals.jsonCollection[l].found == 0) {
+				var letterlati = Alloy.Globals.jsonCollection[l].latitude;
+				var letterlongi = Alloy.Globals.jsonCollection[l].longitude;
+				var letterradie = Alloy.Globals.jsonCollection[l].radie;
 
-			var letterlati = Alloy.Globals.jsonCollection[l].latitude;
-			var letterlongi = Alloy.Globals.jsonCollection[l].longitude;
-			var letterradie = Alloy.Globals.jsonCollection[l].radie;
+				if (isInsideRadius(letterlati, letterlongi, letterradie)) {
 
-			if (isInsideRadius(letterlati, letterlongi, letterradie)) {
-				if (Alloy.Globals.jsonCollection[l].found == 0 && alerted == false) {
 					var clue = Ti.UI.createNotification({
-						message : "Ledtråd : " + Alloy.Globals.jsonCollection[i].clue,
+						message : "Ledtråd : " + Alloy.Globals.jsonCollection[l].clue,
 						duration : Ti.UI.NOTIFICATION_DURATION_LONG
 					});
 					clue.show();
 
 					Alloy.Globals.jsonCollection[l].found = 1;
 					alerted = true;
+					foundId = Alloy.Globals.jsonCollection[l].id;
+					$.lblInfoText.text = Alloy.Globals.jsonCollection[l].clue;
 				}
 			}
-
 		}
 	}
-	// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isNearPoint");
+
+	// for (var i = 0; i < Alloy.Globals.jsonCollection.length; i++) {
+	//
+	// if (Alloy.Globals.jsonCollection[i].found == 0) {
+	// var lat = Alloy.Globals.jsonCollection[i].latitude;
+	// var lon = Alloy.Globals.jsonCollection[i].longitude;
+	//
+	// if (isInsideRadius(lat, lon, radius)) {
+	// var clue = Ti.UI.createNotification({
+	// message : "Ledtråd : " + Alloy.Globals.jsonCollection[i].clue,
+	// duration : Ti.UI.NOTIFICATION_DURATION_LONG
+	// });
+	// clue.show();
+	// //Alloy.Globals.showInteractive(JSON.stringify(Alloy.Globals.jsonCollection[i].clue));
+	// //alert("Du är i punkt : " + Alloy.Globals.jsonCollection[i].id + " och bokstaven är: " + Alloy.Globals.jsonCollection[i].letter);
+	// foundId = Alloy.Globals.jsonCollection[i].id;
+	//
+	// $.lblInfoText.text = Alloy.Globals.jsonCollection[i].clue;
+	// }
+	// }
 	// }
 }
 
