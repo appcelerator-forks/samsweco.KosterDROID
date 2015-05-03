@@ -134,12 +134,12 @@ function getGPSpos(type) {
 			Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
 					Ti.API.info('Kan inte sätta eventListener ' + e.error);
-					Ti.Geolocation.getCurrentPosition(function(e) {
-						if (e.error) {
-							//Ti.API.info('Get current position' + e.error);
-							getGPSpos('interactive');
-						}
-					});
+					// Ti.Geolocation.getCurrentPosition(function(e) {
+						// if (e.error) {
+							// //Ti.API.info('Get current position' + e.error);
+							// getGPSpos('interactive');
+						// }
+					// });
 				} else {
 					getPosition(e.coords, type);
 					// $.coords.text = 'Lat: ' + JSON.stringify(e.coords.latitude + 'Lon: ' + JSON.stringify(e.coords.longitude));
