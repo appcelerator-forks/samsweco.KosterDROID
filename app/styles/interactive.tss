@@ -1,25 +1,34 @@
-"#interactiveWin": {
-	top: '0dp',
-	layout: 'vertical',
-	backgroundColor: 'white'
+"Label": {
+	top: '5dp',
+	left: '15dp',
+	right: '15dp',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Light'
+	}
 }
-"#startView": {
+
+"#interactiveWin": {
+	backgroundColor: 'white',
 	layout: 'vertical'
 }
+// "#startView": {
+// layout: 'vertical',
+// top: '55dp'
+// }
 
 "#hideView": {
 	layout: 'vertical'
 }
 
 "#lblInfoText": {
-	top: '0dp',
+	top: '10dp',
 	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '12dp'
+		fontSize: '14dp'
 	} ,
 	right: '20dp',
 	left: '20dp',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 }
 
 "#showFamilyTrail": {
@@ -29,53 +38,35 @@
 }
 
 "#lblWelcome": {
-	top: '0dp',
+	top: '15dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '20dp'
 	},
-	color: '#FF9966'
+	color: '#FF9966',
+	left : '19dp'
 }
 
 "#lblClue": {
-	top: '0dp',
+	top: '5dp',
+	left: '5dp',
 	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '20dp'
-	},
-	color: '#FF9966'
-}
-
-"Label": {
-	top: '0dp',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Light'
-	},
-	color: "#000000"
-}
-
-"#lblClue": {
-	top: '0dp',
-	left: '15dp',
-	right: '15dp',
-	font: {
-		fontSize: '14dp',
-		fontStyle: 'italic',
-		fontFamily: 'Raleway-Light'
-		
+		fontSize: '16dp',
+		fontStyle: 'italic'
 	},
 	color: "#000000"
 }
 
 "#lblLetters": {
-	top: '0dp',
+	top: '5dp',
 	font: {
-		fontSize: '20dp',
+		fontSize: '15dp',
 		fontFamily: 'Raleway-Medium'
 	},
-	color: "#000000",
-	visible: false
+	color: "#000",
+	visible: false,
+	color : '#FFCC99',
+	left : '32%'
 }
 
 "#txtLetter": {
@@ -85,13 +76,37 @@
 	tintColor: 'blue',
 	borderWidth: '1dp',
 	borderRadius: '5dp',
-	visible: false,
-	color : 'black'
+	visible: false
 }
 
 "#lblCollectedLetters": {
-	visible: false,
-		font: {
-		fontSize: '20dp'
-	},
+	visible: false
 }
+
+"#wordView":{
+	top : 0,
+	layout : 'horizontal'
+}
+
+"#txtWord":{
+	visible: false
+}
+
+"#lblWord":{
+	visible : false,
+	height: '35dp',
+	width: '70dp',
+	tintColor: 'blue',
+	borderWidth: '1dp',
+	borderRadius: '5dp',
+}
+
+"#btnStartQuiz": {
+	height: '30dp',
+	width: '200dp',
+	backgroundColor: '#FFCC99',
+	borderRadius: '4dp',
+	color: 'black',
+	top: '17dp'
+}
+
