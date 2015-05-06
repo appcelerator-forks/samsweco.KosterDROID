@@ -10,13 +10,13 @@ $.geoSwitch.value = true;
 //-----------------------------------------------------------
 function displayMarkers() {
 	try {
-		var markerArray = [];
+		var markerHotArray = [];
 		hotspotCollection.fetch();
 
 		var markersJSON = hotspotCollection.toJSON();
 		for (var u = 0; u < markersJSON.length; u++) {
 
-			var marker = MapModule.createAnnotation({
+			var markerHot = MapModule.createAnnotation({
 				id : markersJSON[u].name,
 				latitude : markersJSON[u].xkoord,
 				longitude : markersJSON[u].ykoord,
@@ -31,10 +31,10 @@ function displayMarkers() {
 				name : 'hotspot'
 			});
 
-			markerArray.push(marker);
+			markerHotArray.push(markerHot);
 		}
 
-		return markerArray;
+		return markerHotArray;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - displayMarkers");
 	}

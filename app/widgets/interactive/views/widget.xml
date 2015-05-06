@@ -1,9 +1,0 @@
-<Alloy>
-	<Collection src="letterModel"></Collection>
-	<View id="interactiveView">
-		<View id="horizontalView">
-			<Label id="lblClue"></Label>
-			<Label id="lblCloseWidget" onClick="closeInteractive">Close</Label>
-		</View>
-	</View>
-</Alloy>

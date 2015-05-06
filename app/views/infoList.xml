@@ -1,7 +1,6 @@
 <Alloy>
 	<Collection src="infoModel" />
 	<View class="container">
-	<Widget src="interactive" name="widget"></Widget>
 		<ScrollView class="headView" scrollType="vertical">
 			<TableView id="table" onClick="getInfoDetails">
 				<TableViewRow class="row" onClick="getInfoDetails" />
