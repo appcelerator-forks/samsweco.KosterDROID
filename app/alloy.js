@@ -22,29 +22,37 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 //-----------------------------------------------------------
-// Globala variabler
+// Globala variabler för geofencing.
 //-----------------------------------------------------------
 var gLat = 0;
 var gLon = 0;
 var foundId = 1;
 var notify = true;
-var alerted = false;
 
+//-----------------------------------------------------------
+// Array som håller bokstäverna från bokstavsjakten.
+//-----------------------------------------------------------
 var lettersArray = [];
-var word = 'RLT';
 var globalTrailID = 0;
+var word = 'SAM';
 
 var interactiveVisible = false;
 
+var farjelage = false;
 var snorkel = false;
 var torrdass = false;
 var utsiktsplats = false;
-var wc = false;
 var rastplats = false;
 var taltplats = false;
 var badplats = false;
 var information = false;
 var eldplats = false;
+
+//SANDRA TA BORT SEN, BARA TEST
+
+//-----------------------------------------------------------
+// Variabel för kartvyn
+//-----------------------------------------------------------
 
 var MapModule = require('ti.map');
 var baseMap;
@@ -83,16 +91,10 @@ function getLetterCollection() {
 	return letterCollection;
 }
 
-function getInfoSpotCoordinatesCollection() {
+function getInfoSpotCoordinatesCollection(){
 	var infospotCollection = Alloy.Collections.infospotCoordinatesModel;
 	return infospotCollection;
 }
-
-// var letterCollection = getLetterCollection();
-// letterCollection.fetch();
-//
-// var jsonCollection = letterCollection.toJSON();
-// Alloy.Globals.jsonCollection = jsonCollection;
 
 //-----------------------------------------------------------
 // Felhantering

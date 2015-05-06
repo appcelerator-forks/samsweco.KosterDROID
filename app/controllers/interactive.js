@@ -1,5 +1,6 @@
 var args = arguments[0] || {};
 var radius = 20;
+var nextId = 1;
 
 var letterCollection = getLetterCollection();
 letterCollection.fetch();
@@ -19,7 +20,9 @@ function startInteractive() {
 	$.btnStartQuiz.hide();
 	$.btnStartQuiz.height = 0;
 	$.txtLetter.show();
+	$.txtLetter.height = '40dp';
 	$.lblLetters.show();
+	$.lblLetters.height = '40dp';
 	$.lblCollectedLetters.show();
 	getGPSpos('interactive');
 	loadClue(1);
@@ -63,6 +66,11 @@ function getLetter() {
 	//};
 }
 
+function nextClue(){
+	var nextClue = Alloy.Globals.jsonCollection[nextId].clue;
+	$.lblInfoText.text = nextClue;
+}
+
 //Sätta alert title
 
 function checkLetter(letterToCheck) {
@@ -73,8 +81,9 @@ function checkLetter(letterToCheck) {
 
 		$.lblCollectedLetters.text = $.lblCollectedLetters.text + letterToCheck;
 		$.txtLetter.value = '';
-
 		loadClue(Alloy.Globals.jsonCollection[foundId-1].id);
+		nextId++;
+		nextClue();
 
 	} else {
 		alert("Är du säker på att " + letterToCheck + " är rätt bokstav?");
@@ -90,8 +99,7 @@ function allLetters() {
 		$.lblLetters.hide();
 		$.lblLetters.height = 0;
 		$.btnStartQuiz.height = 0;
-		$.txtWord.show();
-		$.lblWord.show();
+		$.wordView.show();
 
 	}
 }
@@ -104,9 +112,9 @@ function checkWord() {
 	//	check.toLowerCase();
 
 	if (check == word) {
-		alert("Bra jobbat!");
+		alert("Bra jobbat Det rätta ordet är SAM!");
 	} else {
-		alert("Försök igen!");
+		alert("Försök igen! Du har snart klurat ut det!");
 	}
 }
 
@@ -121,13 +129,12 @@ function checkWord() {
 //-----------------------------------------------------------
 function displayMarkers() {
 	try {
-		var markerArray = [];
+		var markerHotArray = [];
 		var hotspots = getHotspots();
 		
 		for (var u = 0; u < hotspots.length; u++) {
 
-			if (OS_IOS) {
-				var marker = MapModule.createAnnotation({
+				var markerHot = MapModule.createAnnotation({
 					id : hotspots[u].name,
 					latitude : hotspots[u].xkoord,
 					longitude : hotspots[u].ykoord,
@@ -137,12 +144,11 @@ function displayMarkers() {
 					rightButton : '/images/arrow.png',
 					name : 'hotspot'
 				});
-			}
 
-			markerArray.push(marker);
+			markerHotArray.push(markerHot);
 		}
 
-		familyMap.addAnnotations(markerArray);
+		familyMap.addAnnotations(markerHotArray);
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - displayMarkers");
