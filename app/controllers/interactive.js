@@ -2,16 +2,22 @@ var args = arguments[0] || {};
 var radius = 20;
 var nextId = 1;
 
+Ti.Geolocation.getCurrentPosition(function(e) {
+	if (e.error) {
+		// Ti.API.info('Get current position' + e.error);
+	}
+});
+
 var letterCollection = getLetterCollection();
 letterCollection.fetch();
 var jsonCollection = letterCollection.toJSON();
 Alloy.Globals.jsonCollection = jsonCollection;
 
 var hotspotCollection = getHotspotCollection();
-
-showMap();
-createMapRoute();
 var familyMap;
+showMap();
+
+createMapRoute();
 displayMarkers();
 addClueZone();
 //getGPSpos();
@@ -66,7 +72,7 @@ function getLetter() {
 	//};
 }
 
-function nextClue(){
+function nextClue() {
 	var nextClue = Alloy.Globals.jsonCollection[nextId].clue;
 	$.lblInfoText.text = nextClue;
 }
@@ -81,7 +87,7 @@ function checkLetter(letterToCheck) {
 
 		$.lblCollectedLetters.text = $.lblCollectedLetters.text + letterToCheck;
 		$.txtLetter.value = '';
-		loadClue(Alloy.Globals.jsonCollection[foundId-1].id);
+		loadClue(Alloy.Globals.jsonCollection[foundId - 1].id);
 		nextId++;
 		nextClue();
 
@@ -131,19 +137,19 @@ function displayMarkers() {
 	try {
 		var markerHotArray = [];
 		var hotspots = getHotspots();
-		
+
 		for (var u = 0; u < hotspots.length; u++) {
 
-				var markerHot = MapModule.createAnnotation({
-					id : hotspots[u].name,
-					latitude : hotspots[u].xkoord,
-					longitude : hotspots[u].ykoord,
-					title : hotspots[u].name,
-					subtitle : 'Läs mer om ' + hotspots[u].name + ' här!',
-					image : '/images/hot-icon-azure.png',
-					rightButton : '/images/arrow.png',
-					name : 'hotspot'
-				});
+			var markerHot = MapModule.createAnnotation({
+				id : hotspots[u].name,
+				latitude : hotspots[u].xkoord,
+				longitude : hotspots[u].ykoord,
+				title : hotspots[u].name,
+				subtitle : 'Läs mer om ' + hotspots[u].name + ' här!',
+				image : '/images/hot-icon-azure.png',
+				rightButton : '/images/arrow.png',
+				name : 'hotspot'
+			});
 
 			markerHotArray.push(markerHot);
 		}
@@ -291,7 +297,7 @@ function createMapRoute() {
 				name : 'Äventyrsleden',
 				points : coordArray,
 				color : 'purple',
-				width : 2.0
+				width : 3.0
 			};
 
 			familyMap.addRoute(MapModule.createRoute(route));
@@ -312,20 +318,9 @@ function createMapRoute() {
 function getGPSpos() {
 	try {
 
-		Ti.Geolocation.getCurrentPosition(function(e) {
-			if (e.error) {
-				Ti.API.info('Get current position' + e.error);
-				getGPSpos();
-			}
-		});
-
 		if (Ti.Geolocation.locationServicesEnabled) {
-			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
-			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
-			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
-			Titanium.Geolocation.distanceFilter = 3;
-
-			Ti.Geolocation.addEventListener('location', function(e) {
+		
+		Ti.Geolocation.addEventListener('location', function(e) {
 				if (e.error) {
 					Ti.API.info('Kan inte sätta eventListener ' + e.error);
 				} else {
@@ -334,6 +329,11 @@ function getGPSpos() {
 
 				}
 			});
+			
+			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
+			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
+			Titanium.Geolocation.distanceFilter = 3;
 
 		} else {
 			alert('Tillåt gpsen, tack');
