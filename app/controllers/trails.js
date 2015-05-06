@@ -13,6 +13,8 @@ setRowData();
 // Läser in data till alla listitems
 //-----------------------------------------------------------
 function setRowData() {
+	
+
 
 		var trailsCollection = Alloy.Collections.trailsModel;
 		trailsCollection.fetch();
@@ -20,12 +22,12 @@ function setRowData() {
 		var tableViewData = [];
 		var rows = trailsCollection.toJSON();
 		
-		for(var i = 0; i<rows.length; i++){
+		for (var i = rows.length; i--;){
 			
 				var row = Ti.UI.createTableViewRow({
 				layout : 'horizontal',
-				id : i + 1,
-				height : '80dp',
+				id : rows[i].id,
+				height : '90dp',
 				top : '0dp',
 				hasChild : true
 			});
@@ -38,10 +40,10 @@ function setRowData() {
 			
 			var img = Ti.UI.createImageView({
 				height : '70dp',
-				width : '110dp',
-				image : "/pics/" + rows[i].cover_img,
+				width : '115dp',
+				image : '/pics/' + rows[i].cover_img,
 				left : '5dp',
-				top : '5dp'
+				top : '10dp'
 			});
 			
 			var labelView = Ti.UI.createView({
@@ -56,8 +58,7 @@ function setRowData() {
 				color : '#FF9966',
 				left : '5dp',
 				font : {
-					fontSize : 13,
-					fontWeight : 'bold',
+					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
 				},
 				text : rows[i].name
@@ -67,7 +68,7 @@ function setRowData() {
 				left : '5dp',
 				top : '0dp',
 				font : {
-					fontSize : 10,
+					fontSize : '12dp',
 					fontFamily: 'Raleway-Light'
 				},
 				text : 'Sträcka : ' + rows[i].length + " km"
@@ -77,7 +78,7 @@ function setRowData() {
 				left : '5dp',
 				top : '0dp',
 				font : {
-					fontSize : 10,
+					fontSize : '12dp',
 					fontFamily: 'Raleway-Light'
 				},
 				text : rows[i].area
@@ -97,6 +98,7 @@ function setRowData() {
 		}
 	$.table.data = tableViewData;
 }
+
 
 //-----------------------------------------------------------
 // Öppnar trail detail med args för den valda leden
@@ -143,7 +145,7 @@ function showIcons(id) {
 	var iconView = Ti.UI.createView({
 		layout : 'horizontal',
 		height : '25dp',
-		width : '125dp',
+		width : Ti.UI.FILL,
 		backgroundColor : 'white',
 		left : '5dp',
 		top : '5dp'
@@ -153,8 +155,8 @@ function showIcons(id) {
 	for (var i = 0; i < selectedIcons.length; i++) {
 
 		var iconImgView = Ti.UI.createImageView({
-			height : '25dp',
-			width : '25dp',
+			height : '20dp',
+			width : '20dp',
 			left : '0dp'
 		});
 

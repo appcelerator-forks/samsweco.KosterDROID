@@ -38,7 +38,7 @@ function selectHotspotPics() {
 
 			var img_view = Ti.UI.createView({
 				backgroundColor : 'green',
-				backgroundImage : "/pics/" + jsonMedia[i].filename,	
+				backgroundImage : "/pics/" + jsonMedia[i].filename + '.png',	
 				width : '100%',
 				height : '240dp' ,
 				top : '0dp'
@@ -50,7 +50,7 @@ function selectHotspotPics() {
 				text : jsonMedia[i].img_txt,
 				color : 'white',
 				font : {
-					fontSize : 12,
+					fontSize : '12dp',
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					fontFamily: 'Raleway-Light'
@@ -87,6 +87,5 @@ function setPicText() {
 
 	txt = textCollection.toJSON();
 	text = JSON.stringify(txt);
-	//Ti.API.info('HÄR ÄR INFORMATION SOM VI VILL SE : ' + text);
 }
 

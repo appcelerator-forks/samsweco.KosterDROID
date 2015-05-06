@@ -43,7 +43,7 @@
 	left: '15dp',
 	color : '#FF9966',
 	font: {
-		fontSize: '20dp',
+		fontSize: '18dp',
 		fontFamily : 'Raleway-Medium'
 		
 	}

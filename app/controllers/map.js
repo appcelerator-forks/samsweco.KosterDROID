@@ -30,7 +30,6 @@ displayTrailMarkers();
 // newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
 // }
 
-
 //-----------------------------------------------------------
 // Sätter ut alla vandringsleder på kartan
 //-----------------------------------------------------------
@@ -40,18 +39,21 @@ function setRoutes() {
 			query : 'SELECT id, name, color FROM trailsModel'
 		});
 
-		var jsonObjRoutes = trailsCollection.toJSON();
-		for (var i = 0; i < jsonObjRoutes.length; i++) {
-			var file = getFile(jsonObjRoutes[i].id);
+		var jsonObj = trailsCollection.toJSON();
 
-			for (var u = 0; u < file.length; u++) {
-				createMapRoutes(file[u].filename, jsonObjRoutes[i].name, jsonObjRoutes[i].color);
+		for (var i = 0; i < jsonObj.length; i++) {
+			if (jsonObj[i].name != 'Båtleden') {
+				var file = getFile(jsonObj[i].id);
+
+				for (var u = 0; u < file.length; u++) {
+					createMapRoutes(file[u].filename, jsonObj[i].name, jsonObj[i].color);
+				}
 			}
 		}
+
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - getInfoDetails");
 	}
-
 }
 
 //-----------------------------------------------------------

@@ -5,6 +5,7 @@
 	<Collection src="jsonFilesModel" />
 	<Collection src="infospotModel"></Collection>
 	<Collection src="letterModel" />
+	<Collection src="infospotCoordinatesModel"></Collection>
 	<View id="mapvy" class="container">
 		<View id="mapView"></View>
 		<Widget src="mapmenu" name="widget"></Widget>

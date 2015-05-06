@@ -50,7 +50,7 @@ function selectTrailPics() {
 		for (var i = 0; i < jsonMedia.length; i++) {
 
 			var img_view = Ti.UI.createView({
-				backgroundImage : "/pics/" + jsonMedia[i].filename,
+				backgroundImage : "/pics/" + jsonMedia[i].filename +'.png',
 				width : '100%',
 				height : '235dp' ,
 				top : '0dp'
@@ -124,7 +124,7 @@ function showHotspots() {
 				color : '#FF9966',
 				left : '5dp',
 				font : {
-					fontSize : '20dp',
+					fontSize : '16dp',
 					fontFamily: 'Raleway-Medium'
 				},
 				text : rows[i].name
