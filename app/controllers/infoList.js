@@ -69,8 +69,8 @@ function setRowData() {
 
 			var lblName = Ti.UI.createLabel({
 				left : '5dp',
+				top : '35dp',
 				color : '#FF9966',
-				top: '25dp',
 				font : {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
@@ -78,18 +78,7 @@ function setRowData() {
 				text : rows[i].name
 			});
 
-			var lblDesc = Ti.UI.createLabel({
-				left : '5dp',
-				top : '2dp',
-				font : {
-					fontSize : '14dp',
-					fontFamily: 'Raleway-Light'
-				},
-				// text : rows[i].desc
-			});
-
 			labelView.add(lblName);
-			labelView.add(lblDesc);
 
 			row.add(coverimg);
 			row.add(labelView);
@@ -102,7 +91,6 @@ function setRowData() {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - setRowData");
 	}
 }
-
 //-----------------------------------------------------------
 // Hämtar all info som ska läsas in i listan
 //-----------------------------------------------------------
