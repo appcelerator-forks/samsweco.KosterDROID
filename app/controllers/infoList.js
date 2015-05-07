@@ -70,6 +70,7 @@ function setRowData() {
 			var lblName = Ti.UI.createLabel({
 				left : '5dp',
 				color : '#FF9966',
+				top: '25dp',
 				font : {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
@@ -84,7 +85,7 @@ function setRowData() {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Light'
 				},
-				text : rows[i].desc
+				// text : rows[i].desc
 			});
 
 			labelView.add(lblName);

@@ -50,9 +50,9 @@ function selectTrailPics() {
 		for (var i = 0; i < jsonMedia.length; i++) {
 
 			var img_view = Ti.UI.createView({
-				backgroundImage : "/pics/" + jsonMedia[i].filename +'.png',
+				backgroundImage : "/pics/" + jsonMedia[i].filename + '.png',
 				width : '100%',
-				height : '235dp' ,
+				height : '235dp',
 				top : '0dp'
 			});
 
@@ -64,7 +64,7 @@ function selectTrailPics() {
 				font : {
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-					fontFamily: 'Raleway-Light'
+					fontFamily : 'Raleway-Light'
 				},
 
 			});
@@ -122,6 +122,7 @@ function showHotspots() {
 
 			var lblName = Ti.UI.createLabel({
 				color : '#FF9966',
+				top: '40dp',
 				left : '5dp',
 				font : {
 					fontSize : '14dp',
@@ -130,17 +131,7 @@ function showHotspots() {
 				text : rows[i].name
 			});
 
-			// var lblDesc = Ti.UI.createLabel({
-				// left : '5dp',
-				// top : '0dp',
-				// font : {
-					// fontFamily: 'Raleway-Light'
-				// },
-				// text : 'Läs mer om ' + rows[i].name + " här!"
-			// });
-
 			labelView.add(lblName);
-			labelView.add(lblDesc);
 
 			row.add(img);
 			row.add(labelView);
@@ -219,7 +210,7 @@ function showIcons() {
 				width : '25dp',
 				left : '0dp',
 				top : '10dp',
-				image : '/images/' + selectedIcons[i].name +'.png'
+				image : '/images/' + selectedIcons[i].name + '.png'
 			});
 
 			$.iconrow.add(covericon);
