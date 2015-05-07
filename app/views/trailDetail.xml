@@ -1,27 +1,41 @@
 <Alloy>
-	<Collection src="mediaModel"></Collection>
-	<Collection src="hotspotModel"></Collection>
-	<Collection src="infospotModel"></Collection>
+	<Collection src="mediaModel">
+	</Collection>
+	<Collection src="hotspotModel">
+	</Collection>
+	<Collection src="infospotModel">
+	</Collection>
+	<Collection src="letterModel"/>
+	<Collection src="trailsModel" />
+	<Collection src="infospotCoordinatesModel">
+	</Collection>
 	<Window id="hikeDetailWin" class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
 				<ScrollableView id="slideShowTrails" scrollType="horizontal" showPagingControl="true" />
 			</View>
-			
 			<View id="horizontalView">
-				<View id="iconrow"></View>
+				<View id="iconrow">
+				</View>
 				<View id="btnView">
-					<Label id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Label>
+					<Label id="btnTrailOnMap" onClick="zoomMapTrail">
+						Visa leden på kartan!
+					</Label>
 				</View>
 			</View>
-			
 			<View class="lbls">
-				<Label id="lblTrailName" class="lbltrailDetail"></Label>
-				<Label id="lblTrailArea" class="lbltrailDetail"></Label>
-				<Label id="lblTrailLength" class="lbltrailDetail"></Label>
-				<Label id="lblTrailInfo" class="lbltrailDetail"></Label>
+				<Label id="lblTrailName" class="lbltrailDetail">
+				</Label>
+				<Label id="lblTrailArea" class="lbltrailDetail">
+				</Label>
+				<Label id="lblTrailLength" class="lbltrailDetail">
+				</Label>
+				<Label id="lblTrailInfo" class="lbltrailDetail">
+				</Label>
 			</View>
-			<Label id="lblLangsVagen">Det här kan du se längs vägen:</Label>
+			<Label id="lblLangsVagen">
+				Det här kan du se längs vägen:
+			</Label>
 			<View id="trail_hotspotView">
 				<TableView id="hotspotTable" onClick="showHotspot" />
 			</View>

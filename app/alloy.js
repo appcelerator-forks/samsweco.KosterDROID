@@ -21,6 +21,31 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
+
+//-----------------------------------------------------------
+// Variabel för kartvyn
+//-----------------------------------------------------------
+
+var MapModule = require('ti.map');
+map = MapModule.createView({
+	mapType : MapModule.HYBRID_TYPE,
+	animate : true,
+	height : '100%',
+	width : Ti.UI.FILL
+});
+detailMap = MapModule.createView({
+	mapType : MapModule.HYBRID_TYPE,
+	animate : true,
+	height : '100%',
+	width : Ti.UI.FILL
+});
+interactiveMap = MapModule.createView({
+	mapType : MapModule.HYBRID_TYPE,
+	animate : true,
+	height : '100%',
+	width : Ti.UI.FILL
+});
+
 //-----------------------------------------------------------
 // Globala variabler för geofencing.
 //-----------------------------------------------------------
