@@ -12,10 +12,6 @@
 	backgroundColor: 'white',
 	layout: 'vertical'
 }
-// "#startView": {
-// layout: 'vertical',
-// top: '55dp'
-// }
 
 "#hideView": {
 	layout: 'vertical'
@@ -28,7 +24,7 @@
 	} ,
 	right: '20dp',
 	left: '20dp',
-	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+	color : '#000000'
 }
 
 "#showFamilyTrail": {
@@ -38,13 +34,13 @@
 }
 
 "#lblWelcome": {
-	top: '15dp',
+	top: '5dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
-		fontSize: '20dp'
+		fontSize: '18dp'
 	},
 	color: '#FF9966',
-	left : '19dp'
+	left: '19dp'
 }
 
 "#lblClue": {
@@ -58,15 +54,17 @@
 }
 
 "#lblLetters": {
-	top: '5dp',
+	top: '17dp',
+	height: '0dp',
 	font: {
 		fontSize: '15dp',
 		fontFamily: 'Raleway-Medium'
 	},
-	color: "#000",
+	color: "#000000",
 	visible: false,
-	color : '#FFCC99',
-	left : '32%'
+	backgroundColor: '#FFCC99',
+	left: '15dp',
+	borderRadius: '4dp',
 }
 
 "#txtLetter": {
@@ -80,12 +78,16 @@
 }
 
 "#lblCollectedLetters": {
-	visible: false
+	visible: false,
+	color: '#000000',
+	left: '15dp',
+	right: '15dp',
+	width: Titanium.UI.FILL,
 }
 
 "#wordView":{
-	top : 0,
-	layout : 'horizontal'
+	top: 0,
+	layout: 'horizontal'
 }
 
 "#txtWord":{
@@ -93,12 +95,12 @@
 }
 
 "#lblWord":{
-	visible : false,
+	visible: false,
 	height: '35dp',
 	width: '70dp',
 	tintColor: 'blue',
 	borderWidth: '1dp',
-	borderRadius: '5dp',
+	borderRadius: '5dp'
 }
 
 "#btnStartQuiz": {
