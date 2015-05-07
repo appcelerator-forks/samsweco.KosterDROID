@@ -39,7 +39,7 @@ var addHotspotLocation = function(e) {
 // Hämtar enhetens position och kontrollerar mot punkter
 //-----------------------------------------------------------
 function setUserPosition(userCoordinates, type) {
-	// try {
+ try {
 	gLat = userCoordinates.latitude;
 	gLon = userCoordinates.longitude;
 
@@ -49,9 +49,9 @@ function setUserPosition(userCoordinates, type) {
 		userIsNearLetter();
 	}
 
-	// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getPosition");
-	// }
+	} catch(e) {
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getPosition");
+	}
 }
 
 function stopGPS() {
@@ -183,19 +183,4 @@ function userIsNearLetter() {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", 'isNearPoint - letter');
 	}
-}
-
-function getPosition() {
-	Ti.Geolocation.getCurrentPosition(function(e) {
-		if (e.coords != null) {
-			map.region = {
-				latitude : e.coords.latitude,
-				longitude : e.coords.longitude,
-				latitudeDelta : 0.007,
-				longitudeDelta : 0.007
-			};
-			map.animate = true;
-			map.userLocation = true;
-		}
-	});
 }

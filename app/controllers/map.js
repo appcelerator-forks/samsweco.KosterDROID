@@ -1,179 +1,27 @@
+Ti.include("geoFunctions.js");
+Ti.include("mapFunctions.js");
+
 var args = arguments[0] || {};
 
 var zoomedName = args.name;
 var zoomColor = args.color;
 var zoomLat = args.zoomlat;
 
-var route;
-var radius = 20;
-//var MapModule = require('ti.map');
-Alloy.Globals.MapModule = MapModule;
-
-var infospotsNotVisible = true;
-var hotspotsNotVisible = true;
-
-var infospotsAnnotation;
-var hotspotAnnotation;
-
 var trailsCollection = getTrailsCollection();
-var hotspotCollection = getHotspotCollection();
-var jsonFileCollection = getJSONfiles();
 
 //-----------------------------------------------------------
 // Onload-funktioner för kartan
 //-----------------------------------------------------------
-// try {
-showMap();
-setRoutes();
-displayTrailMarkers();
-// } catch(e) {
-// newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
-// }
+ try {
+displayBigMap();
 
-//-----------------------------------------------------------
-// Sätter ut alla vandringsleder på kartan
-//-----------------------------------------------------------
-function setRoutes() {
-	try {
-		trailsCollection.fetch({
-			query : 'SELECT id, name, color FROM trailsModel'
-		});
-
-		var jsonObj = trailsCollection.toJSON();
-
-		for (var i = 0; i < jsonObj.length; i++) {
-			if (jsonObj[i].name != 'Båtleden') {
-				var file = getFile(jsonObj[i].id);
-
-				for (var u = 0; u < file.length; u++) {
-					createMapRoutes(file[u].filename, jsonObj[i].name, jsonObj[i].color);
-				}
-			}
-		}
-
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - getInfoDetails");
-	}
+} catch(e) {
+newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
 }
 
-//-----------------------------------------------------------
-// Hämtar JSON-fil för en vandringsled
-//-----------------------------------------------------------
-function getFile(id) {
-	try {
-		jsonFileCollection.fetch({
-			query : 'SELECT filename FROM jsonFilesModel WHERE trailID ="' + id + '"'
-		});
+function displayBigMap(){
+	$.mapView.add(showMap(map));
 
-		var filename = jsonFileCollection.toJSON();
-		return filename;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - getFile");
-	}
-}
-
-//-----------------------------------------------------------
-// Skapar en vandringsled på kartan
-//-----------------------------------------------------------
-function createMapRoutes(file, name, color) {
-	try {
-		var routes = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + "/routes/" + file).read().text;
-		var parsedRoute = JSON.parse(routes);
-
-		var geoArray = [];
-		geoArray.push(parsedRoute);
-
-		for (var u = 0; u < geoArray.length; u++) {
-			var coords = geoArray[0].features[0].geometry.paths[u];
-
-			var points = new Array();
-
-			for (var i = 0; i < coords.length; i++) {
-
-				var c = {
-					latitude : coords[i][1],
-					longitude : coords[i][0]
-				};
-				points.push(c);
-			}
-
-			var route = {
-				name : name,
-				points : points,
-				color : color,
-				width : 3.0
-			};
-			baseMap.addRoute(MapModule.createRoute(route));
-		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - createMapRoutes");
-	}
-}
-
-
-//-----------------------------------------------------------
-// Läser in kartvyn
-//-----------------------------------------------------------
-function showMap() {
-	try {
-		baseMap = MapModule.createView({
-			userLocation : true,
-			mapType : MapModule.HYBRID_TYPE,
-			animate : true,
-			region : {
-				latitude : 58.886775,
-				longitude : 11.026024,
-				latitudeDelta : 0.08,
-				longitudeDelta : 0.08
-			},
-			height : '100%',
-			width : Ti.UI.FILL
-		});
-
-		$.mapView.add(baseMap);
-
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - showMap");
-	}
-}
-
-//-----------------------------------------------------------
-// Visar markers för vandringslederna
-//-----------------------------------------------------------
-function displayTrailMarkers() {
-	try {
-		trailsCollection.fetch({
-			query : 'SELECT name, pinLon, pinLat, area, length, color FROM trailsModel'
-		});
-
-		var jsonObjTrails = trailsCollection.toJSON();
-		for (var i = 0; i < jsonObjTrails.length; i++) {
-
-			color = jsonObjTrails[i].color.toUpperCase();
-			Ti.API.info(JSON.stringify(color));
-
-			var markerAnnotation = MapModule.createAnnotation({
-				id : jsonObjTrails[i].name,
-				latitude : jsonObjTrails[i].pinLat,
-				longitude : jsonObjTrails[i].pinLon,
-				title : jsonObjTrails[i].name,
-				pincolor : MapModule.ANNOTATION_AZURE,
-				color : '#000000', 
-				subtitle : jsonObjTrails[i].area + ', ' + jsonObjTrails[i].length,
-				rightButton : '/pins/androidarrow2.png',
-				name : 'trail',
-				font : {
-					fontFamily : 'Raleway-Light'
-				}
-			});
-
-			// markerAnnotation.pincolor = Alloy.Globals.MapModule.ANNOTATION_GREEN;
-
-			baseMap.addAnnotation(markerAnnotation);
-		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - displayTrailMarkers");
-	}
 }
 
 //-----------------------------------------------------------
@@ -232,18 +80,21 @@ function showHotspot(myId) {
 //-----------------------------------------------------------
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
-baseMap.addEventListener('click', function(evt) {
+map.addEventListener('click', function(evt) {
 
-	if (evt.clicksource == 'rightPane') {
+	if (evt.clicksource == 'rightButton') {
 		if (evt.annotation.name == 'hotspot') {
 			showHotspot(evt.annotation.id);
-		} else {
+		} else if(evt.annotation.name == 'trail') {
 			showTrail(evt.annotation.id);
 		}
 	}
 });
 
-function showMapMenu() {
-	Alloy.Globals.showMenuWidget();
-}
+map.addEventListener('singletap', function() {
+	Alloy.Globals.closeMapMenu();
+});
 
+$.btnMenu.addEventListener('click', function() {
+	Alloy.Globals.showMapMenu();
+});
