@@ -8,6 +8,5 @@
 		<View id="mapDetailView"></View>
 		<Widget src="mapmenu" name="widget"></Widget>
 		<Button id="btnMenu" backgroundImage="/images/hamburger.png" onClick="showMapMenu" />
-		<Button id="btnGetPosition" image="/images/locationarrow.png" onClick="getZoomedMapPosition" />
 	</Window>
 </Alloy>

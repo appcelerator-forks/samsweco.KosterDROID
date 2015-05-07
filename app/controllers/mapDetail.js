@@ -34,50 +34,20 @@ function showZoomedMap() {
 		zoomedMap = MapModule.createView({
 			mapType : MapModule.HYBRID_TYPE,
 			height : '100%',
-			width : Ti.UI.FILL
-		});
+			width : Ti.UI.FILL,
+			region : {
+				latitude : zoomLat,
+				longitude : zoomLon,
+				latitudeDelta : 0.03,
+				longitudeDelta : 0.03
+			},
+			animate : true
+		}); 
 
-		setZoomedRegion();
 		$.mapDetailView.add(zoomedMap);
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - showMap");
-	}
-}
-
-function setZoomedRegion() {
-	zoomedMap.region = {
-		latitude : zoomLat,
-		longitude : zoomLon,
-		latitudeDelta : 0.03,
-		longitudeDelta : 0.03
-	};
-	zoomedMap.animate = true;
-	zoomedMap.userLocation = false;
-}
-
-function getPosition() {
-	Ti.Geolocation.getCurrentPosition(function(e) {
-		if (e.coords != null) {
-			zoomedMap.region = {
-				latitude : e.coords.latitude,
-				longitude : e.coords.longitude,
-				latitudeDelta : 0.007,
-				longitudeDelta : 0.007
-			};
-			zoomedMap.animate = true;
-			zoomedMap.userLocation = true;
-		}
-	});
-}
-
-function getZoomedMapPosition() {
-	if (myPosition == false) {
-		getPosition();
-		myPosition = true;
-	} else {
-		setZoomedRegion();
-		myPosition = false;
 	}
 }
 
@@ -245,10 +215,6 @@ function addEventList() {
 function showMapMenu() {
 	Alloy.Globals.showMenuWidget();
 }
-// 
-// function getPos() {
-	// Alloy.Globals.setUserPosition();
-// }
 
 //-----------------------------------------------------------
 // Visar markers för hotspots
@@ -266,7 +232,7 @@ function displaySpecificMarkers() {
 				longitude : specificHotspots[u].ykoord,
 				title : specificHotspots[u].name,
 				subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',
-				image : '/images/hot-icon-azure.png',
+				// image : '/images/hot-icon-azure.png',
 				rightButton : '/images/arrow.png',
 				name : 'hotspot'
 			});
