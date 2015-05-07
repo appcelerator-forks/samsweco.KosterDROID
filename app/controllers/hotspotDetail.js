@@ -37,7 +37,7 @@ function selectHotspotPics() {
 		for (var i = 0; i < jsonMedia.length; i++) {
 
 			var img_view = Ti.UI.createView({
-				backgroundColor : 'green',
+				//backgroundColor : 'green',
 				backgroundImage : "/pics/" + jsonMedia[i].filename + '.png',	
 				width : '100%',
 				height : '240dp' ,
@@ -45,7 +45,7 @@ function selectHotspotPics() {
 				});
 
 			var lblImgTxt = Ti.UI.createLabel({
-				left : '5dp',
+				left : '3dp',
 				top : '0dp',
 				text : jsonMedia[i].img_txt,
 				color : 'white',
