@@ -95,7 +95,8 @@
 	font: {
 		fontSize: '14dp'
 	},
-	top: '10dp'
+	top: '10dp',
+	color : '#000000'
 }
 
 "#lblLangsVagen": {
@@ -105,7 +106,8 @@
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
 	},
-	top: '10dp'
+	top: '10dp',
+	color : '#000000'
 }
 
 "#iconrow": {

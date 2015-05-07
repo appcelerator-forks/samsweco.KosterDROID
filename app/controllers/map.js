@@ -143,7 +143,7 @@ function showMap() {
 function displayTrailMarkers() {
 	try {
 		trailsCollection.fetch({
-			query : 'SELECT name, pinLon, pinLat, color FROM trailsModel'
+			query : 'SELECT name, pinLon, pinLat, area, length, color FROM trailsModel'
 		});
 
 		var jsonObjTrails = trailsCollection.toJSON();
@@ -158,9 +158,10 @@ function displayTrailMarkers() {
 				longitude : jsonObjTrails[i].pinLon,
 				title : jsonObjTrails[i].name,
 				pincolor : MapModule.ANNOTATION_AZURE,
-				subtitle : 'Läs mer om ' + jsonObjTrails[i].name + ' här!',
+				subtitle : jsonObjTrails[i].area + ', ' + jsonObjTrails[i].length,
 				rightButton : '/pins/androidarrow2.png',
 				name : 'trail',
+				color : '#000000', 
 				font : {
 					fontFamily : 'Raleway-Light'
 				}
