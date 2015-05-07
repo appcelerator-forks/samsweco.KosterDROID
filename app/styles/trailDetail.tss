@@ -54,7 +54,13 @@
 }
 
 "#lblTrailArea": {
-	left: '15dp'
+	left: '15dp',
+	top : '10dp',
+	color : '#000000',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
 }
 
 ".lbls": {
@@ -85,12 +91,20 @@
 
 "#lblTrailInfo": {
 	left: '15dp',
+	padding: '5dp',
+	font: {
+		fontSize: '14dp'
+	},
 	top: '10dp'
 }
 
 "#lblLangsVagen": {
 	top: '20dp',
-	left: '10dp',
+	left: '15dp',
+	font : {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	},
 	top: '10dp'
 }
 
@@ -103,11 +117,11 @@
 
 "#lblTrailLength": {
 	font: {
-		fontStyle: 'Italic',
-		fontFamily : 'Raleway-Light'
+		fontSize: '14dp',
+		fontFamily : 'Raleway-Medium'
 	},
-	top: '10dp',
-	left: '15dp'
+	left: '15dp',
+	color : '#000000'
 }
 
 "#btnTrailOnMap": {

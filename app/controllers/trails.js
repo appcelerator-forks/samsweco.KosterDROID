@@ -67,6 +67,7 @@ function setRowData() {
 			var lblDistance = Ti.UI.createLabel({
 				left : '5dp',
 				top : '0dp',
+				color : '#000000', 
 				font : {
 					fontSize : '12dp',
 					fontFamily: 'Raleway-Light'
@@ -77,6 +78,7 @@ function setRowData() {
 			var lblArea = Ti.UI.createLabel({
 				left : '5dp',
 				top : '0dp',
+				color : '#000000', 
 				font : {
 					fontSize : '12dp',
 					fontFamily: 'Raleway-Light'
