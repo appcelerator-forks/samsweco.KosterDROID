@@ -158,10 +158,10 @@ function displayTrailMarkers() {
 				longitude : jsonObjTrails[i].pinLon,
 				title : jsonObjTrails[i].name,
 				pincolor : MapModule.ANNOTATION_AZURE,
+				color : '#000000', 
 				subtitle : jsonObjTrails[i].area + ', ' + jsonObjTrails[i].length,
 				rightButton : '/pins/androidarrow2.png',
 				name : 'trail',
-				color : '#000000', 
 				font : {
 					fontFamily : 'Raleway-Light'
 				}
