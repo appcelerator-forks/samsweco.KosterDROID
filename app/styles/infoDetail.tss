@@ -51,7 +51,7 @@
 	top: '5dp',
 	color : 'blue',
 	font: {
-		// fontFamily: 'Gotham Rounded'
+		fontFamily: 'Raleway-Light'
 	}
 }
 
@@ -63,7 +63,8 @@
 
 "#lblInfoText" : {
 	left: '15dp',
-	right: '15dp'
+	right: '15dp',
+	color: '#000000'
 }
 
 "#lblText" : {
