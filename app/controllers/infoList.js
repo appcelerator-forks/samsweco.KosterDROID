@@ -47,8 +47,8 @@ function setRowData() {
 			var row = Ti.UI.createTableViewRow({
 				id : i + 1,
 				layout : 'horizontal',
-				height : '80dp',
-				top : 0,
+				height : '90dp',
+				top : '0dp',
 				hasChild : true
 			});
 
@@ -61,29 +61,27 @@ function setRowData() {
 
 			var coverimg = Ti.UI.createImageView({
 				height : '70dp',
-				width : '110dp',
+				width : '115dp',
 				left : '5dp',
 				image : "/pics/" + rows[i].cover_img,
-				top : '5dp'
+				top : '10dp'
 			});
 
 			var lblName = Ti.UI.createLabel({
-				left : 10,
-				top : '2dp',
+				left : '5dp',
 				color : '#FF9966',
 				font : {
-					fontSize : 14,
-					fontWeight : 'bold',
+					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
 				},
 				text : rows[i].name
 			});
 
 			var lblDesc = Ti.UI.createLabel({
-				left : '10dp',
+				left : '5dp',
 				top : '2dp',
 				font : {
-					fontSize : 12,
+					fontSize : '14dp',
 					fontFamily: 'Raleway-Light'
 				},
 				text : rows[i].desc
