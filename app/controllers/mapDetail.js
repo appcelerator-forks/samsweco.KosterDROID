@@ -18,13 +18,20 @@ var trailsCollection = getTrailsCollection();
 // Onload
 //-----------------------------------------------------------
 showMapDetail();
-displaySpecificMarkers(trailId, detailMap);
-getSpecificIconsForTrail(trailId);
 addEventList();
+setMarkers();
 
-
+//-----------------------------------------------------------
+// Functioner för att öppna och fylla kartan
+//-----------------------------------------------------------
 function showMapDetail(){
-		$.mapDetailView.add(showDetailMap(detailMap, trailId, trailName, trailColor));
+	$.mapDetailView.add(showDetailMap(detailMap, trailId, trailName, trailColor));
+}
+
+function setMarkers(){
+	detailMap.removeAllAnnotations();
+	displaySpecificMarkers(trailId, detailMap);
+	getSpecificIconsForTrail(trailId);
 }
 
 //-----------------------------------------------------------
