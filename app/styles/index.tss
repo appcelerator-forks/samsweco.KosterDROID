@@ -22,10 +22,7 @@
 	right: '20dp',
 	top: '10dp',
 	font : {
-		fontSize: '10dp' ,
+		fontSize: '10dp',
 		fontFamily: 'Raleway-Light'
 	}
 }
-
-
-
