@@ -21,7 +21,6 @@ newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load pa
 
 function displayBigMap(){
 	$.mapView.add(showMap(map));
-
 }
 
 //-----------------------------------------------------------

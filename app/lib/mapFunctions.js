@@ -193,7 +193,6 @@ function displayTrailMarkers(maptype) {
 					fontStyle : 'Raleway-Light'
 				}
 			});
-
 			maptype.addAnnotation(markerAnnotation);
 		}
 	} catch(e) {
