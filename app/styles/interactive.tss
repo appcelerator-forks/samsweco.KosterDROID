@@ -56,6 +56,7 @@
 "#lblLetters": {
 	top: '17dp',
 	height: '0dp',
+	right: '15dp',
 	font: {
 		fontSize: '15dp',
 		fontFamily: 'Raleway-Medium'
@@ -68,9 +69,11 @@
 }
 
 "#txtLetter": {
-	top: '0dp',
+	top: '10dp',
 	height: '35dp',
-	width: '70dp',
+	left: '15dp',
+	right: '15dp',
+	width: Titanium.UI.FILL,
 	tintColor: 'blue',
 	borderWidth: '1dp',
 	borderRadius: '5dp',
