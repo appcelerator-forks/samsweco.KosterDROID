@@ -96,5 +96,5 @@ map.addEventListener('singletap', function() {
 });
 
 $.btnMenu.addEventListener('click', function() {
-	Alloy.Globals.showMapMenu();
+	Alloy.Globals.showMapMenuWidget();
 });

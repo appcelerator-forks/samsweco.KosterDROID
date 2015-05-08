@@ -136,15 +136,15 @@ function showTorrdass() {
 	}
 }
 
-function showMenuWidget() {
-	if (menuVisible == false) {
-		$.mapmenu.show();
-		menuVisible = true;
-	} else {
-		$.mapmenu.hide();
-		menuVisible = false;
-	}
-}
+// function showMenuWidget() {
+	// if (menuVisible == false) {
+		// $.mapmenu.show();
+		// menuVisible = true;
+	// } else {
+		// $.mapmenu.hide();
+		// menuVisible = false;
+	// }
+// }
 
 function showMapMenuWidget() {
 	if (mapMenuVisible == false) {
@@ -155,9 +155,11 @@ function showMapMenuWidget() {
 		mapMenuVisible = false;
 	}
 }
+Alloy.Globals.showMapMenuWidget = showMapMenuWidget;
+
 
 function closeMapMenu() {
-	$.mapmenu.hide();
+$.mapmenu.hide();
 	menuVisible = false;
 }
 
@@ -165,6 +167,5 @@ $.mapmenu.addEventListener('singleTap', function() {
 	closeMapMenu();
 });
 
-Alloy.Globals.showMenuWidget = showMenuWidget;
-Alloy.Globals.showMapMenuWidget = showMapMenuWidget;
+
 Alloy.Globals.closeMapMenu = closeMapMenu;
