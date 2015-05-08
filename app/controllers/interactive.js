@@ -42,9 +42,10 @@ function loadClue(id) {
 
 function sendLetter() {
 	checkLetter(getLetter());
-	map.removeAllAnnotations();
+	interactiveMap.removeAllAnnotations();
 	addClueZone();
 	allLetters();
+	displaySpecificMarkers(7, interactiveMap);
 }
 
 function getLetter() {
