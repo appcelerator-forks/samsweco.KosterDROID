@@ -39,11 +39,11 @@ function setRowData() {
 			});
 			
 			var img = Ti.UI.createImageView({
-				height : '70dp',
-				width : '115dp',
+				height : '80dp',
+				width : '125dp',
 				image : '/pics/' + rows[i].cover_img,
 				left : '5dp',
-				top : '10dp'
+				top : '5dp'
 			});
 			
 			var labelView = Ti.UI.createView({
@@ -150,7 +150,7 @@ function showIcons(id) {
 		width : Ti.UI.FILL,
 		backgroundColor : 'white',
 		left : '5dp',
-		top : '5dp'
+		top : '10dp'
 
 	});
 
