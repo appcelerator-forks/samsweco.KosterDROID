@@ -20,7 +20,7 @@
 	color: "white",
 	left: '50dp',
 	right: '20dp',
-	top: '10dp',
+	top: '8%',
 	font : {
 		fontSize: '10dp',
 		fontFamily: 'Raleway-Light'
