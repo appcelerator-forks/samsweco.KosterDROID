@@ -64,6 +64,14 @@
 	width: '100%'
 }
 
+"#linkView": {
+	layout: 'horizontal',
+	top: '5dp',
+	borderColor: "#e8e8e8",
+	borderWidth: '1dp',
+	height: Titanium.UI.SIZE
+}
+
 "#lblLink" : {
 	left: '15dp',
 	color: '#FCAF17',
