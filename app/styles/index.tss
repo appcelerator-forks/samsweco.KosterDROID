@@ -4,7 +4,7 @@
 }
 
 ".imgKoster": {
-	top: '20dp',
+	top: '8%',
 	center: '50%',
 	height: '90dp',
 	width: Titanium.UI.SIZE
@@ -20,9 +20,9 @@
 	color: "white",
 	left: '50dp',
 	right: '20dp',
-	top: '8%',
+	top: '10dp',
 	font : {
-		fontSize: '10dp',
+		fontSize: '12dp',
 		fontFamily: 'Raleway-Light'
 	}
 }
