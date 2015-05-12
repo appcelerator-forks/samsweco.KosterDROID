@@ -32,12 +32,6 @@
 	width: '100%'
 }
 
-"#btnView": {
-	width: '47%',
-	height: '40dp',
-	right: '0dp'
-}
-
 ".container": {
 	top: 0,
 	layout: 'vertical',
@@ -103,7 +97,7 @@
 	top: '20dp',
 	left: '15dp',
 	font : {
-		fontSize: '14dp',
+		fontSize: '12dp',
 		fontFamily: 'Raleway-Medium'
 	},
 	top: '10dp',
@@ -127,12 +121,10 @@
 }
 
 "#btnTrailOnMap": {
-	right: 0,
+	left: '15dp',
 	width: Titanium.UI.SIZE,
+	color: '#0098C3',
 	font: {
-		fontSize: '16dp',
-		color: '#FCAF17'
+		fontSize: '14dp'
 	}
 }
-
-
