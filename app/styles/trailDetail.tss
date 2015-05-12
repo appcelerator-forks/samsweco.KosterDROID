@@ -107,7 +107,7 @@
 		fontFamily: 'Raleway-Medium'
 	},
 	top: '10dp',
-	color : '#000000'
+	color : '#FCAF17'
 }
 
 "#iconrow": {

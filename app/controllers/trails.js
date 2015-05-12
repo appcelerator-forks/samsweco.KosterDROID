@@ -55,7 +55,7 @@ function setRowData() {
 
 			
 			var lblName = Ti.UI.createLabel({
-				color : '#FF9966',
+				color : '#FCAC17',
 				left : '5dp',
 				font : {
 					fontSize : '14dp',
