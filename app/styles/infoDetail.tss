@@ -3,6 +3,17 @@
 	layout: 'vertical'
 }
 
+"#lblInfoText" : {
+	top: '5dp',
+	left: '15dp',
+	right: '15dp',
+	color: '#000000',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Light'
+	}
+}
+
 ".container": {
 	layout: 'vertical',
 	top: '0dp',
@@ -40,18 +51,10 @@
 	left: '15dp',
 	top: '10dp',
 	color: '#FCAF17',
+	right: '15dp',
 	font: {
-		fontSize: '16dp',
+		fontSize: '20dp',
 		fontFamily: 'Raleway-Medium'
-	}
-}
-
-"#lblInfoLink": {
-	left: '15dp',
-	top: '5dp',
-	color : 'blue',
-	font: {
-		fontFamily: 'Raleway-Light'
 	}
 }
 
@@ -61,15 +64,17 @@
 	width: '100%'
 }
 
-"#lblInfoText" : {
+"#lblLink" : {
 	left: '15dp',
-	right: '15dp',
-	color: '#000000'
+	color: '#FCAF17',
+	font: {
+		fontSize: '16dp',
+		fontFamily: 'Raleway-Medium'
+	},
+	top: '20dp',
+	visible: false
 }
 
-"#lblText" : {
-	left : '15dp',
-	right: '15dp',
-	color : '#0098C3'
+"#tableView" : {
+	height: Titanium.UI.SIZE
 }
-
