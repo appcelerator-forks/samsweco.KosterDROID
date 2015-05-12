@@ -39,7 +39,7 @@
 		fontFamily: 'Raleway-Medium',
 		fontSize: '18dp'
 	},
-	color: '#FF9966',
+	color: '#FCAF17',
 	left: '19dp'
 }
 
@@ -63,7 +63,7 @@
 	},
 	color: "#000000",
 	visible: false,
-	backgroundColor: '#FFCC99',
+	backgroundColor: '#FCAF17',
 	left: '15dp',
 	borderRadius: '4dp',
 }
@@ -109,7 +109,7 @@
 "#btnStartQuiz": {
 	height: '30dp',
 	width: '200dp',
-	backgroundColor: '#FFCC99',
+	backgroundColor: '#FCAF17',
 	borderRadius: '4dp',
 	color: 'black',
 	top: '17dp'

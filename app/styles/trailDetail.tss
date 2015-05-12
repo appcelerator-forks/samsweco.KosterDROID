@@ -50,7 +50,7 @@
 		fontSize: '20dp',
 		fontFamily: 'Raleway-Medium'
 	},
-	color: '#FF9966'
+	color: '#FCAF17'
 }
 
 "#lblTrailArea": {
@@ -131,7 +131,7 @@
 	width: Titanium.UI.SIZE,
 	font: {
 		fontSize: '16dp',
-		color: '#FF9966'
+		color: '#FCAF17'
 	}
 }
 

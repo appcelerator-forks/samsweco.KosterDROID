@@ -7,10 +7,10 @@
 					
 				</ImageView></View>
 			
-			<Label class="lblInfoDetail" id="lblInfoTitle"></Label>
-			<Label class="lblInfoDetail" id="lblInfoText"></Label>
-			<Label class="lbltxt" id="lblText" text="Klicka på länken nedan för att se mer information: "/>
-			<Label class="lblInfoDetail" id="lblInfoLink"></Label>
+			<Label id="lblInfoTitle"></Label>
+			<Label id="lblInfoText"></Label>
+			<Label id="lblText" text="Klicka på länken nedan för att se mer information: "/>
+			<Label id="lblInfoLink"></Label>
 		</ScrollView>
 	</Window>
 </Alloy>

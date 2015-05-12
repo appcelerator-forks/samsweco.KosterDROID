@@ -39,7 +39,7 @@
 "#lblInfoTitle": {
 	left: '15dp',
 	top: '10dp',
-	color: '#FF9966',
+	color: '#FCAF17',
 	font: {
 		fontSize: '16dp',
 		fontFamily: 'Raleway-Medium'
@@ -70,6 +70,6 @@
 "#lblText" : {
 	left : '15dp',
 	right: '15dp',
-	color : '#FF9966'
+	color : '#0098C3'
 }
 
