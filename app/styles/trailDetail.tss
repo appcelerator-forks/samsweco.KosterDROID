@@ -122,6 +122,7 @@
 
 "#btnTrailOnMap": {
 	left: '15dp',
+	top: '5dp',
 	width: Titanium.UI.SIZE,
 	color: '#0098C3',
 	font: {
