@@ -34,7 +34,7 @@
 }
 
 "#lblWelcome": {
-	top: '5dp',
+	top: '0dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '18dp'
@@ -89,7 +89,7 @@
 }
 
 "#wordView":{
-	top: 0,
+	top: '0dp',
 	layout: 'horizontal'
 }
 
@@ -107,11 +107,12 @@
 }
 
 "#btnStartQuiz": {
-	height: '30dp',
+	height: '40dp',
 	width: '200dp',
-	backgroundColor: '#FCAF17',
-	borderRadius: '4dp',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
 	color: 'black',
-	top: '17dp'
+	top: '17dp',
+	borderColor : '#0098C3'
 }
 
