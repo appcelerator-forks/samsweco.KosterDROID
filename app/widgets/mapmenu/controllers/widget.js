@@ -6,13 +6,10 @@ var mapMenuVisible = false;
 
 $.geoSwitch.addEventListener('change', function(e) {
 	if ($.geoSwitch.value == true) {
-		alert('På!');
 		getUserPos('hotspot');
 	}
-	
 	if($.geoSwitch.value == false){
 		stopGPS();
-		alert('Av!');
 	}
 });
 
@@ -23,6 +20,16 @@ $.hotspotSwitch.addEventListener('change', function(e) {
 	} else {
 		removeAnnoHotspot(map);
 		hotspotsNotVisible = true;
+	}
+});
+
+$.posSwitch.addEventListener('change', function(e) {
+	if ($.posSwitch.value == true) {
+		getPos(map);
+		myPosition = true;
+	} else {
+		myPosition = false;
+		map.userLocation = false;
 	}
 });
 

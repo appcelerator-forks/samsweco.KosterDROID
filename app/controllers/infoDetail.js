@@ -1,3 +1,5 @@
+Ti.include("/SQL.js");
+
 var args = arguments[0] || {};
 var urlCollection = Alloy.Collections.info_urlModel;
 

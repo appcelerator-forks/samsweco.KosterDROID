@@ -1,5 +1,6 @@
 Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
+Ti.include("/SQL.js");
 
 var args = arguments[0] || {};
 
@@ -97,3 +98,17 @@ map.addEventListener('singletap', function() {
 $.btnMenu.addEventListener('click', function() {
 	Alloy.Globals.showMapMenuWidget();
 });
+
+map.addEventListener('singletap', function() {
+	closeMenu();
+});
+
+function openMenu(){
+	$.widgetView.height = '190dp';
+}
+Alloy.Globals.openMenu = openMenu;
+
+function closeMenu(){
+	$.widgetView.height = '0dp';
+}
+Alloy.Globals.closeMenu = closeMenu;

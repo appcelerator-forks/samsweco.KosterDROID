@@ -1,3 +1,5 @@
+Ti.include("/SQL.js");
+
 var args = arguments[0] || {};
 
 $.lblHotspotName.text = args.title || "Name";

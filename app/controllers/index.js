@@ -1,3 +1,5 @@
+Ti.include("/SQL.js");
+
 $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toInteractive = toInteractive;

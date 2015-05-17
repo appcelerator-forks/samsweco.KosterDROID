@@ -1,14 +1,14 @@
 <Alloy>
 	<Collection src="hotspotModel" />
-	<Collection src="coordinates" />
 	<Collection src="trailsModel" />
 	<Collection src="jsonFilesModel" />
-	<Collection src="infospotModel"></Collection>
 	<Collection src="letterModel" />
 	<Collection src="infospotCoordinatesModel"></Collection>
 	<View id="mapvy" class="container">
 		<View id="mapView"></View>
-		<Widget src="mapmenu" name="widget"></Widget>
 		<Button id="btnMenu" backgroundImage="/images/hamburger.png" />
 	</View>
+			<View id="widgetView">
+			<Widget src="mapmenu" name="widget"></Widget>
+		</View>
 </Alloy>
