@@ -1,9 +1,6 @@
 Ti.include("geoFunctions.js");
 Ti.include("mapFunctions.js");
 
-var menuVisible = false;
-var mapMenuVisible = false;
-
 $.geoSwitch.addEventListener('change', function(e) {
 	if ($.geoSwitch.value == true) {
 		getUserPos('hotspot');
@@ -34,8 +31,7 @@ $.posSwitch.addEventListener('change', function(e) {
 });
 
 function showFarglage() {
-
-	if (farjelage == false) {
+	if (farjelage == false){
 		map.addAnnotations(displayInfoSpots('farjelage'));
 
 		$.btnShowFarjelage.backgroundImage = '/images/farjelage.png';
@@ -143,36 +139,6 @@ function showTorrdass() {
 	}
 }
 
-// function showMenuWidget() {
-	// if (menuVisible == false) {
-		// $.mapmenu.show();
-		// menuVisible = true;
-	// } else {
-		// $.mapmenu.hide();
-		// menuVisible = false;
-	// }
-// }
-
-function showMapMenuWidget() {
-	if (mapMenuVisible == false) {
-		$.mapmenu.show();
-		mapMenuVisible = true;
-	} else {
-		$.mapmenu.hide();
-		mapMenuVisible = false;
-	}
-}
-Alloy.Globals.showMapMenuWidget = showMapMenuWidget;
-
-
-function closeMapMenu() {
-$.mapmenu.hide();
-	menuVisible = false;
-}
-
 $.mapmenu.addEventListener('singleTap', function() {
 	closeMapMenu();
 });
-
-
-Alloy.Globals.closeMapMenu = closeMapMenu;
