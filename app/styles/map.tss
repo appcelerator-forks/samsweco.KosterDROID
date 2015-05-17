@@ -2,6 +2,10 @@
 	fontFamily: 'Gotham Rounded'
 }
 
+"#container":{
+	height: '100%'
+}
+
 "#mapView": {
 	height: '100%',
 	width: '100%'
@@ -14,13 +18,13 @@
 "#widgetView": {
 	height: '25%dp',
 	width: Titanium.UI.FILL,
-	bottom : 0,
-	backgroundColor : 'green'
+	bottom: 0,
+	backgroundColor: 'white'
 }
 
 "#btnMapMenu":{
-	// top: '60dp',
-	// right: '12dp',
+ 	top: '60dp',
+	right: '12dp',
 	height: '39dp',
 	width: '39dp',
 	backgroundColor: 'white',

@@ -40,17 +40,22 @@
 	bottom: 0
 }
 
-".switch": {
-	right: '15dp',
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL,
-	opacity : 1
-}
+// ".switch": {
+	// right: '15dp',
+	// height: Titanium.UI.FILL,
+	// width: Titanium.UI.SIZE,
+	// opacity : 1
+// }
 
 ".switchClass": {
 	height: '30dp',
-	width: Titanium.UI.SIZE,
-	opacity : 1
+	width: '15%',
+	opacity : 1,
+	right : '15dp'
+}
+
+"#lblSetGPS" : {
+	width : '70%'
 }
 
 "Label" : {

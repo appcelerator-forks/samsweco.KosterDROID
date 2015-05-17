@@ -97,16 +97,16 @@ $.geoSwitch1.addEventListener('change', function(e) {
 	}
 });
 
-$.posSwitch1.addEventListener('change', function(e) {
-	if ($.posSwitch1.value == true) {
-		getPos(detailMap);
-		myPosition = true;
-	} else {
-		detailMap.userLocation = false;
-		myPosition = false;
-		
-	}
-});
+// $.posSwitch1.addEventListener('change', function(e) {
+	// if ($.posSwitch1.value == true) {
+		// getPos(detailMap);
+		// myPosition = true;
+	// } else {
+		// detailMap.userLocation = false;
+		// myPosition = false;
+// 		
+	// }
+// });
 
 // $.btnMenuDetail.addEventListener('click', function() {
 	// openMenu();

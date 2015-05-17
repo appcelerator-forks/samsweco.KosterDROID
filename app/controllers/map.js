@@ -93,20 +93,21 @@ map.addEventListener('click', function(evt) {
 	}
 });
 
-map.addEventListener('singletap', function() {
-	closeMapMenu();
-});
-
-$.btnMapMenu.addEventListener('click', function() {
-	openMenu();
-});
+// map.addEventListener('singletap', function() {
+	// closeMapMenu();
+// });
+// 
+// $.btnMapMenu.addEventListener('click', function() {
+	// openMenu();
+// });
 
 function openMenu() {
-	if (menuOpen) {
-		closeMenu();
-	} else {
-		$.widgetView.height = '190dp';
+	if (!menuOpen) {
+		$.widgetView.height = '35%';
 		menuOpen = true;
+
+	} else {
+		closeMenu();
 	}
 }
 

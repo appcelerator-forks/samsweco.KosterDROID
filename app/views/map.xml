@@ -4,9 +4,11 @@
 	<Collection src="jsonFilesModel" />
 	<Collection src="letterModel" />
 	<Collection src="infospotCoordinatesModel"></Collection>
-	<View id="mapView"></View>
-	<View id="widgetView">
-		<Widget src="mapmenu" name="widget"></Widget>
+	<View id="container">
+		<View id="mapView"></View>
+		<View id="widgetView">
+			<Widget src="mapmenu" name="widget"></Widget>
+		</View>
+		<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
 	</View>
-	<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
 </Alloy>

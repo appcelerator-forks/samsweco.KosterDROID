@@ -1,5 +1,5 @@
-Ti.include("geoFunctions.js");
-Ti.include("mapFunctions.js");
+Ti.include("/geoFunctions.js");
+Ti.include("/mapFunctions.js");
 
 $.geoSwitch.addEventListener('change', function(e) {
 	if ($.geoSwitch.value == true) {

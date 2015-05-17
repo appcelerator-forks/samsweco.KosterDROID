@@ -19,12 +19,12 @@
 						<Switch id="geoSwitch1" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 					</View>
 				</View>
-				<View id="myposSwitchView" class="settingsHorizontalView">
+				<!-- <View id="myposSwitchView" class="settingsHorizontalView">
 					<Label id="lblSetMypos" text="Visa min position"></Label>
 					<View class="switchClass">
 						<Switch id="posSwitch1" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 					</View>
-				</View>
+				</View> -->
 				<!-- <Label id="btnSetNotification" class="btnSetStuff" text="Inaktivera notifikationer" color="#00a9f0"></Label> -->
 			</View>
 			<!-- <Widget src="mapmenu" name="widget"></Widget> -->
