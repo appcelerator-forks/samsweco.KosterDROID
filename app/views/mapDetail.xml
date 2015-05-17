@@ -7,10 +7,10 @@
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
 	<Collection src="infospotCoordinatesModel" />
-	<Window class="container">
+	<Window>
 		<View id="mapDetailView">
-			<Button id="btnMenuDetail" backgroundImage="/images/hamburger.png"/>
 		</View>
+		<Button id="btnMenuDetail" backgroundImage="/images/hamburger.png" onClick="showMenu" />
 		<View id="widgetView">
 			<View id="settingsView">
 				<View id="gpsSwitchView" class="settingsHorizontalView">

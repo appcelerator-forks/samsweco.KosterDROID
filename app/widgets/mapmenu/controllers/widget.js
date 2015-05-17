@@ -20,15 +20,15 @@ $.hotspotSwitch.addEventListener('change', function(e) {
 	}
 });
 
-$.posSwitch.addEventListener('change', function(e) {
-	if ($.posSwitch.value == true) {
-		getPos(map);
-		myPosition = true;
-	} else {
-		myPosition = false;
-		map.userLocation = false;
-	}
-});
+// $.posSwitch.addEventListener('change', function(e) {
+	// if ($.posSwitch.value == true) {
+		// getPos(map);
+		// myPosition = true;
+	// } else {
+		// myPosition = false;
+		// map.userLocation = false;
+	// }
+// });
 
 function showFarglage() {
 	if (farjelage == false){

@@ -1,8 +1,7 @@
 <Alloy>
 	<Collection src="hotspotModel" />
 	<Collection src="trailsModel" />
-	<Collection src="infospotModel"></Collection>
-	<Collection src="infospotCoordinatesModel"></Collection>
+	<Collection src="infospotCoordinatesModel" />
 	<View id="mapmenu">
 		<View class="lineView"></View>
 		<Label id="lblChoosePikto">Välj vilka informationspunkter du vill se:</Label>
@@ -31,14 +30,12 @@
 					<Switch id="geoSwitch" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 				</View>
 			</View>
-			<View id="myposSwitchView" class="settingsHorizontalView">
+			<!-- <View id="myposSwitchView" class="settingsHorizontalView">
 				<Label id="lblSetMypos" text="Visa min position"></Label>
 				<View id="v3">
 					<Switch id="posSwitch" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 				</View>	
-			</View>
-			<!-- <Label id="btnSetNotification" class="btnSetStuff" text="Inaktivera notifikationer" color="#00a9f0"></Label> -->
+			</View> -->
 		</View>
-
 	</View>
 </Alloy> 
