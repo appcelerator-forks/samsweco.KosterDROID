@@ -85,3 +85,41 @@ function getZoomedMapPosition() {
 		myPosition = false;
 	}
 }
+
+$.geoSwitch1.addEventListener('change', function(e) {
+	if ($.geoSwitch1.value == true) {
+		getUserPos('hotspot');
+	}
+	if($.geoSwitch1.value == false){
+		stopGPS();
+	}
+});
+
+$.posSwitch1.addEventListener('change', function(e) {
+	if ($.posSwitch1.value == true) {
+		getPos(detailMap);
+		myPosition = true;
+	} else {
+		detailMap.userLocation = false;
+		myPosition = false;
+		
+	}
+});
+
+function showMenu() {
+	try {
+
+		if(!menuDetailVisible){
+			$.widgetView.height = '90dp';
+			menuDetailVisible = true;
+		}else {
+			$.widgetView.height = '0dp';
+			menuDetailVisible = false;
+		}
+		
+		
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - getZoomedMapPosition");
+	}
+
+}
