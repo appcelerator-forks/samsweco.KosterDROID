@@ -2,6 +2,8 @@ Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
 Ti.include("/SQL.js");
 
+var menuOpen = false;
+
 var args = arguments[0] || {};
 
 var zoomedName = args.name;
@@ -13,14 +15,14 @@ var trailsCollection = getTrailsCollection();
 //-----------------------------------------------------------
 // Onload-funktioner för kartan
 //-----------------------------------------------------------
- try {
-displayBigMap();
+try {
+	displayBigMap();
 
 } catch(e) {
-newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
 }
 
-function displayBigMap(){
+function displayBigMap() {
 	$.mapView.add(showMap(map));
 }
 
@@ -85,30 +87,31 @@ map.addEventListener('click', function(evt) {
 	if (evt.clicksource == 'rightButton') {
 		if (evt.annotation.name == 'hotspot') {
 			showHotspot(evt.annotation.id);
-		} else if(evt.annotation.name == 'trail') {
+		} else if (evt.annotation.name == 'trail') {
 			showTrail(evt.annotation.id);
 		}
 	}
 });
 
 map.addEventListener('singletap', function() {
-	Alloy.Globals.closeMapMenu();
+	closeMapMenu();
 });
 
-$.btnMenu.addEventListener('click', function() {
-	Alloy.Globals.showMapMenuWidget();
+$.btnMapMenu.addEventListener('click', function() {
+	openMenu();
 });
 
-map.addEventListener('singletap', function() {
-	closeMenu();
-});
-
-function openMenu(){
-	$.widgetView.height = '190dp';
+function openMenu() {
+	if (menuOpen) {
+		closeMenu();
+	} else {
+		$.widgetView.height = '190dp';
+		menuOpen = true;
+	}
 }
-Alloy.Globals.openMenu = openMenu;
 
-function closeMenu(){
+function closeMenu() {
 	$.widgetView.height = '0dp';
+	menuOpen = false;
 }
-Alloy.Globals.closeMenu = closeMenu;
+

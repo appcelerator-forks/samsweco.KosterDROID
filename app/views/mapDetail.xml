@@ -8,7 +8,9 @@
 	<Model src="letterModel" />
 	<Collection src="infospotCoordinatesModel" />
 	<Window class="container">
-		<View id="mapDetailView"></View>
+		<View id="mapDetailView">
+			<Button id="btnMenuDetail" backgroundImage="/images/hamburger.png"/>
+		</View>
 		<View id="widgetView">
 			<View id="settingsView">
 				<View id="gpsSwitchView" class="settingsHorizontalView">

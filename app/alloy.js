@@ -32,18 +32,21 @@ Alloy.Globals.MapModule = MapModule;
 map = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
+	userLocation : true,
 	height : '100%',
 	width : Ti.UI.FILL
 });
 detailMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
+	userLocation : true,
 	height : '100%',
 	width : Ti.UI.FILL
 });
 interactiveMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
+	userLocation : true,
 	height : '100%',
 	width : Ti.UI.FILL
 });

@@ -1,19 +1,15 @@
+
 try {
 	var trailsCollection = Alloy.Collections.trailsModel;
 	trailsCollection.fetch();
 	var trailJson = trailsCollection.toJSON();
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - trailCollectionFetches");
-}
-
-try {
 	var hotspotCollection = Alloy.Collections.hotspotModel;
 	var letterCollection = getLetterCollection();
 	letterCollection.fetch();
 	var jsonCollection = letterCollection.toJSON();
 	Alloy.Globals.jsonCollection = jsonCollection;
 } catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - hotspotCollectionFetches");
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - CollectionFetches");
 }
 
 var hotspotsNotVisible = true;
@@ -285,7 +281,6 @@ function setRegion(maptype) {
 			longitudeDelta : 0.08
 		};
 		maptype.animate = true;
-		maptype.userLocation = false;
 	} catch (e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - setRegion");
 	}
@@ -415,26 +410,47 @@ function removeAnnoHotspot() {
 	}
 }
 
-
+//-----------------------------------------------------------
+// Lägger till de gröna plupparna på bokstavsjakt-kartan
+//-----------------------------------------------------------
 function addClueZone() {
 	try {
-		for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
-			var markerAnnotation = MapModule.createAnnotation({
-				latitude : Alloy.Globals.jsonCollection[c].latitude,
-				longitude : Alloy.Globals.jsonCollection[c].longitude,
-				title : Alloy.Globals.jsonCollection[c].id,
-				subtitle : Alloy.Globals.jsonCollection[c].letter
-			});
+		letterCollection.fetch();
+		var zoneJSON = letterCollection.toJSON();
 
-			if (Alloy.Globals.jsonCollection[c].found == 0) {
-				markerAnnotation.image = '/images/red.png';
-			} else {
-				markerAnnotation.image = '/images/green.png';
-			}
+		for (var c = 0; c < zoneJSON.length; c++) {
+			var markerAnnotation = MapModule.createAnnotation({
+				latitude : zoneJSON[c].latitude,
+				longitude : zoneJSON[c].longitude,
+				image : '/images/green.png'
+			});
 
 			interactiveMap.addAnnotation(markerAnnotation);
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - addClueZone");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
 	}
 }
+
+// function addClueZone() {
+// try {
+// for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
+// var markerAnnotation = MapModule.createAnnotation({
+// latitude : Alloy.Globals.jsonCollection[c].latitude,
+// longitude : Alloy.Globals.jsonCollection[c].longitude,
+// title : Alloy.Globals.jsonCollection[c].id,
+// subtitle : Alloy.Globals.jsonCollection[c].letter
+// });
+//
+// if (Alloy.Globals.jsonCollection[c].found == 0) {
+// markerAnnotation.image = '/images/red.png';
+// } else {
+// markerAnnotation.image = '/images/green.png';
+// }
+//
+// interactiveMap.addAnnotation(markerAnnotation);
+// }
+// } catch(e) {
+// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - addClueZone");
+// }
+// }

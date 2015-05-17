@@ -3,6 +3,8 @@ Ti.include("/mapFunctions.js");
 
 var args = arguments[0] || {};
 
+var menuDetail = false;
+
 //-----------------------------------------------------------
 // args från annan controller
 //-----------------------------------------------------------
@@ -81,7 +83,7 @@ function getZoomedMapPosition() {
 		};	
 	
 		detailMap.animate = true;
-		detailMap.userLocation = false;
+		detailMap.userLocation = true;
 		myPosition = false;
 	}
 }
@@ -106,20 +108,39 @@ $.posSwitch1.addEventListener('change', function(e) {
 	}
 });
 
-function showMenu() {
-	try {
+$.btnMenuDetail.addEventListener('click', function() {
+	openMenu();
+});
 
-		if(!menuDetailVisible){
-			$.widgetView.height = '90dp';
-			menuDetailVisible = true;
-		}else {
-			$.widgetView.height = '0dp';
-			menuDetailVisible = false;
-		}
-		
-		
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - getZoomedMapPosition");
+function openMenu() {
+	if (menuDetail) {
+		closeMenu();
+		menuDetail = false;
+	} else {
+		$.widgetView.height = '190dp';
+		menuDetail = true;
 	}
-
 }
+
+function closeMenu() {
+	$.widgetView.height = '0dp';
+}
+
+// 
+// function showMenu() {
+	// try {
+// 
+		// if(!menuDetailVisible){
+			// $.widgetView.height = '90dp';
+			// menuDetailVisible = true;
+		// }else {
+			// $.widgetView.height = '0dp';
+			// menuDetailVisible = false;
+		// }
+// 		
+// 		
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - getZoomedMapPosition");
+	// }
+// 
+// }

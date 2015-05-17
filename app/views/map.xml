@@ -6,9 +6,9 @@
 	<Collection src="infospotCoordinatesModel"></Collection>
 	<View id="mapvy" class="container">
 		<View id="mapView"></View>
-		<Button id="btnMenu" backgroundImage="/images/hamburger.png" />
+		<Button id="btnMapMenu" backgroundImage="/images/hamburger.png"/>
 	</View>
-			<View id="widgetView">
-			<Widget src="mapmenu" name="widget"></Widget>
-		</View>
+	<View id="widgetView">
+		<Widget src="mapmenu" name="widget"></Widget>
+	</View>
 </Alloy>
