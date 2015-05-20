@@ -97,41 +97,11 @@ $.geoSwitch1.addEventListener('change', function(e) {
 	}
 });
 
-// $.posSwitch1.addEventListener('change', function(e) {
-	// if ($.posSwitch1.value == true) {
-		// getPos(detailMap);
-		// myPosition = true;
-	// } else {
-		// detailMap.userLocation = false;
-		// myPosition = false;
-// 		
-	// }
-// });
-
-// $.btnMenuDetail.addEventListener('click', function() {
-	// openMenu();
-// });
-
-// function openMenu() {
-	// if (menuDetail) {
-		// closeMenu();
-		// menuDetail = false;
-	// } else {
-		// $.widgetView.height = '190dp';
-		// menuDetail = true;
-	// }
-// }
-// 
-// function closeMenu() {
-	// $.widgetView.height = '0dp';
-// }
-
-
 function showMenu() {
 	try {
 
 		if(!menuDetailVisible){
-			$.widgetView.height = '15%';
+			$.widgetView.height = '10%';
 			menuDetailVisible = true;
 		}else {
 			$.widgetView.height = '0dp';

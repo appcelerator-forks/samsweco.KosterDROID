@@ -17,11 +17,10 @@
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>
 				<Label id="lblTrailArea" class="lbltrailDetail"></Label>
 				<Label id="lblTrailLength" class="lbltrailDetail"></Label>
-					<Label id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Label>
-					<Button id="onMap" backgroundImage="map-icon.png" onClick="zoomMapTrail"></Button>
+				<Button id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Button>	
 				<Label id="lblTrailInfo" class="lbltrailDetail"></Label>
 			</View>
-			<Label id="lblLangsVagen" text="Det här kan du se längst vägen:"></Label>
+			<Label id="lblLangsVagen" text="Det här kan du se längs vägen:"></Label>
 			<View id="trail_hotspotView">
 				<TableView id="hotspotTable" onClick="showHotspot" />
 			</View>

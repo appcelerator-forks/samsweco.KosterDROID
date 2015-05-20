@@ -142,7 +142,7 @@ function createMapRoutes(maptype, file, name, color) {
 			var route = {
 				name : name,
 				points : coordArray,
-				width : 2.0,
+				width : 3.0,
 				color : color
 			};
 			maptype.addRoute(MapModule.createRoute(route));

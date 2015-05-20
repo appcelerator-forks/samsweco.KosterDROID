@@ -97,7 +97,7 @@
 	top: '20dp',
 	left: '15dp',
 	font : {
-		fontSize: '12dp',
+		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
 	},
 	top: '10dp',
@@ -123,10 +123,14 @@
 "#btnTrailOnMap": {
 	left: '15dp',
 	top: '5dp',
-	width: Titanium.UI.SIZE,
-	color: '#0098C3',
+	height: '40dp',
+	width: '200dp',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
 	font: {
-		fontSize: '14dp'
+		fontSize: '16dp'
 	}
 }
 

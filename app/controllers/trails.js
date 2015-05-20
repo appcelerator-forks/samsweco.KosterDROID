@@ -58,7 +58,7 @@ function setRowData() {
 			
 			var lblName = Ti.UI.createLabel({
 				color : '#FCAC17',
-				left : '5dp',
+				left : '10dp',
 				font : {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
@@ -67,7 +67,7 @@ function setRowData() {
 			});
 			
 			var lblDistance = Ti.UI.createLabel({
-				left : '5dp',
+				left : '10dp',
 				top : '0dp',
 				color : '#000000', 
 				font : {
@@ -78,7 +78,7 @@ function setRowData() {
 			});
 			
 			var lblArea = Ti.UI.createLabel({
-				left : '5dp',
+				left : '10dp',
 				top : '0dp',
 				color : '#000000', 
 				font : {
@@ -89,6 +89,7 @@ function setRowData() {
 			});
 		
 			var iconView = showIcons(rows[i].id);
+			
 			
 		labelView.add(iconView);	
 		labelView.add(lblName);	

@@ -125,7 +125,7 @@ function showHotspots() {
 			var lblName = Ti.UI.createLabel({
 				color : '#FCAF17',
 				top: '35dp',
-				left : '5dp',
+				left : '20dp',
 				font : {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
