@@ -116,8 +116,9 @@ function userIsNearHotspot() {
 
 			var hotlat = hotspotJSONobj[h].xkoord;
 			var hotlon = hotspotJSONobj[h].ykoord;
+			var alert = hotspotJSONobj[h].alerted;
 
-			if (isInsideRadius(hotlat, hotlon, radius)) {
+			if (isInsideRadius(hotlat, hotlon, radius) && alert == 0) {
 				dialog.message = 'Nu börjar du närma dig ' + hotspotJSONobj[h].name + '!';
 				dialog.buttonNames = ['Läs mer', 'Stäng'];
 

@@ -1,8 +1,14 @@
 Ti.include("/SQL.js");
+Ti.include("/geoFunctions.js");
 
 $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toInteractive = toInteractive;
+
+$.tabs.addEventListener('close', function(){
+	stopGPS();
+	stopGame();
+});
 
 //-----------------------------------------------------------
 // Metoder för navigering

@@ -2,8 +2,7 @@
 	<Collection src="letterModel"/>
 	<Collection src="hotspotModel" />
 	<Collection src="trailsModel" />
-	<Collection src="infospotModel"></Collection>
-	<Collection src="infospotCoordinatesModel"></Collection>
+	<Collection src="infospotCoordinatesModel" />
 	<View>
 		<View id="interactiveWin">
 			<View id="showFamilyTrail"></View>

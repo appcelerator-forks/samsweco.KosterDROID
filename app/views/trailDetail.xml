@@ -1,7 +1,6 @@
 <Alloy>
 	<Collection src="mediaModel"></Collection>
 	<Collection src="hotspotModel"></Collection>
-	<Collection src="infospotModel"></Collection>
 	<Collection src="letterModel"/>
 	<Collection src="trailsModel" />
 	<Collection src="infospotCoordinatesModel"></Collection>
