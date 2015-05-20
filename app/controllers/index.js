@@ -13,7 +13,6 @@ $.tabs.addEventListener('close', function(){
 //-----------------------------------------------------------
 // Metoder för navigering
 //-----------------------------------------------------------
-
 function toMap() {
 	var mapWind = Alloy.createController('map').getView();
 	$.mapWin.add(mapWind);
@@ -37,7 +36,6 @@ function toInfo() {
 //-----------------------------------------------------------
 // Null'ar varje fönster när man trycker på en annan tab.
 //-----------------------------------------------------------
-
 $.mapWin.addEventListener('blur', function(){
 	$.mapWin = null;
 });

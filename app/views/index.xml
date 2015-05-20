@@ -5,7 +5,7 @@
 			<Window id="koster" class="container" backgroundImage="/pics/front.png">
 				<View class="headView">
 					<ImageView class="imgKoster" image="/pics/kosterhavet_logga.png"></ImageView>
-					<Label id="lblFrontText">-Välkommen till Kosterhavet! Upptäck den vackra naturen i Kosterhavet och ta en promenad bland klapperstensfält och strandängar.</Label>
+					<Label id="lblFrontText">- Välkommen till Kosterhavet! Upptäck den vackra naturen i Kosterhavet och ta en promenad bland klapperstensfält och strandängar.</Label>
 				</View>
 			</Window>
 		</Tab>
