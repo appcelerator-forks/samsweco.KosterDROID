@@ -46,7 +46,7 @@ function addEventList() {
 				if (evt.clicksource == 'rightButton') {
 					var hotspotCollection = Alloy.Collections.hotspotModel;
 					hotspotCollection.fetch({
-						query : 'SELECT id, infoTxt from hotspotModel where name = "' + evt.annotation.id + '"'
+						query : query12 + evt.annotation.id + '"'
 					});
 
 					var jsonHotspObj = hotspotCollection.toJSON();
