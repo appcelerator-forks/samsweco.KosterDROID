@@ -129,3 +129,13 @@
 		fontSize: '14dp'
 	}
 }
+
+"#onMapView" : {
+	right : '15dp',
+	layout : 'vertical'
+}
+
+"#onMap" :{
+	height : '50dp',
+	width : '50dp'
+}

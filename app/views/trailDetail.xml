@@ -4,6 +4,7 @@
 	<Collection src="letterModel"/>
 	<Collection src="trailsModel" />
 	<Collection src="infospotCoordinatesModel"></Collection>
+	<Collection src="infospot_trailsModel"></Collection>
 	<Window id="hikeDetailWin" class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
@@ -16,7 +17,8 @@
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>
 				<Label id="lblTrailArea" class="lbltrailDetail"></Label>
 				<Label id="lblTrailLength" class="lbltrailDetail"></Label>
-				<Label id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Label>
+					<Label id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Label>
+					<Button id="onMap" backgroundImage="map-icon.png" onClick="zoomMapTrail"></Button>
 				<Label id="lblTrailInfo" class="lbltrailDetail"></Label>
 			</View>
 			<Label id="lblLangsVagen" text="Det här kan du se längst vägen:"></Label>

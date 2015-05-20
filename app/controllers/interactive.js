@@ -29,9 +29,9 @@ function startInteractive() {
 
 	$.lblCollectedLetters.show();
 	$.lblCollectedLetters.text = 'Bokstäver: ';
-
-	$.horizontalView.show();
-	$.horizontalView.height = Ti.UI.SIZE;
+// 
+	// $.horizontalView.show();
+	// $.horizontalView.height = Ti.UI.SIZE;
 	
 	getUserPos('letter');
 	loadClue(1);
