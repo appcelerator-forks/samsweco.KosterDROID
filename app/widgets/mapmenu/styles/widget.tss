@@ -104,7 +104,7 @@
 }
 
 "#btnShowHotspots" : {
-	left: '5dp',
+	left: '30dp',
 	top: '8dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
@@ -114,11 +114,20 @@
 }
 
 "#lblSetGPS" : {
-	left: '5dp',
-	top: '5dp',
+	left: '30dp',
+	top: '8dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '13dp'
 	},
 		color: "#000000"
+}
+
+"#hotPic" : {
+	left: '0dp'
+}
+
+"#soundPic" : {
+	left: '0dp',
+	top: '3dp'
 }

@@ -19,12 +19,14 @@
 		<View id="lineTwo" class="lineView"></View>
 		<View id="settingsView">
 			<View id="hotSwitchView" class="settingsHorizontalView">
+				<ImageView id="hotPic" image="/images/hotspotflag.png"></ImageView>
 				<Label id="btnShowHotspots" text="Visa sevärdheter"></Label>
 				<View id="v1">
 					<Switch id="hotspotSwitch" class="switch" value="false"></Switch>
 				</View>
 			</View>
 			<View id="gpsSwitchView" class="settingsHorizontalView">
+				<ImageView id="soundPic" image="/images/sound.png"></ImageView>
 				<Label id="lblSetGPS" text="Påminnelse vid sevärdheter"></Label>
 				<View id="v2">
 					<Switch id="geoSwitch" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
