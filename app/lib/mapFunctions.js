@@ -253,7 +253,7 @@ function displayAllMarkers() {
 				longitude : markersJSON[u].ykoord,
 				title : markersJSON[u].name,
 				subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-				image : '/pins/hot-icon-azure.png',
+				image : '/images/flag.png',
 				centerOffset : {
 					x : -3,
 					y : -16
@@ -341,7 +341,7 @@ function displaySpecificMarkers(id, maptype) {
 				longitude : specificHotspots[u].ykoord,
 				title : specificHotspots[u].name,
 				subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',
-				image : '/pins/hot-icon-azure.png',
+				image : '/images/flag.png',
 				rightButton : '/pins/androidarrow2.png',
 				name : 'hotspot'
 			});
