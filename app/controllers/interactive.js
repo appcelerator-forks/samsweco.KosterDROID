@@ -35,6 +35,7 @@ function startInteractive() {
 	
 	getUserPos('letter');
 	loadClue(1);
+	interactiveGPS = true;
 }
 
 function loadClue(id) {
@@ -143,6 +144,9 @@ function checkWord() {
 		// $.destroy();
 		// lettersModel.destroy();
 		// letterCollection.destroy();
+		
+		stopGame();
+		interactiveGPS = false;
 	
 	} else {
 		alert("Försök igen! Du har snart klurat ut det!");

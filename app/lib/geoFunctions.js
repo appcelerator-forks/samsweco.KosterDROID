@@ -56,6 +56,8 @@ function setUserPosition(userCoordinates, type) {
 
 function stopGPS() {
 	Titanium.Geolocation.removeEventListener('location', addHotspotLocation);
+}
+function stopGame(){
 	Titanium.Geolocation.removeEventListener('location', addLetterLocation);
 }
 

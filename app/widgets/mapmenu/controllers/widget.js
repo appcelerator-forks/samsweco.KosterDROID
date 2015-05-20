@@ -4,9 +4,11 @@ Ti.include("/mapFunctions.js");
 $.geoSwitch.addEventListener('change', function(e) {
 	if ($.geoSwitch.value == true) {
 		getUserPos('hotspot');
+		hotspotGPS = true;
 	}
 	if($.geoSwitch.value == false){
 		stopGPS();
+		hotspotGPS = false;
 	}
 });
 
@@ -20,15 +22,6 @@ $.hotspotSwitch.addEventListener('change', function(e) {
 	}
 });
 
-// $.posSwitch.addEventListener('change', function(e) {
-	// if ($.posSwitch.value == true) {
-		// getPos(map);
-		// myPosition = true;
-	// } else {
-		// myPosition = false;
-		// map.userLocation = false;
-	// }
-// });
 
 function showFarglage() {
 	if (farjelage == false){

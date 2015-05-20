@@ -72,6 +72,9 @@ var word = 'SAM';
 
 var interactiveVisible = false;
 
+var hotspotGPS = false;
+var interactiveGPS = false;
+
 var farjelage = false;
 var snorkel = false;
 var torrdass = false;
@@ -81,8 +84,6 @@ var taltplats = false;
 var badplats = false;
 var information = false;
 var eldplats = false;
-
-//SANDRA TA BORT SEN, BARA TEST
 
 //-----------------------------------------------------------
 // Variabel för kartvyn
@@ -143,3 +144,17 @@ function newError(errorMsg, pageName) {
 		alert("Error:[" + e.message + "] has occured on " + e.myObject + " page.");
 	}
 }
+
+//-----------------------------------------------------------
+// Avsluta GPS när man stänger appen
+//-----------------------------------------------------------
+Titanium.App.addEventListener('close', function() {
+	if(hotspotGPS){
+		Alloy.Globals.stopGPS;
+	} 
+});
+Titanium.App.addEventListener('close', function() {
+	if(interactiveGPS){
+		Alloy.Globals.stopGame;
+	} 
+});
