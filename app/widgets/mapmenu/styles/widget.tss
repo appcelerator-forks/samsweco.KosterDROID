@@ -17,38 +17,55 @@
 	top: '10dp'
 }
 
-".settingsHorizontalView": {
-	top: '5dp',
-	layout: 'horizontal',
-	height: Titanium.UI.SIZE,
-	width: Titanium.UI.FILL,
-	opacity: 1
+// ".settingsHorizontalView": {
+	// top: '5dp',
+	// layout: 'horizontal',
+	// height: Titanium.UI.SIZE,
+	// width: Titanium.UI.FILL,
+	// opacity: 1
+// }
+
+// "#hotSwitchView": {
+	// top: '5dp',
+	// layout: 'horizontal',
+	// height: Titanium.UI.SIZE,
+	// width: Titanium.UI.FILL,
+	// opacity: 1
+// }
+
+"#hotSwitchView": {
+	top: '5dp'
+}
+
+"#gpsSwitchView" : {
+	top: '0dp'
 }
 
 "#hotspotSwitch":{
-	right: '15dp',
+	right: '30dp',
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
 
 "#geoSwitch":{
-	right: '15dp',
+	right: '30dp',
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
 
 "#v1": {
-	right: '15dp',
+	right: '30dp',
 	height: '30dp',
-	width: Titanium.UI.SIZE
+	width: '100dp',
+	top: '0dp'
 }
 
 "#v2": {
-	right: '15dp',
+	right: '30dp',
 	height: '30dp',
-	width: Titanium.UI.SIZE
+	width: '60dp',
+	top: '0dp'
 }
-
 
 "#selectIconView": {
 	layout: 'horizontal',
@@ -66,7 +83,8 @@
 	font: {
 		fontSize: 13,
 		fontFamily: 'Raleway-Medium'
-	}
+	},
+		color: "#000000",
 }
 
 "#settingsView": {
@@ -81,4 +99,24 @@
 	left: '2%',
 	height : '30dp',
 	width : '30dp'
+}
+
+"#btnShowHotspots" : {
+	left: '5dp',
+	top: '8dp',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '13dp'
+	},
+		color: "#000000"
+}
+
+"#lblSetGPS" : {
+	left: '5dp',
+	top: '8dp',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '13dp'
+	},
+		color: "#000000"
 }

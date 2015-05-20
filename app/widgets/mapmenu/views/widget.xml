@@ -30,12 +30,6 @@
 					<Switch id="geoSwitch" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 				</View>
 			</View>
-			<!-- <View id="myposSwitchView" class="settingsHorizontalView">
-				<Label id="lblSetMypos" text="Visa min position"></Label>
-				<View id="v3">
-					<Switch id="posSwitch" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
-				</View>	
-			</View> -->
 		</View>
 	</View>
 </Alloy> 
