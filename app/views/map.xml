@@ -4,6 +4,9 @@
 	<Collection src="jsonFilesModel" />
 	<Collection src="letterModel" />
 	<Collection src="infospotCoordinatesModel"></Collection>
+	<Collection src="infospot_trailsModel"></Collection>
+	<Collection src="hotspot_trailsModel" />
+	
 	<View id="container">
 		<View id="mapView"></View>
 		<View id="widgetView">

@@ -32,7 +32,7 @@ function displayBigMap() {
 function showTrail(myId) {
 	try {
 		trailsCollection.fetch({
-			query : query11 + myId + '"'
+			query : query18 + myId + '"'
 		});
 
 		var jsonObjTr = trailsCollection.toJSON();
@@ -103,7 +103,7 @@ map.addEventListener('click', function(evt) {
 
 function openMenu() {
 	if (!menuOpen) {
-		$.widgetView.height = '35%';
+		$.widgetView.height = '30%';
 		menuOpen = true;
 
 	} else {

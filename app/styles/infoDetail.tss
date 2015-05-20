@@ -22,8 +22,9 @@
 }
 
 "#infoImg": {
-	width: '300dp',
-	height: '200dp'
+	height: '240dp',
+	width: '100%',
+	top : 0
 }
 
 "#slideView": {

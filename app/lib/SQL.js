@@ -11,7 +11,7 @@ var query8 = 'SELECT * from info_urlModel WHERE info_id ="';
 var query9 = 'SELECT url FROM info_urlModel WHERE id = "';
 var query10 = 'SELECT * from infoModel where id = "';
 var query11 = 'SELECT * FROM trailsModel where name ="';
-var query12 = 'SELECT id, infoTxt FROM hotspotModel where name = "';
+var query12 = 'SELECT id, infoTxt FROM hotspotModel where id = "';
 var query13 = 'SELECT id, infoTxt from hotspotModel where name = "';
 var query14 = 'SELECT * from mediaModel where trail_id="';
 var query15 = 'SELECT hotspotModel.name, hotspotModel.cover_pic from hotspotModel join hotspot_trailsModel on hotspotModel.id = hotspot_trailsModel.hotspotID where trailsID ="';

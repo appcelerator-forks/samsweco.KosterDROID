@@ -48,11 +48,11 @@ function selectHotspotPics() {
 
 			var lblImgTxt = Ti.UI.createLabel({
 				left : '3dp',
-				top : '0dp',
+				top : '2dp',
 				text : jsonMedia[i].img_txt,
 				color : 'white',
 				font : {
-					fontSize : '12dp',
+					fontSize : '14dp',
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					fontFamily: 'Raleway-Light'

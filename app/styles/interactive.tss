@@ -54,18 +54,18 @@
 }
 
 "#lblLetters": {
-	top: '17dp',
 	height: '0dp',
-	right: '15dp',
+	width: '200dp',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	top: '17dp',
+	borderColor : '#0098C3',
+	top: '17dp',
 	font: {
 		fontSize: '15dp',
 		fontFamily: 'Raleway-Medium'
-	},
-	color: "#000000",
-	visible: false,
-	backgroundColor: '#FCAF17',
-	left: '15dp',
-	borderRadius: '4dp',
+	}
 }
 
 "#txtLetter": {
@@ -83,7 +83,7 @@
 "#lblCollectedLetters": {
 	visible: false,
 	color: '#000000',
-	left: '15dp',
+	left: '20dp',
 	right: '15dp',
 	width: Titanium.UI.FILL,
 }
