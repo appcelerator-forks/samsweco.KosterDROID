@@ -18,7 +18,7 @@
 
 "#lblFrontText" : {
 	color: "white",
-	left: '75dp',
+	left: '40dp',
 	right: '20dp',
 	top: '0dp',
 	font : {
