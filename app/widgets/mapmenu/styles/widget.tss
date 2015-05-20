@@ -34,7 +34,7 @@
 // }
 
 "#hotSwitchView": {
-	top: '5dp',
+	top: '0dp',
 	height: Titanium.UI.SIZE
 }
 
@@ -50,7 +50,7 @@
 
 "#geoSwitch":{
 	right: '30dp',
-	top: '15dp',
+	top: '2dp',
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
@@ -83,7 +83,7 @@
 	top: '5dp',
 	left: '20dp',
 	font: {
-		fontSize: 13,
+		fontSize: '13dp',
 		fontFamily: 'Raleway-Medium'
 	},
 		color: "#000000",
@@ -93,7 +93,7 @@
 	layout: 'vertical',
 	left: '6%',
 	top: '5dp',
-	height: Titanium.UI.SIZE,
+	height: '200dp',
 	width: '100%'
 }
 
@@ -115,7 +115,7 @@
 
 "#lblSetGPS" : {
 	left: '5dp',
-	top: '15dp',
+	top: '5dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '13dp'
