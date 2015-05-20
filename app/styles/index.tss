@@ -18,9 +18,9 @@
 
 "#lblFrontText" : {
 	color: "white",
-	left: '50dp',
+	left: '75dp',
 	right: '20dp',
-	top: '10dp',
+	top: '0dp',
 	font : {
 		fontSize: '12dp',
 		fontFamily: 'Raleway-Light'
