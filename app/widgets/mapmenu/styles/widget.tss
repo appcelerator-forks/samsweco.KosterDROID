@@ -38,7 +38,7 @@
 }
 
 "#gpsSwitchView" : {
-	top: '0dp'
+	top: '15dp'
 }
 
 "#hotspotSwitch":{
@@ -63,7 +63,7 @@
 "#v2": {
 	right: '30dp',
 	height: '30dp',
-	width: '60dp',
+	width: '100dp',
 	top: '0dp'
 }
 
@@ -88,7 +88,7 @@
 }
 
 "#settingsView": {
-	//layout: 'vertical',
+	layout: 'vertical',
 	left: '6%',
 	top: '5dp',
 	height: Titanium.UI.SIZE,
