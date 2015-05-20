@@ -34,11 +34,12 @@
 // }
 
 "#hotSwitchView": {
-	top: '5dp'
+	top: '5dp',
+	height: Titanium.UI.SIZE
 }
 
 "#gpsSwitchView" : {
-	top: '15dp'
+	top: '0dp'
 }
 
 "#hotspotSwitch":{
@@ -49,6 +50,7 @@
 
 "#geoSwitch":{
 	right: '30dp',
+	top: '15dp',
 	height: Titanium.UI.FILL,
 	width: Titanium.UI.FILL
 }
@@ -113,7 +115,7 @@
 
 "#lblSetGPS" : {
 	left: '5dp',
-	top: '8dp',
+	top: '15dp',
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '13dp'
