@@ -32,7 +32,7 @@ function selectHotspotPics() {
 		
 		var mediaCollection = getMediaCollection();
 		mediaCollection.fetch({
-			query : 'SELECT * FROM mediaModel WHERE hotspot_id = "' + hotspotId + '"'
+			query : query6 + hotspotId + '"'
 		});
 		var jsonMedia = mediaCollection.toJSON();
 
@@ -79,15 +79,4 @@ function selectHotspotPics() {
 	}
 }
 
-//---------------------------------------------------------
-//Sätter bildtexter till hotspotsen
-//---------------------------------------------------------
-function setPicText() {
-
-	var textCollection = Alloy.Collections.mediaModel;
-	textCollection.fetch('SELECT img_txt FROM mediaModel where filename = anemon.png');
-
-	txt = textCollection.toJSON();
-	text = JSON.stringify(txt);
-}
 
