@@ -20,7 +20,7 @@
 				<Button id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Button>	
 				<Label id="lblTrailInfo" class="lbltrailDetail"></Label>
 			</View>
-			<Label id="lblLangsVagen" text="Det här kan du se längs vägen:"></Label>
+			<Label id="lblLangsVagen" text="Det här kan du se längst vägen:"></Label>
 			<View id="trail_hotspotView">
 				<TableView id="hotspotTable" onClick="showHotspot" />
 			</View>

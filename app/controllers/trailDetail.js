@@ -37,6 +37,7 @@ function zoomMapTrail() {
 selectTrailPics();
 showHotspots();
 showIcons();
+changeLabel();
 
 //-----------------------------------------------------------
 // Hämtar bilder till bildspel för den valda vandringsleder
@@ -243,3 +244,23 @@ function getIcons() {
 	}
 }
 
+function changeLabel()
+{
+	if (args.title != 'Båtleden') {
+		$.lblLangsVagen.text = 'Det här kan du se längst vägen:';
+	}
+	else {
+		$.lblLangsVagen.text = 'Det här kan du läsa om på båtresan:';
+	}
+}
+
+function changeLabel()
+{
+	if (args.title !='Båtleden') {
+		$.lblLangsVagen.text = 'Det här kan du se längs vägen:';
+	}
+	else {
+		$.lblLangsVagen.text= ' Det här kan du läsa om på båtresan:';
+	}
+}
+ 
