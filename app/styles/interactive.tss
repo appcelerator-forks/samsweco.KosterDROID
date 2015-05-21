@@ -63,7 +63,6 @@
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
-	top: '4dp',
 	borderColor : '#0098C3',
 	top: '17dp',
 	font: {
@@ -73,10 +72,10 @@
 }
 
 "#txtLetter": {
-	top: '2dp',
+	top: '5dp',
 	height: '0dp',
-	left: '15%',
-	right: '15%',
+	left: '15dp',
+	right: '15dp',
 	width: Titanium.UI.FILL,
 	tintColor: 'blue',
 	borderWidth: '1dp',
