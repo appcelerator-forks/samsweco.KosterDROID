@@ -18,7 +18,8 @@
 }
 
 "#lblInfoText": {
-	top: '10dp',
+	top: '5dp',
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
 		fontSize: '14dp'
 	} ,
@@ -34,13 +35,13 @@
 }
 
 "#lblWelcome": {
-	top: '0dp',
+	top: '5dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '18dp'
 	},
-	color: '#FCAF17',
-	left: '19dp'
+	color: '#FCAF17'
 }
 
 "#lblClue": {
@@ -54,25 +55,28 @@
 }
 
 "#lblLetters": {
+	visible: false,
 	height: '0dp',
 	width: '200dp',
+	left: '15%',
+	right: '15%',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
-	top: '17dp',
+	top: '4dp',
 	borderColor : '#0098C3',
 	top: '17dp',
 	font: {
-		fontSize: '15dp',
+		fontSize: '16dp',
 		fontFamily: 'Raleway-Medium'
 	}
 }
 
 "#txtLetter": {
-	top: '10dp',
-	height: '35dp',
-	left: '15dp',
-	right: '15dp',
+	top: '2dp',
+	height: '0dp',
+	left: '15%',
+	right: '15%',
 	width: Titanium.UI.FILL,
 	tintColor: 'blue',
 	borderWidth: '1dp',
