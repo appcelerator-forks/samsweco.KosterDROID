@@ -5,7 +5,8 @@
 	<Collection src="jsonFilesModel" />
 	<Collection src="hotspot_trailsModel" />
 	<Collection src="letterModel" />
-	<Collection src="infospot_trailsModel"></Collection>
+	<Collection src="infospot_trailsModel" />
+	
 	<View class="container" onClose="destroyModel">
 		<ScrollView class="headView" scrollType="vertical">
 			<TableView id="table" onClick="showTrailDetails">

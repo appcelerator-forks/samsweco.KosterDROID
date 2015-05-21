@@ -15,9 +15,6 @@ setRowData();
 // Läser in data till alla listitems
 //-----------------------------------------------------------
 function setRowData() {
-	
-
-
 		var trailsCollection = Alloy.Collections.trailsModel;
 		trailsCollection.fetch();
 
@@ -25,7 +22,6 @@ function setRowData() {
 		var rows = trailsCollection.toJSON();
 		
 		for (var i = rows.length; i--;){
-			
 				var row = Ti.UI.createTableViewRow({
 				layout : 'horizontal',
 				id : rows[i].id,
@@ -109,32 +105,30 @@ function setRowData() {
 // Öppnar trail detail med args för den valda leden
 //-----------------------------------------------------------
 function showTrailDetails(e) {
-
 	 try {
 		var id = e.rowData.id;
 		
 		var trailsCollection = Alloy.Collections.trailsModel;
 		trailsCollection.fetch({
-			query : query18 + id + '"'
+			query : query20 + id + '"'
 		});
 
 		var jsonObj = trailsCollection.toJSON();
 
-	var args = {
-		id : id,
-		title : jsonObj[0].name,
-		length : jsonObj[0].length,
-		infoTxt : jsonObj[0].infoTxt,
-		area : jsonObj[0].area,
-		zoomlat : jsonObj[0].zoomLat,
-		zoomlon : jsonObj[0].zoomLon,
-		color : jsonObj[0].color,
-		jsonfile : jsonObj[0].JSONfile
-	};
+		var args = {
+			id : id,
+			title : jsonObj[0].name,
+			length : jsonObj[0].length,
+			infoTxt : jsonObj[0].infoTxt,
+			area : jsonObj[0].area,
+			zoomlat : jsonObj[0].zoomLat,
+			zoomlon : jsonObj[0].zoomLon,
+			color : jsonObj[0].color,
+			jsonfile : jsonObj[0].JSONfile
+		}; 
 
-	var trailDetail = Alloy.createController("trailDetail", args).getView();
-	Alloy.CFG.tabs.activeTab.open(trailDetail);
-
+		var trailDetail = Alloy.createController("trailDetail", args).getView();
+		Alloy.CFG.tabs.activeTab.open(trailDetail);
 	} catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "Trails - showTrailDetails");
 	}

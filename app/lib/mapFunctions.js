@@ -266,7 +266,6 @@ function displayAllMarkers() {
 		}
 
 		map.addAnnotations(markerHotspotArray);
-		return markerHotspotArray;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - displayMarkers");
 	}

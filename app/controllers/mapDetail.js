@@ -42,25 +42,23 @@ function setMarkers(){
 function addEventList() {
 	try {
 		detailMap.addEventListener('click', function(evt) {
-			if (evt.annotation.name == 'hotspot') {
-				if (evt.clicksource == 'rightButton') {
+				if (evt.clicksource == 'rightPane') {
 					var hotspotCollection = Alloy.Collections.hotspotModel;
 					hotspotCollection.fetch({
-						query : query12 + evt.annotation.id + '"'
+						query : query13 + evt.annotation.id + '"'
 					});
 
 					var jsonHotspObj = hotspotCollection.toJSON();
 
 					var hotspotTxt = {
 						title : evt.annotation.id,
-						infoTxt : jsonHotsObj[0].infoTxt,
-						id : jsonHotsObj[0].id
+						infoTxt : jsonHotspObj[0].infoTxt,
+						id : jsonHotspObj[0].id
 					};
 
 					var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
 					Alloy.CFG.tabs.activeTab.open(hotspotDetail);
 				};
-			}
 		});
 		
 
@@ -74,7 +72,6 @@ function getZoomedMapPosition() {
 		getPosition();
 		myPosition = true;
 	} else {
-
 		detailMap.region = {
 			latitude : zoomLat,
 			longitude : zoomLon,
@@ -99,7 +96,6 @@ $.geoSwitch1.addEventListener('change', function(e) {
 
 function showMenu() {
 	try {
-
 		if(!menuDetailVisible){
 			$.widgetView.height = '10%';
 			menuDetailVisible = true;
@@ -107,10 +103,7 @@ function showMenu() {
 			$.widgetView.height = '0dp';
 			menuDetailVisible = false;
 		}
-		
-		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - getZoomedMapPosition");
 	}
-
 }

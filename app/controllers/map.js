@@ -17,7 +17,6 @@ var trailsCollection = getTrailsCollection();
 //-----------------------------------------------------------
 try {
 	displayBigMap();
-
 } catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
 }
@@ -29,17 +28,17 @@ function displayBigMap() {
 //-----------------------------------------------------------
 // Öppnar trailDetail med info om vald vandringsled
 //-----------------------------------------------------------
-function showTrail(myId) {
+function showTrail(myName) {
 	try {
 		trailsCollection.fetch({
-			query : query18 + myId + '"'
+			query : query18 + myName + '"'
 		});
 
 		var jsonObjTr = trailsCollection.toJSON();
 
 		var args = {
 			id : jsonObjTr[0].id,
-			title : myId,
+			title : myName,
 			length : jsonObjTr[0].length,
 			infoTxt : jsonObjTr[0].infoTxt,
 			area : jsonObjTr[0].area,
@@ -61,7 +60,7 @@ function showTrail(myId) {
 function showHotspot(myId) {
 	try {
 		hotspotCollection.fetch({
-			query : query12 + myId + '"'
+			query : query13 + myId + '"'
 		});
 
 		var jsonObjHot = hotspotCollection.toJSON();
@@ -83,8 +82,7 @@ function showHotspot(myId) {
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
 map.addEventListener('click', function(evt) {
-
-	if (evt.clicksource == 'rightButton') {
+	if (evt.clicksource == 'rightPane') {
 		if (evt.annotation.name == 'hotspot') {
 			showHotspot(evt.annotation.id);
 		} else if (evt.annotation.name == 'trail') {
@@ -105,7 +103,6 @@ function openMenu() {
 	if (!menuOpen) {
 		$.widgetView.height = '30%';
 		menuOpen = true;
-
 	} else {
 		closeMenu();
 	}

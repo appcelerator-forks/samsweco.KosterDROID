@@ -17,5 +17,6 @@ var query14 = 'SELECT * from mediaModel where trail_id="';
 var query15 = 'SELECT hotspotModel.name, hotspotModel.cover_pic from hotspotModel join hotspot_trailsModel on hotspotModel.id = hotspot_trailsModel.hotspotID where trailsID ="';
 var query16 = 'SELECT id, infoTxt from hotspotModel where name = "';
 var query17 = 'SELECT DISTINCT name from infospotCoordinatesModel join infospot_trailsModel on infospot_trailsModel.infospotID = infospotCoordinatesModel.infospotID where trailsID ="';
-var query18 = 'SELECT * FROM trailsModel where id ="';
+var query18 = 'SELECT * FROM trailsModel where name ="';
 var query19 = 'SELECT DISTINCT name from infospotCoordinatesModel join infospot_trailsModel on infospot_trailsModel.infospotID = infospotCoordinatesModel.infospotID where trailsID ="';
+var query20 = 'SELECT * FROM trailsModel where id ="';
