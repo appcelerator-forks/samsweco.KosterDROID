@@ -17,22 +17,6 @@
 	top: '10dp'
 }
 
-// ".settingsHorizontalView": {
-	// top: '5dp',
-	// layout: 'horizontal',
-	// height: Titanium.UI.SIZE,
-	// width: Titanium.UI.FILL,
-	// opacity: 1
-// }
-
-// "#hotSwitchView": {
-	// top: '5dp',
-	// layout: 'horizontal',
-	// height: Titanium.UI.SIZE,
-	// width: Titanium.UI.FILL,
-	// opacity: 1
-// }
-
 "#hotSwitchView": {
 	top: '0dp',
 	height: Titanium.UI.SIZE
@@ -75,13 +59,13 @@
 	height: Titanium.UI.SIZE,
 	width: '100%',
 	opacity: 1,
-	left: '15dp',
-	top: '2dp'
+	left: '8dp',
+	top: '5dp'
 }
 
 "#lblChoosePikto": {
 	top: '5dp',
-	left: '20dp',
+	left: '50dp',
 	font: {
 		fontSize: '13dp',
 		fontFamily: 'Raleway-Medium'
