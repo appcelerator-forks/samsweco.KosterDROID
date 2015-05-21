@@ -64,7 +64,7 @@
 	borderRadius: '12dp',
 	color: 'black',
 	borderColor : '#0098C3',
-	top: '17dp',
+	top: '4dp',
 	font: {
 		fontSize: '16dp',
 		fontFamily: 'Raleway-Medium'
