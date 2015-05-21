@@ -65,7 +65,7 @@
 
 "#lblChoosePikto": {
 	top: '5dp',
-	left: '50dp',
+	left: '52dp',
 	font: {
 		fontSize: '13dp',
 		fontFamily: 'Raleway-Medium'
