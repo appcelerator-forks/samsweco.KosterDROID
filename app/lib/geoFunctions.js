@@ -47,19 +47,13 @@ var addLetterLocation = function(e) {
 	if (!e.error) {
 		setUserPosition(e.coords, 'letter');
 		Ti.API.info("Sätter position - letter");
-	} else {
-		Alert("Kan inte hämta din position");
 	}
 };
 
 var addHotspotLocation = function(e) {
 	if (!e.error) {
-
 		setUserPosition(e.coords, 'hotspot');
-		Ti.API.info("Sätter position");
-	} else {
-		Alert("Kan inte hämta din position");
-	}
+	} 
 };
 
 //-----------------------------------------------------------

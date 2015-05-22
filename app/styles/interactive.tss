@@ -21,7 +21,8 @@
 	top: '5dp',
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
-		fontSize: '14dp'
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Light'
 	} ,
 	right: '20dp',
 	left: '20dp',

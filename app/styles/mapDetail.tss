@@ -40,13 +40,6 @@
 	bottom: 0
 }
 
-// ".switch": {
-	// right: '15dp',
-	// height: Titanium.UI.FILL,
-	// width: Titanium.UI.SIZE,
-	// opacity : 1
-// }
-
 ".switchClass": {
 	height: '30dp',
 	width: '15%',
@@ -54,10 +47,11 @@
 	right : '15dp'
 }
 
-"#lblSetGPS" : {
-	width : '70%'
+"#lblSetGPS": {
+	width : '70%',
+	color : 'black'
 }
 
-"Label" : {
+"Label": {
 	left : '15dp'
 }

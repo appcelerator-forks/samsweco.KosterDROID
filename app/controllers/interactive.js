@@ -7,6 +7,8 @@ var foundLetterId = 1;
 var wrongWord = 0;
 var correctLetters = "A, T, R, Ö, N, N, E, M, O";
 
+$.lblInfoText.text = "Vandra äventyrslingan och leta efter de 9 bokstäverna som finns gömda längs leden! Försök sedan klura ut det hemliga ordet. Längs vägen kommer du få ledtrådar som hjälper dig finna bokstäverna. Du kan se bokstävernas ungefärliga läge med hjälp av gröna plupparna. Vi kommer även påminna dig när du börjar närma dig en bokstav.";
+
 //-----------------------------------------------------------
 // Hämtar letterCollection
 //-----------------------------------------------------------
@@ -28,9 +30,9 @@ function displayMap() {
 }
 
 function startInteractive() {
-
 	if (Ti.Geolocation.locationServicesEnabled) {
-		getUserPos('letter'); (foundJSON.length + 1);
+		getUserPos('letter');
+		loadClue(foundJSON.length + 1);
 		interactiveGPS = true;
 
 		$.btnStartQuiz.hide();
