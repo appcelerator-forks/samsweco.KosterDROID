@@ -18,37 +18,41 @@ try {
 } catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - create letterCollection");
 }
-	
+
 displayMap();
 
 function displayMap() {
 	$.showFamilyTrail.add(showDetailMap(interactiveMap, 7, 'Äventyrsleden', 'purple'));
 	addClueZone();
 	displaySpecificMarkers(7, interactiveMap);
-} 
+}
 
 function startInteractive() {
-	$.btnStartQuiz.hide();
-	$.btnStartQuiz.height = 0;
 
-	$.txtLetter.show();
-	$.txtLetter.height = '35dp';
+	if (Ti.Geolocation.locationServicesEnabled) {
+		getUserPos('letter'); (foundJSON.length + 1);
+		interactiveGPS = true;
 
-	$.lblLetters.show();
-	$.lblLetters.height = '40dp';
+		$.btnStartQuiz.hide();
+		$.btnStartQuiz.height = 0;
 
-	$.lblCollectedLetters.show();
-	$.lblCollectedLetters.text = 'Bokstäver: ';
+		$.txtLetter.show();
+		$.txtLetter.height = '35dp';
 
-	$.viewNext.show();
-	$.viewNext.height = '60dp';
+		$.lblLetters.show();
+		$.lblLetters.height = '40dp';
 
-	$.horizontalView.show();
-	$.horizontalView.height = '75dp';
-	
-	getUserPos('letter');
-	loadClue(foundJSON.length + 1);
-	interactiveGPS = true;
+		$.lblCollectedLetters.show();
+		$.lblCollectedLetters.text = 'Bokstäver: ';
+
+		$.viewNext.show();
+		$.viewNext.height = '60dp';
+
+		$.horizontalView.show();
+		$.horizontalView.height = '75dp';
+	} else {
+		alert('Tillåt gpsen för att kunna få påminnelser, tack');
+	}
 }
 
 //-----------------------------------------------------------
@@ -106,19 +110,19 @@ function checkLetter(letterToCheck) {
 			messageDialog.message = "Man får bara skriva in en bokstav.";
 			messageDialog.title = 'Ojdå, nu blev det fel';
 			messageDialog.buttonNames = ['Stäng'];
-			
+
 			messageDialog.show();
 		} else if (letterToCheck.length < 1) {
 			messageDialog.message = "Man måste skriva in en bokstav.";
 			messageDialog.title = 'Ojdå, nu blev det fel';
 			messageDialog.buttonNames = ['Stäng'];
-			
+
 			messageDialog.show();
 		} else {
 			messageDialog.message = "Vill du spara bokstaven " + letterToCheck + "?";
 			messageDialog.title = 'Spara bokstav';
 			messageDialog.buttonNames = ['Ja, jag vill spara!', 'Stäng'];
-			
+
 			messageDialog.addEventListener('click', function(e) {
 				if (e.index == 0) {
 					$.txtLetter.value = '';
@@ -134,11 +138,11 @@ function checkLetter(letterToCheck) {
 
 					foundLetterId++;
 					getFound();
-					loadClue(foundJSON.length + 1); 
-					
+					loadClue(foundJSON.length + 1);
+
 					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
 				}
-			}); 
+			});
 
 			messageDialog.show();
 		}
@@ -180,26 +184,26 @@ function checkWord() {
 
 		$.lblWelcome.text = "Bra jobbat!";
 		$.lblWelcome.fontSize = '30dp';
-		
+
 		$.lblInfoText.text = "Du hittade det rätta ordet!";
-		
+
 		$.txtLetter.hide();
 		$.txtLetter.height = '0dp';
-		
+
 		$.lblLetters.hide();
 		$.lblLetters.height = '0dp';
-		
+
 		$.lblCollectedLetters.text = '';
-		
+
 		$.wordView.visible = false;
 		$.wordView.height = 0;
 		$.horizontalView.visible = false;
 		$.horizontalView.height = 0;
-		
+
 		stopGame();
 		startOver();
 		interactiveGPS = false;
-	} else if(wrongWord == 3){
+	} else if (wrongWord == 3) {
 		alertDialog.title = 'Fel ord';
 		alertDialog.message = "Nu blev det fel. Vill du kontrollera dina bokstäver? Det här är de korrekta: " + correctLetters;
 	} else {
@@ -220,4 +224,4 @@ interactiveMap.addEventListener('click', function(evt) {
 	if (evt.clicksource == 'rightButton') {
 		showHotspot(evt.annotation.id);
 	}
-});
+}); 

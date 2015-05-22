@@ -22,25 +22,22 @@ var letterJSON = letterCollection.toJSON();
 // för påminnelser om sevärdheter eller bokstavsjakt
 //-----------------------------------------------------------
 function getUserPos(type) {
+	alert("Är i getUserPos");
 	try {
 
-		if (Ti.Geolocation.locationServicesEnabled) {
-			Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
-			Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
-			Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
-			Titanium.Geolocation.distanceFilter = 3;
+		//Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
+		Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
+		Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
+		Titanium.Geolocation.distanceFilter = 3;
 
-			if (type == 'hotspot') {
-				Ti.Geolocation.addEventListener('location', addHotspotLocation);
-			}
-
-			if (type == 'letter') {
-				Ti.Geolocation.addEventListener('location', addLetterLocation);
-			}
-
-		} else {
-			alert('Tillåt gpsen, tack');
+		if (type == 'hotspot') {
+			Ti.Geolocation.addEventListener('location', addHotspotLocation);
 		}
+
+		if (type == 'letter') {
+			Ti.Geolocation.addEventListener('location', addLetterLocation);
+		}
+
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - get current position GPS");
 	}
@@ -49,47 +46,39 @@ function getUserPos(type) {
 var addLetterLocation = function(e) {
 	if (!e.error) {
 		setUserPosition(e.coords, 'letter');
+		Ti.API.info("Sätter position - letter");
+	} else {
+		Alert("Kan inte hämta din position");
 	}
 };
 
 var addHotspotLocation = function(e) {
 	if (!e.error) {
+
 		setUserPosition(e.coords, 'hotspot');
+		Ti.API.info("Sätter position");
+	} else {
+		Alert("Kan inte hämta din position");
 	}
 };
-
-//-----------------------------------------------------------
-// Avbryter location-event
-//-----------------------------------------------------------
-function stopGPS() {
-	Titanium.Geolocation.removeEventListener('location', addHotspotLocation);
-}
-
-function stopGame() {
-	Titanium.Geolocation.removeEventListener('location', addLetterLocation);
-	lettersModel.destroy();
-	foundLettersModel.destroy();
-}
-
-Alloy.Globals.stopGPS = stopGPS;
-Alloy.Globals.stopGame = stopGame;
 
 //-----------------------------------------------------------
 // Hämtar enhetens position och kontrollerar mot punkter
 //-----------------------------------------------------------
 function setUserPosition(userCoordinates, type) {
- try {
-	gLat = userCoordinates.latitude;
-	gLon = userCoordinates.longitude;
+	try {
+		Ti.API.info("setUserPos");
+		gLat = userCoordinates.latitude;
+		gLon = userCoordinates.longitude;
 
-	if (type == 'hotspot') {
-		userIsNearHotspot();
-	} else if (type == 'letter') {
-		userIsNearLetter();
-	}
+		if (type == 'hotspot') {
+			userIsNearHotspot();
+		} else if (type == 'letter') {
+			userIsNearLetter();
+		}
 
 	} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getPosition");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getPosition");
 	}
 }
 
@@ -184,26 +173,30 @@ function userIsNearHotspot() {
 //-----------------------------------------------------------
 function userIsNearLetter() {
 	try {
+
 		for (var isnear = 0; isnear < letterJSON.lenght; isnear++) {
+
+			var message = Ti.UI.createAlertDialog({
+				message : letterJSON[isnear].clue,
+				title : 'Ny bokstav i närheten!',
+				buttonNames : ['Gå till bokstavsjakten', 'Stäng']
+			});
+
+			message.addEventListener('click', function(e) {
+				if (e.index == 0) {
+					Alloy.CFG.tabs.setActiveTab(3);
+				}
+			});
+
 			lat = letterJSON[isnear].latitude;
 			lon = letterJSON[isnear].longitude;
 			var radius = letterJSON[isnear].radius;
 
 			if (isInsideRadius(lat, lon, radius) && letterJSON[isnear].alerted == 0) {
-				var message = Ti.UI.createAlertDialog({
-					message : letterJSON[isnear].clue,
-					title : 'Ny bokstav i närheten!',
-					buttonNames : ['Gå till bokstavsjakten', 'Stäng']
-				});
-				message.addEventListener('click', function(e) {
-					if (e.index == 0) {
-						Alloy.CFG.tabs.setActiveTab(3);
-					}
-				});
 				message.show();
-
 				letterJSON[isnear].alerted = 1;
 				playSound();
+				Ti.API.info("I radien");
 			}
 		}
 	} catch(e) {
@@ -254,17 +247,17 @@ function addClueZone() {
 function getFound() {
 	try {
 		foundJSON = [];
-		
+
 		var foundLettersCollection = Alloy.Collections.foundLettersModel;
 		foundLettersCollection.fetch({
 			query : 'SELECT letter FROM foundLettersModel WHERE found = 1'
 		});
-		
-		foundLetters = foundLettersCollection.toJSON();		
+
+		foundLetters = foundLettersCollection.toJSON();
 		for (var f = 0; f < foundLetters.length; f++) {
 			foundJSON.push(' ' + foundLetters[f].letter);
 		}
-		
+
 		return foundJSON;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getFound");
@@ -311,3 +304,19 @@ function getPosition(maptype) {
 		}
 	});
 }
+
+//-----------------------------------------------------------
+// Avbryter location-event
+//-----------------------------------------------------------
+function stopGPS() {
+	Titanium.Geolocation.removeEventListener('location', addHotspotLocation);
+}
+
+function stopGame() {
+	Titanium.Geolocation.removeEventListener('location', addLetterLocation);
+	lettersModel.destroy();
+	foundLettersModel.destroy();
+}
+
+Alloy.Globals.stopGPS = stopGPS;
+Alloy.Globals.stopGame = stopGame;
