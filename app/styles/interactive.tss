@@ -1,3 +1,125 @@
+// "Label": {
+	// top: '5dp',
+	// left: '15dp',
+	// right: '15dp',
+	// font: {
+		// fontSize: '14dp',
+		// fontFamily: 'Raleway-Light'
+	// }
+// }
+// 
+// "#interactiveWin": {
+	// backgroundColor: 'white',
+	// layout: 'vertical'
+// }
+// 
+// "#hideView": {
+	// layout: 'vertical'
+// }
+// 
+// "#lblInfoText": {
+	// top: '5dp',
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontSize: '14dp'
+	// } ,
+	// right: '20dp',
+	// left: '20dp',
+	// color : '#000000'
+// }
+// 
+// "#showFamilyTrail": {
+	// top: '0dp',
+	// height: '45%',
+	// width: Titanium.UI.FILL
+// }
+// 
+// "#lblWelcome": {
+	// top: '5dp',
+	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontFamily: 'Raleway-Medium',
+		// fontSize: '18dp'
+	// },
+	// color: '#FCAF17'
+// }
+// 
+// "#lblClue": {
+	// top: '5dp',
+	// left: '5dp',
+	// font: {
+		// fontSize: '16dp',
+		// fontStyle: 'italic'
+	// },
+	// color: "#000000"
+// }
+// 
+// "#lblLetters": {
+	// visible: false,
+	// height: '0dp',
+	// width: '200dp',
+	// left: '15%',
+	// right: '15%',
+	// backgroundColor: 'white',
+	// borderRadius: '12dp',
+	// color: 'black',
+	// borderColor : '#0098C3',
+	// top: '4dp',
+	// font: {
+		// fontSize: '16dp',
+		// fontFamily: 'Raleway-Medium'
+	// }
+// }
+// 
+// "#txtLetter": {
+	// top: '5dp',
+	// height: '0dp',
+	// left: '15dp',
+	// right: '15dp',
+	// width: Titanium.UI.FILL,
+	// tintColor: 'blue',
+	// borderWidth: '1dp',
+	// borderRadius: '5dp',
+	// visible: false
+// }
+// 
+// "#lblCollectedLetters": {
+	// visible: false,
+	// color: '#000000',
+	// left: '20dp',
+	// right: '15dp',
+	// width: Titanium.UI.FILL,
+// }
+// 
+// "#wordView":{
+	// top: '0dp',
+	// layout: 'horizontal'
+// }
+// 
+// "#txtWord":{
+	// visible: false
+// }
+// 
+// "#lblWord":{
+	// visible: false,
+	// height: '35dp',
+	// width: '70dp',
+	// tintColor: 'blue',
+	// borderWidth: '1dp',
+	// borderRadius: '5dp'
+// }
+// 
+// "#btnStartQuiz": {
+	// height: '40dp',
+	// width: '200dp',
+	// backgroundColor: 'white',
+	// borderRadius: '12dp',
+	// color: 'black',
+	// top: '17dp',
+	// borderColor : '#0098C3'
+// }
+// 
+
 "Label": {
 	top: '5dp',
 	left: '15dp',
@@ -9,23 +131,35 @@
 }
 
 "#interactiveWin": {
-	backgroundColor: 'white',
-	layout: 'vertical'
+	layout: 'vertical',
+	height : Titanium.UI.SIZE
 }
 
 "#hideView": {
 	layout: 'vertical'
 }
 
+
+"#wordView": {
+	visible: false,
+	height: '0dp'
+}
+
+"#horizontalView":{
+	layout: 'horizontal',
+	width: Titanium.UI.FILL,
+	height: '0dp',
+	visible: false
+}
+
 "#lblInfoText": {
 	top: '5dp',
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	font: {
 		fontSize: '14dp'
 	} ,
 	right: '20dp',
-	left: '20dp',
-	color : '#000000'
+	left: '20dp'
 }
 
 "#showFamilyTrail": {
@@ -41,41 +175,29 @@
 		fontFamily: 'Raleway-Medium',
 		fontSize: '18dp'
 	},
-	color: '#FCAF17'
-}
-
-"#lblClue": {
-	top: '5dp',
-	left: '5dp',
-	font: {
-		fontSize: '16dp',
-		fontStyle: 'italic'
-	},
-	color: "#000000"
+	color: '#FCAF17',
+	left: '19dp'
 }
 
 "#lblLetters": {
 	visible: false,
 	height: '0dp',
-	width: '200dp',
 	left: '15%',
 	right: '15%',
-	backgroundColor: 'white',
-	borderRadius: '12dp',
-	color: 'black',
-	borderColor : '#0098C3',
+	width: Titanium.UI.FILL,
 	top: '4dp',
+	color: '#0098C3',
 	font: {
-		fontSize: '16dp',
-		fontFamily: 'Raleway-Medium'
+		fontFamily: 'Raleway-Medium',
+		fontSize: '16dp'
 	}
 }
 
 "#txtLetter": {
-	top: '5dp',
+	top: '2dp',
+	left: '15%',
+	right: '15%',
 	height: '0dp',
-	left: '15dp',
-	right: '15dp',
 	width: Titanium.UI.FILL,
 	tintColor: 'blue',
 	borderWidth: '1dp',
@@ -85,37 +207,80 @@
 
 "#lblCollectedLetters": {
 	visible: false,
-	color: '#000000',
 	left: '20dp',
 	right: '15dp',
 	width: Titanium.UI.FILL,
+	top: '0dp',
+	font:
+	{
+		fontFamily: 'Raleway-Light',
+		fontSize: '17dp'
+	},
+	color: '#FCAF17'
+}
+
+"#nextClue": {
+	top: '5dp',
+	font: {
+		fontFamily: 'Raleway-Light',
+		fontSize: '13dp'
+	},
+	color: '#c6c6c6'
+}
+
+"#viewNext": {
+	visible: false,
+	height: '0dp',
+	left: '5dp',
+	bottom: '0dp',
+	width: '80%',
+	layout: 'vertical'
 }
 
 "#wordView":{
 	top: '0dp',
-	layout: 'horizontal'
+	layout: 'horizontal',
+	visible: false,
+	height: '0dp'
 }
 
 "#txtWord":{
-	visible: false
-}
-
-"#lblWord":{
-	visible: false,
-	height: '35dp',
-	width: '70dp',
+	height: '40dp',
+	right: '15dp',
+	left: '15dp',
+	width: Titanium.UI.FILL,
 	tintColor: 'blue',
 	borderWidth: '1dp',
 	borderRadius: '5dp'
 }
 
-"#btnStartQuiz": {
-	height: '40dp',
-	width: '200dp',
-	backgroundColor: 'white',
-	borderRadius: '12dp',
-	color: 'black',
-	top: '17dp',
-	borderColor : '#0098C3'
+"#lblWord":{
+	height: '35dp',
+	right: '15dp',
+	left: '15dp',
+	width: Titanium.UI.FILL,
+	color: '#0098C3',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '16dp'
+	}
 }
 
+"#btnStartQuiz": {
+	height: '40dp',
+	width: Titanium.UI.FILL,
+	borderRadius: '4dp',
+	color: '#0098C3',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '16dp'
+	},
+	top: '5%',
+	left: '15dp',
+	right: '15dp'
+}
+
+".headView": {
+	layout: 'vertical',
+	backgroundColor: 'white'
+}
