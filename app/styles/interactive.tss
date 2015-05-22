@@ -118,7 +118,6 @@
 	},
 	top: '2dp',
 	left: '15dp',
-	right: '15dp',
 	color: 'gray'
 }
 
@@ -136,8 +135,7 @@
 	height: '0dp',
 	top: '5%',
 	left: '5dp',
-	bottom: '0dp',
-	width: '80%',
+	width: Titanium.UI.FILL,
 	layout: 'vertical',
 	backgroundColor: 'red'
 }

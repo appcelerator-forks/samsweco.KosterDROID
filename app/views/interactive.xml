@@ -24,7 +24,7 @@
 				<Label id="lblCollectedLetters" text="Bokstäver: "></Label>
 				
 				<View id="wordView">
-					<TextField id="txtWord"></TextField>
+					<TextField id="txtWord" hintText="Skriv ordet här..."></TextField>
 					<Label id="lblWord" onClick="checkWord" text="Skicka ord!"></Label>
 				</View>
 				
