@@ -17,14 +17,14 @@
 				<Button id="btnStartQuiz" onClick="startInteractive">Starta bokstavsjakten!</Button>
 				
 				<View id="horizontalView" class="view">
-					<TextField id="txtLetter"></TextField>
+					<TextField id="txtLetter" android:hint="Skriv din bokstav här..."></TextField>
 					<Button id="lblLetters" onClick="sendLetter">Skicka bokstav!</Button>
 				</View>
 				
 				<Label id="lblCollectedLetters" text="Bokstäver: "></Label>
 				
 				<View id="wordView">
-					<TextField id="txtWord"></TextField>
+					<TextField id="txtWord" android:hint="Skriv ordet här..."></TextField>
 					<Label id="lblWord" onClick="checkWord" text="Skicka ord!"></Label>
 				</View>
 				
