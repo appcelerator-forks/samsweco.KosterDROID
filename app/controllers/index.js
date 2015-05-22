@@ -15,6 +15,7 @@ $.tabs.on('close', function() {
 	stopGame();
 });
 
+$.koster.activity.actionBar.hide();
 
 //-----------------------------------------------------------
 // Metoder för navigering
