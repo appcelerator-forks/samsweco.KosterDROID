@@ -604,7 +604,7 @@ function createMapRoutes(maptype, file, name, color) {
 			var route = {
 				name : name,
 				points : coordArray,
-				width : 2.0,
+				width : 4.0,
 				color : color
 			};
 			
@@ -642,7 +642,7 @@ function displayTrailMarkers(maptype) {
 				longitude : trailJson[i].pinLon,
 				title : trailJson[i].name,
 				subtitle : trailJson[i].area + ', ' + trailJson[i].length + ' km',
-				rightButton : '/images/arrow.png',
+				rightButton : '/images/androidarrow2.png',
 				image : '/images/pin-' + trailJson[i].pincolor + '.png',
 				centerOffset : {
 					x : 0,
@@ -723,7 +723,7 @@ function displayAllMarkers() {
 					x : -3,
 					y : -16
 				},
-				rightButton : '/images/arrow.png',
+				rightButton : '/images/androidarrow2.png',
 				name : 'hotspot'
 			});
 
@@ -745,6 +745,7 @@ function setRegion(maptype) {
 			longitudeDelta : 0.08
 		};
 		maptype.animate = true;
+		maptype.userLocation = false;
 	} catch (e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - setRegion");
 	}
@@ -805,7 +806,7 @@ function displaySpecificMarkers(id, maptype) {
 				title : specificHotspots[u].name,
 				subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',
 				image : '/images/flag.png',
-				rightButton : '/images/arrow.png',
+				// rightButton : '/images/arrow.png',
 				name : 'hotspot'
 			});
 
