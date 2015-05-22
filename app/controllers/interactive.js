@@ -82,8 +82,12 @@ function toNextClue() {
 }
 
 function loadClue(id) {
-	$.lblWelcome.text = "Ledtråd " + id + ":";
-	$.lblInfoText.text = jsonCollection[id - 1].clue;
+	if(id < 10){
+		$.lblWelcome.text = "Ledtråd " + id + ":";
+		$.lblInfoText.text = jsonCollection[id - 1].clue;
+	} else {
+		allLetters();
+	}
 }
 
 //-----------------------------------------------------------
@@ -161,9 +165,11 @@ function allLetters() {
 		$.txtLetter.height = 0;
 		$.lblLetters.hide();
 		$.lblLetters.height = 0;
+		$.horizontalView.hide();
+		$.horizontalView.height = 0;
 		$.btnStartQuiz.height = 0;
 		$.wordView.show();
-		$.wordView.height = Ti.UI.SIZE;
+		$.wordView.height = '80dp';
 		$.viewNext.hide();
 		$.viewNext.height = 0;
 

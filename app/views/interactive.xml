@@ -9,7 +9,7 @@
 	<Collection src="foundLettersModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
-	<View id="interactiveWin">
+	<ScrollView id="interactiveWin">
 			<View id="showFamilyTrail"></View>
 			<View id="hideView" class="view">
 				<Label id="lblWelcome" text="Välkommen till bokstavsjakten!"></Label>
@@ -33,5 +33,5 @@
 					<Button id="nextClue" onClick="toNextClue">Klicka här för att gå till nästa ledtråd.</Button>
 				</View>
 			</View>
-		</View>
+		</ScrollView>
 </Alloy>

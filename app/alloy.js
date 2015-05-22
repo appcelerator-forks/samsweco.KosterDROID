@@ -68,7 +68,7 @@ var myPosition = false;
 //-----------------------------------------------------------
 var lettersArray = [];
 var globalTrailID = 0;
-var word = 'SAM';
+var word = 'ÖRONMANET';
 
 var interactiveVisible = false;
 

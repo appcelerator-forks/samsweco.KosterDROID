@@ -22,7 +22,6 @@ var letterJSON = letterCollection.toJSON();
 // för påminnelser om sevärdheter eller bokstavsjakt
 //-----------------------------------------------------------
 function getUserPos(type) {
-	alert("Är i getUserPos");
 	try {
 
 		//Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
