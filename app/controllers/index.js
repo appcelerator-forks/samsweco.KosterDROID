@@ -5,17 +5,11 @@ $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toInteractive = toInteractive;
 
-// $.tabs.addEventListener('close', function(){
-	// stopGPS();
-	// stopGame();
-// });
-
 $.tabs.on('close', function() {
 	stopGPS();
 	stopGame();
 });
 
-$.koster.activity.actionBar.hide();
 
 //-----------------------------------------------------------
 // Metoder för navigering

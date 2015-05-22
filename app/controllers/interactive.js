@@ -49,6 +49,8 @@ function startInteractive() {
 
 		$.viewNext.show();
 		$.viewNext.height = '60dp';
+		
+		$.nextClue.height = '30dp';
 
 		$.horizontalView.show();
 		$.horizontalView.height = '75dp';
@@ -60,7 +62,7 @@ function startInteractive() {
 //-----------------------------------------------------------
 // Laddar in nästa ledtråd om man inte hittar bokstaven
 //-----------------------------------------------------------
-$.nextClue.addEventListener('click', function() {
+function toNextClue() {
 	var nextDialog = Ti.UI.createAlertDialog({
 		title : 'Gå till nästa',
 		message : 'Är du säker på att du inte hittar bokstaven?',
@@ -77,7 +79,7 @@ $.nextClue.addEventListener('click', function() {
 	});
 
 	nextDialog.show();
-});
+}
 
 function loadClue(id) {
 	$.lblWelcome.text = "Ledtråd " + id + ":";

@@ -46,7 +46,6 @@ function getUserPos(type) {
 var addLetterLocation = function(e) {
 	if (!e.error) {
 		setUserPosition(e.coords, 'letter');
-		Ti.API.info("Sätter position - letter");
 	}
 };
 
@@ -61,7 +60,6 @@ var addHotspotLocation = function(e) {
 //-----------------------------------------------------------
 function setUserPosition(userCoordinates, type) {
 	try {
-		Ti.API.info("setUserPos");
 		gLat = userCoordinates.latitude;
 		gLon = userCoordinates.longitude;
 

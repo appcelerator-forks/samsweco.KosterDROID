@@ -77,7 +77,7 @@
 
 "#lblCollectedLetters": {
 	visible: false,
-	color: '#000000',
+	color: '#FCAF17',
 	left: '20dp',
 	right: '15dp',
 	width: Titanium.UI.FILL,
@@ -111,20 +111,33 @@
 	borderColor : '#0098C3'
 }
 
-"#nextClue": {
-	top: '5dp',
+"#lblnextClue": {
 	font: {
 		fontFamily: 'Raleway-Light',
 		fontSize: '13dp'
 	},
+	top: '2dp',
+	left: '15dp',
+	right: '15dp',
 	color: 'gray'
+}
+
+"#nextClue": {
+	font: {
+		fontFamily: 'Raleway-Light',
+		fontSize: '13dp'
+	},
+	left: '15dp',
+	top: 0
 }
 
 "#viewNext": {
 	visible: false,
 	height: '0dp',
+	top: '5%',
 	left: '5dp',
 	bottom: '0dp',
 	width: '80%',
-	layout: 'vertical'
+	layout: 'vertical',
+	backgroundColor: 'red'
 }
