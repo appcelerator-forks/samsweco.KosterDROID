@@ -1,11 +1,12 @@
 <Alloy>
+	<Collection src="mediaModel" />
 	<Collection src="hotspotModel" />
-	<Collection src="trailsModel" />
-	<Collection src="jsonFilesModel" />
-	<Collection src="hotspot_trailsModel" />
+	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
-	<Collection src="infospotCoordinatesModel" />
+	<Model src="foundLettersModel" />
+	<Collection src="jsonFilesModel" />
+	
 	<Window>
 		<View id="mapDetailView">
 		</View>

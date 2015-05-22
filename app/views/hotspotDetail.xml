@@ -5,6 +5,7 @@
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
 	<Model src="foundLettersModel" />
+	
 	<Window id="hotspotDetail" class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">

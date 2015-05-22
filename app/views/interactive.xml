@@ -1,11 +1,11 @@
-<Alloy>
-	<Collection src="letterModel"/>
+<!-- <Alloy>
+	<Collection src="mediaModel" />
 	<Collection src="hotspotModel" />
-	<Collection src="trailsModel" />
 	<Collection src="infospotCoordinatesModel" />
-	<Collection src="jsonFilesModel" />
 	<Collection src="letterModel" />
-	<Collection src="infospot_trailsModel"></Collection>
+	<Model src="letterModel" />
+	<Model src="foundLettersModel" />
+	
 	<View id="interactiveWin">
 			<View id="showFamilyTrail"></View>
 			<View id="hideView">
@@ -45,4 +45,40 @@
 					</View>
 				</View>
 		</ScrollView> -->
+<!-- </Alloy> -->
+
+<Alloy>
+	<Collection src="hotspotModel" />
+	<Collection src="trailsModel" />
+	<Collection src="jsonFilesModel" />
+	<Collection src="hotspot_trailsModel" />
+	<Collection src="letterModel" />
+	<Model src="letterModel" />
+	<Model src="foundLettersModel" />
+	<Collection src="foundLettersModel" />
+	<Collection src="infospotCoordinatesModel" />
+		<ScrollView id="interactiveWin">
+			<View id="showFamilyTrail"></View>
+			<View id="hideView">
+				<Label id="lblWelcome" text="Välkommen till bokstavsjakten!"></Label>
+				<Label id="lblInfoText" text="Vandra äventyrslingan och leta efter de 9 bokstäverna som finns gömda längs leden! Försök sedan klura ut det hemliga ordet. Längs vägen kommer du få ledtrådar som hjälper dig finna bokstäverna. Du kan se bokstävernas ungefärliga läge med hjälp av gröna plupparna. Vi kommer även påminna dig när du börjar närma dig en bokstav."></Label>
+				<Button id="btnStartQuiz" onClick="startInteractive">Starta bokstavsjakten!</Button>
+				
+				<View id="horizontalView">
+					<TextField id="txtLetter"></TextField>
+					<Button id="lblLetters" onClick="sendLetter">Skicka bokstav!</Button>
+				</View>
+				
+				<Label id="lblCollectedLetters" text="Bokstäver: "></Label>
+				
+				<View id="wordView">
+					<TextField id="txtWord"></TextField>
+					<Label id="lblWord" onClick="checkWord" text="Skicka ord!"></Label>
+				</View>
+				
+				<View id="viewNext">
+					<Label id="nextClue">Hittar du ingen bokstav? Klicka här för att gå till nästa ledtråd.</Label>
+				</View>
+				</View>
+			</ScrollView>
 </Alloy>

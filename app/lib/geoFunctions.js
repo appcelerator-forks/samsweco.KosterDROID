@@ -308,7 +308,6 @@ function getPosition(maptype) {
 				longitudeDelta : 0.007
 			};
 			maptype.animate = true;
-			maptype.userLocation = true;
 		}
 	});
 }

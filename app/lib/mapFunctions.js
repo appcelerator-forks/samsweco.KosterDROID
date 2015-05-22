@@ -718,7 +718,7 @@ function displayAllMarkers() {
 				longitude : markersJSON[u].ykoord,
 				title : markersJSON[u].name,
 				subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-				image : '/images/hot-icon-azure.png',
+				image : '/images/flag.png',
 				centerOffset : {
 					x : -3,
 					y : -16
@@ -745,7 +745,6 @@ function setRegion(maptype) {
 			longitudeDelta : 0.08
 		};
 		maptype.animate = true;
-		maptype.userLocation = false;
 	} catch (e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - setRegion");
 	}
@@ -805,7 +804,7 @@ function displaySpecificMarkers(id, maptype) {
 				longitude : specificHotspots[u].ykoord,
 				title : specificHotspots[u].name,
 				subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',
-				image : '/images/hot-icon-azure.png',
+				image : '/images/flag.png',
 				rightButton : '/images/arrow.png',
 				name : 'hotspot'
 			});
