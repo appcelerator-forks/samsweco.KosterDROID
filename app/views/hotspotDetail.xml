@@ -1,5 +1,10 @@
 <Alloy>
-	<Collection src="mediaModel"></Collection>
+	<Collection src="mediaModel" />
+	<Collection src="hotspotModel" />
+	<Collection src="infospotCoordinatesModel" />
+	<Collection src="letterModel" />
+	<Model src="letterModel" />
+	<Model src="foundLettersModel" />
 	<Window id="hotspotDetail" class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
