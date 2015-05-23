@@ -10,6 +10,16 @@ $.tabs.on('close', function() {
 	stopGame();
 });
 
+$.koster.addEventListener("open", function() {
+        if (! win.activity) {
+            Ti.API.error("Can't access action bar on a lightweight window.");
+        } else {
+            actionBar = win.activity.actionBar;
+            if (actionBar) {
+                actionBar.hide();
+            }
+        }
+});
 
 //-----------------------------------------------------------
 // Metoder för navigering

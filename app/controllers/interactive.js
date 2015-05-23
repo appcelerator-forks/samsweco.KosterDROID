@@ -146,7 +146,7 @@ function checkLetter(letterToCheck) {
 
 					foundLetterId++;
 					getFound();
-					loadClue(foundJSON.length + 1);
+					loadClue(foundLetterId);
 
 					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
 				}
@@ -160,18 +160,29 @@ function checkLetter(letterToCheck) {
 }
 
 function allLetters() {
-	if (word.length == foundJSON.length) {
+	if (foundLetterId > 9) {
 		$.txtLetter.hide();
 		$.txtLetter.height = 0;
+		
 		$.lblLetters.hide();
 		$.lblLetters.height = 0;
+		
 		$.horizontalView.hide();
 		$.horizontalView.height = 0;
+		
 		$.btnStartQuiz.height = 0;
+		
 		$.wordView.show();
 		$.wordView.height = '80dp';
+		
 		$.viewNext.hide();
 		$.viewNext.height = 0;
+
+		$.txtWord.show();
+		$.txtWord.height = '40dp';
+
+		$.lblWord.show();
+		$.lblWord.height = '40dp';
 
 		$.lblWelcome.text = 'Skriv ordet du bildat av bokstäverna!';
 		$.lblInfoText.text = 'Ledtråd: En svävande geléklump i havet.';
@@ -189,9 +200,6 @@ function checkWord() {
 	});
 
 	if (checkword == word) {
-		alertDialog.title = "Rätt ord!";
-		alertDialog.message = "Bra jobbat! Du hittade det rätta ordet!";
-
 		$.lblWelcome.text = "Bra jobbat!";
 		$.lblWelcome.fontSize = '30dp';
 
@@ -204,6 +212,7 @@ function checkWord() {
 		$.lblLetters.height = '0dp';
 
 		$.lblCollectedLetters.text = '';
+		$.lblCollectedLetters.hide();
 
 		$.wordView.visible = false;
 		$.wordView.height = 0;
@@ -216,9 +225,11 @@ function checkWord() {
 	} else if (wrongWord == 3) {
 		alertDialog.title = 'Fel ord';
 		alertDialog.message = "Nu blev det fel. Vill du kontrollera dina bokstäver? Det här är de korrekta: " + correctLetters;
+		alertDialog.show();
 	} else {
 		alertDialog.title = "Fel ord";
 		alertDialog.message = "Försök igen! Du har snart klurat ut det!";
+		alertDialog.show();
 		wrongWord++;
 	}
 }

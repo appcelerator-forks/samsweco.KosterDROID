@@ -100,8 +100,9 @@
 }
 
 "#txtWord":{
+	visible: false,
 	top: '5dp',
-	height: '35dp',
+	height: '0dp',
 	left: '15dp',
 	right: '15dp',
 	width: Titanium.UI.FILL,
@@ -112,7 +113,8 @@
 }
 
 "#lblWord":{
-	height: '40dp',
+	visible: false,
+	height: '0dp',
 	width: '200dp',
 	left: '25%',
 	right: '20%',

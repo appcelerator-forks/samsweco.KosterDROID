@@ -156,5 +156,6 @@ Titanium.App.addEventListener('close', function() {
 Titanium.App.addEventListener('close', function() {
 	if(interactiveGPS){
 		Alloy.Globals.stopGame;
+		Alloy.Globals.startOver;
 	} 
 });

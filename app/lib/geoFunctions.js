@@ -278,6 +278,7 @@ function startOver() {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
 	}
 }
+Alloy.Globals.startOver = startOver;
 
 //-----------------------------------------------------------
 // Sätter rätt region på karta utifrån vandringsledens storlek

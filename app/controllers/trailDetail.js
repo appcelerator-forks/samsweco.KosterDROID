@@ -61,7 +61,7 @@ function selectTrailPics() {
 
 			var lblImgTxt = Ti.UI.createLabel({
 				left : '5dp',
-				top : '2dp',
+				top : '1dp',
 				text : jsonMedia[i].img_txt,
 				color : 'white',
 				font : {
