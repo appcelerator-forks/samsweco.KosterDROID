@@ -16,8 +16,14 @@ try {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "infoDetail - load data into labels");
 }
 
+//-----------------------------------------------------------
+// Onload
+//-----------------------------------------------------------
 setRowData();
 
+//-----------------------------------------------------------
+// Visar data om infon som valdes i listan
+//-----------------------------------------------------------
 function showinfoDetails(info) {
 	try {
 		var selectedInfo = info.row;
@@ -33,12 +39,12 @@ function showinfoDetails(info) {
 		var infoDetail = Alloy.createController("infoDetail", args).getView();
 		infoDetail.open();
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoDetail - showInfoDetail");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
 	}
 }
 
 //-----------------------------------------------------------
-// sätter alla items i listan
+// Sätter alla items i urllistan
 //-----------------------------------------------------------
 function setRowData() {
 	try {
@@ -82,7 +88,7 @@ function setRowData() {
 		}
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - setRowData");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
 	}
 }
 
@@ -90,16 +96,19 @@ function setRowData() {
 // Hämtar all info som ska läsas in i listan
 //-----------------------------------------------------------
 function getLink(e) {
+	try {
+		var rowId = e.rowData.id;
+		urlCollection.fetch({
+			query : query9 + rowId + '"'
+		});
 
-	var rowId = e.rowData.id;
-	urlCollection.fetch({
-		query : query9 + rowId + '"'
-	});
+		var jsonObj = urlCollection.toJSON();
+		var web = jsonObj[0].url;
 
-	var jsonObj = urlCollection.toJSON();
-	var web = jsonObj[0].url;
-
-	openLink(web);
+		openLink(web);
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
+	}	
 }
 
 
@@ -116,6 +125,6 @@ function openLink(link) {
 		Alloy.CFG.tabs.activeTab.open(window);
 		
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoDetail - openLink");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
 	}
 }

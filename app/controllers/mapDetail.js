@@ -27,13 +27,22 @@ setMarkers();
 // Functioner för att öppna och fylla kartan
 //-----------------------------------------------------------
 function showMapDetail(){
-	$.mapDetailView.add(showDetailMap(detailMap, trailId, trailName, trailColor));
+	try{
+		$.mapDetailView.add(showDetailMap(detailMap, trailId, trailName, trailColor));
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
+	}	
 }
 
 function setMarkers(){
-	detailMap.removeAllAnnotations();
-	displaySpecificMarkers(trailId, detailMap);
-	getSpecificIconsForTrail(trailId);
+	try {
+		detailMap.removeAllAnnotations();
+		displaySpecificMarkers(trailId, detailMap);
+		getSpecificIconsForTrail(trailId);
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
+	}
+	
 }
 
 //-----------------------------------------------------------
@@ -60,31 +69,38 @@ function addEventList() {
 					Alloy.CFG.tabs.activeTab.open(hotspotDetail);
 				};
 		});
-		
-
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - addEventListener");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
 	}
 }
 
+//-----------------------------------------------------------
+// Visar användarens position på detaljkartan
+//-----------------------------------------------------------
 function getZoomedMapPosition() {
-	if (myPosition == false) {
-		getPosition();
-		myPosition = true;
-	} else {
-		detailMap.region = {
-			latitude : zoomLat,
-			longitude : zoomLon,
-			latitudeDelta : 0.03,
-			longitudeDelta : 0.03
-		};	
-	
-		detailMap.animate = true;
-		detailMap.userLocation = true;
-		myPosition = false;
-	}
+	try {
+		if (myPosition == false) {
+			getPosition();
+			myPosition = true;
+		} else {
+			detailMap.region = {
+				latitude : zoomLat,
+				longitude : zoomLon,
+				latitudeDelta : 0.03,
+				longitudeDelta : 0.03
+			};
+
+			detailMap.animate = true;
+			myPosition = false;
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
+	}	
 }
 
+//-----------------------------------------------------------
+// Visar och släcker sevärdheter på kartan
+//-----------------------------------------------------------
 $.geoSwitch1.addEventListener('change', function(e) {
 	if ($.geoSwitch1.value == true) {
 		getUserPos('hotspot');
@@ -94,6 +110,9 @@ $.geoSwitch1.addEventListener('change', function(e) {
 	}
 });
 
+//-----------------------------------------------------------
+// Visar och släcker kartmenyn på detaljkartan
+//-----------------------------------------------------------
 function showMenu() {
 	try {
 		if(!menuDetailVisible){
@@ -104,6 +123,6 @@ function showMenu() {
 			menuDetailVisible = false;
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapDetail - getZoomedMapPosition");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
 	}
 }

@@ -68,7 +68,7 @@ function selectHotspotPics() {
 		}
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "HotspotDetail - selectHotspotPics");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Sevärdhet");
 	}
 }
 

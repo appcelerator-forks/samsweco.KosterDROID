@@ -12,6 +12,9 @@ try {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - create infoCollection");
 }
 
+//-----------------------------------------------------------
+// Onload
+//-----------------------------------------------------------
 setRowData();
 
 //-----------------------------------------------------------
@@ -31,7 +34,7 @@ function showinfoDetails(info) {
 		var infoDetail = Alloy.createController("infoDetail", args).getView();
 		infoDetail.open();
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoDetail - showInfoDetail");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationslistan");
 	}
 
 }
@@ -41,7 +44,6 @@ function showinfoDetails(info) {
 //-----------------------------------------------------------
 function setRowData() {
 	try {
-
 		var tableViewData = [];
 		var rows = infoCollection.toJSON();
 
@@ -90,7 +92,7 @@ function setRowData() {
 		$.table.data = tableViewData;
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - setRowData");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationslistan");
 	}
 }
 //-----------------------------------------------------------
@@ -118,7 +120,7 @@ function getInfoDetails(e) {
 		Alloy.CFG.tabs.activeTab.open(infoDetail);
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - getInfoDetails");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationslistan");
 	}
 
 }

@@ -11,27 +11,82 @@ $.tabs.on('close', function() {
 });
 
 //-----------------------------------------------------------
-// Metoder för navigering
+// Metoder för navigeringen
 //-----------------------------------------------------------
-
 function toMap() {
-	var mapWind = Alloy.createController('map').getView();
-	$.mapWin.add(mapWind);
+	try {
+		var mapWind = Alloy.createController('map').getView();
+		$.mapWin.add(mapWind);
+
+		var mapwinTitle = Ti.UI.createLabel({
+			font : {
+				fontSize : '16dp',
+				fontFamily : 'Raleway-Medium'
+			},
+			text : 'Karta'
+		});
+
+		$.mapWin.titleControl = mapwinTitle;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Förstasidan");
+	}
 }
 
 function toInteractive() {
-	var interactive = Alloy.createController('interactive').getView();
-	$.interactiveWin.add(interactive);
+	try {
+		var interactive = Alloy.createController('interactive').getView();
+		$.interactiveWin.add(interactive);
+
+		var interacwinTitle = Ti.UI.createLabel({
+			font : {
+				fontSize : '16dp',
+				fontFamily : 'Raleway-Medium'
+			},
+			text : 'Bokstavsjakt'
+		});
+
+		$.interactiveWin.titleControl = interacwinTitle;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Förstasidan");
+	}
 }
 
 function toTrails() {
-	var trails = Alloy.createController('trails').getView();
-	$.hikeWin.add(trails);
+	try {
+		var trails = Alloy.createController('trails').getView();
+		$.hikeWin.add(trails);
+
+		var hikewinTitle = Ti.UI.createLabel({
+			font : {
+				fontSize : '16dp',
+				fontFamily : 'Raleway-Medium'
+			},
+			text : 'Vandringsleder'
+		});
+
+		$.hikeWin.titleControl = hikewinTitle;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Förstasidan");
+	}
 }
 
 function toInfo() {
-	var info = Alloy.createController('infoList').getView();
-	$.infoWin.add(info);
+	try {
+		var info = Alloy.createController('infoList').getView();
+		$.infoWin.add(info);
+
+		var infowinTitle = Ti.UI.createLabel({
+			font : {
+				fontSize : '16dp',
+				fontFamily : 'Raleway-Medium'
+			},
+			text : 'Information'
+		});
+
+		$.infoWin.titleControl = infowinTitle;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Förstasidan");
+	}
 }
 
 //-----------------------------------------------------------

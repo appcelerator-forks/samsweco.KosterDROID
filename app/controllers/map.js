@@ -13,16 +13,23 @@ var zoomLat = args.zoomlat;
 var trailsCollection = getTrailsCollection();
 
 //-----------------------------------------------------------
-// Onload-funktioner för kartan
+// Onload
 //-----------------------------------------------------------
 try {
 	displayBigMap();
 } catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "Map - load page");
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 }
 
+//-----------------------------------------------------------
+// Visar kartan
+//-----------------------------------------------------------
 function displayBigMap() {
-	$.mapView.add(showMap(map));
+	try {
+		$.mapView.add(showMap(map));
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
+	}	
 }
 
 //-----------------------------------------------------------
@@ -50,7 +57,7 @@ function showTrail(myName) {
 		var trailDetail = Alloy.createController("trailDetail", args).getView();
 		Alloy.CFG.tabs.activeTab.open(trailDetail);
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - showTrail");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 	}
 }
 
@@ -74,7 +81,7 @@ function showHotspot(myId) {
 		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
 		Alloy.CFG.tabs.activeTab.open(hotspotDetail);
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "map - showHotspot");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 	}
 }
 
@@ -91,13 +98,12 @@ map.addEventListener('click', function(evt) {
 	}
 });
 
-// map.addEventListener('singletap', function() {
-	// closeMapMenu();
-// });
-// 
-// $.btnMapMenu.addEventListener('click', function() {
-	// openMenu();
-// });
+//-----------------------------------------------------------
+// Funktioner för att öppna och stänga kartmenyn
+//-----------------------------------------------------------
+map.addEventListener('singletap', function() {
+	closeMapMenu();
+});
 
 function openMenu() {
 	if (!menuOpen) {

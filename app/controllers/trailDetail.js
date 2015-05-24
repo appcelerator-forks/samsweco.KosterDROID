@@ -16,28 +16,35 @@ try {
 	globalTrailID = trailId;
 
 } catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - set labels");
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 }
+
+//-----------------------------------------------------------
+// Onload
+//-----------------------------------------------------------
+selectTrailPics();
+showHotspots();
+showIcons();
+changeLabel();
 
 //-----------------------------------------------------------
 // hämtar info för den vandringsled som ska öppnas i detaljvy
 //-----------------------------------------------------------
 function zoomMapTrail() {
-	var trail = {
-		id : args.id,
-		title : args.title,
-		color : args.color,
-		zoomlat : args.zoomlat,
-		zoomlon : args.zoomlon
-	};
-	var mapDetail = Alloy.createController("mapDetail", trail).getView();
-	Alloy.CFG.tabs.activeTab.open(mapDetail);
+	try {
+		var trail = {
+			id : args.id,
+			title : args.title,
+			color : args.color,
+			zoomlat : args.zoomlat,
+			zoomlon : args.zoomlon
+		};
+		var mapDetail = Alloy.createController("mapDetail", trail).getView();
+		Alloy.CFG.tabs.activeTab.open(mapDetail);
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	}
 }
-
-selectTrailPics();
-showHotspots();
-showIcons();
-changeLabel();
 
 //-----------------------------------------------------------
 // Hämtar bilder till bildspel för den valda vandringsleder
@@ -86,7 +93,7 @@ function selectTrailPics() {
 			//$.slideShowHotspotDetail.add(lblImgTxt);
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - selectTrailPics");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 
 }
@@ -145,7 +152,7 @@ function showHotspots() {
 		$.hotspotTable.data = tableViewData;
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - showHotspots");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
 
@@ -165,7 +172,7 @@ function getHotspotData() {
 		return jsonObj;
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - getHotspotData");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
 
@@ -195,7 +202,7 @@ function showHotspot(e) {
 		Alloy.CFG.tabs.activeTab.open(hotspotDetail);
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - showHotspot");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
 
@@ -220,7 +227,7 @@ function showIcons() {
 		}
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - showIcons");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
 
@@ -240,27 +247,23 @@ function getIcons() {
 		return infoTrails;
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "trailDetail - getIcons");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
 
-function changeLabel()
-{
-	if (args.title != 'Båtleden') {
-		$.lblLangsVagen.text = 'Det här kan du se längst vägen:';
-	}
-	else {
-		$.lblLangsVagen.text = 'Det här kan du läsa om på båtresan:';
+//-----------------------------------------------------------
+// Sätter text i en label utefter vilken led som visas
+//-----------------------------------------------------------
+function changeLabel(){
+	try {
+		if (args.title != 'Båtleden') {
+			$.lblLangsVagen.text = 'Det här kan du se längst vägen:';
+		} else {
+			$.lblLangsVagen.text = 'Det här kan du läsa om på båtresan:';
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
 
-function changeLabel()
-{
-	if (args.title !='Båtleden') {
-		$.lblLangsVagen.text = 'Det här kan du se längs vägen:';
-	}
-	else {
-		$.lblLangsVagen.text= ' Det här kan du läsa om på båtresan:';
-	}
-}
  
