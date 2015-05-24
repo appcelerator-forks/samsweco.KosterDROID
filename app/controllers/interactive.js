@@ -70,13 +70,13 @@ function toNextClue() {
 	});
 
 	nextDialog.addEventListener('click', function(e) {
-		if (e.index == 0) {
-			if (lettersModel.get('found') != 1) {
-				checkLetter(lettersModel.get('letter'));
-				$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
+			if (e.index == 0) {
+				if (jsonCollection[foundLetterId].found == 0) {
+					checkLetter(jsonCollection[foundLetterId].letter);
+					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
+				}
 			}
-		}
-	});
+		});
 
 	nextDialog.show();
 }
@@ -111,7 +111,7 @@ function sendLetter() {
 // 1 i letterModel och läser upp nästa ledtråd
 //-----------------------------------------------------------
 function checkLetter(letterToCheck) {
-	try {
+	// try {
 		var messageDialog = Ti.UI.createAlertDialog();
 
 		if (letterToCheck.length > 1) {
@@ -143,6 +143,8 @@ function checkLetter(letterToCheck) {
 						'found' : 1
 					});
 					foundLettersModel.save();
+					
+					jsonCollection[foundLetterId].found = 1;
 
 					foundLetterId++;
 					getFound();
@@ -154,9 +156,9 @@ function checkLetter(letterToCheck) {
 
 			messageDialog.show();
 		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - checkLetter");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "interactive - checkLetter");
+	// }
 }
 
 function allLetters() {

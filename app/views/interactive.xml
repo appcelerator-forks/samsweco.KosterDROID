@@ -25,7 +25,7 @@
 				
 				<View id="wordView">
 					<TextField id="txtWord" hintText="Skriv ordet här..."></TextField>
-					<Label id="lblWord" onClick="checkWord" text="Skicka ord!"></Label>
+					<Button id="lblWord" onClick="checkWord">Skicka ord!</Button>
 				</View>
 				
 				<View id="viewNext">

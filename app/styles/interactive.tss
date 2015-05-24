@@ -10,11 +10,23 @@
 
 "#interactiveWin": {
 	backgroundColor: 'white',
-	layout: 'vertical'
+	layout: 'vertical',
+	top: 0
 }
 
 ".view": {
 	layout: 'vertical'
+}
+
+"#hideView": {
+	layout: 'vertical',
+	top: 0,
+	height : Titanium.UI.SIZE
+}
+
+"#wordView": {
+	visible: false,
+	height: '0dp'
 }
 
 "#lblInfoText": {
@@ -30,7 +42,7 @@
 }
 
 "#showFamilyTrail": {
-	top: '0dp',
+	top: 0,
 	height: '45%',
 	width: Titanium.UI.FILL
 }
@@ -46,10 +58,10 @@
 }
 
 "#lblLetters": {
-	// visible: false,
+	visible: false,
 	height: '0dp',
 	width: '200dp',
-	left: '25%',
+	left: '20%',
 	right: '20%',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
@@ -64,6 +76,7 @@
 
 "#txtLetter": {
 	top: '5dp',
+	visible: false,
 	height: '0dp',
 	left: '15dp',
 	right: '15dp',
@@ -72,7 +85,6 @@
 	borderWidth: '1dp',
 	borderRadius: '5dp',
 	color: 'black'
-	// visible: false
 }
 
 "#lblCollectedLetters": {
@@ -155,8 +167,8 @@
 		fontSize: '13dp'
 	},
 	left: '12dp',
-	top: 0,
-	width: '200dp',
+	top: '3dp',
+	width: '270dp',
 	backgroundColor: 'white',
 	borderRadius: '10dp',
 	color: 'black',
