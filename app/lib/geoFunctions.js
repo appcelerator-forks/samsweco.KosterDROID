@@ -118,7 +118,6 @@ function userIsNearHotspot() {
 		var dialog = Ti.UI.createAlertDialog();
 
 		for (var h = 0; h < Alloy.Globals.hotspotJSONobj.length; h++) {
-
 			if (Alloy.Globals.hotspotJSONobj[h].alerted == 0) {
 
 				var hotlat = Alloy.Globals.hotspotJSONobj[h].xkoord;
@@ -164,31 +163,33 @@ function userIsNearHotspot() {
 //-----------------------------------------------------------
 function userIsNearLetter() {
 	try {
+		var message = Ti.UI.createAlertDialog({
+			title : 'Ny bokstav i närheten!',
+			buttonNames : ['Gå till bokstavsjakten', 'Stäng']
+		}); 
 
-		for (var isnear = 0; isnear < letterJSON.lenght; isnear++) {
-
-			var message = Ti.UI.createAlertDialog({
-				message : letterJSON[isnear].clue,
-				title : 'Ny bokstav i närheten!',
-				buttonNames : ['Gå till bokstavsjakten', 'Stäng']
-			});
-
-			message.addEventListener('click', function(e) {
-				if (e.index == 0) {
-					Alloy.CFG.tabs.setActiveTab(3);
+		for (var isnear = 0; isnear < Alloy.Globals.jsonCollection.length; isnear++) {
+			if (Alloy.Globals.jsonCollection[isnear].alerted == 0){
+				
+				var lat = Alloy.Globals.jsonCollection[isnear].latitude;
+				var lon = Alloy.Globals.jsonCollection[isnear].longitude;
+				var letterradius = Alloy.Globals.jsonCollection[isnear].radius;
+				
+				if (isInsideRadius(lat, lon, letterradius)) {
+					var clue = Alloy.Globals.jsonCollection[isnear].clue;
+					
+					message.message = clue;
+					message.addEventListener('click', function(e) {
+						if (e.index == 0) {
+							Alloy.CFG.tabs.setActiveTab(3);
+						}
+					});
+					message.show();
+					
+					Alloy.Globals.jsonCollection[isnear].alerted = 1;
+					playSound();
 				}
-			});
-
-			lat = letterJSON[isnear].latitude;
-			lon = letterJSON[isnear].longitude;
-			var radius = letterJSON[isnear].radius;
-
-			if (isInsideRadius(lat, lon, radius) && letterJSON[isnear].alerted == 0) {
-				message.show();
-				letterJSON[isnear].alerted = 1;
-				playSound();
-				Ti.API.info("I radien");
-			}
+			}			
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", 'isNearPoint - letter');
