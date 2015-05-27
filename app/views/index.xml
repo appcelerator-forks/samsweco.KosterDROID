@@ -11,7 +11,14 @@
 			<Window id="koster" class="container" backgroundImage="/pics/front.png">
 				<View class="headView">
 					<ImageView class="imgKoster" image="/pics/kosterhavet_logga.png"></ImageView>
-					<Label id="lblFrontText">- Välkommen till Kosterhavet! Upptäck den vackra naturen i Kosterhavet och ta en promenad bland klapperstensfält och strandängar.</Label>
+					<View id="lblView">
+						<Label id="firstLbl" class="lblFrontText">Välkommen till Kosterhavet!</Label>
+						<Label id="secondLbl" class="lblFrontText">Upptäck den vackra naturen i Kosterhavet och ta en promenad bland klapperstensfält och strandängar.</Label>
+					</View>
+				</View>
+				<View id="boatBtnView">
+					<ImageView id="boatPikto" image="/images/farjelage.png"></ImageView>
+					<Button id="btnBoat" onClick="openBoat">Båtresan</Button>
 				</View>
 			</Window>
 		</Tab>
@@ -21,7 +28,7 @@
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
 			<Window id="mapWin" onOpen="toMap" />
 		</Tab>
-		<Tab id="interactive" class="tabbar" title="Spela" icon="/images/quizMenu.png">
+		<Tab id="interactive" class="tabbar" title="Spel" icon="/images/quizMenu.png">
 			<Window id="interactiveWin" onOpen="toInteractive" />
 		</Tab>
 		<Tab id="info" class="tabbar" title="Info" icon="/images/infoMenu.png">

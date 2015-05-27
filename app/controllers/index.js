@@ -112,3 +112,22 @@ $.infoWin.addEventListener('blur', function(){
 $.koster.addEventListener('blur', function(){
 	$.koster = null;
 });
+
+//-----------------------------------------------------------
+// Skickar till båtleden från startsidan
+//-----------------------------------------------------------
+function openBoat(){
+	var args = {
+		id : 8,
+		title : 'Båtresan',
+		length : 10,
+		infoTxt : 'Välkommen på båtturen mellan Strömstad och Koster. Turen är cirka 10 km lång och tar mellan 30 och 60 minuter. Under resan kommer du få lite information om Kosterhavet och livet där.',
+		area : 'Strömstad-Koster',
+		zoomlat : '58.936458',
+		zoomlon : '11.172279',
+		color : 'boat'
+	};
+
+	var trailDetail = Alloy.createController("trailDetail", args).getView();
+	Alloy.CFG.tabs.activeTab.open(trailDetail);
+}

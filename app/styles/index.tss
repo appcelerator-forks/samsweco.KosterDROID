@@ -16,13 +16,50 @@
 	height: '93%'
 }
 
-"#lblFrontText" : {
-	color: "white",
-	left: '40dp',
-	right: '20dp',
-	top: '0dp',
-	font : {
-		fontSize: '12dp',
-		fontFamily: 'Raleway-Light'
+".lblFrontText": {
+	color: 'white',
+	left : '5%',
+	right : '5%',
+	top: '5dp',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
 	}
+}
+
+"#lblView": {
+	height: '20%',
+	width: '90%',
+	top: '7dp',
+	left: '5%',
+	right: '5%',
+	layout: 'vertical'
+}
+
+"#btnBoat": {
+	left: '10dp',
+	top: '4dp',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
+}
+
+"#boatBtnView": {
+	height: '35dp',
+	width: '35%',
+	backgroundColor: 'white',
+	opacity: 0.9,
+	left: '10%',
+	right: '50%',
+	borderRadius: 7,
+	color: '#0098C3',
+	top: '0dp',
+	layout : 'horizontal'
+}
+
+"#boatPikto": {
+	top: '5dp',
+	left: '5%',
+	backgroundColor: 'transparent'
 }
