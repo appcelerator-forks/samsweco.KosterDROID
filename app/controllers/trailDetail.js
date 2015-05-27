@@ -19,6 +19,15 @@ try {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 }
 
+if(args.title == 'Äventyrsleden'){
+	$.btnGame.show();
+	$.btnGame.height = '20dp';
+	
+	$.btnGame.addEventListener('click', function(){
+		Alloy.CFG.tabs.setActiveTab(3);
+	});
+}
+
 //-----------------------------------------------------------
 // Onload
 //-----------------------------------------------------------

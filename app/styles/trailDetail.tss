@@ -134,12 +134,19 @@
 	}
 }
 
-"#onMapView" : {
-	right : '15dp',
-	layout : 'vertical'
+"#onMapView": {
+	right: '15dp',
+	layout: 'vertical'
 }
 
-"#onMap" :{
-	height : '50dp',
-	width : '50dp'
+"#onMap":{
+	height: '50dp',
+	width: '50dp'
+}
+
+"#btnGame": {
+	visible: false,
+	height: 0,
+	top: '10dp',
+	left: '15dp'
 }
