@@ -4,8 +4,7 @@
 	backgroundColor: 'white',
 	opacity: 0.8,
 	height: '100%',
-	width: '100%',
-	visible : true
+	width: '100%'
 }
 
 ".lineView": {
@@ -22,7 +21,7 @@
 	height: Titanium.UI.SIZE
 }
 
-"#gpsSwitchView" : {
+"#gpsSwitchView": {
 	top: '0dp'
 }
 
@@ -55,10 +54,10 @@
 
 "#selectIconView": {
 	layout: 'horizontal',
-	backgroundColor: 'white',
+	// backgroundColor: 'white',
 	height: Titanium.UI.SIZE,
 	width: '100%',
-	opacity: 1,
+	// opacity: 1,
 	left: '8dp',
 	top: '5dp'
 }
@@ -70,7 +69,7 @@
 		fontSize: '13dp',
 		fontFamily: 'Raleway-Medium'
 	},
-		color: "#000000",
+	color: "#000000"
 }
 
 "#settingsView": {
@@ -87,7 +86,17 @@
 	width : '30dp'
 }
 
-"#btnShowHotspots" : {
+"#btnShowHotspots": {
+	left: '30dp',
+	top: '8dp',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '13dp'
+	},
+	color: "#000000"
+}
+
+"#lblSetGPS": {
 	left: '30dp',
 	top: '8dp',
 	font: {
@@ -97,21 +106,11 @@
 		color: "#000000"
 }
 
-"#lblSetGPS" : {
-	left: '30dp',
-	top: '8dp',
-	font: {
-		fontFamily: 'Raleway-Medium',
-		fontSize: '13dp'
-	},
-		color: "#000000"
-}
-
-"#hotPic" : {
+"#hotPic": {
 	left: '0dp'
 }
 
-"#soundPic" : {
+"#soundPic": {
 	left: '0dp',
 	top: '3dp'
 }

@@ -14,8 +14,8 @@
 				<ScrollableView id="slideShowTrails" scrollType="horizontal" showPagingControl="true" />
 			</View>
 			<View id="horizontalView">
-					<View id="iconrow"></View>
-						</View>
+				<View id="iconrow"></View>
+			</View>
 			<View class="lbls">
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>
 				<Label id="lblTrailArea" class="lbltrailDetail"></Label>

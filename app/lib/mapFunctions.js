@@ -510,6 +510,19 @@ function showDetailMap(maptype, id, name, color) {
 }
 
 //-----------------------------------------------------------
+// Eventlistener för klick på hotspot
+//-----------------------------------------------------------
+var evtList = function(evt){
+	try {
+		if (evt.clicksource == 'rightPane') {
+			showHotspot(evt.annotation.id);
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartfunktioner");
+	}	
+};
+
+//-----------------------------------------------------------
 // sätter en vald vandingsled
 //-----------------------------------------------------------
 function setSpecificRoute(maptype, id, name, color) {
@@ -805,7 +818,7 @@ function displaySpecificMarkers(id, maptype) {
 				title : specificHotspots[u].name,
 				subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',
 				image : '/images/flag.png',
-				// rightButton : '/pins/androidarrow2.png',
+				rightButton : '/pins/androidarrow2.png',
 				name : 'hotspot'
 			});
 
@@ -872,6 +885,19 @@ function removeAnnoHotspot() {
 	try {
 		for (var o = 0; o < markerHotspotArray.length; o++) {
 			map.removeAnnotation(markerHotspotArray[o]);
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - removeAnnoHotspot");
+	}
+}
+
+//-----------------------------------------------------------
+// Tar bort hotspots från kartan
+//-----------------------------------------------------------
+function removeSpecHotspot() {
+	try {
+		for (var o = 0; o < markerSpecHotspotArray.length; o++) {
+			detailMap.removeAnnotation(markerSpecHotspotArray[o]);
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - removeAnnoHotspot");

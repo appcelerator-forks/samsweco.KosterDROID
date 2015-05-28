@@ -30,6 +30,7 @@
 	layout: 'horizontal',
 	height: Titanium.UI.SIZE,
 	width: Titanium.UI.FILL,
+	left: '6%'
 }
 
 "#settingsView": {
@@ -40,18 +41,25 @@
 	bottom: 0
 }
 
-".switchClass": {
-	height: '30dp',
-	width: '15%',
-	opacity : 1,
-	right : '15dp'
+".switch": {
+	right: '13dp',
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	// opacity : 1
 }
 
-"#lblSetGPS": {
-	width : '70%',
-	color : 'black'
+".switchClass": {
+	height: '30dp',
+	width: Titanium.UI.SIZE,
+	// opacity : 1
 }
 
 "Label": {
-	left : '15dp'
+	left : '5dp',
+	top: '8dp',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '13dp'
+	},
+		color: "#000000"
 }

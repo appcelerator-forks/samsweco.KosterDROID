@@ -1,5 +1,6 @@
 Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
+Ti.include("SQL.js");
 
 var args = arguments[0] || {};
 
@@ -20,8 +21,7 @@ var trailsCollection = getTrailsCollection();
 // Onload
 //-----------------------------------------------------------
 showMapDetail();
-addEventList();
-setMarkers();
+getSpecificIconsForTrail(trailId);
 
 //-----------------------------------------------------------
 // Functioner för att öppna och fylla kartan
@@ -34,72 +34,8 @@ function showMapDetail(){
 	}	
 }
 
-function setMarkers(){
-	try {
-		detailMap.removeAllAnnotations();
-		displaySpecificMarkers(trailId, detailMap);
-		getSpecificIconsForTrail(trailId);
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
-	}
-	
-}
-
 //-----------------------------------------------------------
-// Lägger till eventlistener för klick på hotspot
-//-----------------------------------------------------------
-function addEventList() {
-	try {
-		detailMap.addEventListener('click', function(evt) {
-				if (evt.clicksource == 'rightPane') {
-					var hotspotCollection = Alloy.Collections.hotspotModel;
-					hotspotCollection.fetch({
-						query : query13 + evt.annotation.id + '"'
-					});
-
-					var jsonHotspObj = hotspotCollection.toJSON();
-
-					var hotspotTxt = {
-						title : evt.annotation.id,
-						infoTxt : jsonHotspObj[0].infoTxt,
-						id : jsonHotspObj[0].id
-					};
-
-					var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-					Alloy.CFG.tabs.activeTab.open(hotspotDetail);
-				};
-		});
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
-	}
-}
-
-//-----------------------------------------------------------
-// Visar användarens position på detaljkartan
-//-----------------------------------------------------------
-function getZoomedMapPosition() {
-	try {
-		if (myPosition == false) {
-			getPosition();
-			myPosition = true;
-		} else {
-			detailMap.region = {
-				latitude : zoomLat,
-				longitude : zoomLon,
-				latitudeDelta : 0.03,
-				longitudeDelta : 0.03
-			};
-
-			detailMap.animate = true;
-			myPosition = false;
-		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
-	}	
-}
-
-//-----------------------------------------------------------
-// Visar och släcker sevärdheter på kartan
+// Switch för att aktivera location-event för hotspots/sevärdheter
 //-----------------------------------------------------------
 $.geoSwitch1.addEventListener('change', function(e) {
 	if ($.geoSwitch1.value == true) {
@@ -111,18 +47,58 @@ $.geoSwitch1.addEventListener('change', function(e) {
 });
 
 //-----------------------------------------------------------
-// Visar och släcker kartmenyn på detaljkartan
+// Switch för att visa hotspots på kartan
+//-----------------------------------------------------------
+function disHot(){
+	if ($.HotSwitch1.value == true) {
+		removeSpecHotspot();
+		displaySpecificMarkers(trailId, detailMap);
+		detailMap.addEventListener('click', evtList);	
+	} else {
+		detailMap.removeEventListener('click', evtList);
+		removeSpecHotspot();
+	}
+}
+
+//-----------------------------------------------------------
+// Funktioner för att visa och stänga kartmenyn 
 //-----------------------------------------------------------
 function showMenu() {
 	try {
 		if(!menuDetailVisible){
-			$.widgetView.height = '10%';
+			showDetailMenu();
 			menuDetailVisible = true;
 		}else {
-			$.widgetView.height = '0dp';
+			closeDetailMenu();
 			menuDetailVisible = false;
-		}
+		}		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
 	}
 }
+detailMap.addEventListener('singletap', function() {
+	if(menuDetailVisible){
+		closeDetailMenu();
+		menuDetailVisible = false;
+	}
+});
+function showDetailMenu(){
+	$.widgetView.height = '100dp';
+}
+function closeDetailMenu(){
+	$.widgetView.height = '0dp';
+}
+
+
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+	$.destroy();
+	$.off();
+	$.detailwin = null;
+	detailMap.removeEventListener('click', evtList);
+	detailMap.removeAllAnnotations();
+};
+
+$.detailwin.addEventListener('close', cleanup);
