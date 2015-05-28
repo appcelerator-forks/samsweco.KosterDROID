@@ -216,17 +216,16 @@ function playSound() {
 //-----------------------------------------------------------
 function addClueZone() {
 	try {
-		letterCollection.fetch();
-		var zoneJSON = letterCollection.toJSON();
+		var zoneJSON = Alloy.Globals.jsonCollection;
 
 		for (var c = 0; c < zoneJSON.length; c++) {
-			var markerAnnotation = MapModule.createAnnotation({
+			var zoneAnnotation = MapModule.createAnnotation({
 				latitude : zoneJSON[c].latitude,
 				longitude : zoneJSON[c].longitude,
-				image : '/images/green.png'
+				image : '/pics/' + (c+1) + 'green.png'
 			});
 
-			interactiveMap.addAnnotation(markerAnnotation);
+			interactiveMap.addAnnotation(zoneAnnotation);
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
