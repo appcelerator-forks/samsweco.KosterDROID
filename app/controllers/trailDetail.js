@@ -63,7 +63,7 @@ function selectTrailPics() {
 	try {
 		var mediaCollection = Alloy.Collections.mediaModel;
 		mediaCollection.fetch({
-			query : query14 + trailId + '"'
+			query : getImgsForTrailById + trailId + '"'
 		});
 
 		var jsonMedia = mediaCollection.toJSON();
@@ -175,7 +175,7 @@ function getHotspotData() {
 
 		var hotstrailCollection = Alloy.Collections.hotspotModel;
 		hotstrailCollection.fetch({
-			query : query15 + id + '"'
+			query : getHotspotsByTrailId + id + '"'
 		});
 
 		var jsonObj = hotstrailCollection.toJSON();
@@ -195,7 +195,7 @@ function showHotspot(e) {
 
 		var hotspotCollection = Alloy.Collections.hotspotModel;
 		hotspotCollection.fetch({
-			query : query16 + name + '"'
+			query : getHotspotByName + name + '"'
 		});
 
 		var jsonObj = hotspotCollection.toJSON();
@@ -250,7 +250,7 @@ function getIcons() {
 
 		var infotrailCollection = Alloy.Collections.infospotCoordinatesModel;
 		infotrailCollection.fetch({
-			query : query17 + id + '"'
+			query : getDistInfospotsByTrailId + id + '"'
 		});
 
 		var infoTrails = infotrailCollection.toJSON();

@@ -41,7 +41,7 @@ function displayBigMap() {
 function showTrail(myName) {
 	try {
 		trailsCollection.fetch({
-			query : query18 + myName + '"'
+			query : getTrailByName + myName + '"'
 		});
 
 		var jsonObjTr = trailsCollection.toJSON();
@@ -67,16 +67,16 @@ function showTrail(myName) {
 //-----------------------------------------------------------
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
-function showHotspot(myId) {
+function showHotspot(name) {
 	try {
 		hotspotCollection.fetch({
-			query : query13 + myId + '"'
+			query : getHotspotByName + name + '"'
 		});
 
 		var jsonObjHot = hotspotCollection.toJSON();
 
 		var hotspotTxt = {
-			title : myId,
+			title : name,
 			infoTxt : jsonObjHot[0].infoTxt,
 			id : jsonObjHot[0].id
 		};

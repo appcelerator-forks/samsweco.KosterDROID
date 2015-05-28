@@ -50,7 +50,7 @@ function setRowData() {
 	try {
 		var tableViewData = [];
 		urlCollection.fetch({
-			query : query8 + id + '"'
+			query : getUrlsByInfoId + id + '"'
 		});
 
 		var urlJson = urlCollection.toJSON();
@@ -101,7 +101,7 @@ function getLink(e) {
 		
 		if(rowId != 3 && rowId != 4){			
 			urlCollection.fetch({
-				query : query9 + rowId + '"'
+				query : getUrlById + rowId + '"'
 			});
 
 			var jsonObj = urlCollection.toJSON();
@@ -118,7 +118,7 @@ function getLink(e) {
 			});
 			
 			var img;
-			
+			//Krashar för att bilderna inte finns än!
 			if(rowId == 3){
 				img = Ti.UI.createImageView({
 					image: '/pics/regler_for_kosterhavets_nationalpark.png'

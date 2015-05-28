@@ -223,7 +223,7 @@ function getFile(id) {
 	try {
 		var jsonFileCollection = Alloy.Collections.jsonFilesModel;
 		jsonFileCollection.fetch({
-			query : query1 + id + '"'
+			query : getJsonFileById + id + '"'
 		});
 
 		var filename = jsonFileCollection.toJSON();
@@ -236,16 +236,16 @@ function getFile(id) {
 //-----------------------------------------------------------
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
-function showHotspot(myId) {
+function showHotspot(name) {
 	try {
 		hotspotCollection.fetch({
-			query : query2 + myId + '"'
+			query : getHotspotByName + name + '"'
 		});
 
 		var jsonObjHot = hotspotCollection.toJSON();
 
 		var hotspotTxt = {
-			title : myId,
+			title : name,
 			infoTxt : jsonObjHot[0].infoTxt,
 			id : jsonObjHot[0].id
 		};
@@ -314,7 +314,7 @@ function displayInfoSpots(type) {
 		var markerArray = [];
 		var infospotCollection = getInfoSpotCoordinatesCollection();
 		infospotCollection.fetch({
-			query : query3 + type + '"'
+			query : getInfoCoordByType + type + '"'
 		});
 
 		var infospotJSON = infospotCollection.toJSON();
@@ -347,7 +347,7 @@ function displaySpecificMarkers(id, maptype) {
 		markerSpecHotspotArray = [];
 			
 		hotspotCollection.fetch({
-			query : query4 + id + '"'
+			query : getHotspotsByTrailId + id + '"'
 		});
 
 		var specificHotspots = hotspotCollection.toJSON();
@@ -382,7 +382,7 @@ function getSpecificIconsForTrail(id) {
 
 		var specificinfotrailCollection = Alloy.Collections.infospotCoordinatesModel;
 		specificinfotrailCollection.fetch({
-			query : query5 + id + '"'
+			query : getInfospotsByTrailId + id + '"'
 		});
 
 		var infospotsTrails = specificinfotrailCollection.toJSON();

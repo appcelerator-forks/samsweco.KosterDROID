@@ -102,7 +102,7 @@ function getInfoDetails(e) {
 	try {
 		var id = e.rowData.id;
 		infoCollection.fetch({
-			query : query10  + id + '"'
+			query : getInfoById  + id + '"'
 		});
 
 		var jsonObj = infoCollection.toJSON();

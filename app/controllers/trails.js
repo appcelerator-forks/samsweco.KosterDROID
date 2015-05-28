@@ -114,7 +114,7 @@ function showTrailDetails(e) {
 
 		var trailsCollection = Alloy.Collections.trailsModel;
 		trailsCollection.fetch({
-			query : query20 + id + '"'
+			query : getTrailById + id + '"'
 		});
 
 		var jsonObj = trailsCollection.toJSON();
@@ -183,7 +183,7 @@ function getIcons(trail_id) {
 
 		var infotrailCollection = Alloy.Collections.infospotCoordinatesModel;
 		infotrailCollection.fetch({
-			query : query19 + id + '"'
+			query : getDistInfospotsByTrailId + id + '"'
 		});
 
 		var infoTrails = infotrailCollection.toJSON();

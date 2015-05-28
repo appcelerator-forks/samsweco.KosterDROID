@@ -216,12 +216,11 @@ function playSound() {
 //-----------------------------------------------------------
 function addClueZone() {
 	try {
-		var zoneJSON = Alloy.Globals.jsonCollection;
-
-		for (var c = 0; c < zoneJSON.length; c++) {
+		// var zoneJSON = Alloy.Globals.jsonCollection;
+		for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
 			var zoneAnnotation = MapModule.createAnnotation({
-				latitude : zoneJSON[c].latitude,
-				longitude : zoneJSON[c].longitude,
+				latitude : Alloy.Globals.jsonCollection[c].latitude,
+				longitude : Alloy.Globals.jsonCollection[c].longitude,
 				image : '/pics/' + (c+1) + 'green.png'
 			});
 

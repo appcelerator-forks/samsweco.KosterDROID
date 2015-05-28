@@ -28,7 +28,7 @@ function selectHotspotPics() {
 	try {
 		var mediaCollection = getMediaCollection();
 		mediaCollection.fetch({
-			query : query6 + hotspotId + '"'
+			query : getImgsByHotspotId + hotspotId + '"'
 		});
 		var jsonMedia = mediaCollection.toJSON();
 
