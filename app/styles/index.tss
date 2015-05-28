@@ -49,17 +49,51 @@
 	height: '35dp',
 	width: '35%',
 	backgroundColor: 'white',
-	opacity: 0.9,
-	left: '10%',
-	right: '50%',
+	opacity: 0.8,
+	left: '13%',
 	borderRadius: 7,
 	color: '#0098C3',
-	top: '0dp',
 	layout : 'horizontal'
 }
 
 "#boatPikto": {
 	top: '5dp',
-	left: '5%',
-	backgroundColor: 'transparent'
+	left: '5%'
+}
+
+"#btnAbout": {
+	left: '6dp',
+	top: '4dp',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
+}
+
+"#btnAboutPic": {
+	height: '30dp',
+	width: '30dp',
+	top: '2dp'
+}
+
+"#appBtnView": {
+	right: '13%',
+	width : '35%',
+	layout: 'horizontal',
+	height: '35dp',
+	borderRadius: 7,
+	backgroundColor: 'white',
+	opacity: 0.8
+}
+
+"#horiView": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	top: '50%'
+}
+
+"#widgetInfo": {
+	height: 0,
+	visible: false,
+	width: Titanium.UI.SIZE
 }

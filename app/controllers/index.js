@@ -131,3 +131,18 @@ function openBoat(){
 	var trailDetail = Alloy.createController("trailDetail", args).getView();
 	Alloy.CFG.tabs.activeTab.open(trailDetail);
 }
+
+//-----------------------------------------------------------
+// Visar infoWidget
+//-----------------------------------------------------------
+function showInfo(){
+	if(!infoVisible){
+		$.widgetInfo.show();
+		$.widgetInfo.height = '80%';
+		infoVisible = true;
+	} else {
+		$.widgetInfo.hide();
+		$.widgetInfo.height = 0;
+		infoVisible = false;
+	}
+}
