@@ -11,7 +11,7 @@
 	<Window id="detailwin">
 		<View id="mapDetailView">
 		</View>
-		<Button id="btnMenuDetail" backgroundImage="/images/hamburger.png" onClick="showMenu" />
+		<Button id="btnMenuDetail" backgroundImage="/pins/hamburger.png" onClick="showMenu" />
 		
 		<View id="widgetView">
 			<View id="settingsView">

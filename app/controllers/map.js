@@ -12,6 +12,8 @@ var zoomLat = args.zoomlat;
 
 var trailsCollection = getTrailsCollection();
 
+Ti.API.info('map controller skapas');
+
 //-----------------------------------------------------------
 // Onload
 //-----------------------------------------------------------
@@ -26,6 +28,7 @@ try {
 //-----------------------------------------------------------
 function displayBigMap() {
 	try {
+		Ti.API.info('innan kartan ');
 		$.mapView.add(showMap(map));
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
