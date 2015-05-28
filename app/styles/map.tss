@@ -7,8 +7,8 @@
 }
 
 "#mapView": {
-	height: '100%',
-	width: '100%'
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
 }
 
 "#selectIconView": {
