@@ -123,14 +123,14 @@
 "#btnTrailOnMap": {
 	left: '15dp',
 	top: '5dp',
-	height: '40dp',
+	height: '30dp',
 	width: '200dp',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
 	borderColor : '#0098C3',
 	font: {
-		fontSize: '16dp'
+		fontSize: '14dp'
 	}
 }
 
@@ -151,7 +151,7 @@
 	top: '5dp',
 	width: '200dp',
 	backgroundColor: 'white',
-	borderRadius: '12dp',
+	borderRadius: '14dp',
 	color: 'black',
 	borderColor : '#0098C3',
 	font: {
