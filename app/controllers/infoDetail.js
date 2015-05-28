@@ -98,18 +98,47 @@ function setRowData() {
 function getLink(e) {
 	try {
 		var rowId = e.rowData.id;
-		urlCollection.fetch({
-			query : query9 + rowId + '"'
-		});
+		
+		if(rowId != 3 && rowId != 4){			
+			urlCollection.fetch({
+				query : query9 + rowId + '"'
+			});
 
-		var jsonObj = urlCollection.toJSON();
-		var web = jsonObj[0].url;
+			var jsonObj = urlCollection.toJSON();
+			var web = jsonObj[0].url;
 
-		openLink(web);
+			openLink(web); 
+		} else if(rowId == 3 || rowId == 4) {
+			var pdfView = Ti.UI.createWindow({
+				height: Ti.UI.SIZE,
+				width: Ti.UI.FILL,
+				backButtonTitle: 'Tillbaka',
+				layout: 'vertical',
+				backgroundColor: 'white'
+			});
+			
+			var img;
+			
+			if(rowId == 3){
+				img = Ti.UI.createImageView({
+					image: '/pics/regler_for_kosterhavets_nationalpark.png'
+				});
+			} else {
+				img = Ti.UI.createImageView({
+					image: '/pics/regler_for_kosteroarnas_naturreservat.png'
+				});
+			}
+			
+			pdfView.add(img);
+			
+			Alloy.CFG.tabs.activeTab.open(pdfView);
+		}
+		
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
-	}	
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationssidan");
+	}
 }
+
 
 
 //-----------------------------------------------------------
