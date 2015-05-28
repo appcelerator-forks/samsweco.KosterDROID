@@ -1,0 +1,5 @@
+<Alloy>
+	<ScrollView id="infoView">
+		<Label>Här ska det finnas text</Label>
+	</ScrollView>
+</Alloy>
