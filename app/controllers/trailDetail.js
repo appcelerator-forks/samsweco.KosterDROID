@@ -25,6 +25,7 @@ if(args.title == 'Äventyrsleden'){
 	
 	$.btnGame.addEventListener('click', function(){
 		Alloy.CFG.tabs.setActiveTab(3);
+		$.hikeDetailWin.close();
 	});
 }
 

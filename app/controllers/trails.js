@@ -23,78 +23,81 @@ function setRowData() {
 		var rows = trailsCollection.toJSON();
 
 		for (var i = rows.length; i--; ) {
-			var row = Ti.UI.createTableViewRow({
-				layout : 'horizontal',
-				id : rows[i].id,
-				height : '90dp',
-				top : '0dp',
-				hasChild : true
-			});
+			if (rows[i].id != 8) {
 
-			var listItem = Ti.UI.createView({
-				layout : 'vertical',
-				height : Ti.UI.SIZE,
-				width : Ti.UI.FILL,
-			});
+				var row = Ti.UI.createTableViewRow({
+					layout : 'horizontal',
+					id : rows[i].id,
+					height : '90dp',
+					top : '0dp',
+					hasChild : true
+				});
 
-			var img = Ti.UI.createImageView({
-				height : '80dp',
-				width : '125dp',
-				image : '/pics/' + rows[i].cover_img,
-				left : '5dp',
-				top : '5dp'
-			});
+				var listItem = Ti.UI.createView({
+					layout : 'vertical',
+					height : Ti.UI.SIZE,
+					width : Ti.UI.FILL,
+				});
 
-			var labelView = Ti.UI.createView({
-				height : Ti.UI.SIZE,
-				width : Ti.UI.FILL,
-				backgroundColor : 'white',
-				layout : 'vertical'
-			});
+				var img = Ti.UI.createImageView({
+					height : '80dp',
+					width : '125dp',
+					image : '/pics/' + rows[i].cover_img,
+					left : '5dp',
+					top : '5dp'
+				});
 
-			var lblName = Ti.UI.createLabel({
-				color : '#FCAC17',
-				left : '10dp',
-				font : {
-					fontSize : '14dp',
-					fontFamily : 'Raleway-Medium'
-				},
-				text : rows[i].name
-			});
+				var labelView = Ti.UI.createView({
+					height : Ti.UI.SIZE,
+					width : Ti.UI.FILL,
+					backgroundColor : 'white',
+					layout : 'vertical'
+				});
 
-			var lblDistance = Ti.UI.createLabel({
-				left : '10dp',
-				top : '0dp',
-				color : '#000000',
-				font : {
-					fontSize : '12dp',
-					fontFamily : 'Raleway-Light'
-				},
-				text : 'Sträcka : ' + rows[i].length + " km"
-			});
+				var lblName = Ti.UI.createLabel({
+					color : '#FCAC17',
+					left : '10dp',
+					font : {
+						fontSize : '14dp',
+						fontFamily : 'Raleway-Medium'
+					},
+					text : rows[i].name
+				});
 
-			var lblArea = Ti.UI.createLabel({
-				left : '10dp',
-				top : '0dp',
-				color : '#000000',
-				font : {
-					fontSize : '12dp',
-					fontFamily : 'Raleway-Light'
-				},
-				text : rows[i].area
-			});
+				var lblDistance = Ti.UI.createLabel({
+					left : '10dp',
+					top : '0dp',
+					color : '#000000',
+					font : {
+						fontSize : '12dp',
+						fontFamily : 'Raleway-Light'
+					},
+					text : 'Sträcka : ' + rows[i].length + " km"
+				});
 
-			var iconView = showIcons(rows[i].id);
+				var lblArea = Ti.UI.createLabel({
+					left : '10dp',
+					top : '0dp',
+					color : '#000000',
+					font : {
+						fontSize : '12dp',
+						fontFamily : 'Raleway-Light'
+					},
+					text : rows[i].area
+				});
 
-			labelView.add(iconView);
-			labelView.add(lblName);
-			labelView.add(lblDistance);
-			labelView.add(lblArea);
+				var iconView = showIcons(rows[i].id);
 
-			row.add(img);
-			row.add(labelView);
+				labelView.add(iconView);
+				labelView.add(lblName);
+				labelView.add(lblDistance);
+				labelView.add(lblArea);
 
-			tableViewData.push(row);
+				row.add(img);
+				row.add(labelView);
+
+				tableViewData.push(row);
+			}
 		}
 		$.table.data = tableViewData;
 	} catch(e) {
@@ -106,9 +109,9 @@ function setRowData() {
 // Öppnar trail detail med args för den valda leden
 //-----------------------------------------------------------
 function showTrailDetails(e) {
-	 try {
+	try {
 		var id = e.rowData.id;
-		
+
 		var trailsCollection = Alloy.Collections.trailsModel;
 		trailsCollection.fetch({
 			query : query20 + id + '"'
@@ -126,7 +129,7 @@ function showTrailDetails(e) {
 			zoomlon : jsonObj[0].zoomLon,
 			color : jsonObj[0].color,
 			jsonfile : jsonObj[0].JSONfile
-		}; 
+		};
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView();
 		Alloy.CFG.tabs.activeTab.open(trailDetail);
@@ -168,7 +171,7 @@ function showIcons(id) {
 		return iconView;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-	}	
+	}
 }
 
 //-----------------------------------------------------------
