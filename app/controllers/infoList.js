@@ -64,8 +64,8 @@ function setRowData() {
 			});
 
 			var coverimg = Ti.UI.createImageView({
-				height : '70dp',
-				width : '115dp',
+				height : '80dp',
+				width : '125dp',
 				left : '5dp',
 				image : "/pics/" + rows[i].cover_img,
 				top : '10dp'

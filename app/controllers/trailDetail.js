@@ -127,8 +127,8 @@ function showHotspots() {
 			});
 
 			var img = Ti.UI.createImageView({
-				height : '70dp',
-				width : '115dp',
+				height : '80dp',
+				width : '125dp',
 				image : '/pics/' + rows[i].cover_pic,
 				left : '15dp',
 				top : '10dp'
