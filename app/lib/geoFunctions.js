@@ -233,7 +233,6 @@ function playSound() {
 //-----------------------------------------------------------
 function addClueZone() {
 	try {
-		// var zoneJSON = Alloy.Globals.jsonCollection;
 		for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
 			var zoneAnnotation = MapModule.createAnnotation({
 				latitude : Alloy.Globals.jsonCollection[c].latitude,
@@ -251,25 +250,25 @@ function addClueZone() {
 //-----------------------------------------------------------
 // Push'ar in funna bokstäver i en array
 //-----------------------------------------------------------
-// function getFound() {
-	// try {
-		// foundJSON = [];
-// 
-		// var foundLettersCollection = Alloy.Collections.foundLettersModel;
-		// foundLettersCollection.fetch({
-			// query : 'SELECT letter FROM foundLettersModel WHERE found = 1'
-		// });
-// 
-		// foundLetters = foundLettersCollection.toJSON();
-		// for (var f = 0; f < foundLetters.length; f++) {
-			// foundJSON.push(' ' + foundLetters[f].letter);
-		// }
-// 
-		// return foundJSON;
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getFound");
-	// }
-// }
+function getFound() {
+	try {
+		foundJSON = [];
+
+		var foundLettersCollection = Alloy.Collections.foundLettersModel;
+		foundLettersCollection.fetch({
+			query : 'SELECT letter FROM foundLettersModel WHERE found = 1'
+		});
+
+		foundLetters = foundLettersCollection.toJSON();
+		for (var f = 0; f < foundLetters.length; f++) {
+			foundJSON.push(' ' + foundLetters[f].letter);
+		}
+
+		return foundJSON;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getFound");
+	}
+}
 
 //-----------------------------------------------------------
 // Sparar till found 0 och tömmer bokstäverna så man kan spela igen
@@ -297,7 +296,7 @@ function startOver() {
 Alloy.Globals.startOver = startOver;
 
 //-----------------------------------------------------------
-// Sätter rätt region på karta utifrån vandringsledens storlek
+// Sätter rätt region på karta utifrån var användaren befinner sig
 //-----------------------------------------------------------
 function getPosition(maptype) {
 	Ti.Geolocation.getCurrentPosition(function(e) {

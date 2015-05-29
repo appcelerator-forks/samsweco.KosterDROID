@@ -125,7 +125,6 @@ function sendLetter() {
 		var sendletter = letter.toUpperCase();
 
 		checkLetter(sendletter);
-		allLetters();
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
 	}
@@ -171,8 +170,9 @@ function checkLetter(letterToCheck) {
 					
 					jsonCollection[foundLetterId-1].found = 1;
 
+					// foundJSON.push(' ' + letterToCheck);
+					getFound();
 					foundLetterId++;
-					foundJSON.push(' ' + letterToCheck);
 					loadClue(foundLetterId);
 
 					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
