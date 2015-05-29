@@ -26,16 +26,16 @@
 }
 
 "#hotspotSwitch":{
-	right: '30dp',
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL
+	right: '30dp'
+	// height: Titanium.UI.FILL,
+	// width: Titanium.UI.FILL
 }
 
 "#geoSwitch":{
 	right: '30dp',
-	top: '2dp',
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL
+	top: '2dp'
+	// height: Titanium.UI.FILL,
+	// width: Titanium.UI.FILL
 }
 
 "#v1": {
@@ -54,10 +54,8 @@
 
 "#selectIconView": {
 	layout: 'horizontal',
-	// backgroundColor: 'white',
 	height: Titanium.UI.SIZE,
 	width: '100%',
-	// opacity: 1,
 	left: '8dp',
 	top: '5dp'
 }
@@ -108,13 +106,13 @@
 
 "#hotPic": {
 	left: '0dp',
-	height : '30dp',
-	width : '30dp'
+	height : '25dp',
+	width : '25dp'
 }
 
 "#soundPic": {
-	left: '0dp',
+	left: '2dp',
 	top: '3dp',
-	height : '30dp',
-	width : '30dp'
+	height : '20dp',
+	width : '20dp'
 }

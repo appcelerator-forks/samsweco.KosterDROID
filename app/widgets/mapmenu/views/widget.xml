@@ -2,6 +2,7 @@
 	<Collection src="hotspotModel" />
 	<Collection src="trailsModel" />
 	<Collection src="infospotCoordinatesModel" />
+	
 	<View id="mapmenu">
 		<View class="lineView"></View>
 		<Label id="lblChoosePikto">Välj vilka informationspunkter du vill se:</Label>

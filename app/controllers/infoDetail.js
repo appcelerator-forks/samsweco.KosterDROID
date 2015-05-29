@@ -98,48 +98,25 @@ function setRowData() {
 function getLink(e) {
 	try {
 		var rowId = e.rowData.id;
-		
+				
+		urlCollection.fetch({
+			query : getUrlById + rowId + '"'
+		});
+		var jsonObj = urlCollection.toJSON();
+
 		if(rowId != 3 && rowId != 4){			
-			urlCollection.fetch({
-				query : getUrlById + rowId + '"'
-			});
-
-			var jsonObj = urlCollection.toJSON();
 			var web = jsonObj[0].url;
-
 			openLink(web); 
-		} else if(rowId == 3 || rowId == 4) {
-			var pdfView = Ti.UI.createWindow({
-				height: Ti.UI.SIZE,
-				width: Ti.UI.FILL,
-				backButtonTitle: 'Tillbaka',
-				layout: 'vertical',
-				backgroundColor: 'white'
-			});
-			
-			var img;
-			//Krashar för att bilderna inte finns än!
-			if(rowId == 3){
-				img = Ti.UI.createImageView({
-					image: '/pics/regler_for_kosterhavets_nationalpark.png'
-				});
-			} else {
-				img = Ti.UI.createImageView({
-					image: '/pics/regler_for_kosteroarnas_naturreservat.png'
-				});
-			}
-			
-			pdfView.add(img);
-			
-			Alloy.CFG.tabs.activeTab.open(pdfView);
+		} else if(rowId == 3 || rowId == 4){
+			var txt = jsonObj[0].url;
+			var titl = jsonObj[0].linkname; 
+			showRules(txt, titl);
 		}
 		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationssidan");
 	}
 }
-
-
 
 //-----------------------------------------------------------
 // Öppnar url'en i en webView.
@@ -157,3 +134,71 @@ function openLink(link) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
 	}
 }
+
+//-----------------------------------------------------------
+// Öppnar regler i en egen vy
+//-----------------------------------------------------------
+function showRules(infTxt, linktitle){
+	try {
+		var infoWindowRules = Ti.UI.createWindow({
+			layout : 'vertical',
+			top : '0dp',
+			backgroundColor : 'white',
+			backButtonTitle : "Tillbaka"
+		});
+
+		var infoScrollRules = Ti.UI.createScrollView({
+			showVerticalScrollIndicator : true,
+			showHorizontalScrollIndicator : true,
+			layout : 'vertical',
+			top : '0dp'
+		});
+
+		var viewen = Ti.UI.createView({
+			layout : 'vertical',
+			top : '0dp',
+			height : Ti.UI.SIZE
+		});
+
+		var infoDetailTitleLbl = Ti.UI.createLabel({
+			top : '10dp',
+			left : '15dp',
+			right : '15dp',
+			font : {
+				fontSize : '15dp',
+				fontFamily : 'Raleway-Medium'
+			},
+			color : '#FCAF17',
+			text : linktitle
+		});
+
+		var infoDetailLbl = Ti.UI.createLabel({
+			top : '10dp',
+			left : '15dp',
+			right : '15dp',
+			font : {
+				fontSize : '14dp',
+				fontFamily : 'Raleway-Light'
+			},
+			text : infTxt
+		});
+
+		viewen.add(infoDetailTitleLbl);
+		viewen.add(infoDetailLbl);
+		infoScrollRules.add(viewen);
+		infoWindowRules.add(infoScrollRules);
+
+		Alloy.CFG.tabs.activeTab.open(infoWindowRules);
+
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationssidan");
+	}
+}
+
+var cleanup = function() {
+	$.destroy();
+	$.off();
+	$.infoDetail = null;
+};
+
+$.infoDetail.addEventListener('close', cleanup);

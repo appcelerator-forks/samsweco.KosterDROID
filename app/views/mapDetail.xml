@@ -14,7 +14,7 @@
 			<View id="settingsView">
 				<View id="hotspotSwitchView" class="settingsHorizontalView">
 					<View class="v1">
-						<ImageView image="/images/hotspotflag.png"></ImageView>
+						<ImageView id="hotspotPic" image="/images/hotspotflag.png"></ImageView>
 						<Label id="lblHotspot" text="Visa sevärdheter"></Label>
 					</View>
 					<View class="v2">
@@ -23,7 +23,7 @@
 				</View>
 				<View id="gpsSwitchView" class="settingsHorizontalView">
 					<View class="v1">
-						<ImageView image="/images/sound.png"></ImageView>
+						<ImageView id="soundPic" image="/images/sound.png"></ImageView>
 						<Label id="lblGPS" text="Påminnelse vid sevärdheter"></Label>
 					</View>
 					<View class="v2">
@@ -32,24 +32,5 @@
 				</View>
 			</View>
 		</View>
-
-		<!-- <View id="widgetView">
-		<View id="settingsView">
-		<View id="gpsSwitchView" class="settingsHorizontalView">
-		<Label id="lblSetGPS" text="Påminnelse vid sevärdheter"></Label>
-		<View class="switchClass">
-		<Switch id="geoSwitch1" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
-		</View>
-		</View>
-		<!-- <View id="myposSwitchView" class="settingsHorizontalView">
-		<Label id="lblSetMypos" text="Visa min position"></Label>
-		<View class="switchClass">
-		<Switch id="posSwitch1" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
-		</View>
-		</View> -->
-		<!-- <Label id="btnSetNotification" class="btnSetStuff" text="Inaktivera notifikationer" color="#00a9f0"></Label> -->
-		<!-- </View> -->
-		<!-- <Widget src="mapmenu" name="widget"></Widget> -->
-		<!-- </View> -->
 	</Window>
 </Alloy>

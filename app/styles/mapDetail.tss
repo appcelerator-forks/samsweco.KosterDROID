@@ -24,7 +24,6 @@
 	opacity : 0.75
 }
 
-
 ".settingsHorizontalView": {
 	top: '5dp',
 	layout: 'horizontal',
@@ -60,4 +59,15 @@
 		fontSize: '13dp'
 	},
 		color: "#000000"
+}
+
+"#hotspotPic": {
+	height : '25dp',
+	width : '25dp'
+}
+
+"#soundPic": {
+	top: '3dp',
+	height : '20dp',
+	width : '20dp'
 }
