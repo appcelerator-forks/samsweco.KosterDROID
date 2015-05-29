@@ -82,7 +82,7 @@ function setSpecificRoute(maptype, id, name, color) {
 				latitudeDelta : 0.1,
 				longitudeDelta : 0.1
 			};
-		}
+		} 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - setSpecRoutes");
 	}
@@ -166,7 +166,16 @@ function createMapRoutes(maptype, file, name, color) {
 			maptype.addRoute(MapModule.createRoute(route));
 		}
 		
-		maptype.region = calculateMapRegion(coordArray);
+		if(name == 'Äventyrsleden'){
+			maptype.region = {
+				latitude : 58.893006,
+				longitude : 11.044584,
+				latitudeDelta : 0.005,
+				longitudeDelta : 0.005
+			};
+		} else {
+			maptype.region = calculateMapRegion(coordArray);
+		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - createMapRoute");
 	}

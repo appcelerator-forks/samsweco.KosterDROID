@@ -107,10 +107,14 @@
 }
 
 "#hotPic": {
-	left: '0dp'
+	left: '0dp',
+	height : '30dp',
+	width : '30dp'
 }
 
 "#soundPic": {
 	left: '0dp',
-	top: '3dp'
+	top: '3dp',
+	height : '30dp',
+	width : '30dp'
 }
