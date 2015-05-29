@@ -148,3 +148,14 @@ function showInfo(){
 		infoVisible = false;
 	}
 }
+
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+	$.destroy();
+	$.off();
+	$.koster = null;
+};
+
+$.koster.addEventListener('close', cleanup);

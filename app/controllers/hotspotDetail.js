@@ -71,4 +71,13 @@ function selectHotspotPics() {
 	}
 }
 
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+	$.destroy();
+	$.off();
+	$.hotspotDetail = null;
+};
 
+$.hotspotDetail.addEventListener('close', cleanup);

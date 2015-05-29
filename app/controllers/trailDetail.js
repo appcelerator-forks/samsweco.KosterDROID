@@ -278,4 +278,14 @@ function changeLabel(){
 	}
 }
 
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+var cleanup = function() {
+	$.destroy();
+	$.off();
+	$.hikeDetailWin = null;
+};
+
+$.hikeDetailWin.addEventListener('close', cleanup);
  
