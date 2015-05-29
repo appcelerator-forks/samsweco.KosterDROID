@@ -21,7 +21,7 @@ var trailsCollection = getTrailsCollection();
 // Onload
 //-----------------------------------------------------------
 showMapDetail();
-getSpecificIconsForTrail(trailId);
+getSpecificIconsForTrail(trailId, detailMap);
 
 //-----------------------------------------------------------
 // Functioner för att öppna och fylla kartan

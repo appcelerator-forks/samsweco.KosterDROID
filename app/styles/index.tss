@@ -37,7 +37,7 @@
 
 "#btnBoat": {
 	left: '10dp',
-	top: '4dp',
+	top: '6dp',
 	color: 'black',
 	font: {
 		fontSize: '14dp',
@@ -57,15 +57,15 @@
 }
 
 "#boatPikto": {
-	top: '2dp',
-	height: '30dp',
-	width: '30dp',
+	top: '5dp',
+	height: '25dp',
+	width: '25dp',
 	left: '5%'
 }
 
 "#btnAbout": {
 	left: '6dp',
-	top: '4dp',
+	top: '6dp',
 	color: 'black',
 	font: {
 		fontSize: '14dp',
