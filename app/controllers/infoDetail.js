@@ -3,6 +3,7 @@ Ti.include("/SQL.js");
 var args = arguments[0] || {};
 var urlCollection = Alloy.Collections.info_urlModel;
 
+
 //-----------------------------------------------------------
 // Args skickade från listvy
 //-----------------------------------------------------------
@@ -49,9 +50,6 @@ function showinfoDetails(info) {
 function setRowData() {
 	try {
 		var tableViewData = [];
-		urlCollection.fetch({
-			query : getUrlsByInfoId + id + '"'
-		});
 
 		var urlJson = urlCollection.toJSON();
 

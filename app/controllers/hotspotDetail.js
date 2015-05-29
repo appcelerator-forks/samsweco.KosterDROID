@@ -1,10 +1,9 @@
 Ti.include("/SQL.js");
-
+var mediaCollection = getMediaCollection();
 var args = arguments[0] || {};
 
 $.lblHotspotName.text = args.title || "Name";
 $.lblHotspotInfoTxt.text = args.infoTxt || "Info";
-
 var hotspotId = args.id || "Id";
 var picId = args.filename || "filename";
 
@@ -26,7 +25,7 @@ function setPics() {
 //-----------------------------------------------------------
 function selectHotspotPics() {
 	try {
-		var mediaCollection = getMediaCollection();
+
 		mediaCollection.fetch({
 			query : getImgsByHotspotId + hotspotId + '"'
 		});
