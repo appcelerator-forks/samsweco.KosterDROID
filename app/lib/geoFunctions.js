@@ -170,24 +170,26 @@ function userIsNearLetter() {
 
 		for (var isnear = 0; isnear < Alloy.Globals.jsonCollection.length; isnear++) {
 			if (Alloy.Globals.jsonCollection[isnear].alerted == 0){
+				if (Alloy.Globals.jsonCollection[isnear].found == 0){
 				
-				var lat = Alloy.Globals.jsonCollection[isnear].latitude;
-				var lon = Alloy.Globals.jsonCollection[isnear].longitude;
-				var letterradius = Alloy.Globals.jsonCollection[isnear].radius;
+					var lat = Alloy.Globals.jsonCollection[isnear].latitude;
+					var lon = Alloy.Globals.jsonCollection[isnear].longitude;
+					var letterradius = Alloy.Globals.jsonCollection[isnear].radius;
 				
-				if (isInsideRadius(lat, lon, letterradius)) {
-					var clue = Alloy.Globals.jsonCollection[isnear].clue;
+					if (isInsideRadius(lat, lon, letterradius)) {
+						var clue = Alloy.Globals.jsonCollection[isnear].clue;
 					
-					message.message = clue;
-					message.addEventListener('click', function(e) {
-						if (e.index == 0) {
-							Alloy.CFG.tabs.setActiveTab(3);
-						}
-					});
-					message.show();
+						message.message = clue;
+						message.addEventListener('click', function(e) {
+							if (e.index == 0) {
+								Alloy.CFG.tabs.setActiveTab(3);
+							}
+						});
+						message.show();
 					
-					Alloy.Globals.jsonCollection[isnear].alerted = 1;
-					playSound();
+						Alloy.Globals.jsonCollection[isnear].alerted = 1;
+						playSound();
+					}
 				}
 			}			
 		}
@@ -234,25 +236,25 @@ function addClueZone() {
 //-----------------------------------------------------------
 // Push'ar in funna bokstäver i en array
 //-----------------------------------------------------------
-function getFound() {
-	try {
-		foundJSON = [];
-
-		var foundLettersCollection = Alloy.Collections.foundLettersModel;
-		foundLettersCollection.fetch({
-			query : 'SELECT letter FROM foundLettersModel WHERE found = 1'
-		});
-
-		foundLetters = foundLettersCollection.toJSON();
-		for (var f = 0; f < foundLetters.length; f++) {
-			foundJSON.push(' ' + foundLetters[f].letter);
-		}
-
-		return foundJSON;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getFound");
-	}
-}
+// function getFound() {
+	// try {
+		// foundJSON = [];
+// 
+		// var foundLettersCollection = Alloy.Collections.foundLettersModel;
+		// foundLettersCollection.fetch({
+			// query : 'SELECT letter FROM foundLettersModel WHERE found = 1'
+		// });
+// 
+		// foundLetters = foundLettersCollection.toJSON();
+		// for (var f = 0; f < foundLetters.length; f++) {
+			// foundJSON.push(' ' + foundLetters[f].letter);
+		// }
+// 
+		// return foundJSON;
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getFound");
+	// }
+// }
 
 //-----------------------------------------------------------
 // Sparar till found 0 och tömmer bokstäverna så man kan spela igen

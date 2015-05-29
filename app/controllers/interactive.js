@@ -159,10 +159,10 @@ function checkLetter(letterToCheck) {
 			messageDialog.addEventListener('click', function(e) {
 				if (e.index == 0) {
 					$.txtLetter.value = '';
+					
 					foundLettersModel.fetch({
 						'id' : foundLetterId
 					});
-
 					foundLettersModel.set({
 						'letter' : letterToCheck,
 						'found' : 1
@@ -172,7 +172,7 @@ function checkLetter(letterToCheck) {
 					jsonCollection[foundLetterId].found = 1;
 
 					foundLetterId++;
-					getFound();
+					foundJSON.push(' ' + letterToCheck);
 					loadClue(foundLetterId);
 
 					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
