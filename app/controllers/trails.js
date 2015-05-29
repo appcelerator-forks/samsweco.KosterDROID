@@ -30,7 +30,8 @@ function setRowData() {
 					id : rows[i].id,
 					height : '90dp',
 					top : '0dp',
-					hasChild : true
+					hasChild : true,
+					rightImage : '/pins/androidarrow2.png'
 				});
 
 				var listItem = Ti.UI.createView({
