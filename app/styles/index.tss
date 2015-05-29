@@ -57,7 +57,7 @@
 }
 
 "#boatPikto": {
-	top: '5dp',
+	top: '2dp',
 	height: '30dp',
 	width: '30dp',
 	left: '5%'
