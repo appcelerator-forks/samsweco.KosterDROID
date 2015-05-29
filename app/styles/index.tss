@@ -37,7 +37,7 @@
 
 "#btnBoat": {
 	left: '10dp',
-	top: '6dp',
+	top: '9dp',
 	color: 'black',
 	font: {
 		fontSize: '14dp',
@@ -65,7 +65,7 @@
 
 "#btnAbout": {
 	left: '6dp',
-	top: '6dp',
+	top: '9dp',
 	color: 'black',
 	font: {
 		fontSize: '14dp',
