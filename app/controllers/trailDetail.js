@@ -123,7 +123,8 @@ function showHotspots() {
 				layout : 'horizontal',
 				height : '90dp',
 				top : '0dp',
-				hasChild : true
+				hasChild : true,
+				rightImage : '/pins/androidarrow2.png'
 			});
 
 			var img = Ti.UI.createImageView({
