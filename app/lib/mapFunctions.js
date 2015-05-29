@@ -168,10 +168,10 @@ function createMapRoutes(maptype, file, name, color) {
 		
 		if(name == 'Äventyrsleden'){
 			maptype.region = {
-				latitude : 58.893006,
-				longitude : 11.044584,
-				latitudeDelta : 0.005,
-				longitudeDelta : 0.005
+				latitude : 58.892973,
+				longitude : 11.041087,
+				latitudeDelta : 0.007,
+				longitudeDelta : 0.007
 			};
 		} else {
 			maptype.region = calculateMapRegion(coordArray);
