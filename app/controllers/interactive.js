@@ -87,7 +87,7 @@ function toNextClue() {
 		nextDialog.addEventListener('click', function(e) {
 			if (e.index == 0) {
 				if (jsonCollection[foundLetterId].found == 0) {
-					checkLetter(jsonCollection[foundLetterId].letter);
+					checkLetter(jsonCollection[foundLetterId-1].letter);
 					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
 				}
 			}
@@ -169,7 +169,7 @@ function checkLetter(letterToCheck) {
 					});
 					foundLettersModel.save();
 					
-					jsonCollection[foundLetterId].found = 1;
+					jsonCollection[foundLetterId-1].found = 1;
 
 					foundLetterId++;
 					foundJSON.push(' ' + letterToCheck);
