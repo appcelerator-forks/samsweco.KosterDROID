@@ -124,7 +124,23 @@
 	left: '15dp',
 	top: '5dp',
 	height: '30dp',
-	width: '200dp',
+	width: '45%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
+	font: {
+		fontSize: '14dp'
+	}
+}
+
+"#btnGame": {
+	visible: false,
+	height: 0,
+	left: '10dp',
+	right : '10dp',
+	top: '5dp',
+	width: '45%',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
@@ -144,17 +160,9 @@
 	width: '50dp'
 }
 
-"#btnGame": {
-	visible: false,
-	height: 0,
-	left: '15dp',
-	top: '5dp',
-	width: '200dp',
-	backgroundColor: 'white',
-	borderRadius: '14dp',
-	color: 'black',
-	borderColor : '#0098C3',
-	font: {
-		fontSize: '12dp'
-	}
+
+
+"#btnHorizontalView" : {
+	layout : 'horizontal',
+	height : Titanium.UI.SIZE
 }

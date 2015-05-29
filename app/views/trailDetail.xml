@@ -7,7 +7,6 @@
 	<Model src="foundLettersModel" />
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
-	
 	<Window id="hikeDetailWin" class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
@@ -16,15 +15,17 @@
 			<View id="horizontalView">
 				<View id="iconrow"></View>
 			</View>
+			<View id="btnHorizontalView">
+				<Button id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Button>
+				<Button id="btnGame">Gå till bokstavsjakten!</Button>
+			</View>
 			<View class="lbls">
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>
 				<Label id="lblTrailArea" class="lbltrailDetail"></Label>
 				<Label id="lblTrailLength" class="lbltrailDetail"></Label>
-				<Button id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Button>	
 				<Label id="lblTrailInfo" class="lbltrailDetail"></Label>
 			</View>
-			<Button id="btnGame">Gå till bokstavsjakten!</Button>
-			<Label id="lblLangsVagen" text="Det här kan du se längst vägen:"></Label>
+			<Label id="lblLangsVagen" text="Det här kan du se längs vägen:"></Label>
 			<View id="trail_hotspotView">
 				<TableView id="hotspotTable" onClick="showHotspot" />
 			</View>

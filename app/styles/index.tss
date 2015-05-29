@@ -1,5 +1,4 @@
 ".container": {
-	layout: 'vertical',
 	height: '100%'
 }
 
@@ -39,6 +38,7 @@
 "#btnBoat": {
 	left: '10dp',
 	top: '4dp',
+	color: 'black',
 	font: {
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
@@ -64,6 +64,7 @@
 "#btnAbout": {
 	left: '6dp',
 	top: '4dp',
+	color: 'black',
 	font: {
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
@@ -89,11 +90,11 @@
 "#horiView": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,
-	top: '50%'
+	top: '45%'
 }
 
 "#widgetInfo": {
-	height: 0,
-	visible: false,
+	height: '20dp',
+	visible: true,
 	width: Titanium.UI.SIZE
 }
