@@ -41,25 +41,6 @@
 	bottom: 0
 }
 
-// ".switch": {
-	// right: '15dp',
-	// height: Titanium.UI.FILL,
-	// width: Titanium.UI.FILL,
-	// // opacity : 1
-// }
-
-// ".switchClass": {
-	// height: '30dp',
-	// width: '30%',
-	// right : '15dp'
-	// // opacity : 1
-// }
-// 
-"#HotSwitch1": {
-	height : '50%',
-	
-}
-
 ".v1":{
 	layout : 'horizontal',
 	width : '65%',
