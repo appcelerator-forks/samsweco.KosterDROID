@@ -94,7 +94,7 @@
 }
 
 "#widgetInfo": {
-	height: '20dp',
-	visible: true,
+	height: 0,
+	visible: false,
 	width: Titanium.UI.SIZE
 }

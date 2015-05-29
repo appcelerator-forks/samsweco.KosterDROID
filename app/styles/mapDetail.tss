@@ -4,7 +4,7 @@
 	height: '39dp',
 	width: '39dp',
 	backgroundColor: 'white',
-	opacity: 0.8,
+	opacity: 0.75,
 	visible: true,
 	borderRadius: 2,
 	borderWidth: 1
@@ -21,7 +21,7 @@
 	width: Titanium.UI.FILL,
 	bottom: 0,
 	backgroundColor : 'white',
-	opacity : 0.8
+	opacity : 0.75
 }
 
 
@@ -41,17 +41,34 @@
 	bottom: 0
 }
 
-".switch": {
-	right: '13dp',
-	height: Titanium.UI.FILL,
-	width: Titanium.UI.FILL,
-	// opacity : 1
+// ".switch": {
+	// right: '15dp',
+	// height: Titanium.UI.FILL,
+	// width: Titanium.UI.FILL,
+	// // opacity : 1
+// }
+
+// ".switchClass": {
+	// height: '30dp',
+	// width: '30%',
+	// right : '15dp'
+	// // opacity : 1
+// }
+// 
+"#HotSwitch1": {
+	height : '50%',
+	
 }
 
-".switchClass": {
-	height: '30dp',
-	width: Titanium.UI.SIZE,
-	// opacity : 1
+".v1":{
+	layout : 'horizontal',
+	width : '65%',
+	height : '40%'
+}
+".v2":{
+	layout : 'horizontal',
+	width : '20%',
+	height : '40%'
 }
 
 "Label": {
