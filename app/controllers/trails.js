@@ -2,12 +2,6 @@ Ti.include("/SQL.js");
 
 var args = arguments[0] || {};
 
-try {
-	var trailsCollection = Alloy.Collections.trailsModel;
-	trailsCollection.fetch();
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-}
 
 setRowData();
 
@@ -16,11 +10,8 @@ setRowData();
 //-----------------------------------------------------------
 function setRowData() {
 	try {
-		var trailsCollection = Alloy.Collections.trailsModel;
-		trailsCollection.fetch();
-
 		var tableViewData = [];
-		var rows = trailsCollection.toJSON();
+		var rows = returnTrails();
 
 		for (var i = rows.length; i--; ) {
 			if (rows[i].id != 8) {
@@ -113,23 +104,18 @@ function showTrailDetails(e) {
 	try {
 		var id = e.rowData.id;
 
-		var trailsCollection = Alloy.Collections.trailsModel;
-		trailsCollection.fetch({
-			query : getTrailById + id + '"'
-		});
-
-		var jsonObj = trailsCollection.toJSON();
+		var trailjsonObj = returnSpecificTrailById(id);
 
 		var args = {
 			id : id,
-			title : jsonObj[0].name,
-			length : jsonObj[0].length,
-			infoTxt : jsonObj[0].infoTxt,
-			area : jsonObj[0].area,
-			zoomlat : jsonObj[0].zoomLat,
-			zoomlon : jsonObj[0].zoomLon,
-			color : jsonObj[0].color,
-			jsonfile : jsonObj[0].JSONfile
+			title : trailjsonObj[0].name,
+			length : trailjsonObj[0].length,
+			infoTxt : trailjsonObj[0].infoTxt,
+			area : trailjsonObj[0].area,
+			zoomlat : trailjsonObj[0].zoomLat,
+			zoomlon : trailjsonObj[0].zoomLon,
+			color : trailjsonObj[0].color,
+			jsonfile : trailjsonObj[0].JSONfile
 		};
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView();
@@ -145,7 +131,7 @@ function showTrailDetails(e) {
 function showIcons(id) {
 	try {
 		var trail_id = id;
-		var selectedIcons = getIcons(trail_id);
+		var selectedIcons = returnSpecificIconsByTrailId(id);
 
 		var iconView = Ti.UI.createView({
 			layout : 'horizontal',
@@ -158,7 +144,6 @@ function showIcons(id) {
 		});
 
 		for (var i = 0; i < selectedIcons.length; i++) {
-
 			var iconImgView = Ti.UI.createImageView({
 				height : '20dp',
 				width : '20dp',
@@ -166,35 +151,12 @@ function showIcons(id) {
 			});
 
 			iconImgView.image = '/images/' + selectedIcons[i].name + '.png';
-
 			iconView.add(iconImgView);
 		}
 		return iconView;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
 	}
-}
-
-//-----------------------------------------------------------
-// Hämtar ikoner för varje vandringsled
-//-----------------------------------------------------------
-function getIcons(trail_id) {
-	try {
-		var id = trail_id;
-
-		var infotrailCollection = Alloy.Collections.infospotCoordinatesModel;
-		infotrailCollection.fetch({
-			query : getDistInfospotsByTrailId + id + '"'
-		});
-
-		var infoTrails = infotrailCollection.toJSON();
-
-		return infoTrails;
-
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-	}
-
 }
 
 function destroyModel() {

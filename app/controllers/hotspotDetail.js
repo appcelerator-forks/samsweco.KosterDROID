@@ -1,5 +1,6 @@
 Ti.include("/SQL.js");
-var mediaCollection = getMediaCollection();
+Ti.include("/collectionData.js");
+
 var args = arguments[0] || {};
 
 $.lblHotspotName.text = args.title || "Name";
@@ -7,32 +8,16 @@ $.lblHotspotInfoTxt.text = args.infoTxt || "Info";
 var hotspotId = args.id || "Id";
 var picId = args.filename || "filename";
 
-setPics();
-
-//-----------------------------------------------------------
-// Sätter bilder till bildspelet
-//-----------------------------------------------------------
-function setPics() {
-	try {
-		selectHotspotPics();
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "HotspotDetail - setPics");
-	}
-}
+selectHotspotPics();
 
 //-----------------------------------------------------------
 // Hämtar bilder för bildspelet
 //-----------------------------------------------------------
 function selectHotspotPics() {
 	try {
-
-		mediaCollection.fetch({
-			query : getImgsByHotspotId + hotspotId + '"'
-		});
-		var jsonMedia = mediaCollection.toJSON();
+		var jsonMedia = returnSpecificPics(hotspotId);
 
 		for (var i = 0; i < jsonMedia.length; i++) {
-
 			var img_view = Ti.UI.createView({
 				backgroundImage : "/pics/" + jsonMedia[i].filename + '.png',	
 				width : '100%',

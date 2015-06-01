@@ -1,4 +1,6 @@
-Ti.include("/SQL.js");
+// Ti.include("/SQL.js");
+Ti.include("/mapFunctions.js");
+Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
 
@@ -20,12 +22,20 @@ try {
 }
 
 if(args.title == 'Äventyrsleden'){
-	$.btnGame.show();
-	$.btnGame.height = '30dp';
+	$.btnSendTo.show();
+	$.btnSendTo.height = '20dp';
+	$.btnSendTo.title = 'Gå till bokstavsjakten!';
 	
-	$.btnGame.addEventListener('click', function(){
+	$.btnSendTo.addEventListener('click', function(){
 		Alloy.CFG.tabs.setActiveTab(3);
-		$.hikeDetailWin.close();
+	});
+} else if(args.title == 'Båtresan'){
+	$.btnSendTo.show();
+	$.btnSendTo.height = '20dp';
+	$.btnSendTo.title = 'Påminn vid sevärdhet';
+	
+	$.btnSendTo.addEventListener('click', function(){
+		getUserPos('boat');
 	});
 }
 
@@ -33,7 +43,7 @@ if(args.title == 'Äventyrsleden'){
 // Onload
 //-----------------------------------------------------------
 selectTrailPics();
-showHotspots();
+LoadHotspotList();
 showIcons();
 changeLabel();
 
@@ -61,14 +71,9 @@ function zoomMapTrail() {
 //-----------------------------------------------------------
 function selectTrailPics() {
 	try {
-		var mediaCollection = Alloy.Collections.mediaModel;
-		mediaCollection.fetch({
-			query : getImgsForTrailById + trailId + '"'
-		});
-
-		var jsonMedia = mediaCollection.toJSON();
+		var jsonMedia = returnSpecificTrailPics(trailId);
+		
 		for (var i = 0; i < jsonMedia.length; i++) {
-
 			var img_view = Ti.UI.createView({
 				backgroundImage : "/pics/" + jsonMedia[i].filename + '.png',
 				width : '100%',
@@ -112,14 +117,14 @@ function selectTrailPics() {
 //-----------------------------------------------------------
 // Visar hotspots för en vald vandringsled
 //-----------------------------------------------------------
-function showHotspots() {
+function LoadHotspotList() {
 	try {
 		var tableViewData = [];
-		var rows = getHotspotData();
+		var tableRow = returnSpecificHotspotsByTrailId(trailId);
 
-		for (var i = 0; i < rows.length; i++) {
+		for (var i = 0; i < tableRow.length; i++) {
 			var row = Ti.UI.createTableViewRow({
-				id : rows[i].name,
+				id : tableRow[i].name,
 				layout : 'horizontal',
 				height : '90dp',
 				top : '0dp',
@@ -130,7 +135,7 @@ function showHotspots() {
 			var img = Ti.UI.createImageView({
 				height : '80dp',
 				width : '125dp',
-				image : '/pics/' + rows[i].cover_pic,
+				image : '/pics/' + tableRow[i].cover_pic,
 				left : '15dp',
 				top : '10dp'
 			});
@@ -150,7 +155,7 @@ function showHotspots() {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
 				},
-				text : rows[i].name
+				text : tableRow[i].name
 			});
 
 			labelView.add(lblName);
@@ -169,52 +174,13 @@ function showHotspots() {
 }
 
 //-----------------------------------------------------------
-// Hämtar data för hotspots som hör till den valda vandringsleden
-//-----------------------------------------------------------
-function getHotspotData() {
-	try {
-		var id = trailId;
-
-		var hotstrailCollection = Alloy.Collections.hotspotModel;
-		hotstrailCollection.fetch({
-			query : getHotspotsByTrailId + id + '"'
-		});
-
-		var jsonObj = hotstrailCollection.toJSON();
-		return jsonObj;
-
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	}
-}
-
-//-----------------------------------------------------------
 // Öppnar detaljvy med vald hotspot - klickad på i kartvyn
 //-----------------------------------------------------------
-function showHotspot(e) {
+function sendToHotspot(e) {
 	try {
-		var name = e.rowData.id;
-
-		var hotspotCollection = Alloy.Collections.hotspotModel;
-		hotspotCollection.fetch({
-			query : getHotspotByName + name + '"'
-		});
-
-		var jsonObj = hotspotCollection.toJSON();
-		var txt = jsonObj[0].infoTxt;
-		var idnr = jsonObj[0].id;
-
-		var hotspotTxt = {
-			title : name,
-			infoTxt : txt,
-			id : idnr
-		};
-
-		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-		Alloy.CFG.tabs.activeTab.open(hotspotDetail);
-
+		showHotspot(e.rowData.id);
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled - SendToHotspot");
 	}
 }
 
@@ -223,7 +189,7 @@ function showHotspot(e) {
 //-----------------------------------------------------------
 function showIcons() {
 	try {
-		var selectedIcons = getIcons();
+		var selectedIcons = returnSpecificIconsByTrailId(trailId);
 
 		for (var i = 0; i < selectedIcons.length; i++) {
 
@@ -237,26 +203,6 @@ function showIcons() {
 
 			$.iconrow.add(covericon);
 		}
-
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	}
-}
-
-//-----------------------------------------------------------
-// Hämtar ikoner till vald vandringsled
-//-----------------------------------------------------------
-function getIcons() {
-	try {
-		var id = trailId;
-
-		var infotrailCollection = Alloy.Collections.infospotCoordinatesModel;
-		infotrailCollection.fetch({
-			query : getDistInfospotsByTrailId + id + '"'
-		});
-
-		var infoTrails = infotrailCollection.toJSON();
-		return infoTrails;
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
