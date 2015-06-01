@@ -1,4 +1,4 @@
-Ti.include("/SQL.js");
+Ti.include("collectionData.js");
 
 var args = arguments[0] || {};
 
@@ -130,7 +130,6 @@ function showTrailDetails(e) {
 //-----------------------------------------------------------
 function showIcons(id) {
 	try {
-		var trail_id = id;
 		var selectedIcons = returnSpecificIconsByTrailId(id);
 
 		var iconView = Ti.UI.createView({
