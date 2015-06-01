@@ -33,7 +33,7 @@ function showMap(maptype) {
 		setRegion(maptype);
 		displayTrailMarkers(maptype);
 		
-		return map;
+		return bigMap;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showMap");
 	}
@@ -308,7 +308,7 @@ function displayAllMarkers() {
 			markerHotspotArray.push(markerHotspot);
 		}
 
-		map.addAnnotations(markerHotspotArray);		
+		bigMap.addAnnotations(markerHotspotArray);		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - displayMarkers");
 	}
@@ -435,7 +435,7 @@ function removeAnnoSpot(anno, infotype) {
 		for (var o = 0; o < infospotArray.length; o++) {
 			var type = infospotArray[o].name;
 			if (anno == 'info' && infotype == type) {
-				map.removeAnnotation(infospotArray[o]);
+				bigMap.removeAnnotation(infospotArray[o]);
 			}
 		}
 	} catch(e) {
@@ -449,7 +449,7 @@ function removeAnnoSpot(anno, infotype) {
 function removeAnnoHotspot() {
 	try {
 		for (var o = 0; o < markerHotspotArray.length; o++) {
-			map.removeAnnotation(markerHotspotArray[o]);
+			bigMap.removeAnnotation(markerHotspotArray[o]);
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - removeAnnoHotspot");

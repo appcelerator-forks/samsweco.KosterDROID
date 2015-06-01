@@ -29,7 +29,7 @@
 var MapModule = require('ti.map');
 Alloy.Globals.MapModule = MapModule;
 
-map = MapModule.createView({
+bigMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
 	userLocation : true,

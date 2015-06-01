@@ -12,8 +12,6 @@ var zoomLat = args.zoomlat;
 
 var trailsCollection = getTrailsCollection();
 
-Ti.API.info('map controller skapas');
-
 //-----------------------------------------------------------
 // Onload
 //-----------------------------------------------------------
@@ -29,7 +27,7 @@ try {
 function displayBigMap() {
 	try {
 		Ti.API.info('innan kartan ');
-		$.mapView.add(showMap(map));
+		$.mapView.add(showMap(bigMap));
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 	}	
@@ -67,12 +65,12 @@ function showTrail(myName) {
 //-----------------------------------------------------------
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
-map.addEventListener('click', evtListenMap);
+bigMap.addEventListener('click', evtListenMap);
 
 //-----------------------------------------------------------
 // Funktioner för att öppna och stänga kartmenyn
 //-----------------------------------------------------------
-map.addEventListener('singletap', function() {
+bigMap.addEventListener('singletap', function() {
 	closeMapMenu();
 });
 
