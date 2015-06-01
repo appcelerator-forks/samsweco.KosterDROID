@@ -98,7 +98,7 @@ function toInfo() {
 //-----------------------------------------------------------
 
 $.mapWin.addEventListener('blur', function(){
-	//$.bigMap.removeAllAnnotations();
+//	$.bigMap.removeAllAnnotations();
 	$.mapWin = null;
 });
 

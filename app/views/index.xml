@@ -35,7 +35,7 @@
 			<Window id="hikeWin" title="Vandringsleder" onOpen="toTrails" />
 		</Tab>
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
-			<Window id="mapWin" onOpen="toMap" exitOnClose="true" />
+			<Window id="mapWin" onOpen="toMap" />
 		</Tab>
 		<Tab id="interactive" class="tabbar" title="Spel" icon="/images/quizMenu.png">
 			<Window id="interactiveWin" onOpen="toInteractive" exitOnClose="true"/>
