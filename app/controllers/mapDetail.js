@@ -1,6 +1,6 @@
 Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
-Ti.include("SQL.js");
+Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
 
@@ -15,11 +15,10 @@ var trailId = args.id;
 var zoomLat = args.zoomlat;
 var zoomLon = args.zoomlon;
 
-var trailsCollection = getTrailsCollection();
-
 //-----------------------------------------------------------
 // Onload
 //-----------------------------------------------------------
+detailMap.removeAllAnnotations();
 showMapDetail();
 getSpecificIconsForTrail(trailId, detailMap);
 
