@@ -9,6 +9,7 @@ exports.toInteractive = toInteractive;
 $.tabs.on('close', function() {
 	stopGPS();
 	stopGame();
+	stopBoatGPS();
 });
 
 var infoVisible = false;
