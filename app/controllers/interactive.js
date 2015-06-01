@@ -283,3 +283,11 @@ Titanium.App.addEventListener('close', function() {
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
 interactiveMap.addEventListener('click', evtList);
+
+var cleanup = function() {
+	$.destroy();
+	$.off();
+	$.interactiveWin = null;
+};
+
+$.interactiveWin.addEventListener('close', cleanup);

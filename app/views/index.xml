@@ -35,13 +35,13 @@
 			<Window id="hikeWin" title="Vandringsleder" onOpen="toTrails" />
 		</Tab>
 		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
-			<Window id="mapWin" onOpen="toMap" />
+			<Window id="mapWin" onOpen="toMap" exitOnClose="true" />
 		</Tab>
 		<Tab id="interactive" class="tabbar" title="Spel" icon="/images/quizMenu.png">
-			<Window id="interactiveWin" onOpen="toInteractive" />
+			<Window id="interactiveWin" onOpen="toInteractive" exitOnClose="true"/>
 		</Tab>
 		<Tab id="info" class="tabbar" title="Info" icon="/images/infoMenu.png">
-			<Window id="infoWin" title="Information" onOpen="toInfo" />
+			<Window id="infoWin" title="Information" onOpen="toInfo" exitOnClose="true" />
 		</Tab>
 	</TabGroup>
 </Alloy>
