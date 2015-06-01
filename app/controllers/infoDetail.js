@@ -1,7 +1,8 @@
 Ti.include("/SQL.js");
+Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
-var urlCollection = Alloy.Collections.info_urlModel;
+// var urlCollection = Alloy.Collections.info_urlModel;
 
 
 //-----------------------------------------------------------
@@ -51,11 +52,11 @@ function setRowData() {
 	try {
 		var tableViewData = [];
 
-		var urlJson = urlCollection.toJSON();
+		var urlList = returnUrlByInfoId(id);
 
-		for (var i = 0; i < urlJson.length; i++) {
+		for (var i = 0; i < urlList.length; i++) {
 			var row = Ti.UI.createTableViewRow({
-				id : urlJson[i].id,
+				id : urlList[i].id,
 				height : '60dp',
 				top : '0dp',
 				hasChild : true
@@ -69,7 +70,7 @@ function setRowData() {
 					fontSize : '13dp',
 				},
 				color : '#0098C3',
-				text : urlJson[i].linkname
+				text : urlList[i].linkname
 			});
 
 			row.add(linkName);
@@ -97,17 +98,19 @@ function getLink(e) {
 	try {
 		var rowId = e.rowData.id;
 				
-		urlCollection.fetch({
-			query : getUrlById + rowId + '"'
-		});
-		var jsonObj = urlCollection.toJSON();
+		// urlCollection.fetch({
+			// query : getUrlById + rowId + '"'
+		// });
+		// var jsonObj = urlCollection.toJSON();
+		
+		var urlById = returnUrlById(rowId);
 
 		if(rowId != 3 && rowId != 4){			
-			var web = jsonObj[0].url;
+			var web = urlById[0].url;
 			openLink(web); 
 		} else if(rowId == 3 || rowId == 4){
-			var txt = jsonObj[0].url;
-			var titl = jsonObj[0].linkname; 
+			var txt = urlById[0].url;
+			var titl = urlById[0].linkname; 
 			showRules(txt, titl);
 		}
 		
