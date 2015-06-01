@@ -305,7 +305,8 @@ function userIsNearLetter() {
 function playSound() {
 	try {
 		var player = Ti.Media.createSound({
-			url : "/sound/popcorn.m4a"
+			url : "/sound/popcorn.m4a",
+			preload: true
 		});
 
 		player.play();
