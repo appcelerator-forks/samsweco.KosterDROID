@@ -17,7 +17,7 @@
 			</View>
 			<View id="btnHorizontalView">
 				<Button id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Button>
-				<Button id="btnGame">Gå till bokstavsjakten!</Button>
+				<Button id="btnSendTo">Gå till bokstavsjakten!</Button>
 			</View>
 			<View class="lbls">
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>
@@ -27,7 +27,7 @@
 			</View>
 			<Label id="lblLangsVagen" text="Det här kan du se längs vägen:"></Label>
 			<View id="trail_hotspotView">
-				<TableView id="hotspotTable" onClick="showHotspot" />
+				<TableView id="hotspotTable" onClick="sendToHotspot" />
 			</View>
 		</ScrollView>
 	</Window>

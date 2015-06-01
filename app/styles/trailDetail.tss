@@ -134,7 +134,7 @@
 	}
 }
 
-"#btnGame": {
+"#btnSendTo": {
 	visible: false,
 	height: 0,
 	left: '10dp',

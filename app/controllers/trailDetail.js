@@ -16,7 +16,6 @@ try {
 
 	var trailId = args.id;
 	globalTrailID = trailId;
-
 } catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 }
@@ -59,6 +58,7 @@ function zoomMapTrail() {
 			zoomlat : args.zoomlat,
 			zoomlon : args.zoomlon
 		};
+		
 		var mapDetail = Alloy.createController("mapDetail", trail).getView();
 		Alloy.CFG.tabs.activeTab.open(mapDetail);
 	} catch(e) {
@@ -91,8 +91,7 @@ function selectTrailPics() {
 					fontStyle : 'italic',
 					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					fontFamily : 'Raleway-Light'
-				},
-
+				}
 			});
 
 			var backgroundView = Ti.UI.createView({
@@ -106,7 +105,6 @@ function selectTrailPics() {
 			backgroundView.add(lblImgTxt);
 
 			$.slideShowTrails.addView(backgroundView);
-			//$.slideShowHotspotDetail.add(lblImgTxt);
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
@@ -192,7 +190,6 @@ function showIcons() {
 		var selectedIcons = returnSpecificIconsByTrailId(trailId);
 
 		for (var i = 0; i < selectedIcons.length; i++) {
-
 			var covericon = Ti.UI.createImageView({
 				height : '25dp',
 				width : '25dp',
