@@ -1,4 +1,4 @@
-Ti.include("SQL.js");
+Ti.include("/collectionData.js");
 
 var infospotArray = [];
 var markerHotspotArray = [];
@@ -8,9 +8,7 @@ var markerSpecHotspotArray = [];
 // Hämtar trailsCollection
 //-----------------------------------------------------------
 try {
-	var trailsCollection = Alloy.Collections.trailsModel;
-	trailsCollection.fetch();
-	var trailJson = trailsCollection.toJSON();
+	var trailJson = returnTrails();
 } catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - trailCollectionFetches");
 }
@@ -19,7 +17,7 @@ try {
 // Hämtar hotspotCollection
 //-----------------------------------------------------------
 try {
-	var hotspotCollection = getHotspotCollection();
+	var hotspotCollection = returnHotspots();
 } catch(e) {
 	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - hotspotCollectionFetches");
 }
@@ -79,7 +77,7 @@ var evtListenMap = function(evt){
 function setSpecificRoute(maptype, id, name, color) {
 	try {
 		if (id != 8) {
-			var file = getFile(id);
+			var file = returnJsonFiles(id);
 
 			for (var u = 0; u < file.length; u++) {
 				createMapRoutes(maptype, file[u].filename, name, color);
@@ -240,32 +238,11 @@ function displayTrailMarkers(maptype) {
 }
 
 //-----------------------------------------------------------
-// Hämtar JSON-filen för den valda vandringsleden
-//-----------------------------------------------------------
-function getFile(id) {
-	try {
-		var jsonFileCollection = Alloy.Collections.jsonFilesModel;
-		jsonFileCollection.fetch({
-			query : getJsonFileById + id + '"'
-		});
-
-		var filename = jsonFileCollection.toJSON();
-		return filename;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - getFile");
-	}
-}
-
-//-----------------------------------------------------------
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
 function showHotspot(name) {
 	try {
-		hotspotCollection.fetch({
-			query : getHotspotByName + name + '"'
-		});
-
-		var jsonObjHot = hotspotCollection.toJSON();
+		var jsonObjHot = returnSpecificHotspotsByName(myId);
 
 		var hotspotTxt = {
 			title : name,
@@ -285,11 +262,9 @@ function showHotspot(name) {
 //-----------------------------------------------------------
 function displayAllMarkers() {
 	try {
-		hotspotCollection.fetch();
-
-		var markersJSON = hotspotCollection.toJSON();
+		var markersJSON = returnHotspots();
+		
 		for (var u = 0; u < markersJSON.length; u++) {
-
 			var markerHotspot = MapModule.createAnnotation({
 				id : markersJSON[u].name,
 				latitude : markersJSON[u].xkoord,
@@ -335,12 +310,7 @@ function setRegion(maptype) {
 function displayInfoSpots(type) {
 	try {		
 		var markerArray = [];
-		var infospotCollection = getInfoSpotCoordinatesCollection();
-		infospotCollection.fetch({
-			query : getInfoCoordByType + type + '"'
-		});
-
-		var infospotJSON = infospotCollection.toJSON();
+		var infospotJSON = returnSpecificIconsByType(type);
 
 		for (var i = 0; i < infospotJSON.length; i++) {
 			var infoMarker = MapModule.createAnnotation({
@@ -369,11 +339,7 @@ function displaySpecificMarkers(id, maptype) {
 		markerSpecHotspotArray = null;
 		markerSpecHotspotArray = [];
 			
-		hotspotCollection.fetch({
-			query : getHotspotsByTrailId + id + '"'
-		});
-
-		var specificHotspots = hotspotCollection.toJSON();
+		var specificHotspots = returnSpecificHotspotsByTrailId(id);
 
 		for (var u = 0; u < specificHotspots.length; u++) {
 			var markerSpecificHotspot = MapModule.createAnnotation({
@@ -403,12 +369,8 @@ function getSpecificIconsForTrail(id, maptype) {
 	try {
 		var specificMarkerArray = [];
 
-		var specificinfotrailCollection = Alloy.Collections.infospotCoordinatesModel;
-		specificinfotrailCollection.fetch({
-			query : getInfospotsByTrailId + id + '"'
-		});
-
-		var infospotsTrails = specificinfotrailCollection.toJSON();
+		var infospotsTrails = returnIconsByTrailId(id);
+		
 		for (var i = 0; i < infospotsTrails.length; i++) {
 			var specificinfoMarker = MapModule.createAnnotation({
 				latitude : infospotsTrails[i].latitude,
