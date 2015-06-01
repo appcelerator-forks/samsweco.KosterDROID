@@ -1,5 +1,6 @@
 Ti.include("/SQL.js");
 Ti.include("/geoFunctions.js");
+Ti.include("/mapFunctions.js");
 
 $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
@@ -96,7 +97,7 @@ function toInfo() {
 //-----------------------------------------------------------
 
 $.mapWin.addEventListener('blur', function(){
-	//map.removeAllAnnotations();
+	removeAllAnnotations();
 	$.mapWin = null;
 });
 
