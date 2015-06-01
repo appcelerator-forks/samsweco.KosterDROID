@@ -1,6 +1,6 @@
 Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
-Ti.include("/SQL.js");
+Ti.include("/collectionData.js");
 
 var menuOpen = false;
 
@@ -38,11 +38,7 @@ function displayBigMap() {
 //-----------------------------------------------------------
 function showTrail(myName) {
 	try {
-		trailsCollection.fetch({
-			query : getTrailByName + myName + '"'
-		});
-
-		var jsonObjTr = trailsCollection.toJSON();
+		var jsonObjTr = returnSpecificTrail(myId);
 
 		var args = {
 			id : jsonObjTr[0].id,
