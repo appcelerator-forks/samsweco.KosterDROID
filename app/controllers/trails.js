@@ -1,4 +1,4 @@
-Ti.include("collectionData.js");
+Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
 
