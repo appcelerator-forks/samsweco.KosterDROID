@@ -1,4 +1,4 @@
-Ti.include('SQL.js');
+Ti.include('/SQL.js');
 
 var info_urlCollection = Alloy.Collections.info_urlModel;
 var info_Collection = Alloy.Collections.infoModel;
@@ -79,27 +79,27 @@ function returnSpecificTrailPics(trailId) {
 //-----------------------------------------------------------
 function returnTrails() {
 	trail_Collection.fetch();
-	var trailJson = trail_Collection.toJSON();
+	var trailsJson = trail_Collection.toJSON();
 
-	return trailJson;
+	return trailsJson;
 }
 
 function returnSpecificTrail(trailName) {
 	trail_Collection.fetch({
 		query : getTrailByName + trailName + '"'
 	});
-	var trailJson = trail_Collection.toJSON();
+	var trailsJson = trail_Collection.toJSON();
 
-	return trailJson;
+	return trailsJson;
 }
 
 function returnSpecificTrailById(trailId) {
 	trail_Collection.fetch({
 		query : getTrailById + trailId + '"'
 	});
-	var trailJson = trail_Collection.toJSON();
+	var trailsJson = trail_Collection.toJSON();
 
-	return trailJson;
+	return trailsJson;
 }
 
 

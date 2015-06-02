@@ -2,6 +2,7 @@
 	<Collection src="mediaModel" />
 	<Collection src="hotspotModel" />
 	<Collection src="infospotCoordinatesModel" />
+	<Collection src="trailsModel"/>
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
 	<Model src="foundLettersModel" />

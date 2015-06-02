@@ -3,8 +3,10 @@
 	<Collection src="hotspotModel" />
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
+	<Collection src="trailsModel"/>
 	<Model src="letterModel" />
 	<Model src="foundLettersModel" />
+	
 	
 	<Window id="hotspotDetail" class="container">
 		<ScrollView class="headView" scrollType="vertical">

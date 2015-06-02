@@ -21,15 +21,16 @@ try {
 
 if(args.title == 'Äventyrsleden'){
 	$.btnSendTo.show();
-	$.btnSendTo.height = '20dp';
+	$.btnSendTo.height = '30dp';
 	$.btnSendTo.title = 'Gå till bokstavsjakten!';
 	
 	$.btnSendTo.addEventListener('click', function(){
 		Alloy.CFG.tabs.setActiveTab(3);
+		$.hikeDetailWin.close();
 	});
 } else if(args.title == 'Båtresan'){
 	$.btnSendTo.show();
-	$.btnSendTo.height = '20dp';
+	$.btnSendTo.height = '30dp';
 	$.btnSendTo.title = 'Påminn vid sevärdhet';
 	
 	$.btnSendTo.addEventListener('click', function(){

@@ -7,6 +7,7 @@
 	<Model src="foundLettersModel" />
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
+	
 	<Window id="hikeDetailWin" class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">

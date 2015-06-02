@@ -7,20 +7,20 @@ var markerSpecHotspotArray = [];
 //-----------------------------------------------------------
 // Hämtar trailsCollection
 //-----------------------------------------------------------
-try {
+// try {
 	var trailJson = returnTrails();
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - trailCollectionFetches");
-}
+// } catch(e) {
+	// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - trailCollectionFetches");
+// }
 
 //-----------------------------------------------------------
 // Hämtar hotspotCollection
 //-----------------------------------------------------------
-try {
+// try {
 	var hotspotCollection = returnHotspots();
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - hotspotCollectionFetches");
-}
+// } catch(e) {
+	// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - hotspotCollectionFetches");
+// }
 
 //-----------------------------------------------------------
 // Läser in kartvyn
@@ -35,6 +35,14 @@ function showMap(maptype) {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showMap");
 	}
+}
+
+//-----------------------------------------------------------
+// Rensar kartan och laddar om pins
+//-----------------------------------------------------------
+function reloadMap(){
+	bigMap.removeAllAnnotations();
+	showMap(bigMap);
 }
 
 //-----------------------------------------
