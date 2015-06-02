@@ -69,15 +69,6 @@ var evtList = function(evt){
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartfunktioner");
 	}	
 };
-var evtListenMap = function(evt){
-	if (evt.clicksource == 'rightPane') {
-		if (evt.annotation.name == 'hotspot') {
-			showHotspot(evt.annotation.id);
-		} else if (evt.annotation.name == 'trail') {
-			showTrail(evt.annotation.id);
-		}
-	}
-};
 
 //-----------------------------------------------------------
 // sätter en vald vandingsled
@@ -250,7 +241,7 @@ function displayTrailMarkers(maptype) {
 //-----------------------------------------------------------
 function showHotspot(name) {
 	try {
-		var jsonObjHot = returnSpecificHotspotsByName(myId);
+		var jsonObjHot = returnSpecificHotspotsByName(name);
 
 		var hotspotTxt = {
 			title : name,

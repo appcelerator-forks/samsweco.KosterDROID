@@ -61,7 +61,15 @@ function showTrail(myName) {
 //-----------------------------------------------------------
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
-bigMap.addEventListener('click', evtListenMap);
+bigMap.addEventListener('click', function(evt){
+	if (evt.clicksource == 'rightPane') {
+		if (evt.annotation.name == 'hotspot') {
+			showHotspot(evt.annotation.id);
+		} else if (evt.annotation.name == 'trail') {
+			showTrail(evt.annotation.id);
+		}
+	}
+});
 
 //-----------------------------------------------------------
 // Funktioner för att öppna och stänga kartmenyn
