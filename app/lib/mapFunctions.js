@@ -1,26 +1,24 @@
 Ti.include("/collectionData.js");
 
-var infospotArray = [];
-var markerHotspotArray = [];
 var markerSpecHotspotArray = [];
 
 //-----------------------------------------------------------
 // Hämtar trailsCollection
 //-----------------------------------------------------------
-// try {
+try {
 	var trailJson = returnTrails();
-// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - trailCollectionFetches");
-// }
+} catch(e) {
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - trailCollectionFetches");
+}
 
 //-----------------------------------------------------------
 // Hämtar hotspotCollection
 //-----------------------------------------------------------
-// try {
+try {
 	var hotspotCollection = returnHotspots();
-// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - hotspotCollectionFetches");
-// }
+} catch(e) {
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - hotspotCollectionFetches");
+}
 
 //-----------------------------------------------------------
 // Läser in kartvyn
@@ -240,7 +238,7 @@ function displayTrailMarkers(maptype) {
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
 function showHotspot(name) {
-	try {
+	// try {
 		var jsonObjHot = returnSpecificHotspotsByName(name);
 
 		var hotspotTxt = {
@@ -251,9 +249,9 @@ function showHotspot(name) {
 
 		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
 		Alloy.CFG.tabs.activeTab.open(hotspotDetail);
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
+	// }
 }
 
 //-----------------------------------------------------------

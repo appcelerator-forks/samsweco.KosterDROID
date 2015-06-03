@@ -15,30 +15,25 @@ var trailsCollection = getTrailsCollection();
 //-----------------------------------------------------------
 // Onload
 //-----------------------------------------------------------
-try {
-	displayBigMap();
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
-}
+displayBigMap();
 
 //-----------------------------------------------------------
 // Visar kartan
 //-----------------------------------------------------------
 function displayBigMap() {
-	try {
-		Ti.API.info('innan kartan ');
+	// try {
 		$.mapView.add(showMap(bigMap));
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
-	}	
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
+	// }	
 }
 
 //-----------------------------------------------------------
 // Öppnar trailDetail med info om vald vandringsled
 //-----------------------------------------------------------
 function showTrail(myName) {
-	try {
-		var jsonObjTr = returnSpecificTrail(myId);
+	// try {
+		var jsonObjTr = returnSpecificTrail(myName);
 
 		var args = {
 			id : jsonObjTr[0].id,
@@ -53,9 +48,9 @@ function showTrail(myName) {
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView();
 		Alloy.CFG.tabs.activeTab.open(trailDetail);
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
+	// }
 }
 
 //-----------------------------------------------------------

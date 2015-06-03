@@ -67,6 +67,8 @@ var myPosition = false;
 // Array som håller bokstäverna från bokstavsjakten.
 //-----------------------------------------------------------
 var lettersArray = [];
+var infospotArray = [];
+var markerHotspotArray = [];
 var globalTrailID = 0;
 var word = 'ÖRONMANET';
 

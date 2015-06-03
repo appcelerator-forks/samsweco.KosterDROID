@@ -1,9 +1,6 @@
-Ti.include("/SQL.js");
 Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
-// var urlCollection = Alloy.Collections.info_urlModel;
-
 
 //-----------------------------------------------------------
 // Args skickade från listvy
@@ -51,7 +48,6 @@ function showinfoDetails(info) {
 function setRowData() {
 	try {
 		var tableViewData = [];
-
 		var urlList = returnUrlByInfoId(id);
 
 		for (var i = 0; i < urlList.length; i++) {
@@ -97,12 +93,6 @@ function setRowData() {
 function getLink(e) {
 	try {
 		var rowId = e.rowData.id;
-				
-		// urlCollection.fetch({
-			// query : getUrlById + rowId + '"'
-		// });
-		// var jsonObj = urlCollection.toJSON();
-		
 		var urlById = returnUrlById(rowId);
 
 		if(rowId != 3 && rowId != 4){			

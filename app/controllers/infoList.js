@@ -1,16 +1,6 @@
-Ti.include("/SQL.js");
+Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
-
-//-----------------------------------------------------------
-// Hämtar infoCollection
-//-----------------------------------------------------------
-try {
-	var infoCollection = getInfoCollection();
-	infoCollection.fetch();
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "infoList - create infoCollection");
-}
 
 //-----------------------------------------------------------
 // Onload
@@ -36,7 +26,6 @@ function showinfoDetails(info) {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationslistan");
 	}
-
 }
 
 //-----------------------------------------------------------
@@ -45,7 +34,7 @@ function showinfoDetails(info) {
 function setRowData() {
 	try {
 		var tableViewData = [];
-		var rows = infoCollection.toJSON();
+		var rows = returnAllInfo();
 
 		for (var i = 0; i < rows.length; i++) {
 			var row = Ti.UI.createTableViewRow({
@@ -102,19 +91,15 @@ function setRowData() {
 function getInfoDetails(e) {
 	try {
 		var id = e.rowData.id;
-		infoCollection.fetch({
-			query : getInfoById  + id + '"'
-		});
-
-		var jsonObj = infoCollection.toJSON();
+		var jsonObjInfo = returnUrlByInfoId(id);
 
 		var infoText = {
-			name : jsonObj[0].name,
-			infoTxt : jsonObj[0].infoTxt,
+			name : jsonObjInfo[0].name,
+			infoTxt : jsonObjInfo[0].infoTxt,
 			id : id,
-			img : jsonObj[0].cover_img,
-			link : jsonObj[0].url,
-			desc : jsonObj[0].desc,
+			img : jsonObjInfo[0].cover_img,
+			link : jsonObjInfo[0].url,
+			desc : jsonObjInfo[0].desc,
 		};
 
 		var infoDetail = Alloy.createController("infoDetail", infoText).getView();

@@ -1,5 +1,5 @@
 Ti.include("/geoFunctions.js");
-Ti.include("/bigMapFunctions.js");
+Ti.include("/mapFunctions.js");
 
 //-----------------------------------------------------------
 // Startar och avslutar location-event för hotspots/sevärdheter
