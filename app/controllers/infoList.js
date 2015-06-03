@@ -91,7 +91,7 @@ function setRowData() {
 function getInfoDetails(e) {
 	try {
 		var id = e.rowData.id;
-		var jsonObjInfo = returnUrlByInfoId(id);
+		var jsonObjInfo = returnSpecificInfo(id);
 
 		var infoText = {
 			name : jsonObjInfo[0].name,
