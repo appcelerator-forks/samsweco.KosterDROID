@@ -127,6 +127,8 @@ function loadClue(id) {
 	}	
 }
 
+Alloy.Globals.loadClue = loadClue;
+
 //-----------------------------------------------------------
 // Efter bokstaven validerats läses den upp bland de andra
 // bokstäverna i en label
