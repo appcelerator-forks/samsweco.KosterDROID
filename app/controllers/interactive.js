@@ -87,7 +87,19 @@ function toNextClue() {
 		nextDialog.addEventListener('click', function(e) {
 			if (e.index == 0) {
 				if (jsonCollection[foundLetterId].found == 0) {
-					checkLetter(jsonCollection[foundLetterId-1].letter);
+					foundLettersModel.fetch({
+						'id' : (foundJSON.length + 1)
+					});
+
+					foundLettersModel.set({
+						'letter' : '-',
+						'found' : 1
+					});
+		
+					foundLettersModel.save();
+					getFound();
+					foundLetterId++;
+					loadClue(foundLetterId);
 					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
 				}
 			}

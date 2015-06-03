@@ -1,5 +1,6 @@
 var foundJSON = [];
 var alertedArray = [];
+var foundLetterId = 1;
 
 //-----------------------------------------------------------
 // Hämtar hotspotCollection
@@ -290,12 +291,69 @@ function userIsNearLetter() {
 					
 						Alloy.Globals.jsonCollection[isnear].alerted = 1;
 						playSound();
+						
+						var letterId = Alloy.Globals.jsonCollection[isnear].id;
+						checkIfRight(letterId);
 					}
 				}
 			}			
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", 'isNearPoint - letter');
+	}
+}
+
+//-----------------------------------------------------------
+// Kontrollerar om användaren har missat någon bokstav
+//-----------------------------------------------------------
+function checkIfRight(id){
+	try {
+		if ((foundJSON.length + 1) != id) {
+
+			foundLettersModel.fetch({
+				'id' : (foundJSON.length + 1)
+			});
+
+			foundLettersModel.set({
+				'letter' : '-',
+				'found' : 1
+			});
+
+			foundLettersModel.save();
+
+		} else if (id - (foundJSON.length + 1) > 1) {
+
+			var diff = id - (foundJSON.length + 1);
+
+			var wrongmessage = Ti.UI.createAlertDialog({
+				title : 'Ojdå!',
+				buttonNames : ['Gå tillbaka och hitta de andra', 'Fortsätt leta efter nästa'],
+				message : 'Du har nu missat flera bokstäver. Vill du gå tillbaka och leta efter de du missat eller fortsätta leta efter nästa bokstav?'
+			});
+
+			wrongmessage.addEventListener('click', function(e) {
+				if (e.index == 1) {
+					var letterIndex = foundJSON.length + 1;
+
+					for (var i = 0; i < diff; i++) {
+						foundLettersModel.fetch({
+							'id' : letterIndex
+						});
+
+						foundLettersModel.set({
+							'letter' : '-',
+							'found' : 1
+						});
+
+						foundLettersModel.save();
+						letterIndex++;
+					}
+				}
+			});
+			wrongmessage.show();
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", 'geofunctions - playsound');
 	}
 }
 
