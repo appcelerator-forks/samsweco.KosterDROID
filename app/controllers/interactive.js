@@ -285,6 +285,7 @@ Titanium.App.addEventListener('close', function() {
 interactiveMap.addEventListener('click', evtList);
 
 var cleanup = function() {
+	stopGPS();
 	$.destroy();
 	$.off();
 	$.interactiveWin = null;
