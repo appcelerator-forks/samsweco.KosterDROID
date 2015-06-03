@@ -157,7 +157,7 @@
 		fontSize: '13dp'
 	},
 	top: '2dp',
-	left: '15dp',
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	color: 'gray'
 }
 
@@ -166,9 +166,8 @@
 		fontFamily: 'Raleway-Light',
 		fontSize: '13dp'
 	},
-	left: '12dp',
 	top: '3dp',
-	width: '270dp',
+	width: Titanium.UI.FILL,
 	backgroundColor: 'white',
 	borderRadius: '10dp',
 	color: 'black',
