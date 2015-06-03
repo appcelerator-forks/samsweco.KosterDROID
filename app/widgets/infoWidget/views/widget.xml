@@ -1,5 +1,10 @@
 <Alloy>
 	<ScrollView id="infoView">
-		<Label>Här ska det finnas text</Label>
+		<Label>Välkommen till Kosterhavets app! Längst ner finns en meny.
+			 Under Vandra får du tips om olika vandringsleder och sevärdheter längs dessa. 
+			 Du kan även hitta de olika vandringslederna under Karta. 
+			 I kartvyerna kan du uppe till höger välja att få fram informationspunkter, sevärdheter, egen position och påminnelse om sevärdheter.
+			  Bokstavsjakt är en kul aktivitet man kan göra längs Äventyrsslingan som börjar vid naturum vid Ekenäs.
+			   Under info kan du få information om nationalparken, vilka regler som gäller, kontaktinformation till nationalparken och turistinformation.</Label>
 	</ScrollView>
 </Alloy>
