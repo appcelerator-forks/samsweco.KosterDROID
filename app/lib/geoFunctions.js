@@ -492,6 +492,7 @@ function stopGPS() {
 
 function stopGame() {
 	Titanium.Geolocation.removeEventListener('location', addLetterLocation);
+	startOver();
 	lettersModel.destroy();
 	foundLettersModel.destroy();
 }

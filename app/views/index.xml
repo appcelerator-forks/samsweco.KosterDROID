@@ -7,7 +7,7 @@
 	<Model src="letterModel" />
 	<Model src="foundLettersModel" />
 	
-	<TabGroup id="tabs" backgroundColor="#fff" height="100%" tintColor="#0098C3">
+	<TabGroup id="tabs" backgroundColor="#fff" height="100%" tintColor="#0098C3" exitOnClose="false">
 		<Tab id="koster" class="tabbar" title="Hem" icon="/images/kosterStarMenu.png" >
 			<Window id="koster" class="container" backgroundImage="/pics/front.png">
 				<View class="headView">

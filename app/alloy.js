@@ -21,7 +21,6 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-
 //-----------------------------------------------------------
 // Variabel för kartvyn
 //-----------------------------------------------------------
@@ -128,7 +127,7 @@ function getLetterCollection() {
 	return letterCollection;
 }
 
-function getInfoSpotCoordinatesCollection(){
+function getInfoSpotCoordinatesCollection() {
 	var infospotCollection = Alloy.Collections.infospotCoordinatesModel;
 	return infospotCollection;
 }
@@ -149,28 +148,65 @@ function newError(errorMsg, pageName) {
 //-----------------------------------------------------------
 // Avsluta GPS när man stänger appen
 //-----------------------------------------------------------
-Titanium.App.addEventListener('pause', function() {
-	if(hotspotGPS){
-		Alloy.Globals.stopGPS();
-	}
-	if(interactiveGPS){
-		
-	}
-});
-Titanium.App.addEventListener('resume', function() {
-	if(hotspotGPS){
-		Alloy.Globals.getUserPos('hotspot');
-	} 
-});
+// Titanium.App.addEventListener('destroy', function() {
+// 
+	// if (interactiveGPS) {
+		// Alloy.Globals.stopGame();
+	// }
+	// if (hotspotGPS) {
+		// Alloy.Globals.stopGPS();
+	// }
+// });
+// Titanium.App.addEventListener('close', function() {
+// 
+	// Ti.API.info('App close');
+// 
+	// if (interactiveGPS) {
+		// Alloy.Globals.stopGame();
+	// }
+	// if (hotspotGPS) {
+		// Alloy.Globals.stopGPS();
+	// }
+// });
+// 
+// Titanium.App.addEventListener('stop', function() {//??
+// 
+	// Ti.API.info('App stop');
+// 
+	// if (interactiveGPS) {
+		// Alloy.Globals.getUserPos('letter');
+	// }
+	// if (hotspotGPS) {
+		// Alloy.Globals.getUserPos('hotspot');
+	// }
+// });
 
-Titanium.App.addEventListener('close', function() {
-	if(interactiveGPS || hotspotGPS){
-		Alloy.Globals.stopGame();
-		Alloy.Globals.startOver();
-		Alloy.Globals.stopGPS();
-	} 
-});
+// var activity = Ti.Android.currentActivity;
+// ['create', 'destroy', 'pause', 'resume', 'start', 'stop'].forEach(function(e) {
+	// activity.addEventListener(e, function() {
+// 
+		// if (e == 'destroy') {
+			// Ti.API.info('SANDRA :::: destroy');
+// 
+			// if (interactiveGPS) {
+				// Alloy.Globals.stopGame();
+			// }
+			// if (hotspotGPS) {
+				// Alloy.Globals.stopGPS();
+			// }
+		// }
+// 		
+		// if (e == 'close') {
+			// Ti.API.info('SANDRA :::: close');
+// 
+			// if (interactiveGPS) {
+				// Alloy.Globals.stopGame();
+			// }
+			// if (hotspotGPS) {
+				// Alloy.Globals.stopGPS();
+			// }
+		// }
+// 
+	// });
+// });
 
-Ti.Gesture.addEventListener('orientationchange', function(e){
-	Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
-});

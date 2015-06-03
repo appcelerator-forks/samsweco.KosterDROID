@@ -1,12 +1,13 @@
+Ti.include('/geoFunctions.js');
 
 $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toInteractive = toInteractive;
 
 $.tabs.on('close', function() {
-	stopGPS();
-	stopGame();
-	stopBoatGPS();
+	Alloy.Globals.stopGPS();
+	Alloy.Globals.stopGame();
+	Alloy.Globals.stopBoatGPS();
 });
 
 var infoVisible = false;
