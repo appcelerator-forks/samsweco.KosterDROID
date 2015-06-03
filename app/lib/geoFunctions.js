@@ -46,6 +46,7 @@ function getUserPos(type) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - get current position GPS");
 	}
 }
+Alloy.Globals.getUserPos = getUserPos;
 
 var addLetterLocation = function(e) {
 	if (!e.error) {
@@ -265,11 +266,6 @@ function checkIfAlerted(){
 //-----------------------------------------------------------
 function userIsNearLetter() {
 	try {
-		var message = Ti.UI.createAlertDialog({
-			title : 'Ny bokstav i närheten!',
-			buttonNames : ['Gå till bokstavsjakten', 'Stäng']
-		}); 
-
 		for (var isnear = 0; isnear < Alloy.Globals.jsonCollection.length; isnear++) {
 			if (Alloy.Globals.jsonCollection[isnear].alerted == 0){
 				if (Alloy.Globals.jsonCollection[isnear].found == 0){
@@ -279,23 +275,18 @@ function userIsNearLetter() {
 					var letterradius = Alloy.Globals.jsonCollection[isnear].radius;
 				
 					if (isInsideRadius(lat, lon, letterradius)) {
-						var clue = Alloy.Globals.jsonCollection[isnear].clue;
-					
-						message.message = clue;
-						message.addEventListener('click', function(e) {
-							if (e.index == 0) {
-								Alloy.CFG.tabs.setActiveTab(3);
-							}
-						});
-						message.show();
-					
-						Alloy.Globals.jsonCollection[isnear].alerted = 1;
-						playSound();
-						
 						var letterId = Alloy.Globals.jsonCollection[isnear].id;
-						checkIfRight(letterId);
+						
+						if(letterId == foundLetterId){
+							alertLetter(Alloy.Globals.jsonCollection[isnear].clue);
+							Alloy.Globals.jsonCollection[isnear].alerted = 1;
+						} else {
+							checkIfRight(letterId);
+							alertLetter(Alloy.Globals.jsonCollection[isnear].clue);
+							Alloy.Globals.jsonCollection[isnear].alerted = 1;
+						}
 					}
-				}
+				} 
 			}			
 		}
 	} catch(e) {
@@ -303,34 +294,60 @@ function userIsNearLetter() {
 	}
 }
 
+function alertLetter(clue){
+	var message = Ti.UI.createAlertDialog({
+		title : 'Ny bokstav i närheten!',
+		buttonNames : ['Gå till bokstavsjakten', 'Stäng']
+	});
+
+	message.message = clue;
+	message.addEventListener('click', function(e) {
+		if (e.index == 0) {
+			Alloy.CFG.tabs.setActiveTab(3);
+		}
+	});
+	message.show();
+	playSound(); 
+}
+
 //-----------------------------------------------------------
 // Kontrollerar om användaren har missat någon bokstav
 //-----------------------------------------------------------
 function checkIfRight(id){
 	try {
-		if ((foundJSON.length + 1) != id) {
+		var diff = id - foundLetterId;
 
-			foundLettersModel.fetch({
-				'id' : (foundJSON.length + 1)
+		var wrongmessage = Ti.UI.createAlertDialog({
+			title : 'Ojdå!'
+		});
+
+		if (diff == 1) {
+			wrongmessage.buttonNames = ['Gå tillbaka och leta', 'Fortsätt leta efter nästa'];
+			wrongmessage.message = 'Du har nu missat en bokstav. Vill du gå tillbaka och leta efter den du missat eller fortsätta leta efter nästa bokstav?';
+			
+			wrongmessage.addEventListener('click', function(e) {
+				if (e.index == 1) {
+					foundLettersModel.fetch({
+						'id' : (foundJSON.length + 1)
+					});
+
+					foundLettersModel.set({
+						'letter' : '-',
+						'found' : 1
+					});
+
+					foundLettersModel.save();
+				}
 			});
+			
+			wrongmessage.show();
+			playSound();
 
-			foundLettersModel.set({
-				'letter' : '-',
-				'found' : 1
-			});
-
-			foundLettersModel.save();
-
-		} else if (id - (foundJSON.length + 1) > 1) {
-
-			var diff = id - (foundJSON.length + 1);
-
-			var wrongmessage = Ti.UI.createAlertDialog({
-				title : 'Ojdå!',
-				buttonNames : ['Gå tillbaka och hitta de andra', 'Fortsätt leta efter nästa'],
-				message : 'Du har nu missat flera bokstäver. Vill du gå tillbaka och leta efter de du missat eller fortsätta leta efter nästa bokstav?'
-			});
-
+		} else if (diff > 1) {
+			
+			wrongmessage.buttonNames = ['Gå tillbaka och hitta de andra', 'Fortsätt leta efter nästa'];
+			wrongmessage.message = 'Du har nu missat flera bokstäver. Vill du gå tillbaka och leta efter de du missat eller fortsätta leta efter nästa bokstav?';
+			
 			wrongmessage.addEventListener('click', function(e) {
 				if (e.index == 1) {
 					var letterIndex = foundJSON.length + 1;
@@ -350,7 +367,9 @@ function checkIfRight(id){
 					}
 				}
 			});
+			
 			wrongmessage.show();
+			playSound();
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", 'geofunctions - playsound');
@@ -471,7 +490,7 @@ function stopGame() {
 }
 
 function stopBoatGPS() {
-	Titanium.Geolocation.removeEventListener('location', addHotspotLocation);
+	Titanium.Geolocation.removeEventListener('location', addBoatLocation);
 }
 
 Alloy.Globals.stopBoatGPS = stopBoatGPS;

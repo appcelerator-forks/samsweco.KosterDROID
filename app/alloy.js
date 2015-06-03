@@ -142,7 +142,6 @@ function newError(errorMsg, pageName) {
 		er.myObject = pageName;
 		throw er;
 	} catch (e) {
-
 		alert("Error:[" + e.message + "] has occured on " + e.myObject + " page.");
 	}
 }
@@ -150,14 +149,28 @@ function newError(errorMsg, pageName) {
 //-----------------------------------------------------------
 // Avsluta GPS när man stänger appen
 //-----------------------------------------------------------
-Titanium.App.addEventListener('close', function() {
+Titanium.App.addEventListener('pause', function() {
 	if(hotspotGPS){
-		Alloy.Globals.stopGPS;
+		Alloy.Globals.stopGPS();
+	}
+	if(interactiveGPS){
+		
+	}
+});
+Titanium.App.addEventListener('resume', function() {
+	if(hotspotGPS){
+		Alloy.Globals.getUserPos('hotspot');
 	} 
 });
+
 Titanium.App.addEventListener('close', function() {
-	if(interactiveGPS){
-		Alloy.Globals.stopGame;
-		Alloy.Globals.startOver;
+	if(interactiveGPS || hotspotGPS){
+		Alloy.Globals.stopGame();
+		Alloy.Globals.startOver();
+		Alloy.Globals.stopGPS();
 	} 
+});
+
+Ti.Gesture.addEventListener('orientationchange', function(e){
+	Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
 });
