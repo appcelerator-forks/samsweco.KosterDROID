@@ -21,18 +21,18 @@ displayBigMap();
 // Visar kartan
 //-----------------------------------------------------------
 function displayBigMap() {
-	// try {
+	try {
 		$.mapView.add(showMap(bigMap));
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
-	// }	
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
+	}	
 }
 
 //-----------------------------------------------------------
 // Öppnar trailDetail med info om vald vandringsled
 //-----------------------------------------------------------
 function showTrail(myName) {
-	// try {
+	try {
 		var jsonObjTr = returnSpecificTrail(myName);
 
 		var args = {
@@ -48,9 +48,9 @@ function showTrail(myName) {
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView();
 		Alloy.CFG.tabs.activeTab.open(trailDetail);
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
+	}
 }
 
 //-----------------------------------------------------------

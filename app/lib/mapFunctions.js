@@ -238,7 +238,7 @@ function displayTrailMarkers(maptype) {
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
 function showHotspot(name) {
-	// try {
+	try {
 		var jsonObjHot = returnSpecificHotspotsByName(name);
 
 		var hotspotTxt = {
@@ -249,9 +249,9 @@ function showHotspot(name) {
 
 		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
 		Alloy.CFG.tabs.activeTab.open(hotspotDetail);
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
+	}
 }
 
 //-----------------------------------------------------------
