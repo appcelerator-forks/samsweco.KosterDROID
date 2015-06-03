@@ -4,11 +4,11 @@ $.tabs.open();
 Alloy.CFG.tabs = $.tabs;
 exports.toInteractive = toInteractive;
 
-$.tabs.on('close', function() {
-	Alloy.Globals.stopGPS();
-	Alloy.Globals.stopGame();
-	Alloy.Globals.stopBoatGPS();
-});
+// $.tabs.on('close', function() {
+	// Alloy.Globals.stopGPS();
+	// Alloy.Globals.stopGame();
+	// Alloy.Globals.stopBoatGPS();
+// });
 
 var infoVisible = false;
 

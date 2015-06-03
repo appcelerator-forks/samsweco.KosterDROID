@@ -41,36 +41,37 @@ function displayMap() {
 //-----------------------------------------------------------
 function startInteractive() {
 	try {
-		if (Ti.Geolocation.locationServicesEnabled) {
-			getUserPos('letter');
-			loadClue(foundJSON.length + 1);
-			interactiveGPS = true;
-
-			$.btnStartQuiz.hide();
-			$.btnStartQuiz.height = 0;
-
-			$.txtLetter.show();
-			$.txtLetter.height = '35dp';
-
-			$.lblLetters.show();
-			$.lblLetters.height = '40dp';
-
-			$.lblCollectedLetters.show();
-			$.lblCollectedLetters.text = 'Bokstäver: ';
-
-			$.viewNext.show();
-			$.viewNext.height = '60dp';
-
-			$.nextClue.height = '30dp';
-
-			$.horizontalView.show();
-			$.horizontalView.height = '75dp';
-		} else {
+		if (!Ti.Geolocation.locationServicesEnabled) {
 			alert('Tillåt gpsen för att kunna få påminnelser, tack');
 		}
+
+		getUserPos('letter');
+		loadClue(foundJSON.length + 1);
+		interactiveGPS = true;
+
+		$.btnStartQuiz.hide();
+		$.btnStartQuiz.height = 0;
+
+		$.txtLetter.show();
+		$.txtLetter.height = '35dp';
+
+		$.lblLetters.show();
+		$.lblLetters.height = '40dp';
+
+		$.lblCollectedLetters.show();
+		$.lblCollectedLetters.text = 'Bokstäver: ';
+
+		$.viewNext.show();
+		$.viewNext.height = '60dp';
+
+		$.nextClue.height = '30dp';
+
+		$.horizontalView.show();
+		$.horizontalView.height = '75dp';
+
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
-	}	
+	}
 }
 
 //-----------------------------------------------------------
@@ -95,7 +96,7 @@ function toNextClue() {
 						'letter' : '-',
 						'found' : 1
 					});
-		
+
 					foundLettersModel.save();
 					getFound();
 					foundLetterId++;
@@ -108,7 +109,7 @@ function toNextClue() {
 		nextDialog.show();
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
-	}	
+	}
 }
 
 //-----------------------------------------------------------
@@ -124,7 +125,7 @@ function loadClue(id) {
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
-	}	
+	}
 }
 
 Alloy.Globals.loadClue = loadClue;
@@ -172,7 +173,7 @@ function checkLetter(letterToCheck) {
 			messageDialog.addEventListener('click', function(e) {
 				if (e.index == 0) {
 					$.txtLetter.value = '';
-					
+
 					foundLettersModel.fetch({
 						'id' : foundLetterId
 					});
@@ -181,8 +182,8 @@ function checkLetter(letterToCheck) {
 						'found' : 1
 					});
 					foundLettersModel.save();
-					
-					jsonCollection[foundLetterId-1].found = 1;
+
+					jsonCollection[foundLetterId - 1].found = 1;
 
 					// foundJSON.push(' ' + letterToCheck);
 					getFound();
@@ -305,4 +306,4 @@ var cleanup = function() {
 	$.interactiveWin = null;
 };
 
-$.interactiveWin.addEventListener('close', cleanup);
+$.interactiveWin.addEventListener('close', cleanup); 
