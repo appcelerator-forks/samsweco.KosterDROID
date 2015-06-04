@@ -11,19 +11,21 @@
 }
 
 "#infoView": {
-	backgroundColor: 'white',
 	top: '10dp',
 	width: '80%',
 	height: '80%',
 	borderRadius: 10,
 	left: '10%',
 	right: '10%',
-	opacity: 0.9,
+	// opacity: 0.9,
+	// backgroundColor: 'white',
 	layout: 'vertical'
 }
 
 "#welcome":{
-		font: {
+	font: {
 		fontFamily: 'Raleway-Medium'
-	},
+	}
 }
+
+
