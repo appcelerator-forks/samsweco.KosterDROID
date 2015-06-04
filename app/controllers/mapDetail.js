@@ -23,6 +23,9 @@ showMapDetail();
 getSpecificIconsForTrail(trailId, detailMap);
 displaySpecificMarkers(trailId, detailMap);
 
+if(hotspotGPS){
+	$.geoSwitch1.value = true;
+}
 
 //-----------------------------------------------------------
 // Functioner för att öppna och fylla kartan
@@ -41,9 +44,11 @@ function showMapDetail(){
 $.geoSwitch1.addEventListener('change', function(e) {
 	if ($.geoSwitch1.value == true) {
 		getUserPos('hotspot');
+		hotspotGPS = true;
 	}
 	if($.geoSwitch1.value == false){
-		stopGPS();
+		Alloy.Globals.stopGPS();
+		hotspotGPS = false;
 	}
 });
 
@@ -86,7 +91,7 @@ detailMap.addEventListener('singletap', function() {
 	}
 });
 function showDetailMenu(){
-	$.widgetView.height = '100dp';
+	$.widgetView.height = '80dp';
 }
 function closeDetailMenu(){
 	$.widgetView.height = '0dp';

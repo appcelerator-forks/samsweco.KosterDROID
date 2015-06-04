@@ -16,7 +16,7 @@ var infoVisible = false;
 // Metoder för navigeringen
 //-----------------------------------------------------------
 function toMap() {
-	try {
+	// try {
 		var mapWind = Alloy.createController('map').getView();
 		$.mapWin.add(mapWind);
 
@@ -29,9 +29,9 @@ function toMap() {
 		});
 
 		$.mapWin.titleControl = mapwinTitle;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Förstasidan");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Förstasidan");
+	// }
 }
 
 function toInteractive() {
