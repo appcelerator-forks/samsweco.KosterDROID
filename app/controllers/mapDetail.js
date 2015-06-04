@@ -2,13 +2,12 @@ Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
 Ti.include("/collectionData.js");
 
-var args = arguments[0] || {};
-
 var menuDetailVisible = false;
 
 //-----------------------------------------------------------
 // args från annan controller
 //-----------------------------------------------------------
+var args = arguments[0] || {};
 var trailName = args.title;
 var trailColor = args.color;
 var trailId = args.id;
