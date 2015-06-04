@@ -166,3 +166,13 @@
 	layout : 'horizontal',
 	height : Titanium.UI.SIZE
 }
+
+"#boatSwitch" : {
+	visible : false,
+	height : 0
+}
+
+"#lblBoat" : {
+	visible : false,
+	height : 0
+}

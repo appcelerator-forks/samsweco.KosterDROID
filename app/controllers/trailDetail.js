@@ -29,12 +29,19 @@ if(args.title == 'Äventyrsleden'){
 		$.hikeDetailWin.close();
 	});
 } else if(args.title == 'Båtresan'){
-	$.btnSendTo.show();
-	$.btnSendTo.height = '30dp';
-	$.btnSendTo.title = 'Påminn vid sevärdhet';
+	$.boatSwitch.show();
+	$.boatSwitch.height = '30dp';
+	$.lblBoat.show();
+	$.lblBoat.height = '30dp';
 	
-	$.btnSendTo.addEventListener('click', function(){
-		getUserPos('boat');
+	$.boatSwitch.addEventListener('change', function(){
+		if(boatSwitch.value == true){
+			getUserPos('boat');
+		}
+		else{
+			Alloy.Globals.stopBoatGPS;
+		}
+		
 	});
 }
 
