@@ -9,17 +9,15 @@
 	<Collection src="jsonFilesModel" />
 	<Window id="detailwin">
 		<View id="mapDetailView"></View>
-		<Button id="btnMenuDetail" backgroundImage="/pins/hamburger.png" onClick="showMenu" />
+		
+		<View id="btnViewMenuDetail">
+			<Button id="btnMenuDetail" backgroundImage="/images/hamburger.png" onClick="showMenu" />
+		</View>
+		
+		
 		<View id="widgetView">
 			<View id="settingsView">
 				<View id="hotspotSwitchView" class="settingsHorizontalView">
-					<!-- <View class="v1">
-						<ImageView id="hotspotPic" image="/images/hotspotflag.png"></ImageView>
-						<Label id="lblHotspot" text="Visa sevärdheter"></Label>
-					</View>  -->
-					 <!-- <View class="v2">
-						<Switch id="HotSwitch1" class="switch" value="false" titleOn="På" titleOff="Av" onChange="disHot"></Switch>
-					</View> -->
 				</View>
 				<View id="gpsSwitchView" class="settingsHorizontalView">
 					<View class="v1">

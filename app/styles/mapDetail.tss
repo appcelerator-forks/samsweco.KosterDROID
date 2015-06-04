@@ -1,4 +1,4 @@
-"#btnMenuDetail":{
+"#btnViewMenuDetail":{
 	top: '60dp',
 	right: '12dp',
 	height: '39dp',
@@ -8,6 +8,11 @@
 	visible: true,
 	borderRadius: 2,
 	borderWidth: 1
+}
+
+"#btnMenuDetail":{
+	height: '25dp',
+	width: '25dp'
 }
 
 "#mapDetailView": {

@@ -69,9 +69,11 @@ function showMenu() {
 		if(!menuDetailVisible){
 			showDetailMenu();
 			menuDetailVisible = true;
+			$.btnMenuDetail.backgroundImage = '/images/closeBurger.png';
 		}else {
 			closeDetailMenu();
 			menuDetailVisible = false;
+			$.btnMenuDetail.backgroundImage = '/images/hamburger.png';
 		}		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
