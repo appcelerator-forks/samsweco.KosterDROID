@@ -35,7 +35,7 @@ if(args.title == 'Äventyrsleden'){
 	$.lblBoat.height = '30dp';
 	
 	$.boatSwitch.addEventListener('change', function(){
-		if(boatSwitch.value == true){
+		if($.boatSwitch.value == true){
 			getUserPos('boat');
 		}
 		else{
