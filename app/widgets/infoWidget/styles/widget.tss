@@ -7,18 +7,15 @@
 	height: Ti.UI.SIZE,
 	width: Ti.UI.SIZE,
 	top: '10dp',
-	left: '10dp'
+	left: '5dp'
 }
 
 "#infoView": {
-	top: '10dp',
-	width: '80%',
-	height: '80%',
-	borderRadius: 10,
-	left: '10%',
-	right: '10%',
-	// opacity: 0.9,
-	// backgroundColor: 'white',
+	top: 0,
+	width: Titanium.UI.FILL,
+	height: '95%',
+	left: '5%',
+	right: '15%',
 	layout: 'vertical'
 }
 
