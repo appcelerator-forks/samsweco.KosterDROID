@@ -97,6 +97,15 @@
 
 "#widgetInfo": {
 	height: 0,
-	visible: false,
-	width: Titanium.UI.SIZE
+	width: Titanium.UI.SIZE,
+	opacity: 0.9,
+	backgroundColor: 'white',
+	visible: false
+}
+
+"#closeBtn": {
+	right: '5dp',
+	top: '5dp',
+	width: '15dp',
+	height: '15dp'
 }

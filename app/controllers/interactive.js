@@ -49,7 +49,7 @@ function startInteractive() {
 			alertDialog.show();		
 		}
 
-		getUserPos('letter');
+		Alloy.Globals.getUserPos('letter');
 		loadClue(foundJSON.length + 1);
 		interactiveGPS = true;
 

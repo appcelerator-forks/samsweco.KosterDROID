@@ -167,7 +167,7 @@
 		fontSize: '13dp'
 	},
 	top: '3dp',
-	width: Titanium.UI.FILL,
+	width: '80%',
 	backgroundColor: 'white',
 	borderRadius: '10dp',
 	color: 'black',

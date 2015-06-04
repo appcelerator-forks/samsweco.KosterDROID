@@ -149,3 +149,9 @@ function showInfo(){
 	}
 }
 
+function closeInfo(){
+	$.widgetInfo.hide();
+	$.widgetInfo.height = 0;
+	infoVisible = false;
+}
+

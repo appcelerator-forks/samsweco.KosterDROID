@@ -25,6 +25,8 @@ displaySpecificMarkers(trailId, detailMap);
 
 if(hotspotGPS){
 	$.geoSwitch1.value = true;
+} else {
+	$.geoSwitch1.value = false;
 }
 
 //-----------------------------------------------------------

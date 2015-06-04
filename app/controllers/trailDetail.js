@@ -7,43 +7,41 @@ var args = arguments[0] || {};
 // Args från trails - klick på item i listan
 //-----------------------------------------------------------
 // try {
-	$.hikeDetailWin.title = args.title;
-	$.lblTrailName.text = args.title || 'Default Name';
-	$.lblTrailLength.text = args.length + " kilometer" || 'Default Length';
-	$.lblTrailArea.text = args.area || 'Default Color';
-	$.lblTrailInfo.text = args.infoTxt || 'Default infoText';
+$.hikeDetailWin.title = args.title;
+$.lblTrailName.text = args.title || 'Default Name';
+$.lblTrailLength.text = args.length + " kilometer" || 'Default Length';
+$.lblTrailArea.text = args.area || 'Default Color';
+$.lblTrailInfo.text = args.infoTxt || 'Default infoText';
 
-	var trailId = args.id;
-	globalTrailID = trailId;
+var trailId = args.id;
+globalTrailID = trailId;
 // } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 // }
 
-if(args.title == 'Äventyrsleden'){
+if (args.title == 'Äventyrsleden') {
 	$.btnSendTo.show();
 	$.btnSendTo.height = '30dp';
 	$.btnSendTo.title = 'Gå till bokstavsjakten!';
-	
-	$.btnSendTo.addEventListener('click', function(){
+
+	$.btnSendTo.addEventListener('click', function() {
 		Alloy.CFG.tabs.setActiveTab(3);
 		$.hikeDetailWin.close();
 	});
-} else if(args.title == 'Båtresan'){
+} else if (args.title == 'Båtresan') {
 	$.boatSwitch.show();
 	$.boatSwitch.height = '30dp';
 	$.lblBoat.show();
 	$.lblBoat.height = '30dp';
-	
-	$.boatSwitch.addEventListener('change', function(){
-		if($.boatSwitch.value == true){
-			getUserPos('boat');
-		}
-		else{
-			Alloy.Globals.stopBoatGPS;
-		}
-		
-	});
 }
+
+$.boatSwitch.addEventListener('change', function() {
+	if ($.boatSwitch.value == true) {
+		Alloy.Globals.getUserPos('boat');
+	} else {
+		Alloy.Globals.stopBoatGPS();
+	}
+});
 
 //-----------------------------------------------------------
 // Onload
@@ -58,18 +56,18 @@ changeLabel();
 //-----------------------------------------------------------
 function zoomMapTrail() {
 	// try {
-		var trail = {
-			id : args.id,
-			title : args.title,
-			color : args.color,
-			zoomlat : args.zoomlat,
-			zoomlon : args.zoomlon
-		};
-		
-		var mapDetail = Alloy.createController("mapDetail", trail).getView();
-		Alloy.CFG.tabs.activeTab.open(mapDetail);
+	var trail = {
+		id : args.id,
+		title : args.title,
+		color : args.color,
+		zoomlat : args.zoomlat,
+		zoomlon : args.zoomlon
+	};
+
+	var mapDetail = Alloy.createController("mapDetail", trail).getView();
+	Alloy.CFG.tabs.activeTab.open(mapDetail);
 	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	// }
 }
 
@@ -78,43 +76,43 @@ function zoomMapTrail() {
 //-----------------------------------------------------------
 function selectTrailPics() {
 	// try {
-		var jsonMedia = returnSpecificTrailPics(trailId);
-		
-		for (var i = 0; i < jsonMedia.length; i++) {
-			var img_view = Ti.UI.createImageView({
-				image : "/pics/" + jsonMedia[i].filename + '.png',
-				width : '100%',
-				height : '235dp',
-				top : '0dp'
-			});
+	var jsonMedia = returnSpecificTrailPics(trailId);
 
-			var lblImgTxt = Ti.UI.createLabel({
-				left : '15dp',
-				top : '1dp',
-				text : jsonMedia[i].img_txt,
-				color : 'white',
-				font : {
-					fontSize : '14dp',
-					fontStyle : 'italic',
-					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
-					fontFamily : 'Raleway-Light'
-				}
-			});
+	for (var i = 0; i < jsonMedia.length; i++) {
+		var img_view = Ti.UI.createImageView({
+			image : "/pics/" + jsonMedia[i].filename + '.png',
+			width : '100%',
+			height : '235dp',
+			top : '0dp'
+		});
 
-			var backgroundView = Ti.UI.createView({
-				layout : 'vertical',
-				backgroundColor : 'black',
-				height : Ti.UI.SIZE,
-				width : Ti.UI.SIZE
-			});
+		var lblImgTxt = Ti.UI.createLabel({
+			left : '15dp',
+			top : '1dp',
+			text : jsonMedia[i].img_txt,
+			color : 'white',
+			font : {
+				fontSize : '14dp',
+				fontStyle : 'italic',
+				textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+				fontFamily : 'Raleway-Light'
+			}
+		});
 
-			backgroundView.add(img_view);
-			backgroundView.add(lblImgTxt);
+		var backgroundView = Ti.UI.createView({
+			layout : 'vertical',
+			backgroundColor : 'black',
+			height : Ti.UI.SIZE,
+			width : Ti.UI.SIZE
+		});
 
-			$.slideShowTrails.addView(backgroundView);
-		}
+		backgroundView.add(img_view);
+		backgroundView.add(lblImgTxt);
+
+		$.slideShowTrails.addView(backgroundView);
+	}
 	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	// }
 
 }
@@ -154,11 +152,11 @@ function LoadHotspotList() {
 
 			var lblName = Ti.UI.createLabel({
 				color : '#FCAF17',
-				top: '35dp',
+				top : '35dp',
 				left : '20dp',
 				font : {
 					fontSize : '14dp',
-					fontFamily: 'Raleway-Medium'
+					fontFamily : 'Raleway-Medium'
 				},
 				text : tableRow[i].name
 			});
@@ -216,7 +214,7 @@ function showIcons() {
 //-----------------------------------------------------------
 // Sätter text i en label utefter vilken led som visas
 //-----------------------------------------------------------
-function changeLabel(){
+function changeLabel() {
 	try {
 		if (args.title != 'Båtleden') {
 			$.lblLangsVagen.text = 'Det här kan du se längs vägen:';
@@ -238,4 +236,3 @@ var cleanup = function() {
 };
 
 $.hikeDetailWin.addEventListener('close', cleanup);
- 
