@@ -8,7 +8,7 @@ var foundLetterId = 1;
 var hotspotColl = Alloy.Collections.hotspotModel;
 hotspotColl.fetch();
 var hotspotJSONobj = hotspotColl.toJSON();
-Alloy.Globals.hotspotJSONobj = hotspotJSONobj;
+// Alloy.Globals.hotspotJSONobj = hotspotJSONobj;
 
 var boatHotspotColl = Alloy.Collections.hotspotModel;
 boatHotspotColl.fetch({
@@ -151,20 +151,20 @@ function userIsNearHotspot() {
 	try {
 		var dialog = Ti.UI.createAlertDialog();
 
-		for (var h = 0; h < Alloy.Globals.hotspotJSONobj.length; h++) {
-			if (Alloy.Globals.hotspotJSONobj[h].alerted == 0) {
+		for (var h = 0; h < hotspotJSONobj.length; h++) {
+			if (hotspotJSONobj[h].alerted == 0) {
 
-				var hotlat = Alloy.Globals.hotspotJSONobj[h].xkoord;
-				var hotlon = Alloy.Globals.hotspotJSONobj[h].ykoord;
-				var radius = Alloy.Globals.hotspotJSONobj[h].radie;
+				var hotlat = hotspotJSONobj[h].xkoord;
+				var hotlon = hotspotJSONobj[h].ykoord;
+				var radius = hotspotJSONobj[h].radie;
 
 				if (isInsideRadius(hotlat, hotlon, radius)) {
-					dialog.message = 'Nu börjar du närma dig ' + Alloy.Globals.hotspotJSONobj[h].name + '!';
+					dialog.message = 'Nu börjar du närma dig ' + hotspotJSONobj[h].name + '!';
 					dialog.buttonNames = ['Läs mer', 'Stäng'];
 
-					var hottitle = Alloy.Globals.hotspotJSONobj[h].name;
-					var infoText = Alloy.Globals.hotspotJSONobj[h].infoTxt;
-					var hotid = Alloy.Globals.hotspotJSONobj[h].id;
+					var hottitle = hotspotJSONobj[h].name;
+					var infoText = hotspotJSONobj[h].infoTxt;
+					var hotid = hotspotJSONobj[h].id;
 
 					dialog.addEventListener('click', function(e) {
 						if (e.index == 0) {
@@ -181,11 +181,10 @@ function userIsNearHotspot() {
 
 					dialog.show();
 					playSound();
-					Alloy.Globals.hotspotJSONobj[h].alerted = 1;
+					hotspotJSONobj[h].alerted = 1;
 				}
 			}
 		}
-
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isNearPoint");
 	}

@@ -174,8 +174,8 @@ function createMapRoutes(maptype, file, name, color) {
 			maptype.region = {
 				latitude : 58.892973,
 				longitude : 11.041087,
-				latitudeDelta : 0.007,
-				longitudeDelta : 0.007
+				latitudeDelta : 0.009,
+				longitudeDelta : 0.009
 			};
 		} else {
 			maptype.region = calculateMapRegion(coordArray);
