@@ -52,6 +52,7 @@ function getUserPos(type) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - get current position GPS");
 	}
 }
+
 Alloy.Globals.getUserPos = getUserPos;
 
 var addLetterLocation = function(e) {
@@ -149,8 +150,6 @@ function isInsideRadius(latti, lonni, rad) {
 //-----------------------------------------------------------
 function userIsNearHotspot() {
 	try {
-		var dialog = Ti.UI.createAlertDialog();
-
 		for (var h = 0; h < hotspotJSONobj.length; h++) {
 			if (hotspotJSONobj[h].alerted == 0) {
 
@@ -159,8 +158,10 @@ function userIsNearHotspot() {
 				var radius = hotspotJSONobj[h].radie;
 
 				if (isInsideRadius(hotlat, hotlon, radius)) {
-					dialog.message = 'Nu börjar du närma dig ' + hotspotJSONobj[h].name + '!';
-					dialog.buttonNames = ['Läs mer', 'Stäng'];
+					var dialog = Ti.UI.createAlertDialog({
+						message : 'Nu börjar du närma dig ' + hotspotJSONobj[h].name + '!',
+						buttonNames : ['Läs mer', 'Stäng']
+					});
 
 					var hottitle = hotspotJSONobj[h].name;
 					var infoText = hotspotJSONobj[h].infoTxt;
@@ -179,9 +180,9 @@ function userIsNearHotspot() {
 						}
 					});
 
+					hotspotJSONobj[h].alerted = 1;
 					dialog.show();
 					playSound();
-					hotspotJSONobj[h].alerted = 1;
 				}
 			}
 		}
@@ -195,54 +196,53 @@ function userIsNearHotspot() {
 // för en sevärdhet, sänder ut dialog om true
 //-----------------------------------------------------------
 function userOnBoatTrip() {
-	// try {
-	var boatdialog = Ti.UI.createAlertDialog({
-		buttonNames : ['Läs mer', 'Stäng']
-	});
+	try {
+		var boatdialog = Ti.UI.createAlertDialog({
+			buttonNames : ['Läs mer', 'Stäng']
+		});
 
-	for (var b = 0; b < boatTripHotspots.length; b++) {
-		if (boatTripHotspots[b].alerted == 0) {
+		for (var b = 0; b < boatTripHotspots.length; b++) {
+			if (boatTripHotspots[b].alerted == 0) {
 
-			var blat = boatTripHotspots[b].xkoord;
-			var blon = boatTripHotspots[b].ykoord;
-			var bradius = boatTripHotspots[b].radie;
+				var blat = boatTripHotspots[b].xkoord;
+				var blon = boatTripHotspots[b].ykoord;
+				var bradius = boatTripHotspots[b].radie;
 
-			if (isInsideRadius(blat, blon, bradius)) {
-				boatdialog.message = 'Nu börjar du närma dig ' + boatTripHotspots[b].name + '!';
+				if (isInsideRadius(blat, blon, bradius)) {
+					boatdialog.message = 'Nu börjar du närma dig ' + boatTripHotspots[b].name + '!';
 
-				var htitle = boatTripHotspots[b].name;
-				var iText = boatTripHotspots[b].infoTxt;
-				var boatid = boatTripHotspots[b].id;
+					var htitle = boatTripHotspots[b].name;
+					var iText = boatTripHotspots[b].infoTxt;
+					var boatid = boatTripHotspots[b].id;
 
-				boatdialog.addEventListener('click', function(e) {
-					if (e.index == 0) {
-						var hotspotTxt = {
-							title : htitle,
-							infoTxt : iText,
-							id : boatid
-						};
+					boatdialog.addEventListener('click', function(e) {
+						if (e.index == 0) {
+							var hotspotTxt = {
+								title : htitle,
+								infoTxt : iText,
+								id : boatid
+							};
 
-						var hotspotDetails = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-						Alloy.CFG.tabs.activeTab.open(hotspotDetails);
+							var hotspotDetails = Alloy.createController("hotspotDetail", hotspotTxt).getView();
+							Alloy.CFG.tabs.activeTab.open(hotspotDetails);
+						}
+					});
+
+					boatdialog.show();
+					playSound();
+					boatTripHotspots[b].alerted = 1;
+
+					alertedArray.push(boatTripHotspots[b].name);
+					if (alertedArray.length == 8) {
+						Alloy.Globals.stopBoatGPS();
 					}
-				});
-
-				boatdialog.show();
-				playSound();
-				boatTripHotspots[b].alerted = 1;
-
-				alertedArray.push(boatTripHotspots[b].name);
-				if (alertedArray.length == 8) {
-					Alloy.Globals.stopBoatGPS();
 				}
-				Ti.API.info('båtsevärdhet :: ' + JSON.stringify(alertedArray));
 			}
 		}
-	}
 
-	// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isNearPoint");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isNearPoint");
+	}
 }
 
 //-----------------------------------------------------------
@@ -372,8 +372,7 @@ function checkIfRight(id) {
 function playSound() {
 	try {
 		var player = Ti.Media.createSound({
-			url : "/sound/popcorn.m4a",
-			preload : true
+			url : "/sound/popcorn.m4a"
 		});
 
 		player.play();
