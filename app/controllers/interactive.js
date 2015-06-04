@@ -42,7 +42,11 @@ function displayMap() {
 function startInteractive() {
 	try {
 		if (!Ti.Geolocation.locationServicesEnabled) {
-			alert('Tillåt gpsen för att kunna få påminnelser, tack');
+			var alertDialog = Ti.UI.createAlertDialog({
+				title : 'Påminnelser',
+				message : 'Tillåt gpsen för att kunna få påminnelser när du närmar dig en bokstav!'
+			});
+			alertDialog.show();		
 		}
 
 		getUserPos('letter');
