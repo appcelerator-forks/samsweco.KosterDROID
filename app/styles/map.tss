@@ -21,16 +21,19 @@
 	bottom: 0
 }
 
-"#btnMapMenu":{
+"#btnViewMapMenu":{
  	top: '60dp',
 	right: '12dp',
 	height: '39dp',
 	width: '39dp',
 	backgroundColor: 'white',
-	opacity: 0.8,
+	opacity: 0.7,
 	visible: true,
 	borderRadius: 2,
 	borderWidth: 1
 }
 
-
+"#btnMapMenu": {
+	height: '25dp',
+	width: '25dp'
+}

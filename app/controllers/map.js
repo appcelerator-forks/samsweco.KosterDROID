@@ -77,8 +77,10 @@ function openMenu() {
 	if (!menuOpen) {
 		$.widgetView.height = '30%';
 		menuOpen = true;
+		$.btnMapMenu.backgroundImage = '/images/closeBurger.png';
 	} else {
 		closeMenu();
+		$.btnMapMenu.backgroundImage = '/images/hamburger.png';
 	}
 }
 
