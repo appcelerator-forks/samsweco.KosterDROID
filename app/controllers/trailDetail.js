@@ -6,7 +6,7 @@ var args = arguments[0] || {};
 //-----------------------------------------------------------
 // Args från trails - klick på item i listan
 //-----------------------------------------------------------
-try {
+// try {
 	$.hikeDetailWin.title = args.title;
 	$.lblTrailName.text = args.title || 'Default Name';
 	$.lblTrailLength.text = args.length + " kilometer" || 'Default Length';
@@ -15,9 +15,9 @@ try {
 
 	var trailId = args.id;
 	globalTrailID = trailId;
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-}
+// } catch(e) {
+	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+// }
 
 if(args.title == 'Äventyrsleden'){
 	$.btnSendTo.show();
@@ -50,7 +50,7 @@ changeLabel();
 // hämtar info för den vandringsled som ska öppnas i detaljvy
 //-----------------------------------------------------------
 function zoomMapTrail() {
-	try {
+	// try {
 		var trail = {
 			id : args.id,
 			title : args.title,
@@ -61,16 +61,16 @@ function zoomMapTrail() {
 		
 		var mapDetail = Alloy.createController("mapDetail", trail).getView();
 		Alloy.CFG.tabs.activeTab.open(mapDetail);
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	// }
 }
 
 //-----------------------------------------------------------
 // Hämtar bilder till bildspel för den valda vandringsleder
 //-----------------------------------------------------------
 function selectTrailPics() {
-	try {
+	// try {
 		var jsonMedia = returnSpecificTrailPics(trailId);
 		
 		for (var i = 0; i < jsonMedia.length; i++) {
@@ -106,9 +106,9 @@ function selectTrailPics() {
 
 			$.slideShowTrails.addView(backgroundView);
 		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	// }
 
 }
 
