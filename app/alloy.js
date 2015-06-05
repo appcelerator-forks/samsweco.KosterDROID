@@ -150,6 +150,9 @@ function newError(errorMsg, pageName) {
 //-----------------------------------------------------------
 // Titanium.App.addEventListener('destroy', function() {
 // 
+	// gLat = null;
+	// gLon = null;
+// 
 	// if (interactiveGPS) {
 		// Alloy.Globals.stopGame();
 	// }
@@ -180,6 +183,9 @@ function newError(errorMsg, pageName) {
 		// Alloy.Globals.getUserPos('hotspot');
 	// }
 // });
+
+
+
 
 // var activity = Ti.Android.currentActivity;
 // ['create', 'destroy', 'pause', 'resume', 'start', 'stop'].forEach(function(e) {

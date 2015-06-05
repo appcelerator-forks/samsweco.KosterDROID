@@ -55,7 +55,8 @@ function setRowData() {
 				id : urlList[i].id,
 				height : '60dp',
 				top : '0dp',
-				hasChild : true
+				hasChild : true,
+				rightImage : '/pins/androidarrow2.png'
 			});
 
 			var linkName = Ti.UI.createLabel({
