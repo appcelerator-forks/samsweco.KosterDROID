@@ -3,7 +3,6 @@ Ti.include("/mapFunctions.js");
 
 var args = arguments[0] || {};
 
-var foundLetterId = 1;
 var wrongWord = 0;
 var correctLetters = "A, T, R, Ö, N, N, E, M, O";
 
@@ -12,14 +11,14 @@ $.lblInfoText.text = "Vandra äventyrslingan och leta efter de 9 bokstäverna so
 //-----------------------------------------------------------
 // Hämtar letterCollection
 //-----------------------------------------------------------
-try {
-	var letterCollection = Alloy.Collections.letterModel;
-	letterCollection.fetch();
-	jsonCollection = letterCollection.toJSON();
-	Alloy.Globals.jsonCollection = jsonCollection;
-} catch(e) {
-	newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
-}
+// try {
+// var letterCollection = Alloy.Collections.letterModel;
+// letterCollection.fetch();
+// jsonCollection = letterCollection.toJSON();
+// Alloy.Globals.jsonCollection = jsonCollection;
+// } catch(e) {
+// newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
+// }
 
 //-----------------------------------------------------------
 // Onload
@@ -34,6 +33,11 @@ function displayMap() {
 	addClueZone();
 	displaySpecificMarkers(7, interactiveMap);
 	getSpecificIconsForTrail(7, interactiveMap);
+	interactiveMap.addEventListener('click', function(evt) {
+		if (evt.clicksource == 'rightButton') {
+			showHotspot(evt.annotation.id);
+		}
+	});
 }
 
 //-----------------------------------------------------------
@@ -46,32 +50,67 @@ function startInteractive() {
 				title : 'Påminnelser',
 				message : 'Tillåt gpsen för att kunna få påminnelser när du närmar dig en bokstav!'
 			});
-			alertDialog.show();		
+			alertDialog.show();
 		}
 
 		Alloy.Globals.getUserPos('letter');
-		loadClue(foundJSON.length + 1);
+		loadClue(foundLetterId);
 		interactiveGPS = true;
+
+		// $.btnStartQuiz.hide();
+		// $.btnStartQuiz.height = 0;
+		//
+		// $.txtLetter.show();
+		// $.txtLetter.height = '35dp';
+		//
+		// $.lblLetters.show();
+		// $.lblLetters.height = '40dp';
+		//
+		// $.lblCollectedLetters.show();
+		// $.lblCollectedLetters.text = 'Bokstäver: ';
+		//
+		// $.viewNext.show();
+		// $.viewNext.height = '60dp';
+		//
+		// $.nextClue.height = '30dp';
+		//
+		// $.horizontalView.show();
+		// $.horizontalView.height = '75dp';
 
 		$.btnStartQuiz.hide();
 		$.btnStartQuiz.height = 0;
 
 		$.txtLetter.show();
-		$.txtLetter.height = '35dp';
+		$.txtLetter.height = '40dp';
 
 		$.lblLetters.show();
 		$.lblLetters.height = '40dp';
 
 		$.lblCollectedLetters.show();
-		$.lblCollectedLetters.text = 'Bokstäver: ';
 
 		$.viewNext.show();
-		$.viewNext.height = '60dp';
+		$.viewNext.height = '50dp';
 
-		$.nextClue.height = '30dp';
+		$.lblnextClue.show();
+		$.lblnextClue.height = '25dp';
+
+		$.nextClue.show();
+		$.nextClue.height = '25dp';
+
+		$.lbls1.hide();
+		$.lbls1.height = 0;
+
+		$.lbls2.hide();
+		$.lbls2.height = 0;
+
+		$.lbls3.hide();
+		$.lbls3.height = 0;
+
+		$.lbls4.hide();
+		$.lbls4.height = 0;
 
 		$.horizontalView.show();
-		$.horizontalView.height = '75dp';
+		$.horizontalView.height = Ti.UI.SIZE;
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
@@ -116,14 +155,52 @@ function toNextClue() {
 	}
 }
 
+function showCorrectLetters() {
+	$.lblCorrectLetters.show();
+	$.lblCorrectLetters.height = '40dp';
+	$.lblCorrectLetters.text = correctLetters;
+	$.btnShowCorrect.hide();
+	$.btnShowCorrect.height = 0;
+}
+
+//-----------------------------------------------------------
+// Laddar in nästa ledtråd om man inte hittar bokstaven
+//-----------------------------------------------------------
+function toNextClue(lId) {
+	// try {
+	var nextDialog = Ti.UI.createAlertDialog({
+		title : 'Gå till nästa',
+		message : 'Är du säker på att du vill visa nästa ledtråd?',
+		buttonNames : ['Ja, visa nästa ledtråd', 'Stäng']
+	});
+
+	nextDialog.addEventListener('click', function(e) {
+		if (e.index == 0) {
+			setNoLetter(lId);
+			loadClue(foundLetterId);
+			setLabelText();
+		}
+	});
+
+	nextDialog.show();
+	// } catch(e) {
+	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
+	// }
+}
+
+$.nextClue.addEventListener('click', function(e) {
+	toNextClue(foundLetterId);
+});
+
 //-----------------------------------------------------------
 // Läser upp rätt ledtråd
 //-----------------------------------------------------------
 function loadClue(id) {
+	var col = fetchAllLetters();
 	try {
 		if (id < 10) {
 			$.lblWelcome.text = "Ledtråd " + id + ":";
-			$.lblInfoText.text = jsonCollection[id - 1].clue;
+			$.lblInfoText.text = col[id - 1].clue;
 		} else {
 			allLetters();
 		}
@@ -178,30 +255,53 @@ function checkLetter(letterToCheck) {
 				if (e.index == 0) {
 					$.txtLetter.value = '';
 
-					foundLettersModel.fetch({
-						'id' : foundLetterId
-					});
-					foundLettersModel.set({
-						'letter' : letterToCheck,
-						'found' : 1
-					});
-					foundLettersModel.save();
+					setLetterOne(foundLetterId, letterToCheck);
+					setLabelText();
 
-					jsonCollection[foundLetterId - 1].found = 1;
-
-					// foundJSON.push(' ' + letterToCheck);
-					getFound();
-					foundLetterId++;
-					loadClue(foundLetterId);
-
-					$.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
 				}
 			});
 
 			messageDialog.show();
+
+			// messageDialog.addEventListener('click', function(e) {
+			// if (e.index == 0) {
+			// $.txtLetter.value = '';
+			//
+			// foundLettersModel.fetch({
+			// 'id' : foundLetterId
+			// });
+			// foundLettersModel.set({
+			// 'letter' : letterToCheck,
+			// 'found' : 1
+			// });
+			// foundLettersModel.save();
+			//
+			// jsonCollection[foundLetterId - 1].found = 1;
+			//
+			// // foundJSON.push(' ' + letterToCheck);
+			// getFound();
+			// foundLetterId++;
+			// loadClue(foundLetterId);
+			//
+			// $.lblCollectedLetters.text = 'Bokstäver:  ' + foundJSON;
+			// }
+			// });
+			//
+			// messageDialog.show();
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
+	}
+}
+
+function setLabelText() {
+	$.lblCollectedLetters.text = 'Bokstäver: ';
+	var found = fetchFoundLettersCol();
+	foundLetterId++;
+	loadClue(foundLetterId);
+
+	for (var i = 0; i < found.length; i++) {
+		$.lblCollectedLetters.text += found[i].letter;
 	}
 }
 
@@ -250,41 +350,53 @@ function checkWord() {
 		var check = $.txtWord.value;
 		var checkword = check.toUpperCase();
 		var alertDialog = Ti.UI.createAlertDialog({
-			buttonNames : ['Stäng']
+			buttonNames : ['Stäng'],
+			title : "Fel ord"
 		});
 
 		if (checkword == word) {
+
 			$.lblWelcome.text = "Bra jobbat!";
 			$.lblWelcome.fontSize = '30dp';
 
 			$.lblInfoText.text = "Du hittade det rätta ordet!";
 
-			$.txtLetter.hide();
-			$.txtLetter.height = '0dp';
-
-			$.lblLetters.hide();
-			$.lblLetters.height = '0dp';
-
 			$.lblCollectedLetters.text = '';
 			$.lblCollectedLetters.hide();
 
-			$.wordView.visible = false;
+			$.wordView.hide();
 			$.wordView.height = 0;
-			$.horizontalView.visible = false;
-			$.horizontalView.height = 0;
 
-			stopGame();
-			startOver();
+			$.txtWord.hide();
+			$.txtWord.height = 0;
+
+			$.lblWord.hide();
+			$.lblWord.height = 0;
+
+			// $.lblWelcome.text = "Bra jobbat!";
+			// $.lblWelcome.fontSize = '30dp';
+			//
+			// $.lblInfoText.text = "Du hittade det rätta ordet!";
+			//
+			// $.txtLetter.hide();
+			// $.txtLetter.height = '0dp';
+			//
+			// $.lblLetters.hide();
+			// $.lblLetters.height = '0dp';
+			//
+			// $.lblCollectedLetters.text = '';
+			// $.lblCollectedLetters.hide();
+			//
+			// $.wordView.visible = false;
+			// $.wordView.height = 0;
+			// $.horizontalView.visible = false;
+			// $.horizontalView.height = 0;
+
+			Alloy.Globals.stopGame();
 			interactiveGPS = false;
-		} else if (wrongWord == 3) {
-			alertDialog.title = 'Fel ord';
-			alertDialog.message = "Nu blev det fel. Vill du kontrollera dina bokstäver? Det här är de korrekta: " + correctLetters;
-			alertDialog.show();
 		} else {
-			alertDialog.title = "Fel ord";
 			alertDialog.message = "Försök igen! Du har snart klurat ut det!";
 			alertDialog.show();
-			wrongWord++;
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
@@ -298,11 +410,6 @@ Titanium.App.addEventListener('close', function() {
 	startOver();
 });
 
-//-----------------------------------------------------------
-// Eventlistener för klick på trail eller hotspot
-//-----------------------------------------------------------
-interactiveMap.addEventListener('click', evtList);
-
 var cleanup = function() {
 	stopGPS();
 	$.destroy();
@@ -310,4 +417,4 @@ var cleanup = function() {
 	$.interactiveWin = null;
 };
 
-$.interactiveWin.addEventListener('close', cleanup); 
+$.interactiveWin.addEventListener('close', cleanup);

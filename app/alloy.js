@@ -71,6 +71,10 @@ var markerHotspotArray = [];
 var globalTrailID = 0;
 var word = 'ÖRONMANET';
 
+var foundJSON = [];
+var alertedArray = [];
+var foundLetterId = 1;
+
 var interactiveVisible = false;
 
 var hotspotGPS = false;
