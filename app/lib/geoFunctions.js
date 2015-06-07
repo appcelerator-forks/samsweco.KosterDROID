@@ -496,10 +496,13 @@ function userIsNearLetter() {
 					var letterId = col[p].id;
 					var letterclue = col[p].clue;
 
-					if (letterId == foundLetterId) {
-						alertLetter(letterclue, letterId);
-						setAlertedOne(letterId);
-					} 
+					alertLetter(letterclue, letterId);
+					setAlertedOne(letterId);
+
+					// if (letterId == foundLetterId) {
+						// alertLetter(letterclue, letterId);
+						// setAlertedOne(letterId);
+					// } 
 					// else {
 						// // checkIfRight(letterId);
 						// if (!alerted) {
@@ -534,9 +537,9 @@ function userIsNearLetter() {
 
 function alertLetter(clue, id) {
 	var message = Ti.UI.createAlertDialog({
-		title : 'Nu börjar du närma dig bokstav nr ' + id + '!',
+		title : 'Du närmar dig bokstav nr' + id + '!',
 		buttonNames : ['Gå till bokstavsjakten', 'Stäng'],
-		message : clue
+		message : 'Ledtråd: ' + clue
 	});
 
 	message.addEventListener('click', function(e) {
