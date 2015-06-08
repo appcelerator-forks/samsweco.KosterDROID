@@ -686,7 +686,7 @@ try {
 			var zoneAnnotation = MapModule.createAnnotation({
 				latitude : zoneJSON[c].latitude,
 				longitude : zoneJSON[c].longitude,
-				image : '/images/' + (c + 1) + 'green.png'
+				image : '/pins/' + (c + 1) + 'green.png'
 			});
 
 			interactiveMap.addAnnotation(zoneAnnotation);
@@ -695,6 +695,24 @@ try {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
 	}
 
+}
+
+function addSpecificClueZone(id) {
+	try {
+		var zoneColl = fetchAllLetters();
+		var letterZone = zoneColl[id - 1];
+
+		var clueAnnotation = MapModule.createAnnotation({
+			latitude : letterZone.latitude,
+			longitude : letterZone.longitude,
+			image : '/pins/' + id + 'green.png'
+		});
+
+		interactiveMap.addAnnotation(clueAnnotation);
+
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
+	}
 }
 
 //-----------------------------------------------------------
@@ -784,8 +802,7 @@ function stopGPS() {
 function stopGame() {
 	Titanium.Geolocation.removeEventListener('location', addLetterLocation);
 	startOver();
-	lettersModel.destroy();
-	foundLettersModel.destroy();
+	// foundLettersModel.destroy();
 }
 
 function stopBoatGPS() {

@@ -1,3 +1,33 @@
+"#clueSlideView": {
+	height: '0',
+	visible: false
+}
+
+"#lettersView":{
+	layout: 'vertical',
+	top: '10dp',
+	height: 0,
+	width: Titanium.UI.FILL,
+	visible: false
+}
+
+"#sendWord": {
+	visible: false,
+	height: 0,
+	left: '20%',
+	right: '20%',
+	top: '5dp',
+	width: '60%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
+}
+
 "Label": {
 	top: '5dp',
 	left: '15dp',
@@ -21,14 +51,19 @@
 }
 
 "#btnShowCorrect": {
-	visible: false,
+	left: '20%',
+	right: '20%',
+	top: '15dp',
+	height: '30dp',
+	width: '60%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
 	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '13dp'
-	},
-	top: '0dp',
-	width: Titanium.UI.FILL,
-	height: '0dp'
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
 }
 
 "#lblCorrectLetters":{
@@ -37,6 +72,9 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 }
 
+"#lblCorrectLetters":{
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+}
 
 "#interactiveWin": {
 	layout: 'vertical',
@@ -63,28 +101,54 @@
 
 "#lblInfoText": {
 	top: '5dp',
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
 		fontSize: '14dp'
 	} ,
 	right: '20dp',
-	left: '20dp'
+	left: '20dp',
+	color: 'black'
 }
 
 "#showFamilyTrail": {
-	height: '45%',
+	height: '40%',
 	width: Titanium.UI.FILL
 }
 
 "#lblWelcome": {
 	top: '5dp',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
 		fontFamily: 'Raleway-Medium',
 		fontSize: '18dp'
 	},
 	color: '#FCAF17',
 	left: '19dp'
+}
+
+"#wordClue": {
+	visible: false,
+	height: 0,
+	top: '5dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: '16dp'
+	},
+	color: '#FCAF17',
+	left: '19dp'
+}
+
+"#wordClueLbl": {
+	visible: false,
+	height: 0,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font: {
+		fontFamily: 'Raleway-Light',
+		fontSize: '14dp'
+	},
+	right: '20dp',
+	left: '20dp'
 }
 
 "#lblLetters": {
@@ -101,11 +165,16 @@
 }
 
 "#txtLetter": {
+	top: '20dp',
+	height: '30dp',
+	color: 'black',
+	tintColor: 'black'
+}
+
+"#txtLetter": {
 	top: '2dp',
 	left: '15%',
 	right: '15%',
-	height: '0dp',
-	visible: false,
 	tintColor: 'blue',
 	borderWidth: '1dp',
 	borderRadius: '5dp',
@@ -114,6 +183,20 @@
 
 "#lblCollectedLetters": {
 	visible: false,
+	left: '20dp',
+	right: '15dp',
+	width: Titanium.UI.FILL,
+	top: '0dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	font:
+	{
+		fontFamily: 'Raleway-Light',
+		fontSize: '17dp'
+	},
+	color: '#FCAF17'
+}
+
+"#lblCollectedLetters": {
 	left: '20dp',
 	right: '15dp',
 	width: Titanium.UI.FILL,
@@ -159,36 +242,60 @@
 }
 
 "#btnStartQuiz": {
-	height: '40dp',
-	width: Titanium.UI.FILL,
-	top: '5dp',
+	left: '20%',
+	right: '20%',
+	top: '10dp',
+	height: '30dp',
+	width: '60%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
 	font: {
-		fontSize: '16dp',
+		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
 	}
 }
 
 "#lblnextClue": {
-	visible: false,
 	font: {
 		fontFamily: 'Raleway-Light',
 		fontSize: '13dp'
 	},
-	top: '2dp',
+	// top: '2dp',
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	color: 'gray',
-	height: '0dp'
+	color: 'gray'
 }
 
 "#nextClue": {
-	visible: false,
+	left: '15dp',
+	top: 0,
+	height: '30dp',
+	width: '45%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
 	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '13dp'
-	},
-	top: '0dp',
-	width: Titanium.UI.FILL,
-	height: '0dp'
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
+}
+
+"#sendOneLetter": {
+	left: '20%',
+	right: '20%',
+	top: '5dp',
+	height: '30dp',
+	width: '60%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
+	font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
 }
 
 "#viewNext": {
@@ -202,225 +309,289 @@
 }
 
 "#lbls1": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
+		fontFamily: 'Raleway-Light',
 		fontSize: '14dp'
 	} ,
 	right: '20dp',
-	left: '20dp'
+	left: '20dp',
+	color: 'black'
 }
 
 "#lbls2": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
+		fontFamily: 'Raleway-Light',
 		fontSize: '14dp'
 	},
 	rigth: '20dp',
-	left: '20dp'
+	left: '20dp',
+	color: 'black'
 }
 
 "#lbls3": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
+		fontFamily: 'Raleway-Light',
 		fontSize: '14dp'
 	},
 	right: '20dp',
-	left: '20dp'
+	left: '20dp',
+	color: 'black'
 }
 
 "#lbls4": {
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
+		fontFamily: 'Raleway-Light',
 		fontSize: '14dp'
 	},
 	right: '20dp',
-	left: '20dp'
+	left: '20dp',
+	color: 'black'
 }
+
+
 
 
 
 
 // "Label": {
-// top: '5dp',
-// left: '15dp',
-// right: '15dp',
-// font: {
-// fontSize: '14dp',
-// fontFamily: 'Raleway-Light'
+	// top: '5dp',
+	// left: '15dp',
+	// right: '15dp',
+	// font: {
+		// fontSize: '14dp',
+		// fontFamily: 'Raleway-Light'
+	// }
 // }
+// 
+// "#lblHelp": {
+	// visible: false,
+	// height: 0,
+	// top: '5dp',
+	// left: '15dp',
+	// right: '15dp',
+	// font: {
+		// fontSize: '12dp',
+		// fontFamily: 'Raleway-Light'
+	// }
 // }
-//
+// 
+// "#btnShowCorrect": {
+	// visible: false,
+	// font: {
+		// fontFamily: 'Raleway-Light',
+		// fontSize: '13dp'
+	// },
+	// top: '0dp',
+	// width: Titanium.UI.FILL,
+	// height: '0dp'
+// }
+// 
+// "#lblCorrectLetters":{
+	// height: 0,
+	// visible: false,
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+// }
+// 
+// 
 // "#interactiveWin": {
-// backgroundColor: 'white',
-// layout: 'vertical',
-// top: 0
+	// layout: 'vertical',
+	// height: Titanium.UI.FILL
 // }
-//
-// ".view": {
-// layout: 'vertical'
-// }
-//
+// 
 // "#hideView": {
-// layout: 'vertical',
-// top: 0,
-// height : Titanium.UI.SIZE
+	// layout: 'vertical',
+	// height: Titanium.UI.SIZE
 // }
-//
+// 
 // "#wordView": {
-// visible: false,
-// height: '0dp'
+	// layout: 'vertical',
+	// visible: false,
+	// height: '0dp'
 // }
-//
+// 
+// "#horizontalView":{
+	// layout: 'horizontal',
+	// width: Titanium.UI.FILL,
+	// height: '0dp',
+	// visible: false
+// }
+// 
 // "#lblInfoText": {
-// top: '5dp',
-// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-// font: {
-// fontSize: '14dp',
-// fontFamily: 'Raleway-Light'
-// } ,
-// right: '20dp',
-// left: '20dp',
-// color : '#000000'
+	// top: '5dp',
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontSize: '14dp'
+	// } ,
+	// right: '20dp',
+	// left: '20dp'
 // }
-//
+// 
 // "#showFamilyTrail": {
-// top: 0,
-// height: '45%',
-// width: Titanium.UI.FILL
+	// height: '45%',
+	// width: Titanium.UI.FILL
 // }
-//
+// 
 // "#lblWelcome": {
-// top: '5dp',
-// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-// font: {
-// fontFamily: 'Raleway-Medium',
-// fontSize: '18dp'
-// },
-// color: '#FCAF17'
+	// top: '5dp',
+	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontFamily: 'Raleway-Medium',
+		// fontSize: '18dp'
+	// },
+	// color: '#FCAF17',
+	// left: '19dp'
 // }
-//
+// 
 // "#lblLetters": {
-// visible: false,
-// height: '0dp',
-// width: '200dp',
-// left: '20%',
-// right: '20%',
-// backgroundColor: 'white',
-// borderRadius: '12dp',
-// color: 'black',
-// borderColor : '#0098C3',
-// top: '4dp',
-// font: {
-// fontSize: '16dp',
-// fontFamily: 'Raleway-Medium'
+	// visible: false,
+	// height: '0dp',
+	// left: '15%',
+	// right: '15%',
+	// width: Titanium.UI.FILL,
+	// top: '2dp',
+	// font: {
+		// fontSize: '16dp',
+		// fontFamily: 'Raleway-Medium'
+	// }
 // }
-// }
-//
+// 
 // "#txtLetter": {
-// top: '5dp',
-// visible: false,
-// height: '0dp',
-// left: '15dp',
-// right: '15dp',
-// width: Titanium.UI.FILL,
-// tintColor: 'blue',
-// borderWidth: '1dp',
-// borderRadius: '5dp',
-// color: 'black'
+	// top: '2dp',
+	// left: '15%',
+	// right: '15%',
+	// height: '0dp',
+	// visible: false,
+	// tintColor: 'blue',
+	// borderWidth: '1dp',
+	// borderRadius: '5dp',
+	// width: Titanium.UI.FILL
 // }
-//
+// 
 // "#lblCollectedLetters": {
-// visible: false,
-// color: '#FCAF17',
-// left: '20dp',
-// right: '15dp',
-// top: '15dp',
-// width: Titanium.UI.FILL
+	// visible: false,
+	// left: '20dp',
+	// right: '15dp',
+	// width: Titanium.UI.FILL,
+	// top: '0dp',
+	// font:
+	// {
+		// fontFamily: 'Raleway-Light',
+		// fontSize: '17dp'
+	// },
+	// color: '#FCAF17'
 // }
-//
+// 
 // "#wordView":{
-// top: '5dp',
-// height: '0dp',
-// width: Titanium.UI.FILL,
-// visible: false,
-// layout: 'vertical'
+	// top: '0dp',
+	// layout: 'vertical',
+	// visible: false,
+	// height: '0dp'
 // }
-//
-// "#horizontalView": {
-// top: '0dp',
-// height: '0dp',
-// visible: false,
-// layout: 'vertical'
-// }
-//
+// 
 // "#txtWord":{
-// visible: false,
-// top: '5dp',
-// height: '0dp',
-// left: '15dp',
-// right: '15dp',
-// width: Titanium.UI.FILL,
-// tintColor: 'blue',
-// borderWidth: '1dp',
-// borderRadius: '5dp',
-// color: 'black'
+	// visible: false,
+	// height: '0dp',
+	// right: '15dp',
+	// left: '15dp',
+	// top: '5dp',
+	// width: Titanium.UI.FILL,
+	// tintColor: 'blue',
+	// borderWidth: '1dp',
+	// borderRadius: '5dp'
 // }
-//
+// 
 // "#lblWord":{
-// visible: false,
-// height: '0dp',
-// width: '200dp',
-// left: '25%',
-// right: '20%',
-// backgroundColor: 'white',
-// borderRadius: '12dp',
-// color: 'black',
-// borderColor : '#0098C3',
-// top: '4dp',
-// font: {
-// fontSize: '16dp',
-// fontFamily: 'Raleway-Medium'
+	// visible: false,
+	// height: '0dp',
+	// left: '25%',
+	// right: '25%',
+	// width: Titanium.UI.FILL,
+	// top: '5dp',
+	// font: {
+		// fontSize: '16dp',
+		// fontFamily: 'Raleway-Medium'
+	// }
 // }
-// }
-//
+// 
 // "#btnStartQuiz": {
-// height: '40dp',
-// width: '200dp',
-// backgroundColor: 'white',
-// borderRadius: '12dp',
-// color: 'black',
-// top: '17dp',
-// borderColor : '#0098C3'
+	// height: '40dp',
+	// width: Titanium.UI.FILL,
+	// top: '5dp',
+	// font: {
+		// fontSize: '16dp',
+		// fontFamily: 'Raleway-Medium'
+	// }
 // }
-//
+// 
 // "#lblnextClue": {
-// font: {
-// fontFamily: 'Raleway-Light',
-// fontSize: '13dp'
-// },
-// top: '2dp',
-// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-// color: 'gray'
+	// visible: false,
+	// font: {
+		// fontFamily: 'Raleway-Light',
+		// fontSize: '13dp'
+	// },
+	// top: '2dp',
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	// color: 'gray',
+	// height: '0dp'
 // }
-//
+// 
 // "#nextClue": {
-// font: {
-// fontFamily: 'Raleway-Light',
-// fontSize: '13dp'
-// },
-// top: '3dp',
-// width: '80%',
-// backgroundColor: 'white',
-// borderRadius: '10dp',
-// color: 'black',
-// borderColor : '#0098C3'
+	// visible: false,
+	// font: {
+		// fontFamily: 'Raleway-Light',
+		// fontSize: '13dp'
+	// },
+	// top: '0dp',
+	// width: Titanium.UI.FILL,
+	// height: '0dp'
 // }
-//
+// 
 // "#viewNext": {
-// visible: false,
-// height: '0dp',
-// top: '5%',
-// left: '5dp',
-// width: Titanium.UI.FILL,
-// layout: 'vertical'
+	// visible: false,
+	// height: '0dp',
+	// top: '5%',
+	// left: '5dp',
+	// bottom: '0dp',
+	// width: Titanium.UI.FILL,
+	// layout: 'vertical'
+// }
+// 
+// "#lbls1": {
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontSize: '14dp'
+	// } ,
+	// right: '20dp',
+	// left: '20dp'
+// }
+// 
+// "#lbls2": {
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontSize: '14dp'
+	// },
+	// rigth: '20dp',
+	// left: '20dp'
+// }
+// 
+// "#lbls3": {
+	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontSize: '14dp'
+	// },
+	// right: '20dp',
+	// left: '20dp'
+// }
+// 
+// "#lbls4": {
+	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	// font: {
+		// fontSize: '14dp'
+	// },
+	// right: '20dp',
+	// left: '20dp'
 // }
