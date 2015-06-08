@@ -49,8 +49,6 @@ function setNoLetter(lid) {
 
 	lettersModel.save();
 	alerted = false;
-	// foundLetterId++;
-
 }
 
 function setLetterOne(letterId, letter) {
@@ -64,7 +62,6 @@ function setLetterOne(letterId, letter) {
 	});
 	lettersModel.save();
 	alerted = false;
-	//	lettersModel.destroy();
 }
 
 function setLetterZero(letterId) {
@@ -77,7 +74,6 @@ function setLetterZero(letterId) {
 		'found' : 0
 	});
 	lettersModel.save();
-	//	lettersModel.destroy();
 }
 
 function getLength() {
@@ -125,41 +121,12 @@ function fetchOneLetter(lId) {
 	return letterCollection.toJSON();
 }
 
-// var foundJSON = [];
-// var alertedArray = [];
-// var foundLetterId = 1;
-
-// //-----------------------------------------------------------
-// // Hämtar hotspotCollection
-// //-----------------------------------------------------------
-// var hotspotColl = Alloy.Collections.hotspotModel;
-// hotspotColl.fetch();
-// var hotspotJSONobj = hotspotColl.toJSON();
-// // Alloy.Globals.hotspotJSONobj = hotspotJSONobj;
-// 
-// var boatHotspotColl = Alloy.Collections.hotspotModel;
-// boatHotspotColl.fetch({
-	// query : 'SELECT * FROM hotspotModel join hotspot_trailsModel on hotspotModel.id = hotspot_trailsModel.hotspotID where trailsID = 8'
-// });
-// var boatTripHotspots = boatHotspotColl.toJSON();
-// 
-// //-----------------------------------------------------------
-// // Hämtar letterCollection och letterModel
-// //-----------------------------------------------------------
-// var lettersModel = Alloy.Models.letterModel;
-// var foundLettersModel = Alloy.Models.foundLettersModel;
-// var letterCollection = Alloy.Collections.letterModel;
-// letterCollection.fetch();
-// var letterJSON = letterCollection.toJSON();
-
 //-----------------------------------------------------------
 // Hämtar användarens position och startar location-event
 // för påminnelser om sevärdheter eller bokstavsjakt
 //-----------------------------------------------------------
 function getUserPos(type) {
 	try {
-
-		//Titanium.Geolocation.preferredProvider = Titanium.Geolocation.PROVIDER_GPS;
 		Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
 		Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
 		Titanium.Geolocation.distanceFilter = 3;
@@ -276,48 +243,6 @@ function isInsideRadius(latti, lonni, rad) {
 // Kontrollerar om enheten är innanför en punkt, sänder ut dialog om true
 //-----------------------------------------------------------
 function userIsNearHotspot() {
-	// try {
-		// for (var h = 0; h < hotspotJSONobj.length; h++) {
-			// if (hotspotJSONobj[h].alerted == 0) {
-// 
-				// var hotlat = hotspotJSONobj[h].xkoord;
-				// var hotlon = hotspotJSONobj[h].ykoord;
-				// var radius = hotspotJSONobj[h].radie;
-// 
-				// if (isInsideRadius(hotlat, hotlon, radius)) {
-					// var dialog = Ti.UI.createAlertDialog({
-						// message : 'Nu börjar du närma dig ' + hotspotJSONobj[h].name + '!',
-						// buttonNames : ['Läs mer', 'Stäng']
-					// });
-// 
-					// var hottitle = hotspotJSONobj[h].name;
-					// var infoText = hotspotJSONobj[h].infoTxt;
-					// var hotid = hotspotJSONobj[h].id;
-// 
-					// dialog.addEventListener('click', function(e) {
-						// if (e.index == 0) {
-							// var hotspotTxt = {
-								// title : hottitle,
-								// infoTxt : infoText,
-								// id : hotid
-							// };
-// 
-							// var hotspotDetails = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-							// Alloy.CFG.tabs.activeTab.open(hotspotDetails);
-						// }
-					// });
-// 
-					// hotspotJSONobj[h].alerted = 1;
-					// dialog.show();
-					// playSound();
-				// }
-			// }
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isNearPoint");
-	// }
-
-
 	try {
 		var hotspotsToLoop = returnHotspotsToAlert();
 
@@ -345,55 +270,7 @@ function userIsNearHotspot() {
 // På båtturen : kontrollerar om enheten är innanför en radie
 // för en sevärdhet, sänder ut dialog om true
 //-----------------------------------------------------------
-function userOnBoatTrip() {
-	// try {
-		// var boatdialog = Ti.UI.createAlertDialog({
-			// buttonNames : ['Läs mer', 'Stäng']
-		// });
-// 
-		// for (var b = 0; b < boatTripHotspots.length; b++) {
-			// if (boatTripHotspots[b].alerted == 0) {
-// 
-				// var blat = boatTripHotspots[b].xkoord;
-				// var blon = boatTripHotspots[b].ykoord;
-				// var bradius = boatTripHotspots[b].radie;
-// 
-				// if (isInsideRadius(blat, blon, bradius)) {
-					// boatdialog.message = 'Nu börjar du närma dig ' + boatTripHotspots[b].name + '!';
-// 
-					// var htitle = boatTripHotspots[b].name;
-					// var iText = boatTripHotspots[b].infoTxt;
-					// var boatid = boatTripHotspots[b].id;
-// 
-					// boatdialog.addEventListener('click', function(e) {
-						// if (e.index == 0) {
-							// var hotspotTxt = {
-								// title : htitle,
-								// infoTxt : iText,
-								// id : boatid
-							// };
-// 
-							// var hotspotDetails = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-							// Alloy.CFG.tabs.activeTab.open(hotspotDetails);
-						// }
-					// });
-// 
-					// boatdialog.show();
-					// playSound();
-					// boatTripHotspots[b].alerted = 1;
-// 
-					// alertedArray.push(boatTripHotspots[b].name);
-					// if (alertedArray.length == 8) {
-						// Alloy.Globals.stopBoatGPS();
-					// }
-				// }
-			// }
-		// }
-// 
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isNearPoint");
-	// }
-	
+function userOnBoatTrip() {	
 	try {
 		var boatdialog = Ti.UI.createAlertDialog({
 			buttonNames : ['Läs mer', 'Stäng']
@@ -457,32 +334,6 @@ function alertOnHotspot(hottitle, infoText, hotid) {
 // sänder ut dialog om true
 //-----------------------------------------------------------
 function userIsNearLetter() {
-	// try {
-		// for (var isnear = 0; isnear < Alloy.Globals.jsonCollection.length; isnear++) {
-			// if (Alloy.Globals.jsonCollection[isnear].alerted == 0) {
-				// if (Alloy.Globals.jsonCollection[isnear].found == 0) {
-// 
-					// var lat = Alloy.Globals.jsonCollection[isnear].latitude;
-					// var lon = Alloy.Globals.jsonCollection[isnear].longitude;
-					// var letterradius = Alloy.Globals.jsonCollection[isnear].radius;
-// 
-					// if (isInsideRadius(lat, lon, letterradius)) {
-						// var letterId = Alloy.Globals.jsonCollection[isnear].id;
-// 
-						// if (letterId == foundLetterId) {
-							// alertLetter(Alloy.Globals.jsonCollection[isnear].clue);
-							// Alloy.Globals.jsonCollection[isnear].alerted = 1;
-						// } else {
-							// checkIfRight(letterId);
-						// }
-					// }
-				// }
-			// }
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", 'isNearPoint - letter');
-	// }
-	
 	try {
 		var col = fetchUnFoundLettersCol();
 		for (var p = 0; p < col.length; p++) {
@@ -498,33 +349,6 @@ function userIsNearLetter() {
 
 					alertLetter(letterclue, letterId);
 					setAlertedOne(letterId);
-
-					// if (letterId == foundLetterId) {
-						// alertLetter(letterclue, letterId);
-						// setAlertedOne(letterId);
-					// } 
-					// else {
-						// // checkIfRight(letterId);
-						// if (!alerted) {
-// 							
-							// var letteralert = Ti.UI.createAlertDialog({
-								// title : 'Har du missat en bokstav?',
-								// message : 'Du kanske har missat en bokstav? Gå tillbaka eller tryck ifatt ledtrådarna till rätt nummer.',
-								// buttonNames : ['Gå tillbaka och hitta förra', 'Stäng']
-							// });
-// 							
-							// letteralert.addEventListener('click', function(evt){
-								// if(evt.index == 1){
-									// alertLetter(letterclue);
-									// setAlertedOne(letterId);
-								// }
-							// });
-// 							
-							// letteralert.show();
-							// // col[p].alerted == 1;
-							// alerted = true;
-						// }
-					// }
 				}
 			}
 		}
@@ -552,101 +376,6 @@ function alertLetter(clue, id) {
 }
 
 //-----------------------------------------------------------
-// Kontrollerar om användaren har missat någon bokstav
-//-----------------------------------------------------------
-// function checkIfRight(lId) {
-	// try {
-		// var diff = id - foundLetterId;
-// 
-		// var wrongmessage = Ti.UI.createAlertDialog({
-			// title : 'Ojdå!'
-		// });
-// 
-		// if (diff == 1) {
-			// foundLetterId++;
-			// wrongmessage.buttonNames = ['Gå tillbaka och leta', 'Fortsätt leta efter nästa'];
-			// wrongmessage.message = 'Du har nu missat en bokstav. Vill du gå tillbaka och leta efter den du missat eller fortsätta leta efter nästa bokstav?';
-// 
-			// wrongmessage.addEventListener('click', function(e) {
-				// if (e.index == 1) {
-					// foundLettersModel.fetch({
-						// 'id' : (foundJSON.length + 1)
-					// });
-// 
-					// foundLettersModel.set({
-						// 'letter' : '-',
-						// 'found' : 1
-					// });
-// 
-					// foundLettersModel.save();
-				// }
-			// });
-// 
-			// Alloy.Globals.loadClue(foundLetterId);
-			// alertLetter(Alloy.Globals.jsonCollection[foundLetterId].clue);
-			// Alloy.Globals.jsonCollection[id].alerted = 1;
-			// wrongmessage.show();
-			// playSound();
-// 
-		// } else if (diff > 1) {
-			// foundLetterId += diff;
-			// wrongmessage.buttonNames = ['Gå tillbaka och hitta de andra', 'Fortsätt leta efter nästa'];
-			// wrongmessage.message = 'Du har nu missat flera bokstäver. Vill du gå tillbaka och leta efter de du missat eller fortsätta leta efter nästa bokstav?';
-// 
-			// wrongmessage.addEventListener('click', function(e) {
-				// if (e.index == 1) {
-					// var letterIndex = foundJSON.length + 1;
-// 
-					// for (var i = 0; i < diff; i++) {
-						// foundLettersModel.fetch({
-							// 'id' : letterIndex
-						// });
-// 
-						// foundLettersModel.set({
-							// 'letter' : '-',
-							// 'found' : 1
-						// });
-// 
-						// foundLettersModel.save();
-						// letterIndex++;
-					// }
-				// }
-			// });
-// 
-			// alertLetter(Alloy.Globals.jsonCollection[foundLetterId].clue);
-			// Alloy.Globals.jsonCollection[id].alerted = 1;
-			// Alloy.Globals.loadClue(foundLetterId);
-			// wrongmessage.show();
-			// playSound();
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", 'geofunctions - playsound');
-	// }
-// 
-	// try {
-		// letId = lId;
-		// var dif = (lId - foundLetterId);
-// 
-		// for (var i = 0; i < dif; i++) {
-			// setNoLetter(lId);
-			// lId++;
-		// }
-// 
-		// Alloy.Globals.loadClue(foundLetterId + dif);
-		// alertLetter(lId.clue);
-		// setAlertedOne(lId);
-		// //	var clue = fetchOneLetter(lId);
-		// // alertLetter(clue[0].clue);
-		// playSound();
-// 
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", 'geofunctions - wrong');
-	// }
-// 
-// 
-// }
-
-//-----------------------------------------------------------
 // Spelar upp ett ljud när man får en påminnelse
 //-----------------------------------------------------------
 function playSound() {
@@ -665,20 +394,6 @@ function playSound() {
 // Lägger till de gröna plupparna på bokstavsjakt-kartan
 //-----------------------------------------------------------
 function addClueZone() {
-	// try {
-		// for (var c = 0; c < Alloy.Globals.jsonCollection.length; c++) {
-			// var zoneAnnotation = MapModule.createAnnotation({
-				// latitude : Alloy.Globals.jsonCollection[c].latitude,
-				// longitude : Alloy.Globals.jsonCollection[c].longitude,
-				// image : '/pics/' + (c + 1) + 'green.png'
-			// });
-// 
-			// interactiveMap.addAnnotation(zoneAnnotation);
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
-	// }
-
 try {
 		var zoneJSON = fetchAllLetters();
 
@@ -716,51 +431,9 @@ function addSpecificClueZone(id) {
 }
 
 //-----------------------------------------------------------
-// Push'ar in funna bokstäver i en array
-//-----------------------------------------------------------
-// function getFound() {
-	// try {
-		// foundJSON = [];
-// 
-		// var foundLettersCollection = Alloy.Collections.foundLettersModel;
-		// foundLettersCollection.fetch({
-			// query : 'SELECT letter FROM foundLettersModel WHERE found = 1'
-		// });
-// 
-		// foundLetters = foundLettersCollection.toJSON();
-		// for (var f = 0; f < foundLetters.length; f++) {
-			// foundJSON.push(' ' + foundLetters[f].letter);
-		// }
-// 
-		// return foundJSON;
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getFound");
-	// }
-// }
-
-//-----------------------------------------------------------
 // Sparar till found 0 och tömmer bokstäverna så man kan spela igen
 //-----------------------------------------------------------
 function startOver() {
-	// try {
-		// for (var lid = 0; lid < foundJSON.length; lid++) {
-			// var letterid = lid + 1;
-// 
-			// foundLettersModel.fetch({
-				// 'id' : letterid
-			// });
-// 
-			// foundLettersModel.set({
-				// 'letter' : null,
-				// 'found' : 0
-			// });
-// 
-			// foundLettersModel.save();
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
-	// }
-
 var col = fetchAllLetters();
 	try {
 		for (var i = 0; i < col.length; i++) {;
@@ -802,7 +475,6 @@ function stopGPS() {
 function stopGame() {
 	Titanium.Geolocation.removeEventListener('location', addLetterLocation);
 	startOver();
-	// foundLettersModel.destroy();
 }
 
 function stopBoatGPS() {

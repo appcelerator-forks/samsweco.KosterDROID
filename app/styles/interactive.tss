@@ -38,18 +38,6 @@
 	}
 }
 
-"#lblHelp": {
-	visible: false,
-	height: 0,
-	top: '5dp',
-	left: '15dp',
-	right: '15dp',
-	font: {
-		fontSize: '12dp',
-		fontFamily: 'Raleway-Light'
-	}
-}
-
 "#btnShowCorrect": {
 	left: '20%',
 	right: '20%',
@@ -84,12 +72,6 @@
 "#hideView": {
 	layout: 'vertical',
 	height: Titanium.UI.SIZE
-}
-
-"#wordView": {
-	layout: 'vertical',
-	visible: false,
-	height: '0dp'
 }
 
 "#horizontalView":{
@@ -151,19 +133,6 @@
 	left: '20dp'
 }
 
-"#lblLetters": {
-	visible: false,
-	height: '0dp',
-	left: '15%',
-	right: '15%',
-	width: Titanium.UI.FILL,
-	top: '2dp',
-	font: {
-		fontSize: '16dp',
-		fontFamily: 'Raleway-Medium'
-	}
-}
-
 "#txtLetter": {
 	top: '20dp',
 	height: '30dp',
@@ -209,38 +178,6 @@
 	color: '#FCAF17'
 }
 
-"#wordView":{
-	top: '0dp',
-	layout: 'vertical',
-	visible: false,
-	height: '0dp'
-}
-
-"#txtWord":{
-	visible: false,
-	height: '0dp',
-	right: '15dp',
-	left: '15dp',
-	top: '5dp',
-	width: Titanium.UI.FILL,
-	tintColor: 'blue',
-	borderWidth: '1dp',
-	borderRadius: '5dp'
-}
-
-"#lblWord":{
-	visible: false,
-	height: '0dp',
-	left: '25%',
-	right: '25%',
-	width: Titanium.UI.FILL,
-	top: '5dp',
-	font: {
-		fontSize: '16dp',
-		fontFamily: 'Raleway-Medium'
-	}
-}
-
 "#btnStartQuiz": {
 	left: '20%',
 	right: '20%',
@@ -262,7 +199,6 @@
 		fontFamily: 'Raleway-Light',
 		fontSize: '13dp'
 	},
-	// top: '2dp',
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	color: 'gray'
 }
@@ -296,16 +232,6 @@
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
 	}
-}
-
-"#viewNext": {
-	visible: false,
-	height: '0dp',
-	top: '5%',
-	left: '5dp',
-	bottom: '0dp',
-	width: Titanium.UI.FILL,
-	layout: 'vertical'
 }
 
 "#lbls1": {
@@ -351,247 +277,3 @@
 	left: '20dp',
 	color: 'black'
 }
-
-
-
-
-
-
-// "Label": {
-	// top: '5dp',
-	// left: '15dp',
-	// right: '15dp',
-	// font: {
-		// fontSize: '14dp',
-		// fontFamily: 'Raleway-Light'
-	// }
-// }
-// 
-// "#lblHelp": {
-	// visible: false,
-	// height: 0,
-	// top: '5dp',
-	// left: '15dp',
-	// right: '15dp',
-	// font: {
-		// fontSize: '12dp',
-		// fontFamily: 'Raleway-Light'
-	// }
-// }
-// 
-// "#btnShowCorrect": {
-	// visible: false,
-	// font: {
-		// fontFamily: 'Raleway-Light',
-		// fontSize: '13dp'
-	// },
-	// top: '0dp',
-	// width: Titanium.UI.FILL,
-	// height: '0dp'
-// }
-// 
-// "#lblCorrectLetters":{
-	// height: 0,
-	// visible: false,
-	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
-// }
-// 
-// 
-// "#interactiveWin": {
-	// layout: 'vertical',
-	// height: Titanium.UI.FILL
-// }
-// 
-// "#hideView": {
-	// layout: 'vertical',
-	// height: Titanium.UI.SIZE
-// }
-// 
-// "#wordView": {
-	// layout: 'vertical',
-	// visible: false,
-	// height: '0dp'
-// }
-// 
-// "#horizontalView":{
-	// layout: 'horizontal',
-	// width: Titanium.UI.FILL,
-	// height: '0dp',
-	// visible: false
-// }
-// 
-// "#lblInfoText": {
-	// top: '5dp',
-	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	// font: {
-		// fontSize: '14dp'
-	// } ,
-	// right: '20dp',
-	// left: '20dp'
-// }
-// 
-// "#showFamilyTrail": {
-	// height: '45%',
-	// width: Titanium.UI.FILL
-// }
-// 
-// "#lblWelcome": {
-	// top: '5dp',
-	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	// font: {
-		// fontFamily: 'Raleway-Medium',
-		// fontSize: '18dp'
-	// },
-	// color: '#FCAF17',
-	// left: '19dp'
-// }
-// 
-// "#lblLetters": {
-	// visible: false,
-	// height: '0dp',
-	// left: '15%',
-	// right: '15%',
-	// width: Titanium.UI.FILL,
-	// top: '2dp',
-	// font: {
-		// fontSize: '16dp',
-		// fontFamily: 'Raleway-Medium'
-	// }
-// }
-// 
-// "#txtLetter": {
-	// top: '2dp',
-	// left: '15%',
-	// right: '15%',
-	// height: '0dp',
-	// visible: false,
-	// tintColor: 'blue',
-	// borderWidth: '1dp',
-	// borderRadius: '5dp',
-	// width: Titanium.UI.FILL
-// }
-// 
-// "#lblCollectedLetters": {
-	// visible: false,
-	// left: '20dp',
-	// right: '15dp',
-	// width: Titanium.UI.FILL,
-	// top: '0dp',
-	// font:
-	// {
-		// fontFamily: 'Raleway-Light',
-		// fontSize: '17dp'
-	// },
-	// color: '#FCAF17'
-// }
-// 
-// "#wordView":{
-	// top: '0dp',
-	// layout: 'vertical',
-	// visible: false,
-	// height: '0dp'
-// }
-// 
-// "#txtWord":{
-	// visible: false,
-	// height: '0dp',
-	// right: '15dp',
-	// left: '15dp',
-	// top: '5dp',
-	// width: Titanium.UI.FILL,
-	// tintColor: 'blue',
-	// borderWidth: '1dp',
-	// borderRadius: '5dp'
-// }
-// 
-// "#lblWord":{
-	// visible: false,
-	// height: '0dp',
-	// left: '25%',
-	// right: '25%',
-	// width: Titanium.UI.FILL,
-	// top: '5dp',
-	// font: {
-		// fontSize: '16dp',
-		// fontFamily: 'Raleway-Medium'
-	// }
-// }
-// 
-// "#btnStartQuiz": {
-	// height: '40dp',
-	// width: Titanium.UI.FILL,
-	// top: '5dp',
-	// font: {
-		// fontSize: '16dp',
-		// fontFamily: 'Raleway-Medium'
-	// }
-// }
-// 
-// "#lblnextClue": {
-	// visible: false,
-	// font: {
-		// fontFamily: 'Raleway-Light',
-		// fontSize: '13dp'
-	// },
-	// top: '2dp',
-	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	// color: 'gray',
-	// height: '0dp'
-// }
-// 
-// "#nextClue": {
-	// visible: false,
-	// font: {
-		// fontFamily: 'Raleway-Light',
-		// fontSize: '13dp'
-	// },
-	// top: '0dp',
-	// width: Titanium.UI.FILL,
-	// height: '0dp'
-// }
-// 
-// "#viewNext": {
-	// visible: false,
-	// height: '0dp',
-	// top: '5%',
-	// left: '5dp',
-	// bottom: '0dp',
-	// width: Titanium.UI.FILL,
-	// layout: 'vertical'
-// }
-// 
-// "#lbls1": {
-	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	// font: {
-		// fontSize: '14dp'
-	// } ,
-	// right: '20dp',
-	// left: '20dp'
-// }
-// 
-// "#lbls2": {
-	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	// font: {
-		// fontSize: '14dp'
-	// },
-	// rigth: '20dp',
-	// left: '20dp'
-// }
-// 
-// "#lbls3": {
-	// textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	// font: {
-		// fontSize: '14dp'
-	// },
-	// right: '20dp',
-	// left: '20dp'
-// }
-// 
-// "#lbls4": {
-	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	// font: {
-		// fontSize: '14dp'
-	// },
-	// right: '20dp',
-	// left: '20dp'
-// }
