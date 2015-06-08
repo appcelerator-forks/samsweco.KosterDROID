@@ -430,23 +430,6 @@ function addSpecificClueZone(id) {
 	}
 }
 
-// //-----------------------------------------------------------
-// // Sparar till found 0 och tömmer bokstäverna så man kan spela igen
-// //-----------------------------------------------------------
-// function startOver() {
-// var col = fetchAllLetters();
-	// try {
-		// for (var i = 0; i < col.length; i++) {;
-			// setLetterZero(col[i].id);
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
-	// }
-// 
-// 
-// }
-// 
-// Alloy.Globals.startOver = startOver;
 
 //-----------------------------------------------------------
 // Sätter rätt region på karta utifrån var användaren befinner sig
