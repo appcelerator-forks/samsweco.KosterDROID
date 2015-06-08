@@ -132,7 +132,7 @@ function setView() {
 	try {
 		setLabelText();
 		$.lblScroll.show();
-		$.lblScroll.heigh = Ti.UI.SIZE;
+		$.lblScroll.height = '20dp';
 		$.clueSlideView.height = '15%';
 		$.clueSlideView.show();
 		$.lettersView.height = Ti.UI.SIZE;
@@ -285,6 +285,8 @@ function setLabelText() {
 				$.btnShowCorrect.show();
 				$.btnShowCorrect.height = '30dp';
 
+				$.lblScroll.hide();
+				$.lblScroll.height = 0;
 				$.clueSlideView.height = 0;
 				$.sendOneLetter.height = 0;
 				$.sendOneLetter.hide();
