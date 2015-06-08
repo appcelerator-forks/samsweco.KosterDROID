@@ -135,20 +135,14 @@
 }
 
 "#txtLetter": {
-	top: '20dp',
-	height: '30dp',
-	color: 'black',
-	tintColor: 'black'
-}
-
-"#txtLetter": {
-	top: '2dp',
+	top: '10dp',
 	left: '15%',
 	right: '15%',
 	tintColor: 'blue',
 	borderWidth: '1dp',
 	borderRadius: '5dp',
-	width: Titanium.UI.FILL
+	width: Titanium.UI.FILL,
+	color: '#000'
 }
 
 "#lblCollectedLetters": {
@@ -156,7 +150,7 @@
 	left: '20dp',
 	right: '15dp',
 	width: Titanium.UI.FILL,
-	top: '0dp',
+	top: '15dp',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	font:
 	{
@@ -278,4 +272,27 @@
 	right: '20dp',
 	left: '20dp',
 	color: 'black'
+}
+
+"#lblScroll": {
+	color: 'gray',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontFamily: 'Raleway-Light',
+		fontSize: '12dp'
+	},
+	visible: false, 
+	height: 0
+}
+
+"#lblFinishedGame": {
+	visible: false,
+	height: 0,
+	top: '5dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font: {
+		fontFamily: 'Raleway-Light',
+		fontSize: '18dp'
+	},
+	color: '#FCAF17'
 }
