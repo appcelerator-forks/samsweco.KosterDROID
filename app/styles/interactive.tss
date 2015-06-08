@@ -204,10 +204,11 @@
 }
 
 "#nextClue": {
-	left: '15dp',
+	left: '20%',
+	right : '20%',
 	top: 0,
 	height: '30dp',
-	width: '45%',
+	width: '60%',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',

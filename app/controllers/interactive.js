@@ -131,7 +131,7 @@ function startInteractive() {
 function setView() {
 	try {
 		setLabelText();
-		$.clueSlideView.height = '25%';
+		$.clueSlideView.height = '15%';
 		$.clueSlideView.show();
 		$.lettersView.height = Ti.UI.SIZE;
 		$.lettersView.show();
