@@ -4,32 +4,44 @@
 var hotspotsModel = Alloy.Models.hotspotModel;
 
 function returnHotspotsToAlert() {
-	var hotspotColl = Alloy.Collections.hotspotModel;
-	hotspotColl.fetch({
-		query : 'SELECT * FROM hotspotModel WHERE alerted = 0'
-	});
+	try {
+		var hotspotColl = Alloy.Collections.hotspotModel;
+		hotspotColl.fetch({
+			query : 'SELECT * FROM hotspotModel WHERE alerted = 0'
+		});
 
-	return hotspotColl.toJSON();
+		return hotspotColl.toJSON();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function setHotspotAlerted(id) {
-	hotspotsModel.fetch({
-		'id' : id
-	});
+	try {
+		hotspotsModel.fetch({
+			'id' : id
+		});
 
-	hotspotsModel.set({
-		'alerted' : 1
-	});
-	hotspotsModel.save();
+		hotspotsModel.set({
+			'alerted' : 1
+		});
+		hotspotsModel.save();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function returnBoatHotspots() {
-	var hotspotColl = Alloy.Collections.hotspotModel;
-	hotspotColl.fetch({
-		query : 'SELECT * FROM hotspotModel join hotspot_trailsModel on hotspotModel.id = hotspot_trailsModel.hotspotID where trailsID = 8'
-	});
+	try {
+		var hotspotColl = Alloy.Collections.hotspotModel;
+		hotspotColl.fetch({
+			query : 'SELECT * FROM hotspotModel join hotspot_trailsModel on hotspotModel.id = hotspot_trailsModel.hotspotID where trailsID = 8'
+		});
 
-	return hotspotColl.toJSON();
+		return hotspotColl.toJSON();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 //-----------------------------------------------------------
@@ -38,42 +50,54 @@ function returnBoatHotspots() {
 var lettersModel = Alloy.Models.letterModel;
 
 function setNoLetter(lid) {
-	lettersModel.fetch({
-		'id' : lid
-	});
+	try {
+		lettersModel.fetch({
+			'id' : lid
+		});
 
-	lettersModel.set({
-		'letter' : '-',
-		'found' : 1
-	});
+		lettersModel.set({
+			'letter' : '-',
+			'found' : 1
+		});
 
-	lettersModel.save();
-	alerted = false;
+		lettersModel.save();
+		alerted = false;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function setLetterOne(letterId, letter) {
-	lettersModel.fetch({
-		'id' : letterId
-	});
+	try {
+		lettersModel.fetch({
+			'id' : letterId
+		});
 
-	lettersModel.set({
-		'letter' : letter,
-		'found' : 1
-	});
-	lettersModel.save();
-	alerted = false;
+		lettersModel.set({
+			'letter' : letter,
+			'found' : 1
+		});
+		lettersModel.save();
+		alerted = false;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function setLetterZero(letterId) {
-	lettersModel.fetch({
-		'id' : letterId
-	});
+	try {
+		lettersModel.fetch({
+			'id' : letterId
+		});
 
-	lettersModel.set({
-		'letter' : null,
-		'found' : 0
-	});
-	lettersModel.save();
+		lettersModel.set({
+			'letter' : null,
+			'found' : 0
+		});
+		lettersModel.save();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function getLength() {
@@ -81,44 +105,64 @@ function getLength() {
 }
 
 function setAlertedOne(letterId) {
-	lettersModel.fetch({
-		'id' : letterId
-	});
+	try {
+		lettersModel.fetch({
+			'id' : letterId
+		});
 
-	lettersModel.set({
-		'alerted' : 1
-	});
-	lettersModel.save();
+		lettersModel.set({
+			'alerted' : 1
+		});
+		lettersModel.save();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function fetchAllLetters() {
-	var letterCollection = Alloy.Collections.letterModel;
-	letterCollection.fetch();
-	return letterCollection.toJSON();
+	try {
+		var letterCollection = Alloy.Collections.letterModel;
+		letterCollection.fetch();
+		return letterCollection.toJSON();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function fetchFoundLettersCol() {
-	var letterCollection = Alloy.Collections.letterModel;
-	letterCollection.fetch({
-		query : 'SELECT * FROM letterModel WHERE found = 1'
-	});
-	return letterCollection.toJSON();
+	try {
+		var letterCollection = Alloy.Collections.letterModel;
+		letterCollection.fetch({
+			query : 'SELECT * FROM letterModel WHERE found = 1'
+		});
+		return letterCollection.toJSON();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function fetchUnFoundLettersCol() {
-	var letterCollection = Alloy.Collections.letterModel;
-	letterCollection.fetch({
-		query : 'SELECT * FROM letterModel WHERE found = 0'
-	});
-	return letterCollection.toJSON();
+	try {
+		var letterCollection = Alloy.Collections.letterModel;
+		letterCollection.fetch({
+			query : 'SELECT * FROM letterModel WHERE found = 0'
+		});
+		return letterCollection.toJSON();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 function fetchOneLetter(lId) {
-	var letterCollection = Alloy.Collections.letterModel;
-	letterCollection.fetch({
-		query : 'SELECT * FROM letterModel WHERE id =' + lId + '"'
-	});
-	return letterCollection.toJSON();
+	try {
+		var letterCollection = Alloy.Collections.letterModel;
+		letterCollection.fetch({
+			query : 'SELECT * FROM letterModel WHERE id =' + lId + '"'
+		});
+		return letterCollection.toJSON();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 //-----------------------------------------------------------
@@ -143,7 +187,7 @@ function getUserPos(type) {
 		}
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - get current position GPS");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 }
 
@@ -184,22 +228,26 @@ function setUserPosition(userCoordinates, type) {
 			userOnBoatTrip();
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - getPosition");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 }
 
 function currentLocationFinder() {
-	Titanium.Geolocation.getCurrentPosition(function(e) {
-		var currentRegion = {
-			latitude : e.coords.latitude,
-			longitude : e.coords.longitude,
-			animate : true,
-			latitudeDelta : 0.002,
-			longitudeDelta : 0.002
-		};
+	try {
+		Titanium.Geolocation.getCurrentPosition(function(e) {
+			var currentRegion = {
+				latitude : e.coords.latitude,
+				longitude : e.coords.longitude,
+				animate : true,
+				latitudeDelta : 0.002,
+				longitudeDelta : 0.002
+			};
 
-		interactiveMap.setLocation(currentRegion);
-	});
+			interactiveMap.setLocation(currentRegion);
+		});
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 //-----------------------------------------------------------
@@ -217,7 +265,7 @@ function distanceM(latt, lonn, GlobalLat, GlobalLon) {
 
 		return distanceInM;
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - distanceInM");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 }
 
@@ -235,7 +283,7 @@ function isInsideRadius(latti, lonni, rad) {
 		}
 		return inside;
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - isInsideRadius");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 }
 
@@ -261,7 +309,7 @@ function userIsNearHotspot() {
 		}
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - nearHotspot");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 
 }
@@ -270,7 +318,7 @@ function userIsNearHotspot() {
 // På båtturen : kontrollerar om enheten är innanför en radie
 // för en sevärdhet, sänder ut dialog om true
 //-----------------------------------------------------------
-function userOnBoatTrip() {	
+function userOnBoatTrip() {
 	try {
 		var boatdialog = Ti.UI.createAlertDialog({
 			buttonNames : ['Läs mer', 'Stäng']
@@ -297,9 +345,9 @@ function userOnBoatTrip() {
 			}
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - nearBoatspot");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
-	
+
 }
 
 function alertOnHotspot(hottitle, infoText, hotid) {
@@ -325,7 +373,7 @@ function alertOnHotspot(hottitle, infoText, hotid) {
 		dialog.show();
 		playSound();
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - alerthot");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 }
 
@@ -354,25 +402,29 @@ function userIsNearLetter() {
 		}
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", 'isNearPoint - letter');
+		newError("Något gick fel när sidan skulle laddas, prova igen!", 'geoFunctions');
 	}
-	
+
 }
 
 function alertLetter(clue, id) {
-	var message = Ti.UI.createAlertDialog({
-		title : 'Du närmar dig bokstav nummer ' + id + '!',
-		buttonNames : ['Gå till bokstavsjakten', 'Stäng'],
-		message : 'Ledtråd: ' + clue
-	});
+	try {
+		var message = Ti.UI.createAlertDialog({
+			title : 'Du närmar dig bokstav nummer ' + id + '!',
+			buttonNames : ['Gå till bokstavsjakten', 'Stäng'],
+			message : 'Ledtråd: ' + clue
+		});
 
-	message.addEventListener('click', function(e) {
-		if (e.index == 0) {
-			Alloy.CFG.tabs.setActiveTab(3);
-		}
-	});
-	message.show();
-	playSound();
+		message.addEventListener('click', function(e) {
+			if (e.index == 0) {
+				Alloy.CFG.tabs.setActiveTab(3);
+			}
+		});
+		message.show();
+		playSound();
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 //-----------------------------------------------------------
@@ -386,7 +438,7 @@ function playSound() {
 
 		player.play();
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", 'geofunctions - playsound');
+		newError("Något gick fel när sidan skulle laddas, prova igen!", 'geofunctions');
 	}
 }
 
@@ -394,7 +446,7 @@ function playSound() {
 // Lägger till de gröna plupparna på bokstavsjakt-kartan
 //-----------------------------------------------------------
 function addClueZone() {
-try {
+	try {
 		var zoneJSON = fetchAllLetters();
 
 		for (var c = 0; c < zoneJSON.length; c++) {
@@ -407,7 +459,7 @@ try {
 			interactiveMap.addAnnotation(zoneAnnotation);
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 
 }
@@ -426,7 +478,7 @@ function addSpecificClueZone(id) {
 		interactiveMap.addAnnotation(clueAnnotation);
 
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
 }
 
@@ -434,15 +486,14 @@ function addSpecificClueZone(id) {
 // Sparar till found 0 och tömmer bokstäverna så man kan spela igen
 //-----------------------------------------------------------
 function startOver() {
-var col = fetchAllLetters();
+	var col = fetchAllLetters();
 	try {
 		for (var i = 0; i < col.length; i++) {;
 			setLetterZero(col[i].id);
 		}
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
 	}
-
 
 }
 
@@ -452,17 +503,21 @@ Alloy.Globals.startOver = startOver;
 // Sätter rätt region på karta utifrån var användaren befinner sig
 //-----------------------------------------------------------
 function getPosition(maptype) {
-	Ti.Geolocation.getCurrentPosition(function(e) {
-		if (e.coords != null) {
-			maptype.region = {
-				latitude : e.coords.latitude,
-				longitude : e.coords.longitude,
-				latitudeDelta : 0.007,
-				longitudeDelta : 0.007
-			};
-			maptype.animate = true;
-		}
-	});
+	try {
+		Ti.Geolocation.getCurrentPosition(function(e) {
+			if (e.coords != null) {
+				maptype.region = {
+					latitude : e.coords.latitude,
+					longitude : e.coords.longitude,
+					latitudeDelta : 0.007,
+					longitudeDelta : 0.007
+				};
+				maptype.animate = true;
+			}
+		});
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions");
+	}
 }
 
 //-----------------------------------------------------------
