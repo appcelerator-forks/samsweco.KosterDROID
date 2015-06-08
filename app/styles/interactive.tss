@@ -130,7 +130,8 @@
 		fontSize: '14dp'
 	},
 	right: '20dp',
-	left: '20dp'
+	left: '20dp',
+	color: 'black'
 }
 
 "#txtLetter": {
