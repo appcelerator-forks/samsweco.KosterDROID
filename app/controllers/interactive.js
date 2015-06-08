@@ -148,8 +148,15 @@ function checkIfStarted() {
 	try {
 		var started = fetchFoundLettersCol();
 
-		if (started.length > 0) {
+		if (started.length > 0 && started.length <9) {
 			setView();
+		}
+		
+		else if(started.length == 9){
+			$.hideView.hide();
+			$.hideView.height = 0;
+			$.clueSlideView.hide();
+			$.clueSlideView.height = 0;
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
@@ -268,7 +275,7 @@ function setLabelText() {
 				$.wordClueLbl.show();
 				$.wordClueLbl.height = Ti.UI.SIZE;
 				$.sendWord.show();
-				$.sendWord.height = '40dp';
+				$.sendWord.height = '30dp';
 				$.txtLetter.value = '';
 				$.btnShowCorrect.show();
 				$.btnShowCorrect.height = '30dp';
