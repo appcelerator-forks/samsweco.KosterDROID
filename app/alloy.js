@@ -152,71 +152,17 @@ function newError(errorMsg, pageName) {
 //-----------------------------------------------------------
 // Avsluta GPS när man stänger appen
 //-----------------------------------------------------------
-// Titanium.App.addEventListener('destroy', function() {
-// 
-	// gLat = null;
-	// gLon = null;
-// 
-	// if (interactiveGPS) {
-		// Alloy.Globals.stopGame();
-	// }
-	// if (hotspotGPS) {
-		// Alloy.Globals.stopGPS();
-	// }
-// });
-// Titanium.App.addEventListener('close', function() {
-// 
-	// Ti.API.info('App close');
-// 
-	// if (interactiveGPS) {
-		// Alloy.Globals.stopGame();
-	// }
-	// if (hotspotGPS) {
-		// Alloy.Globals.stopGPS();
-	// }
-// });
-// 
-// Titanium.App.addEventListener('stop', function() {//??
-// 
-	// Ti.API.info('App stop');
-// 
-	// if (interactiveGPS) {
-		// Alloy.Globals.getUserPos('letter');
-	// }
-	// if (hotspotGPS) {
-		// Alloy.Globals.getUserPos('hotspot');
-	// }
-// });
+Titanium.App.addEventListener('destroy', function() {
 
+	gLat = null;
+	gLon = null;
 
+	if (interactiveGPS) {
+		Alloy.Globals.stopGame();
+	}
+	if (hotspotGPS) {
+		Alloy.Globals.stopGPS();
+	}
+});
 
-
-// var activity = Ti.Android.currentActivity;
-// ['create', 'destroy', 'pause', 'resume', 'start', 'stop'].forEach(function(e) {
-	// activity.addEventListener(e, function() {
-// 
-		// if (e == 'destroy') {
-			// Ti.API.info('SANDRA :::: destroy');
-// 
-			// if (interactiveGPS) {
-				// Alloy.Globals.stopGame();
-			// }
-			// if (hotspotGPS) {
-				// Alloy.Globals.stopGPS();
-			// }
-		// }
-// 		
-		// if (e == 'close') {
-			// Ti.API.info('SANDRA :::: close');
-// 
-			// if (interactiveGPS) {
-				// Alloy.Globals.stopGame();
-			// }
-			// if (hotspotGPS) {
-				// Alloy.Globals.stopGPS();
-			// }
-		// }
-// 
-	// });
-// });
 

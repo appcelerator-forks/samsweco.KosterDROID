@@ -394,22 +394,25 @@ try {
 
 function addSpecificClueZone(id) {
 	try {
-		var zoneColl = fetchAllLetters();
-		var letterZone = zoneColl[id - 1];
+		if(id < 10){			
+			var zoneColl = fetchAllLetters();
+			var letterZone = zoneColl[id - 1];
+			
+			Ti.API.info(JSON.stringify(letterZone));
 
-		var clueAnnotation = MapModule.createAnnotation({
-			latitude : letterZone.latitude,
-			longitude : letterZone.longitude
-		});
-		
-		if(letterZone.found == 0){
-			clueAnnotation.image = '/pins/' + id + 'red.png';
-		} else {
-			clueAnnotation.image = '/pins/' + id + 'green.png';
+			var clueAnnotation = MapModule.createAnnotation({
+				latitude : letterZone.latitude,
+				longitude : letterZone.longitude
+			});
+
+			if (letterZone.found == 0) {
+				clueAnnotation.image = '/pins/' + id + 'red.png';
+			} else {
+				clueAnnotation.image = '/pins/' + id + 'green.png';
+			}
+
+			interactiveMap.addAnnotation(clueAnnotation); 
 		}
-
-		interactiveMap.addAnnotation(clueAnnotation);
-
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
 	}

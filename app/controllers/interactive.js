@@ -3,8 +3,6 @@ Ti.include("/mapFunctions.js");
 
 var args = arguments[0] || {};
 
-var correctLetters = "A, T, R, Ö, N, N, E, M, O";
-
 //-----------------------------------------
 // Onload
 //-----------------------------------------------------------
@@ -60,11 +58,11 @@ function setInteractiveViews() {
 
 			var clueTitle = Ti.UI.createLabel({
 				top : '15dp',
+				left: '5dp',
 				text : 'Ledtråd ' + (i + 1),
 				color : '#FCAF17',
 				font : {
 					fontSize : '16dp',
-					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					fontFamily : 'Raleway-Medium'
 				}
 			});
@@ -75,7 +73,6 @@ function setInteractiveViews() {
 				color : 'black',
 				font : {
 					fontSize : '14dp',
-					textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
 					fontFamily : 'Raleway-Light'
 				}
 			});
@@ -84,7 +81,7 @@ function setInteractiveViews() {
 				layout : 'vertical',
 				backgroundColor : 'white',
 				height : Ti.UI.SIZE,
-				width : Ti.UI.SIZE
+				width : Ti.UI.FILL
 			});
 
 			letter_view.add(clueTitle);
@@ -132,14 +129,12 @@ function setView() {
 		setLabelText();
 		$.lblScroll.show();
 		$.lblScroll.height = '20dp';
-		$.clueSlideView.height = '15%';
+		$.clueSlideView.height = '20%';
 		$.clueSlideView.show();
 		$.lettersView.height = Ti.UI.SIZE;
 		$.lettersView.show();
 		$.hideView.hide();
 		$.hideView.height = 0;
-		$.btnShowCorrect.hide();
-		$.btnShowCorrect.height = 0;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
 	}
@@ -159,20 +154,6 @@ function checkIfStarted() {
 			setLabelText();
 			setLastView();
 		}
-
-		// if (started.length > 0 && started.length <9) {
-			// setView();
-		// } else if(started.length == 9){
-			// $.hideView.hide();
-			// $.hideView.height = 0;
-			// $.clueSlideView.hide();
-			// $.clueSlideView.height = 0;
-			// $.lettersView.hide();
-			// $.lettersView.height = 0;
-// 			
-			// $.lblFinishedGame.show();
-			// $.lblFinishedGame.height = Ti.UI.SIZE;
-		// }
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
 	}
@@ -199,18 +180,6 @@ function setLastView() {
 	$.sendWord.height = '30dp';
 	$.lblCollectedLetters.show();
 	$.lblCollectedLetters.height = Ti.UI.SIZE;
-}
-
-function showCorrectLetters() {
-	try {
-		$.lblCorrectLetters.show();
-		$.lblCorrectLetters.height = '40dp';
-		$.lblCorrectLetters.text = correctLetters;
-		$.btnShowCorrect.hide();
-		$.btnShowCorrect.height = 0;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
-	}
 }
 
 //-----------------------------------------------------------
@@ -298,25 +267,6 @@ function checkLetter(letterToCheck) {
 				$.slides.currentPage = unFound[0].id;
 				addSpecificClueZone(foundLetterId);
 			}
-			
-			
-			// messageDialog.message = "Vill du spara bokstaven " + letterToCheck + "?";
-			// messageDialog.title = 'Bra, du hittade en bokstav!';
-			// messageDialog.buttonNames = ['Ja, jag vill spara!', 'Stäng'];
-// 
-			// messageDialog.addEventListener('click', function(e) {
-				// if (e.index == 0) {
-					// //				$.txtLetter.value = '';
-					// var unFound = fetchUnFoundLettersCol();
-					// if (unFound.length > 0) {
-						// setLetterOne(unFound[0].id, letterToCheck);
-						// foundLetterId++;
-						// setLabelText();
-					// }
-				// }
-			// });
-// 
-			// messageDialog.show();
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
@@ -339,8 +289,6 @@ function setLabelText() {
 				$.sendWord.show();
 				$.sendWord.height = '30dp';
 				$.txtLetter.value = '';
-				$.btnShowCorrect.show();
-				$.btnShowCorrect.height = '30dp';
 
 				$.lblScroll.hide();
 				$.lblScroll.height = 0;
@@ -385,16 +333,13 @@ function checkWord() {
 			$.wordClue.height = 0;
 			$.wordClueLbl.hide();
 			$.wordClueLbl.height = 0;
-			$.btnShowCorrect.hide();
-			$.btnShowCorrect.height = 0;
-			$.lblCorrectLetters.hide();
-			$.lblCorrectLetters.height = 0;
 
 			$.lblCollectedLetters.text = 'Bra jobbat! Du hittade det rätta ordet!';
 			$.lblCollectedLetters.fontFamily = 'Raleway-Medium';
 			$.lblCollectedLetters.fontSize = '16dp';
 
 			Alloy.Globals.stopGame();
+			startOver();
 			interactiveGPS = false;
 		} else {
 			alertDialog.message = "Försök igen! Du har snart klurat ut det!";
@@ -408,7 +353,7 @@ function checkWord() {
 //-----------------------------------------------------------
 // Eventlistener för att rensa de funna bokstäverna när appen stängs
 //-----------------------------------------------------------
-Titanium.App.addEventListener('close', function() {
+Titanium.App.addEventListener('destroy', function() {
 	Alloy.Globals.stopGame();
 	startOver();
 });
@@ -417,10 +362,13 @@ Titanium.App.addEventListener('close', function() {
 // Sparar till found 0 och tömmer bokstäverna så man kan spela igen
 //-----------------------------------------------------------
 function startOver() {
-	var col = fetchFoundLettersCol();
 	try {
+		var col = fetchFoundLettersCol();
+		
 		for (var i = 0; i < col.length; i++) {;
 			setLetterZero(col[i].id);
+			
+			Ti.API.info(JSON.stringify(col[i].letter));			
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");

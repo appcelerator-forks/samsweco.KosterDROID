@@ -135,7 +135,7 @@
 }
 
 "#txtLetter": {
-	top: '10dp',
+	top: '5dp',
 	left: '15%',
 	right: '15%',
 	tintColor: 'blue',

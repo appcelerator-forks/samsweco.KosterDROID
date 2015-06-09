@@ -6,7 +6,6 @@
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
-	<Model src="foundLettersModel" />
 	
 	<Window id="infoDetail" class="container">
 		<ScrollView class="headView" scrollType="vertical" showVerticalScrollIndicator="true">

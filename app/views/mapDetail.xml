@@ -4,9 +4,9 @@
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
-	<Model src="foundLettersModel" />
 	<Collection src="trailsModel" />
 	<Collection src="jsonFilesModel" />
+	
 	<Window id="detailwin">
 		<View id="mapDetailView"></View>
 		

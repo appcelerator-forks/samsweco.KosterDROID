@@ -19,7 +19,7 @@ globalTrailID = trailId;
 // newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 // }
 
-if (args.title == 'Äventyrsleden') {
+if (args.title == 'Äventyrsslingan') {
 	$.btnSendTo.show();
 	$.btnSendTo.height = '30dp';
 	$.btnSendTo.title = 'Gå till bokstavsjakten!';

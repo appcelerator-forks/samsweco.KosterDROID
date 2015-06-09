@@ -5,7 +5,6 @@
 	<Collection src="trailsModel"/>
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
-	<Model src="foundLettersModel" />
 	
 	<TabGroup id="tabs" backgroundColor="#fff" height="100%" tintColor="#0098C3">
 		<Tab id="koster" class="tabbar" title="Hem" icon="/images/kosterStarMenu.png" >
