@@ -3,7 +3,6 @@ Ti.include("/mapFunctions.js");
 
 var args = arguments[0] || {};
 
-var wrongWord = 0;
 var correctLetters = "A, T, R, Ö, N, N, E, M, O";
 
 //-----------------------------------------
@@ -149,23 +148,57 @@ function setView() {
 function checkIfStarted() {
 	try {
 		var started = fetchFoundLettersCol();
-
-		if (started.length > 0 && started.length <9) {
-			setView();
-		} else if(started.length == 9){
-			$.hideView.hide();
-			$.hideView.height = 0;
-			$.clueSlideView.hide();
-			$.clueSlideView.height = 0;
-			$.lettersView.hide();
-			$.lettersView.height = 0;
 			
-			$.lblFinishedGame.show();
-			$.lblFinishedGame.height = Ti.UI.SIZE;
+		var next_id = started.length;
+		if (next_id > 0 && next_id < 9) {
+			setView();
+			foundLetterId = next_id + 1;
+			$.slides.currentPage = foundLetterId;
+			addSpecificClueZone(foundLetterId);
+		} else if (started.length == 9) {
+			setLabelText();
+			setLastView();
 		}
+
+		// if (started.length > 0 && started.length <9) {
+			// setView();
+		// } else if(started.length == 9){
+			// $.hideView.hide();
+			// $.hideView.height = 0;
+			// $.clueSlideView.hide();
+			// $.clueSlideView.height = 0;
+			// $.lettersView.hide();
+			// $.lettersView.height = 0;
+// 			
+			// $.lblFinishedGame.show();
+			// $.lblFinishedGame.height = Ti.UI.SIZE;
+		// }
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
 	}
+}
+
+function setLastView() {
+	$.hideView.hide();
+	$.hideView.height = 0;
+	$.clueSlideView.hide();
+	$.clueSlideView.height = 0;
+	$.lettersView.show();
+	$.lettersView.height = Ti.UI.SIZE;
+	$.sendOneLetter.hide();
+	$.sendOneLetter.height = 0;
+	$.lblnextClue.hide();
+	$.lblnextClue.height = 0;
+	$.nextClue.hide();
+	$.nextClue.height = 0;
+	$.wordClue.show();
+	$.wordClue.height = Ti.UI.SIZE;
+	$.wordClueLbl.show();
+	$.wordClueLbl.height = Ti.UI.SIZE;
+	$.sendWord.show();
+	$.sendWord.height = '30dp';
+	$.lblCollectedLetters.show();
+	$.lblCollectedLetters.height = Ti.UI.SIZE;
 }
 
 function showCorrectLetters() {
@@ -190,11 +223,9 @@ function toNextClue() {
 			buttonNames : ['Ja, visa!', 'Stäng']
 		});
 
-		nextDialog.show();
-
 		nextDialog.addEventListener('click', function(e) {
 			if (e.index == 0) {
-				var lost = fetchUnFoundLettersCol();
+				var lost = fetchOneLetter(foundLetterId);
 				lostLetter = lost[0].letter;
 				lostId = lost[0].id;
 
@@ -202,6 +233,8 @@ function toNextClue() {
 				$.txtLetter.value = lostLetter;
 			}
 		});
+
+		nextDialog.show();
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
 	}
@@ -229,37 +262,61 @@ function sendLetter() {
 function checkLetter(letterToCheck) {
 	try {
 		var messageDialog = Ti.UI.createAlertDialog();
+		var fetchLetter = fetchOneLetter(foundLetterId);
+		var correctLetter = fetchLetter[0].letter;
 
 		if (letterToCheck.length > 1) {
 			messageDialog.message = "Man får bara skriva in en bokstav.";
 			messageDialog.title = 'Ojdå, nu blev det fel';
-			messageDialog.buttonNames = ['Stäng'];
+			messageDialog.buttonNames = ['OK'];
 
 			messageDialog.show();
 		} else if (letterToCheck.length < 1 && letterToCheck.length == " ") {
 			messageDialog.message = "Man måste skriva in en bokstav.";
 			messageDialog.title = 'Ojdå, nu blev det fel';
-			messageDialog.buttonNames = ['Stäng'];
+			messageDialog.buttonNames = ['OK'];
+
+			messageDialog.show();
+		} else if (letterToCheck != correctLetter) {
+			messageDialog.message = "Är du säker på att " + letterToCheck + ' var rätt bokstav för ledtråd ' + foundLetterId + '? Kontrollera att du inte gått förbi en bokstav.';
+			messageDialog.title = 'Kontrollera bokstav';
+			messageDialog.buttonNames = ['OK'];
 
 			messageDialog.show();
 		} else {
-			messageDialog.message = "Vill du spara bokstaven " + letterToCheck + "?";
-			messageDialog.title = 'Bra, du hittade en bokstav!';
-			messageDialog.buttonNames = ['Ja, jag vill spara!', 'Stäng'];
+			
+			var unFound = fetchUnFoundLettersCol();
 
-			messageDialog.addEventListener('click', function(e) {
-				if (e.index == 0) {
-					//				$.txtLetter.value = '';
-					var unFound = fetchUnFoundLettersCol();
-					if (unFound.length > 0) {
-						setLetterOne(unFound[0].id, letterToCheck);
-						foundLetterId++;
-						setLabelText();
-					}
-				}
-			});
+			if (unFound.length > 0) {
+				setLetterOne(unFound[0].id, letterToCheck);
+				foundLetterId++;
+				setLabelText();
 
-			messageDialog.show();
+				interactiveMap.removeAllAnnotations();
+				displaySpecificMarkers(7, interactiveMap);
+				getSpecificIconsForTrail(7, interactiveMap);
+				$.slides.currentPage = unFound[0].id;
+				addSpecificClueZone(foundLetterId);
+			}
+			
+			
+			// messageDialog.message = "Vill du spara bokstaven " + letterToCheck + "?";
+			// messageDialog.title = 'Bra, du hittade en bokstav!';
+			// messageDialog.buttonNames = ['Ja, jag vill spara!', 'Stäng'];
+// 
+			// messageDialog.addEventListener('click', function(e) {
+				// if (e.index == 0) {
+					// //				$.txtLetter.value = '';
+					// var unFound = fetchUnFoundLettersCol();
+					// if (unFound.length > 0) {
+						// setLetterOne(unFound[0].id, letterToCheck);
+						// foundLetterId++;
+						// setLabelText();
+					// }
+				// }
+			// });
+// 
+			// messageDialog.show();
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
@@ -353,7 +410,22 @@ function checkWord() {
 //-----------------------------------------------------------
 Titanium.App.addEventListener('close', function() {
 	Alloy.Globals.stopGame();
+	startOver();
 });
+
+//-----------------------------------------------------------
+// Sparar till found 0 och tömmer bokstäverna så man kan spela igen
+//-----------------------------------------------------------
+function startOver() {
+	var col = fetchFoundLettersCol();
+	try {
+		for (var i = 0; i < col.length; i++) {;
+			setLetterZero(col[i].id);
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
+	}
+}
 
 var cleanup = function() {
 	stopGPS();

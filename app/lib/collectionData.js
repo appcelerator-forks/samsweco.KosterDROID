@@ -185,4 +185,3 @@ function returnLetters() {
 
 	return letterJson;
 }
-

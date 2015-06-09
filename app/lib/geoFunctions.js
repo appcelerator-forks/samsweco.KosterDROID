@@ -116,10 +116,11 @@ function fetchUnFoundLettersCol() {
 function fetchOneLetter(lId) {
 	var letterCollection = Alloy.Collections.letterModel;
 	letterCollection.fetch({
-		query : 'SELECT * FROM letterModel WHERE id =' + lId + '"'
+		query : 'SELECT * FROM letterModel WHERE id =' + lId 
 	});
 	return letterCollection.toJSON();
 }
+
 
 //-----------------------------------------------------------
 // Hämtar användarens position och startar location-event
@@ -194,8 +195,8 @@ function currentLocationFinder() {
 			latitude : e.coords.latitude,
 			longitude : e.coords.longitude,
 			animate : true,
-			latitudeDelta : 0.002,
-			longitudeDelta : 0.002
+			latitudeDelta : 0.004,
+			longitudeDelta : 0.004
 		};
 
 		interactiveMap.setLocation(currentRegion);
@@ -257,13 +258,10 @@ function userIsNearHotspot() {
 					setHotspotAlerted(hotspotsToLoop[h].id);
 				}
 			}
-
 		}
-
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - nearHotspot");
 	}
-
 }
 
 //-----------------------------------------------------------
@@ -299,7 +297,6 @@ function userOnBoatTrip() {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - nearBoatspot");
 	}
-	
 }
 
 function alertOnHotspot(hottitle, infoText, hotid) {
@@ -352,11 +349,9 @@ function userIsNearLetter() {
 				}
 			}
 		}
-
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", 'isNearPoint - letter');
-	}
-	
+	}	
 }
 
 function alertLetter(clue, id) {
@@ -401,7 +396,7 @@ try {
 			var zoneAnnotation = MapModule.createAnnotation({
 				latitude : zoneJSON[c].latitude,
 				longitude : zoneJSON[c].longitude,
-				image : '/pins/' + (c + 1) + 'green.png'
+				image : '/pins/' + (c + 1) + 'red.png'
 			});
 
 			interactiveMap.addAnnotation(zoneAnnotation);
@@ -419,9 +414,14 @@ function addSpecificClueZone(id) {
 
 		var clueAnnotation = MapModule.createAnnotation({
 			latitude : letterZone.latitude,
-			longitude : letterZone.longitude,
-			image : '/pins/' + id + 'green.png'
+			longitude : letterZone.longitude
 		});
+		
+		if(letterZone.found == 0){
+			clueAnnotation.image = '/pins/' + id + 'red.png';
+		} else {
+			clueAnnotation.image = '/pins/' + id + 'green.png';
+		}
 
 		interactiveMap.addAnnotation(clueAnnotation);
 
