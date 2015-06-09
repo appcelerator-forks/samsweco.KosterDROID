@@ -37,27 +37,12 @@ function returnBoatHotspots() {
 //-----------------------------------------------------------
 var lettersModel = Alloy.Models.letterModel;
 
-function setNoLetter(lid) {
-	lettersModel.fetch({
-		'id' : lid
-	});
-
-	lettersModel.set({
-		'letter' : '-',
-		'found' : 1
-	});
-
-	lettersModel.save();
-	alerted = false;
-}
-
 function setLetterOne(letterId, letter) {
 	lettersModel.fetch({
 		'id' : letterId
 	});
 
 	lettersModel.set({
-		'letter' : letter,
 		'found' : 1
 	});
 	lettersModel.save();
@@ -70,8 +55,8 @@ function setLetterZero(letterId) {
 	});
 
 	lettersModel.set({
-		'letter' : null,
-		'found' : 0
+		'found' : 0,
+		'alerted' : 0
 	});
 	lettersModel.save();
 }
