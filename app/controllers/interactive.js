@@ -31,12 +31,10 @@ function displayMap() {
 
 $.slides.addEventListener('scrollend', function(e) {
 	try {
-		interactiveMap.removeAllAnnotations();
+		removeClueZones();
 
 		var clueIndex = ($.slides.getCurrentPage() + 1);
 		addSpecificClueZone(clueIndex);
-		displaySpecificMarkers(7, interactiveMap);
-		getSpecificIconsForTrail(7, interactiveMap);
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten");
 	}
@@ -58,7 +56,7 @@ function setInteractiveViews() {
 
 			var clueTitle = Ti.UI.createLabel({
 				top : '15dp',
-				left: '5dp',
+				left : '5dp',
 				text : 'Ledtråd ' + (i + 1),
 				color : '#FCAF17',
 				font : {
@@ -129,7 +127,7 @@ function setView() {
 		setLabelText();
 		$.lblScroll.show();
 		$.lblScroll.height = '20dp';
-		$.clueSlideView.height = '20%';
+		$.clueSlideView.height = '25%';
 		$.clueSlideView.show();
 		$.lettersView.height = Ti.UI.SIZE;
 		$.lettersView.show();
@@ -143,12 +141,16 @@ function setView() {
 function checkIfStarted() {
 	try {
 		var started = fetchFoundLettersCol();
-			
+
 		var next_id = started.length;
 		if (next_id > 0 && next_id < 9) {
 			setView();
 			foundLetterId = next_id + 1;
-			$.slides.currentPage = foundLetterId;
+			$.slides.currentPage = foundLetterId-1;
+
+			interactiveMap.removeAllAnnotations();
+			displaySpecificMarkers(7, interactiveMap);
+			getSpecificIconsForTrail(7, interactiveMap);
 			addSpecificClueZone(foundLetterId);
 		} else if (started.length == 9) {
 			setLabelText();
@@ -253,7 +255,7 @@ function checkLetter(letterToCheck) {
 
 			messageDialog.show();
 		} else {
-			
+
 			var unFound = fetchUnFoundLettersCol();
 
 			if (unFound.length > 0) {
@@ -261,9 +263,7 @@ function checkLetter(letterToCheck) {
 				foundLetterId++;
 				setLabelText();
 
-				interactiveMap.removeAllAnnotations();
-				displaySpecificMarkers(7, interactiveMap);
-				getSpecificIconsForTrail(7, interactiveMap);
+				removeClueZones();
 				$.slides.currentPage = unFound[0].id;
 				addSpecificClueZone(foundLetterId);
 			}
@@ -313,17 +313,15 @@ function checkWord() {
 	try {
 		var check = $.txtLetter.value;
 		var bigword = check.toUpperCase();
-		var checkword = bigword.split(" ",1);
-		
+		var checkword = bigword.split(" ", 1);
+
 		var alertDialog = Ti.UI.createAlertDialog({
 			buttonNames : ['Stäng'],
 			title : "Fel ord"
 		});
 
 		if (checkword == word) {
-			interactiveMap.removeAllAnnotations();
-			displaySpecificMarkers(7, interactiveMap);
-			getSpecificIconsForTrail(7, interactiveMap);
+			removeClueZones();
 
 			$.sendWord.hide();
 			$.sendWord.height = 0;
@@ -364,11 +362,11 @@ Titanium.App.addEventListener('destroy', function() {
 function startOver() {
 	try {
 		var col = fetchFoundLettersCol();
-		
+
 		for (var i = 0; i < col.length; i++) {;
 			setLetterZero(col[i].id);
-			
-			Ti.API.info(JSON.stringify(col[i].letter));			
+
+			Ti.API.info(JSON.stringify(col[i].letter));
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");

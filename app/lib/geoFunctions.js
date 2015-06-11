@@ -411,6 +411,7 @@ function addSpecificClueZone(id) {
 				clueAnnotation.image = '/pins/' + id + 'green.png';
 			}
 
+			clueZoneArray.push(clueAnnotation);
 			interactiveMap.addAnnotation(clueAnnotation); 
 		}
 	} catch(e) {
@@ -418,6 +419,15 @@ function addSpecificClueZone(id) {
 	}
 }
 
+function removeClueZones(){
+	try {
+		for (var cl = 0; cl < clueZoneArray.length; cl++) {
+			interactiveMap.removeAnnotation(clueZoneArray[cl]);
+		}
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - addClueZone");
+	}
+}
 
 //-----------------------------------------------------------
 // Sätter rätt region på karta utifrån var användaren befinner sig

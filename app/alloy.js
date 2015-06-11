@@ -68,6 +68,7 @@ var myPosition = false;
 var lettersArray = [];
 var infospotArray = [];
 var markerHotspotArray = [];
+var clueZoneArray = [];
 var globalTrailID = 0;
 var word = 'ÖRONMANET';
 
