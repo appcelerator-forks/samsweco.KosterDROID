@@ -1,106 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ti:app 
-  xmlns:ti="http://ti.appcelerator.org">
-  <id>com.KosterDROID</id>
-  <name>Kosterhavet</name>
-  <version>1.0</version>
-  <publisher>Sweco Position AB</publisher>
-  <url>http://</url>
-  <description>undefined</description>
-  <copyright>2015 by Sweco Position AB</copyright>
-  <icon>appicon.png</icon>
-  <fullscreen>true</fullscreen>
-  <navbar-hidden>true</navbar-hidden>
-  <analytics>true</analytics>
-  <guid>7f609be5-5d42-4ea9-9444-ee906e948628</guid>
-  <property name="ti.ui.defaultunit" type="string">dp</property>
-  <ios>
-    <plist>
-      <dict>
-        <key>NSLocationAlwaysUsageDescription</key>
-        <string>Godkänn användandet av platstjänster för att kunna använda appen.</string>
-        <key>UISupportedInterfaceOrientations~iphone</key>
-        <array>
-          <string>UIInterfaceOrientationPortrait</string>
-        </array>
-        <key>UISupportedInterfaceOrientations~ipad</key>
-        <array>
-          <string>UIInterfaceOrientationPortrait</string>
-          <string>UIInterfaceOrientationPortraitUpsideDown</string>
-          <string>UIInterfaceOrientationLandscapeLeft</string>
-          <string>UIInterfaceOrientationLandscapeRight</string>
-        </array>
-        <key>UIRequiresPersistentWiFi</key>
-        <false/>
-        <key>UIPrerenderedIcon</key>
-        <false/>
-        <key>UIStatusBarHidden</key>
-        <false/>
-        <key>UIStatusBarStyle</key>
-        <string>UIStatusBarStyleDefault</string>
-      </dict>
-    </plist>
-  </ios>
-  <android 
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <manifest>
-      <!-- Allows the API to download data from Google Map servers -->
-      <uses-permission android:name="android.permission.INTERNET"/>
-      <!-- Allows the API to cache data -->
-      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-      <!-- Use GPS for device location -->
-      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-      <!-- Use Wi-Fi or mobile connection for device location -->
-      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-      <!-- Allows the API to access Google web-based services -->
-      <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-      <!-- Specify OpenGL ES 2.0 as a requirement -->
-      <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-      <!-- Replace com.domain.appid with your application ID -->
-      <uses-permission android:name="com.Kostervandring.permission.MAPS_RECEIVE"/>
-      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-      <permission android:name="com.Kostervandring.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
-      <application android:icon="@drawable/appicon" android:label="Kosterhavet" android:name="KosterhavetApplication" android:debuggable="false" android:theme="@style/Theme.AppCompat">
-        <activity android:screenOrientation="portrait" android:name=".KosterhavetActivity" android:label="@string/app_name" android:theme="@style/Theme.Titanium" android:configChanges="keyboardHidden|orientation|screenSize">
-          <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-          </intent-filter>
-        </activity>
-        <activity android:screenOrientation="portrait" android:name="org.appcelerator.titanium.TiActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <activity android:screenOrientation="portrait" android:name="org.appcelerator.titanium.TiTranslucentActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@style/Theme.AppCompat.Translucent"/>
-        <activity android:screenOrientation="portrait" android:name="ti.modules.titanium.ui.android.TiPreferencesActivity" android:configChanges="screenSize"/>
-        <service android:name="com.appcelerator.analytics.APSAnalyticsService" android:exported="false"/>
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBeVjpjLh9r8ChPaMqvPNfv-SIENcpR2Y4"/>
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
-        <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBeVjpjLh9r8ChPaMqvPNfv-SIENcpR2Y4"/>
-      </application>
-    </manifest>
-  </android>
-  <mobileweb>
-    <precache/>
-    <splash>
-      <enabled>true</enabled>
-      <inline-css-images>true</inline-css-images>
-    </splash>
-    <theme>default</theme>
-  </mobileweb>
-  <modules>
-    <module platform="iphone">ti.map</module>
-    <module platform="android">ti.map</module>
-  </modules>
-  <deployment-targets>
-    <target device="android">true</target>
-    <target device="blackberry">false</target>
-    <target device="ipad">false</target>
-    <target device="iphone">false</target>
-    <target device="mobileweb">false</target>
-  </deployment-targets>
-  <sdk-version>3.5.1.GA</sdk-version>
-  <plugins>
-    <plugin version="1.0">ti.alloy</plugin>
-  </plugins>
-  <property name="appc-app-id" type="string">558acc02bd337ee21af757c0</property>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <url>http://</url>
+    <id>com.KosterDROID</id>
+    <name>Kosterhavet</name>
+    <version>1.0</version>
+    <publisher>Sweco Position AB</publisher>
+    <description>undefined</description>
+    <copyright>2015 by Sweco Position AB</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>true</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>7f609be5-5d42-4ea9-9444-ee906e948628</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>NSLocationAlwaysUsageDescription</key>
+                <string>Godkänn användandet av platstjänster för att kunna använda appen.</string>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest>
+            <!-- Allows the API to download data from Google Map servers -->
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <!-- Allows the API to cache data -->
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <!-- Use GPS for device location -->
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            <!-- Use Wi-Fi or mobile connection for device location -->
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <!-- Allows the API to access Google web-based services -->
+            <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+            <!-- Specify OpenGL ES 2.0 as a requirement -->
+            <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+            <!-- Replace com.domain.appid with your application ID -->
+            <uses-permission android:name="com.Kostervandring.permission.MAPS_RECEIVE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <permission
+                android:name="com.Kostervandring.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+            <application android:debuggable="false"
+                android:icon="@drawable/appicon"
+                android:label="Kosterhavet"
+                android:name="KosterhavetApplication" android:theme="@style/Theme.AppCompat">
+                <activity
+                    android:configChanges="keyboardHidden|orientation|screenSize"
+                    android:label="@string/app_name"
+                    android:name=".KosterhavetActivity"
+                    android:screenOrientation="portrait" android:theme="@style/Theme.Titanium">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN"/>
+                        <category android:name="android.intent.category.LAUNCHER"/>
+                    </intent-filter>
+                </activity>
+                <activity
+                    android:configChanges="keyboardHidden|orientation|screenSize"
+                    android:name="org.appcelerator.titanium.TiActivity" android:screenOrientation="portrait"/>
+                <activity
+                    android:configChanges="keyboardHidden|orientation|screenSize"
+                    android:name="org.appcelerator.titanium.TiTranslucentActivity"
+                    android:screenOrientation="portrait" android:theme="@style/Theme.AppCompat.Translucent"/>
+                <activity android:configChanges="screenSize"
+                    android:name="ti.modules.titanium.ui.android.TiPreferencesActivity" android:screenOrientation="portrait"/>
+                <service android:exported="false" android:name="com.appcelerator.analytics.APSAnalyticsService"/>
+                <meta-data
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBeVjpjLh9r8ChPaMqvPNfv-SIENcpR2Y4"/>
+                <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+                <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
+                <meta-data
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBeVjpjLh9r8ChPaMqvPNfv-SIENcpR2Y4"/>
+            </application>
+        </manifest>
+    </android>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="ipad">false</target>
+        <target device="iphone">false</target>
+        <target device="mobileweb">false</target>
+    </deployment-targets>
+    <sdk-version>3.5.1.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">558acc02bd337ee21af757c0</property>
 </ti:app>

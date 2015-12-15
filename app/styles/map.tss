@@ -18,7 +18,7 @@
 "#widgetView": {
 	height: '25%dp',
 	width: Titanium.UI.FILL,
-	bottom: 0
+	bottom : 0
 }
 
 "#btnViewMapMenu":{

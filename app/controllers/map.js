@@ -46,8 +46,8 @@ function showTrail(myName) {
 			zoomlon : jsonObjTr[0].zoomLon
 		};
 
-		var trailDetail = Alloy.createController("trailDetail", args).getView();
-		Alloy.CFG.tabs.activeTab.open(trailDetail);
+		var trailDetail = Alloy.createController("trailDetail", args).getView().open();
+		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 	}
@@ -87,5 +87,9 @@ function openMenu() {
 function closeMenu() {
 	$.widgetView.height = '0dp';
 	menuOpen = false;
+}
+
+function closeWindow(){
+	$.map = null;
 }
 

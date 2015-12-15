@@ -53,20 +53,6 @@ $.geoSwitch1.addEventListener('change', function(e) {
 	}
 });
 
-// //-----------------------------------------------------------
-// // Switch för att visa hotspots på kartan
-// //-----------------------------------------------------------
-// function disHot(){
-	// if ($.HotSwitch1.value == true) {
-		// removeSpecHotspot();
-		// displaySpecificMarkers(trailId, detailMap);
-		// detailMap.addEventListener('click', evtList);	
-	// } else {
-		// detailMap.removeEventListener('click', evtList);
-		// removeSpecHotspot();
-	// }
-// }
-
 //-----------------------------------------------------------
 // Funktioner för att visa och stänga kartmenyn 
 //-----------------------------------------------------------
@@ -124,3 +110,7 @@ detailMap.addEventListener('click', evtLists);
 };
 
 $.detailwin.addEventListener('close', cleanup);
+
+function closeWindow(){
+	$.mapDetail = null;
+}

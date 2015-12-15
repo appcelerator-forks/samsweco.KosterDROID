@@ -66,3 +66,7 @@ function selectHotspotPics() {
 };
 
 $.hotspotDetail.addEventListener('close', cleanup);
+
+function closeWindow(){
+	$.hotspotDetail = null;
+}

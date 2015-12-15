@@ -7,13 +7,20 @@
 	<Model src="letterModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
+	<Window id="mapWindow" onBlur="closeWindow">
 	<View id="container">
 		<View id="mapView"></View>
-		<View id="widgetView">
+		<!-- <View id="widgetView">
 			<Widget src="mapmenu" name="widget"></Widget>
-		</View>
+		</View> -->
 		<View id="btnViewMapMenu">
 			<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
 		</View>
-	</View>
+	</View>				
+		<Widget src="menu" name="widget"></Widget>		
+		<View id="widgetView">
+			<Widget src="mapmenu" name="widget"></Widget>
+		</View>
+			
+	</Window>
 </Alloy>

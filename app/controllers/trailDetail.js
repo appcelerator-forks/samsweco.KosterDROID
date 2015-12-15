@@ -7,7 +7,7 @@ var args = arguments[0] || {};
 // Args från trails - klick på item i listan
 //-----------------------------------------------------------
 // try {
-$.hikeDetailWin.title = args.title;
+$.trailDetail.title = args.title;
 $.lblTrailName.text = args.title || 'Default Name';
 $.lblTrailLength.text = args.length + " kilometer" || 'Default Length';
 $.lblTrailArea.text = args.area || 'Default Color';
@@ -15,9 +15,6 @@ $.lblTrailInfo.text = args.infoTxt || 'Default infoText';
 
 var trailId = args.id;
 globalTrailID = trailId;
-// } catch(e) {
-// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-// }
 
 if (args.title == 'Äventyrsslingan') {
 	$.btnSendTo.show();
@@ -25,8 +22,8 @@ if (args.title == 'Äventyrsslingan') {
 	$.btnSendTo.title = 'Gå till bokstavsjakten!';
 
 	$.btnSendTo.addEventListener('click', function() {
-		Alloy.CFG.tabs.setActiveTab(3);
-		$.hikeDetailWin.close();
+		var interactive = Alloy.createController('interactive').getView().open();
+		$.trailDetail.close();
 	});
 } else if (args.title == 'Båtresan') {
 	$.boatSwitch.show();
@@ -64,11 +61,7 @@ function zoomMapTrail() {
 		zoomlon : args.zoomlon
 	};
 
-	var mapDetail = Alloy.createController("mapDetail", trail).getView();
-	Alloy.CFG.tabs.activeTab.open(mapDetail);
-	// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	// }
+	var mapDetail = Alloy.createController("mapDetail", trail).getView().open();
 }
 
 //-----------------------------------------------------------
@@ -229,10 +222,14 @@ function changeLabel() {
 //-----------------------------------------------------------
 // Rensar vid stängning
 //-----------------------------------------------------------
-var cleanup = function() {
-	$.destroy();
-	$.off();
-	$.hikeDetailWin = null;
-};
+// var cleanup = function() {
+	// $.destroy();
+	// $.off();
+	// $.trailDetail = null;
+// };
+// 
+// $.trailDetail.addEventListener('close', cleanup);
 
-$.hikeDetailWin.addEventListener('close', cleanup);
+function closeWindow(){
+	$.trailDetail = null;
+}

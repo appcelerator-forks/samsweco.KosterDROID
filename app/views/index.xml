@@ -5,44 +5,16 @@
 	<Collection src="trailsModel"/>
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
-	
-	<TabGroup id="tabs" backgroundColor="#fff" height="100%" tintColor="#0098C3">
-		<Tab id="koster" class="tabbar" title="Hem" icon="/images/kosterStarMenu.png" >
 			<Window id="koster" class="container" backgroundImage="/pics/front.png">
 				<View class="headView">
 					<ImageView class="imgKoster" image="/pics/kosterhavet_logga.png"></ImageView>
 					<View id="lblView">
 						<Label id="firstLbl" class="lblFrontText">Välkommen till Kosterhavet!</Label>
-						<Label id="secondLbl" class="lblFrontText">Upptäck den vackra naturen i Kosterhavet och ta en promenad bland klapperstensfält och strandängar.</Label>
-					</View>
-					<View id="horiView">
-						<View id="boatBtnView" onClick="openBoat">
-							<ImageView id="boatPikto" image="/images/farjelage.png"></ImageView>
-							<Label id="btnBoat">Båtresan</Label>
-						</View>
-						<View id="appBtnView" onClick="showInfo">
-							<ImageView id="btnAboutPic" image="/pins/smartphone-icon.png"></ImageView>
-							<Label id="btnAbout">Om appen</Label>
-						</View>
-					</View>
-				</View>
-				<View id="widgetInfo">
-					<Button id="closeBtn" backgroundImage="/images/closeBurger.png" onClick="closeInfo" />
-					<Widget id="infoW" src="infoWidget" name="widget"></Widget>
-				</View>					
+						<Label id="secondLbl" class="lblFrontText">Upptäck den vackra naturen i Kosterhavet och ta en promenad bland klapperstensfält och strandängar.</Label>					
+					</View>					
+				</View>		
+					<View id="w_menu">					
+						<Widget src="menu" name="widget"></Widget>
+					</View>		
 			</Window>
-		</Tab>
-		<Tab id="hikeTab" class="tabbar" title="Vandra" icon="/images/hikeMenu.png">
-			<Window id="hikeWin" title="Vandringsleder" onOpen="toTrails" />
-		</Tab>
-		<Tab id="maptab" class="tabbar" title="Karta" icon="/images/mapMenu.png">
-			<Window id="mapWin" onOpen="toMap" />
-		</Tab>
-		<Tab id="interactive" class="tabbar" title="Spel" icon="/images/quizMenu.png">
-			<Window id="interactiveWin" onOpen="toInteractive" exitOnClose="true"/>
-		</Tab>
-		<Tab id="info" class="tabbar" title="Info" icon="/images/infoMenu.png">
-			<Window id="infoWin" title="Information" onOpen="toInfo" exitOnClose="true" />
-		</Tab>
-	</TabGroup>
 </Alloy>

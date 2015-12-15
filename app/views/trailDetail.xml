@@ -7,7 +7,7 @@
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
 	
-	<Window id="hikeDetailWin" class="container">
+	<Window id="trailDetail" class="container" onBlur="closeWindow">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
 				<ScrollableView id="slideShowTrails" scrollType="horizontal" showPagingControl="true" />

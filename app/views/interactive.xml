@@ -6,7 +6,7 @@
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
 	<Collection src="infospotCoordinatesModel" />
-	
+	<Window id="interactiveWindow">
 	<ScrollView id="interactiveWin">
 		<View id="showFamilyTrail"></View>
 		<View id="clueSlideView">
@@ -33,4 +33,8 @@
 			<Button id="btnStartQuiz" onClick="startInteractive">Starta bokstavsjakten!</Button>
 		</View>
 	</ScrollView>
+		<View id="w_menu">					
+			<Widget src="menu" name="widget"></Widget>
+		</View>
+	</Window>
 </Alloy>

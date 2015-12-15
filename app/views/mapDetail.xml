@@ -7,7 +7,7 @@
 	<Collection src="trailsModel" />
 	<Collection src="jsonFilesModel" />
 	
-	<Window id="detailwin">
+	<Window id="detailwin" onBlur="closeWindow">
 		<View id="mapDetailView"></View>
 		
 		<View id="btnViewMenuDetail">

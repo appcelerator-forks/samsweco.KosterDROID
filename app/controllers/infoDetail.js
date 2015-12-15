@@ -114,13 +114,15 @@ function getLink(e) {
 // Öppnar url'en i en webView.
 //-----------------------------------------------------------
 function openLink(link) {
+	
+	//ÄNDRA
 	try {
 		var webview = Titanium.UI.createWebView({
 			url : link
 		});
 		var window = Titanium.UI.createWindow();
 		window.add(webview);
-		Alloy.CFG.tabs.activeTab.open(window);
+		window.open();
 		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Information");
@@ -180,17 +182,13 @@ function showRules(infTxt, linktitle){
 		infoScrollRules.add(viewen);
 		infoWindowRules.add(infoScrollRules);
 
-		Alloy.CFG.tabs.activeTab.open(infoWindowRules);
+		infoWindowRules.open();
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationssidan");
 	}
 }
 
-var cleanup = function() {
-	$.destroy();
-	$.off();
+function closeWindow(){
 	$.infoDetail = null;
-};
-
-$.infoDetail.addEventListener('close', cleanup);
+}

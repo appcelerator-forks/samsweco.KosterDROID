@@ -247,8 +247,7 @@ function showHotspot(name) {
 			id : jsonObjHot[0].id
 		};
 
-		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-		Alloy.CFG.tabs.activeTab.open(hotspotDetail);
+		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
 	}
@@ -378,7 +377,6 @@ function getSpecificIconsForTrail(id, maptype) {
 
 			specificMarkerArray.push(specificinfoMarker);
 		}
-
 		maptype.addAnnotations(specificMarkerArray);
 
 	} catch(e) {

@@ -4,9 +4,8 @@
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Collection src="trailsModel"/>
-	<Model src="letterModel" />	
-	
-	<Window id="hotspotDetail" class="container">
+	<Model src="letterModel" />		
+	<Window id="hotspotDetail" class="container" onBlur="closeWindow">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
 				<ScrollableView id="slideShowHotspotDetail" showPagingControl="true"/>	

@@ -2,7 +2,6 @@ Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
 
-
 setRowData();
 
 //-----------------------------------------------------------
@@ -117,9 +116,10 @@ function showTrailDetails(e) {
 			color : trailjsonObj[0].color,
 			jsonfile : trailjsonObj[0].JSONfile
 		};
+		
+		Ti.API.info("trailDetailArgs: ", args);
 
-		var trailDetail = Alloy.createController("trailDetail", args).getView();
-		Alloy.CFG.tabs.activeTab.open(trailDetail);
+		var trailDetail = Alloy.createController("trailDetail", args).getView().open();
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
 	}
@@ -158,6 +158,6 @@ function showIcons(id) {
 	}
 }
 
-function destroyModel() {
-	$.destroy();
+function closeWindow(){
+	$.trails = null;
 }

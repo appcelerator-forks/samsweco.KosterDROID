@@ -7,12 +7,17 @@
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
 	
-	<View class="container" onClose="destroyModel">
+	<Window id="trailWindow" onBlur="closeWindow">
+		
+	<View class="container">
+
 		<ScrollView class="headView" scrollType="vertical">
 			<TableView id="table" onClick="showTrailDetails">
 				<TableViewRow class="row">
 				</TableViewRow>
 			</TableView>
-		</ScrollView>
+		</ScrollView>				
 	</View>
+		<Widget src="menu" name="widget"></Widget>
+	</Window>
 </Alloy>
