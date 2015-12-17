@@ -33,19 +33,19 @@ function showMapDetail(){
 	}	
 }
 
-//-----------------------------------------------------------
-// Switch för att aktivera location-event för hotspots/sevärdheter
-//-----------------------------------------------------------
-$.geoSwitch1.addEventListener('change', function(e) {
-	if ($.geoSwitch1.value == true) {
-		getUserPos('hotspot');
-		hotspotGPS = true;
-	}
-	if($.geoSwitch1.value == false){
-		Alloy.Globals.stopGPS();
-		hotspotGPS = false;
-	}
-});
+// //-----------------------------------------------------------
+// // Switch för att aktivera location-event för hotspots/sevärdheter
+// //-----------------------------------------------------------
+// $.geoSwitch1.addEventListener('change', function(e) {
+	// if ($.geoSwitch1.value == true) {
+		// getUserPos('hotspot');
+		// hotspotGPS = true;
+	// }
+	// if($.geoSwitch1.value == false){
+		// Alloy.Globals.stopGPS();
+		// hotspotGPS = false;
+	// }
+// });
 
 //-----------------------------------------------------------
 // Funktioner för att visa och stänga kartmenyn 
