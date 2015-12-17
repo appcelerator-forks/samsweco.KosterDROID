@@ -25,7 +25,7 @@
                 <TableViewRow title="Hem" id="home_row" class="tblRow"/>
                 <TableViewRow title="Information" id="info_row" class="tblRow"/>
                 <TableViewRow title="Båtresan" id="boat_row" class="tblRow">
-                <View class="switchView">
+                	<View class="switchView">
                 		<ImageView image="/images/sound.png"></ImageView>
                 		<Label class="lblSetGPSListener" text="Påminnelser"></Label>
 						<View class="switchClass">

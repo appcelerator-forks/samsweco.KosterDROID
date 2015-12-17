@@ -3,7 +3,7 @@ backgroundColor : '#3B3D3D',
 height : Titanium.UI.SIZE,
 layout : 'vertical',
 bottom : '0dp',
-height : '20dp',
+height : '35dp',
 	font: {
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
