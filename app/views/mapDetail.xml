@@ -9,26 +9,5 @@
 	
 	<Window id="detailwin" onBlur="closeWindow">
 		<View id="mapDetailView"></View>
-		
-		<View id="btnViewMenuDetail">
-			<Button id="btnMenuDetail" backgroundImage="/images/hamburger.png" onClick="showMenu" />
-		</View>
-		
-		
-		<View id="widgetView">
-			<View id="settingsView">
-				<View id="hotspotSwitchView" class="settingsHorizontalView">
-				</View>
-				<View id="gpsSwitchView" class="settingsHorizontalView">
-					<View class="v1">
-						<ImageView id="soundPic" image="/images/sound.png"></ImageView>
-						<Label id="lblGPS" text="Påminnelse vid sevärdheter"></Label>
-					</View>
-					<View class="v2">
-						<Switch id="geoSwitch1" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
-					</View>
-				</View>
-			</View>
-		</View>
 	</Window>
 </Alloy>

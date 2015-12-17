@@ -132,7 +132,6 @@ function getUserPos(type) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - get current position GPS");
 	}
 }
-
 Alloy.Globals.getUserPos = getUserPos;
 
 var addLetterLocation = function(e) {

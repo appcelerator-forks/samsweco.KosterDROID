@@ -8,20 +8,6 @@ if(hotspotGPS){
 }
 
 //-----------------------------------------------------------
-// Startar och avslutar location-event för hotspots/sevärdheter
-//-----------------------------------------------------------
-$.geoSwitch.addEventListener('change', function(e) {
-	if ($.geoSwitch.value == true) {
-		Alloy.Globals.getUserPos('hotspot');
-		hotspotGPS = true;
-	}
-	if($.geoSwitch.value == false){
-		Alloy.Globals.stopGPS();
-		hotspotGPS = false;
-	}
-});
-
-//-----------------------------------------------------------
 // Visar och släcker hotspots/sevärdheter på kartan
 //-----------------------------------------------------------
 $.hotspotSwitch.addEventListener('change', function(e) {

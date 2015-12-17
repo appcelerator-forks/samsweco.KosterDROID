@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <url>http://</url>
+    <url>http://www.sweco.se</url>
     <id>com.KosterDROID</id>
     <name>Kosterhavet</name>
     <version>1.0</version>
