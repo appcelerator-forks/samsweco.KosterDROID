@@ -22,12 +22,6 @@ showMapDetail();
 getSpecificIconsForTrail(trailId, detailMap);
 displaySpecificMarkers(trailId, detailMap);
 
-if(hotspotGPS){
-	$.geoSwitch1.value = true;
-} else {
-	$.geoSwitch1.value = false;
-}
-
 //-----------------------------------------------------------
 // Functioner för att öppna och fylla kartan
 //-----------------------------------------------------------
