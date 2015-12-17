@@ -1,11 +1,11 @@
 Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
 
-if(hotspotGPS){
-	$.geoSwitch.value = true;
-} else {
-	$.geoSwitch.value = false;
-}
+// if(hotspotGPS){
+	// $.geoSwitch.value = true;
+// } else {
+	// $.geoSwitch.value = false;
+// }
 
 //-----------------------------------------------------------
 // Visar och släcker hotspots/sevärdheter på kartan
