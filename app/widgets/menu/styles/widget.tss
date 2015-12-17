@@ -35,7 +35,7 @@ height : '20dp',
 }
 
 '.tblRow' : {	
-	height : '30dp'
+	height : '40dp'
 }
 
 // "#lbl_menu_close" : {
@@ -87,8 +87,8 @@ height : '20dp',
 
 ".switchView": {
 	layout: 'horizontal',
-	witdh: '55%',
-	left: '45%'
+	witdh: '60%',
+	left: '40%'
 }
 
 ".lblSetGPSListener": {
