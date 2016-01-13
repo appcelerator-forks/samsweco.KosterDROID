@@ -25,20 +25,9 @@ if (args.title == 'Äventyrsslingan') {
 		var interactive = Alloy.createController('interactive').getView().open();
 		$.trailDetail.close();
 	});
-} else if (args.title == 'Båtresan') {
-	$.boatSwitch.show();
-	$.boatSwitch.height = '30dp';
-	$.lblBoat.show();
-	$.lblBoat.height = '30dp';
-}
+} 
 
-$.boatSwitch.addEventListener('change', function() {
-	if ($.boatSwitch.value == true) {
-		Alloy.Globals.getUserPos('boat');
-	} else {
-		Alloy.Globals.stopBoatGPS();
-	}
-});
+
 
 //-----------------------------------------------------------
 // Onload

@@ -7,7 +7,7 @@ height : '35dp',
 	font: {
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
-	},
+	}
 }
 
 "#lbl_menu_close" : {
@@ -24,7 +24,7 @@ height : '35dp',
 
 '#lbl_menu_open' : {
 	visible : true, 
-	height : '20dp',	
+	height : '35dp',	
 	backgroundColor : '#3B3D3D',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	font : {
@@ -35,39 +35,7 @@ height : '35dp',
 }
 
 '.tblRow' : {	
-	height : '40dp'
-}
-
-// "#lbl_menu_close" : {
-	// visible : false,
-	// height : '0dp',
-	// backgroundColor: 'white',
-	// width: '100%',
-	// opacity: 0.95,
-	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	// font : {
-		// fontSize: '16dp',
-		// //color: '#FCAF17',
-		// fontFamily: 'Raleway-Medium'
-	// }
-// }
-// 
-// '#lbl_menu_open' : {
-	// visible : true, 
-	// height : '35dp',
-	// backgroundColor: 'white',
-	// width: '100%',
-	// opacity: 0.95,
-	// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	// font : {
-		// fontSize: '16dp',
-		// //color: '#FCAF17',
-		// fontFamily: 'Raleway-Medium'
-	// }
-// }
-
-'.tblRow' : {	
-	height : '40dp',
+	height : '35dp',
 	width : Titanium.UI.FILL
 }
 
@@ -76,7 +44,8 @@ height : '35dp',
 }
 
 "#boat_row":{
-	layout: 'horizontal'
+	layout: 'horizontal',
+	
 }
 
 "#line": {
@@ -85,10 +54,17 @@ height : '35dp',
 	backgroundColor: 'gray'
 }
 
+"#line2": {
+	height: '2dp',
+	width: '100%',
+	backgroundColor: 'gray'
+}
+
 ".switchView": {
 	layout: 'horizontal',
-	witdh: '60%',
-	left: '40%'
+	witdh: Titanium.UI.FILL,
+	height : Titanium.UI.SIZE,
+	left : '2dp'
 }
 
 ".lblSetGPSListener": {
@@ -100,6 +76,22 @@ height : '35dp',
 }
 
 ".switch": {
-	left: '10dp'
+	right: '10dp'
 }
+
+
+"#soundpic": {
+	height : '20dp',
+	width : '20dp'
+}
+
+"#notificationsView" : {
+	height : Titanium.UI.SIZE,
+	width : '100%',
+	layout : 'vertical'
+}
+
+
+
+
 

@@ -8,19 +8,6 @@ Ti.include("/mapFunctions.js");
 // }
 
 //-----------------------------------------------------------
-// Visar och släcker hotspots/sevärdheter på kartan
-//-----------------------------------------------------------
-$.hotspotSwitch.addEventListener('change', function(e) {
-	if ($.hotspotSwitch.value == true) {
-		displayAllMarkers(bigMap);
-		hotspotsNotVisible = false;
-	} else {
-		removeAnnoHotspot(bigMap);
-		hotspotsNotVisible = true;
-	}
-});
-
-//-----------------------------------------------------------
 // Funktioner för att tända och släcka infopunkter på kartan
 //-----------------------------------------------------------
 function showFarglage() {

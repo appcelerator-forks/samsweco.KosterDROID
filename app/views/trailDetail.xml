@@ -18,8 +18,6 @@
 			<View id="btnHorizontalView">
 				<Button id="btnTrailOnMap" onClick="zoomMapTrail">Visa leden på kartan!</Button>
 				<Button id="btnSendTo">Gå till bokstavsjakten!</Button>
-				<Label id="lblBoat" text="Påminnelse vid sevärdheter"></Label>
-				<Switch id="boatSwitch" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 			</View>
 			<View class="lbls">
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>

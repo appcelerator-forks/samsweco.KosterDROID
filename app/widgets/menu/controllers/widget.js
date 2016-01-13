@@ -18,6 +18,7 @@ function navigate(e) {
 			// }
 			case "home_row" : {
 				//Navigera till Index
+				Ti.API.info("Hem tryckt!");
 				var home = Alloy.createController('index').getView().open();
 				break;
 			}
@@ -78,7 +79,7 @@ var mainMenuOpen = false;
 
 function openMainMenu() {
 	if (!mainMenuOpen) {
-		$.menuContainerView.height = '60%';
+		$.menuContainerView.height = '70%';
 		mainMenuOpen = true;
 		
 		$.lbl_menu_close.visible = true;
@@ -121,3 +122,11 @@ if(hotspotGPS){
 } else {
 	$.geoSwitchHotspot.value = false;
 }
+
+$.geoSwitchBoat.addEventListener('change', function() {
+	if ($.geoSwitchBoat.value == true) {
+		Alloy.Globals.getUserPos('boat');
+	} else {
+		Alloy.Globals.stopBoatGPS();
+	}
+});
