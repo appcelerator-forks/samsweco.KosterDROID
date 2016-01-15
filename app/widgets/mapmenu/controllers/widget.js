@@ -7,6 +7,16 @@ Ti.include("/mapFunctions.js");
 	// $.geoSwitch.value = false;
 // }
 
+//----------------------------------------------------------- // 
+//Switch för att visa hotspots/sevärdheter på kartan 
+//----------------------------------------------------------- 
+
+$.hotspotSwitch.addEventListener('change', function(e) { 
+	if ($.hotspotSwitch.value == true) { 
+		displayAllMarkers(map); } 
+		else { removeAnnoHotspot(map); } 
+		});
+
 //-----------------------------------------------------------
 // Funktioner för att tända och släcka infopunkter på kartan
 //-----------------------------------------------------------

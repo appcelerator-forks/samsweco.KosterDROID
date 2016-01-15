@@ -1,11 +1,7 @@
-"#interactiveWin": {
+"#interactiveView": {
 	layout: 'vertical',
-	height: Titanium.UI.FILL
-}
-
-".container" : {
+	height: Titanium.UI.FILL,
 	backgroundColor : 'white',
-	layout : 'vertical'
 }
 
 //Views
@@ -119,17 +115,14 @@
 	color: '#FCAF17'
 }
 
-"#lblnextClue" : {
-	width : '49%'
-}
-
 
 //Others
 
 "#txtLetter": {
+	left : '20dp',
 	top: '5dp',
 	tintColor: 'blue',
-	width: '49%',
+	width: '40%',
 	color: '#000',
 	height : Titanium.UI.SIZE,
 		font: {
@@ -161,9 +154,12 @@
 }
 
 "#nextClue" : {
-		top: '10dp',
+	top: '15dp',
 	height: '30dp',
-	width: '49%',
+	width: '40%',
+	right : '30%',
+	left : '30%',
+	opacity : 0.65,
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
@@ -186,4 +182,8 @@
 		fontSize: '12dp',
 		fontFamily: 'Raleway-Medium'
 	}
+}
+
+"#btnStartQuiz" : {
+	width : Titanium.UI.SIZE
 }
