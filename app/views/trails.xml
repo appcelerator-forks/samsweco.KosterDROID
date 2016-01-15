@@ -10,7 +10,6 @@
 	<Window id="trailWindow" onBlur="closeWindow">
 		
 	<View class="container">
-
 		<ScrollView class="headView" scrollType="vertical">
 			<TableView id="table" onClick="showTrailDetails">
 				<TableViewRow class="row">

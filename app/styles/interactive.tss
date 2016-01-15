@@ -1,100 +1,84 @@
-"#clueSlideView": {
-	height: '0',
-	visible: false
-}
-
-"#lettersView":{
-	layout: 'vertical',
-	top: '10dp',
-	height: 0,
-	width: Titanium.UI.FILL,
-	visible: false
-}
-
-"#sendWord": {
-	visible: false,
-	height: 0,
-	left: '20%',
-	right: '20%',
-	top: '5dp',
-	width: '60%',
-	backgroundColor: 'white',
-	borderRadius: '12dp',
-	color: 'black',
-	borderColor : '#0098C3',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Medium'
-	}
-}
-
-"Label": {
-	top: '5dp',
-	left: '15dp',
-	right: '15dp',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Light'
-	}
-}
-
-"#btnShowCorrect": {
-	left: '20%',
-	right: '20%',
-	top: '15dp',
-	height: '30dp',
-	width: '60%',
-	backgroundColor: 'white',
-	borderRadius: '12dp',
-	color: 'black',
-	borderColor : '#0098C3',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Medium'
-	}
-}
-
-"#lblCorrectLetters":{
-	height: 0,
-	visible: false,
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
-}
-
-"#lblCorrectLetters":{
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
-}
-
 "#interactiveWin": {
 	layout: 'vertical',
 	height: Titanium.UI.FILL
 }
 
-"#hideView": {
-	layout: 'vertical',
-	height: Titanium.UI.SIZE
+".container" : {
+	backgroundColor : 'white',
+	layout : 'vertical'
 }
 
-"#horizontalView":{
+//Views
+"#hideView": {
+	layout: 'vertical',
+	height: Titanium.UI.SIZE,
+}
+
+"#lettersView" : {
+	layout: 'vertical',
+	top: '10dp',
+	height: 0,
+	width: Titanium.UI.FILL,
+	visible: false,
+}
+
+"#horizontalView" : {
 	layout: 'horizontal',
 	width: Titanium.UI.FILL,
 	height: '0dp',
-	visible: false
+	visible: true
 }
 
-"#lblInfoText": {
-	top: '5dp',
+"#clueSlideView" : {
+	height: '0',
+	visible: false,
+	backgroundColor : 'yellow',
+	layout : 'vertical'
+}
+
+
+"#showFamilyTrail": {
+	height: '40%',
+	width: Titanium.UI.FILL
+}
+
+"#wordView": {
+	height : 0,
+	width : Titanium.UI.FILL,
+	visible : false,
+	backgroundColor : 'red',
+	layout : 'vertical'
+	
+}
+
+"#letterView": {
+	height : 0,
+	width : '100%',
+	visible : false,
+	layout : 'vertical'
+}
+
+"#slides" : {
+	height : '20%',
+	layout : 'vertical'
+}
+
+".h_view" : {
+	layout : 'horizontal',
+	height : Titanium.UI.SIZE,
+	width : '100%'
+}
+
+//Labels
+".lbl": {
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	font: {
+		fontFamily: 'Raleway-Light',
 		fontSize: '14dp'
 	} ,
 	right: '20dp',
 	left: '20dp',
 	color: 'black'
-}
-
-"#showFamilyTrail": {
-	height: '40%',
-	width: Titanium.UI.FILL
 }
 
 "#lblWelcome": {
@@ -108,8 +92,9 @@
 	left: '19dp'
 }
 
+
+
 "#wordClue": {
-	visible: false,
 	height: 0,
 	top: '5dp',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
@@ -121,59 +106,39 @@
 	left: '19dp'
 }
 
-"#wordClueLbl": {
-	visible: false,
-	height: 0,
-	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '14dp'
-	},
-	right: '20dp',
+"#lblCollectedLetters": {
 	left: '20dp',
-	color: 'black'
+	right: '15dp',
+	width: Titanium.UI.FILL,
+	top: '5dp',
+	font:
+	{
+		fontFamily: 'Raleway-Light',
+		fontSize: '17dp'
+	},
+	color: '#FCAF17'
 }
+
+"#lblnextClue" : {
+	width : '49%'
+}
+
+
+//Others
 
 "#txtLetter": {
 	top: '5dp',
-	left: '15%',
-	right: '15%',
 	tintColor: 'blue',
-	borderWidth: '1dp',
-	borderRadius: '5dp',
-	width: Titanium.UI.FILL,
-	color: '#000'
+	width: '49%',
+	color: '#000',
+	height : Titanium.UI.SIZE,
+		font: {
+		fontSize: '14dp',
+		fontFamily: 'Raleway-Medium'
+	}
 }
 
-"#lblCollectedLetters": {
-	visible: false,
-	left: '20dp',
-	right: '15dp',
-	width: Titanium.UI.FILL,
-	top: '15dp',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	font:
-	{
-		fontFamily: 'Raleway-Light',
-		fontSize: '17dp'
-	},
-	color: '#FCAF17'
-}
-
-"#lblCollectedLetters": {
-	left: '20dp',
-	right: '15dp',
-	width: Titanium.UI.FILL,
-	top: '0dp',
-	font:
-	{
-		fontFamily: 'Raleway-Light',
-		fontSize: '17dp'
-	},
-	color: '#FCAF17'
-}
-
-"#btnStartQuiz": {
+".btn": {
 	left: '20%',
 	right: '20%',
 	top: '10dp',
@@ -189,110 +154,36 @@
 	}
 }
 
-"#lblnextClue": {
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '13dp'
-	},
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	color: 'gray'
+".lineView": {
+	width: Titanium.UI.FILL,
+	height: '1.5dp',
+	backgroundColor: "#c4c4c4"
 }
 
-"#nextClue": {
-	left: '20%',
-	right : '20%',
-	top: 0,
+"#nextClue" : {
+		top: '10dp',
 	height: '30dp',
-	width: '60%',
+	width: '49%',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
 	borderColor : '#0098C3',
 	font: {
-		fontSize: '14dp',
+		fontSize: '10dp',
 		fontFamily: 'Raleway-Medium'
 	}
 }
 
-"#sendOneLetter": {
-	left: '20%',
-	right: '20%',
-	top: '5dp',
+"#sendOneLetter" : {
+	top: '10dp',
 	height: '30dp',
-	width: '60%',
+	width: '49%',
 	backgroundColor: 'white',
 	borderRadius: '12dp',
 	color: 'black',
 	borderColor : '#0098C3',
 	font: {
-		fontSize: '14dp',
+		fontSize: '12dp',
 		fontFamily: 'Raleway-Medium'
 	}
-}
-
-"#lbls1": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '14dp'
-	} ,
-	right: '20dp',
-	left: '20dp',
-	color: 'black'
-}
-
-"#lbls2": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '14dp'
-	},
-	rigth: '20dp',
-	left: '20dp',
-	color: 'black'
-}
-
-"#lbls3": {
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '14dp'
-	},
-	right: '20dp',
-	left: '20dp',
-	color: 'black'
-}
-
-"#lbls4": {
-	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '14dp'
-	},
-	right: '20dp',
-	left: '20dp',
-	color: 'black'
-}
-
-"#lblScroll": {
-	color: 'gray',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '12dp'
-	},
-	visible: false, 
-	height: 0
-}
-
-"#lblFinishedGame": {
-	visible: false,
-	height: 0,
-	top: '5dp',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	font: {
-		fontFamily: 'Raleway-Light',
-		fontSize: '18dp'
-	},
-	color: '#FCAF17'
 }

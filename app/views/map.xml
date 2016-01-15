@@ -20,7 +20,6 @@
 		<Widget src="menu" name="widget"></Widget>		
 		<View id="widgetView">
 			<Widget src="mapmenu" name="widget"></Widget>
-		</View>
-			
+		</View>	
 	</Window>
 </Alloy>
