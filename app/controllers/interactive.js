@@ -184,20 +184,21 @@ function setLabelText() {
 
 function checkIfStarted() {
 	try {
-		var started = fetchFoundLettersCol();
-		Ti.API.info("started" + JSON.stringify(started));
-		var next_id = started.length;
-		Ti.API.info("next_id" + JSON.stringify(next_id));
+		var next_id = fetchFoundLettersCol().length;
+		foundLetterId = next_id + 1;
 		
+		Ti.API.info("foundLetterId: "+foundLetterId);
 		
-		if (next_id > 0 && next_id < 9) {
+		if (foundLetterId > 0 && next_id < 9) {
+			Ti.API.info("I if:en");
 			setView();
-			$.slides.currentPage = next_id + 1;
+			$.slides.setCurrentPage = foundLetterId;
 
 			interactiveMap.removeAllAnnotations();
 			displaySpecificMarkers(7, interactiveMap);
 			getSpecificIconsForTrail(7, interactiveMap);
 			addSpecificClueZone(foundLetterId);
+			
 		} else if (started.length == 9) {
 			setLabelText();
 			setLastView();
@@ -206,6 +207,8 @@ function checkIfStarted() {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten - check if started");
 	}
 }
+
+//function checkIfStarted() { try { var started = fetchFoundLettersCol(); var next_id = started.length; if (next_id > 0 && next_id < 9) { setView(); foundLetterId = next_id + 1; $.slides.currentPage = foundLetterId-1; interactiveMap.removeAllAnnotations(); displaySpecificMarkers(7, interactiveMap); getSpecificIconsForTrail(7, interactiveMap); addSpecificClueZone(foundLetterId); } else if (started.length == 9) { setLabelText(); setLastView(); } } catch(e) { newError("Ngot gick fel nr sidan skulle laddas, prova igen!", "Bokstavsjakten"); } }
 
 function setLastView() {
 
