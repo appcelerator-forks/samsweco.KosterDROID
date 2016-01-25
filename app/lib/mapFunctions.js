@@ -163,7 +163,7 @@ function createMapRoutes(maptype, file, name, color) {
 			var route = {
 				name : name,
 				points : coordArray,
-				width : 4.0,
+				width : 5.0,
 				color : color
 			};
 			
@@ -426,9 +426,10 @@ function showHotspotOnMap(lat, longi, hotspotId) {
 		var specifikHotspotMarker = MapModule.createAnnotation({
 			latitude : lat,
 			longitude : longi,
-			image : '/images/hot-icon-azure.png'
+			image : '/images/flag.png'
 		});
 		
+		hotspotMap.removeAllAnnotations();
 		hotspotMap.addAnnotation(specifikHotspotMarker);
 		
 		getHotspotTrails(hotspotId);

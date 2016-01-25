@@ -59,7 +59,15 @@
 }
 
 "#btnShowMap": {
+	left: '20%',
+	right: '20%',
 	top: '5dp',
+	height: '30dp',
+	width: '60%',
+	backgroundColor: 'white',
+	borderRadius: '12dp',
+	color: 'black',
+	borderColor : '#0098C3',
 	font: {
 		fontSize: '14dp',
 		fontFamily: 'Raleway-Medium'
