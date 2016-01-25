@@ -49,7 +49,7 @@ interactiveMap = MapModule.createView({
 	height : '100%',
 	width : Ti.UI.FILL
 });
-var hotspotMap = MapModule.createView({
+hotspotMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
 	height : '100%',
