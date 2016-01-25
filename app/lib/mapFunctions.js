@@ -170,16 +170,17 @@ function createMapRoutes(maptype, file, name, color) {
 			maptype.addRoute(MapModule.createRoute(route));
 		}
 		
-		if(name == 'Äventyrsleden'){
+		if(name == 'Äventyrsleden') {
 			maptype.region = {
 				latitude : 58.892973,
 				longitude : 11.041087,
 				latitudeDelta : 0.009,
 				longitudeDelta : 0.009
 			};
-		} else {
+		} else if(maptype != hotspotMap) {
 			maptype.region = calculateMapRegion(coordArray);
 		}
+		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - createMapRoute");
 	}
@@ -237,21 +238,21 @@ function displayTrailMarkers(maptype) {
 //-----------------------------------------------------------
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
-function showHotspot(name) {
-	try {
-		var jsonObjHot = returnSpecificHotspotsByName(name);
-
-		var hotspotTxt = {
-			title : name,
-			infoTxt : jsonObjHot[0].infoTxt,
-			id : jsonObjHot[0].id
-		};
-
-		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
-	}
-}
+// function showHotspot(name) {
+	// try {
+		// var jsonObjHot = returnSpecificHotspotsByName(name);
+// 
+		// var hotspotTxt = {
+			// title : name,
+			// infoTxt : jsonObjHot[0].infoTxt,
+			// id : jsonObjHot[0].id
+		// };
+// 
+		// var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
+	// }
+// }
 
 //-----------------------------------------------------------
 // Visar markers för hotspots
@@ -381,6 +382,59 @@ function getSpecificIconsForTrail(id, maptype) {
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - getIcons");
+	}
+}
+
+//-----------------------------------------------------------
+// Markerar ut specifika vandringsleder som hör till en hotspot
+//-----------------------------------------------------------
+function getHotspotTrails(hotId){
+	try {
+		
+		var trailIdList = returnSpecificTrailsByHotspotId(hotId);
+		var jsonList = [];
+		
+		for(var tl = 0; tl < trailIdList.length; tl++){
+			var specTrail = returnSpecificTrailById(trailIdList[tl].trailsID);
+			
+			for(var st = 0; st < specTrail.length; st++){
+				jsonList.push(specTrail[st]);
+			}
+		}
+		
+		for(var jl = 0; jl < jsonList.length; jl++){
+			setSpecificRoute(hotspotMap, jsonList[jl].id, jsonList[jl].name, jsonList[jl].color);
+		}
+		
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - get hotspot trails");
+	}
+}
+
+//-----------------------------------------------------------
+// Skapar karta för en specifik hotspot
+//-----------------------------------------------------------
+function showHotspotOnMap(lat, longi, hotspotId) {		
+	try {
+		hotspotMap.region = {
+			latitude : lat,
+			longitude : longi,
+			latitudeDelta : 0.009,
+			longitudeDelta : 0.009
+		};
+		
+		var specifikHotspotMarker = MapModule.createAnnotation({
+			latitude : lat,
+			longitude : longi,
+			image : '/images/hot-icon-azure.png'
+		});
+		
+		hotspotMap.addAnnotation(specifikHotspotMarker);
+		
+		getHotspotTrails(hotspotId);
+		return hotspotMap;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "MapFunctions - showHotspot");
 	}
 }
 

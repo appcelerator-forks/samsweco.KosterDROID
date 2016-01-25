@@ -7,9 +7,28 @@ $.lblHotspotName.text = args.title || "Name";
 $.lblHotspotInfoTxt.text = args.infoTxt || "Info";
 var hotspotId = args.id || "Id";
 var picId = args.filename || "filename";
+var latitude = args.x;
+var longitude = args.y;
 
 selectHotspotPics();
 
+var mapShowing = false;
+
+function showHotspotDetailMap(){	
+	var map = showHotspotOnMap(latitude, longitude, hotspotId);
+	
+	$.showHotspotMap.add(map);
+	
+	if(mapShowing == false){
+		$.mapView.height = '40%';
+		$.showHotspotMap.height = '75%';
+		mapShowing = true;
+	}else{
+		$.mapView.height = '10%';
+		$.showHotspotMap.height = 0;
+		mapShowing = false;
+	}
+}
 //-----------------------------------------------------------
 // Hämtar bilder för bildspelet
 //-----------------------------------------------------------

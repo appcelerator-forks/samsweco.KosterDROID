@@ -100,6 +100,43 @@ function selectTrailPics() {
 }
 
 //-----------------------------------------------------------
+// Öppnar hotspotDetail med info om vald hotspot
+//-----------------------------------------------------------
+function showHotspotDetail(e) {		
+	try {
+		var jsonObjHot = returnSpecificHotspotsByName(e.rowData.id);
+		var hotspotId;
+		var x;
+		var y;
+		
+		if(jsonObjHot[0].id == 32){
+			hotspotId = 42;
+			x = 58.893085;
+			y = 11.047972;
+		} else {
+			hotspotId = jsonObjHot[0].id;
+			x = jsonObjHot[0].xkoord;
+			y = jsonObjHot[0].ykoord;
+		}
+
+		var hotspotTxt = {
+			title : jsonObjHot[0].name,
+			infoTxt : jsonObjHot[0].infoTxt,
+			id : hotspotId,
+			x : x,
+			y : y
+		};
+
+		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView();
+		$.trailDetailNav.openWindow(hotDet);
+		
+		hotspotDetail = null;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!");
+	}
+}
+
+//-----------------------------------------------------------
 // Visar hotspots för en vald vandringsled
 //-----------------------------------------------------------
 function LoadHotspotList() {

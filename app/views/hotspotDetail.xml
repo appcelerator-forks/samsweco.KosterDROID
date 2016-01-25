@@ -4,7 +4,10 @@
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Collection src="trailsModel"/>
+	<Collection src="hotspot_trailsModel" />
+	<Collection src="jsonFilesModel"></Collection>
 	<Model src="letterModel" />		
+	
 	<Window id="hotspotDetail" class="container" onBlur="closeWindow">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">

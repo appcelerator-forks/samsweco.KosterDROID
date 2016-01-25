@@ -8,7 +8,7 @@ var infoCoord_Collection = Alloy.Collections.infospotCoordinatesModel;
 var hotspot_Collection = Alloy.Collections.hotspotModel;
 var jsonfile_Collection = Alloy.Collections.jsonFilesModel;
 var letter_Collection = Alloy.Collections.letterModel;
-
+var hotspottrail_Collection = Alloy.Collections.hotspot_trailsModel;
 
 //-----------------------------------------------------------
 // infoUrl
@@ -160,6 +160,15 @@ function returnSpecificHotspotsByName(name) {
 	var hotspotJson = hotspot_Collection.toJSON();
 
 	return hotspotJson;
+}
+
+function returnSpecificTrailsByHotspotId(hotId){
+	hotspottrail_Collection.fetch({
+		query : getTrailByHotspot + hotId + '"'
+	});
+	var hotspotTrailJson = hotspottrail_Collection.toJSON();
+	
+	return hotspotTrailJson;
 }
 
 

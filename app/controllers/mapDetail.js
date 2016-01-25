@@ -79,12 +79,36 @@ function closeDetailMenu(){
 }
 
 //-----------------------------------------------------------
+// Öppnar hotspotDetail med info om vald hotspot
+//-----------------------------------------------------------
+function showHotspotDetailMap(hotId) {		
+	try {
+		var jsonObjHot = returnSpecificHotspotsByName(hotId);
+
+		var hotspotTxt = {
+			title : jsonObjHot[0].name,
+			infoTxt : jsonObjHot[0].infoTxt,
+			id : jsonObjHot[0].id,
+			x : jsonObjHot[0].xkoord,
+			y : jsonObjHot[0].ykoord
+		};
+
+		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView();
+		$.mapNav.openWindow(hotDet);
+		
+		hotspotDetail = null;
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!");
+	}
+}
+
+//-----------------------------------------------------------
 // Eventlistener för klick på hotspot
 //-----------------------------------------------------------
 var evtLists = function(evt){
 	try {
 		if (evt.clicksource == 'rightPane') {
-			showHotspot(evt.annotation.id);
+			showHotspotDetailMap(evt.annotation.id);
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartfunktioner");
