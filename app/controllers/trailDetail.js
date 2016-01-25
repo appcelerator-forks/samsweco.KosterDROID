@@ -131,7 +131,7 @@ function showHotspotDetail(e) {
 		
 		hotspotDetail = null;
 	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!");
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Visa sevärdhet");
 	}
 }
 
