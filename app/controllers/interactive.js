@@ -192,8 +192,7 @@ function checkIfStarted() {
 		
 		if (next_id > 0 && next_id < 9) {
 			setView();
-			foundLetterId = next_id + 1;
-			$.slides.currentPage = foundLetterId-1;
+			$.slides.currentPage = next_id + 1;
 
 			interactiveMap.removeAllAnnotations();
 			displaySpecificMarkers(7, interactiveMap);
