@@ -127,8 +127,7 @@ function showHotspotDetail(e) {
 			y : y
 		};
 
-		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-		$.trailDetailNav.openWindow(hotDet);
+		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 		
 		hotspotDetail = null;
 	} catch(e) {
