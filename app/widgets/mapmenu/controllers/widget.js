@@ -13,8 +13,8 @@ Ti.include("/mapFunctions.js");
 
 $.hotspotSwitch.addEventListener('change', function(e) { 
 	if ($.hotspotSwitch.value == true) { 
-		displayAllMarkers(map); } 
-		else { removeAnnoHotspot(map); } 
+		displayAllMarkers(bigMap); } 
+		else { removeAnnoHotspot(bigMap); } 
 		});
 
 //-----------------------------------------------------------

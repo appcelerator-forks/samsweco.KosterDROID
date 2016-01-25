@@ -185,8 +185,11 @@ function setLabelText() {
 function checkIfStarted() {
 	try {
 		var started = fetchFoundLettersCol();
-
+		Ti.API.info("started" + JSON.stringify(started));
 		var next_id = started.length;
+		Ti.API.info("next_id" + JSON.stringify(next_id));
+		
+		
 		if (next_id > 0 && next_id < 9) {
 			setView();
 			foundLetterId = next_id + 1;
@@ -206,17 +209,7 @@ function checkIfStarted() {
 }
 
 function setLastView() {
-	// $.hideView.hide();
-	// $.hideView.height = 0;
-	// $.clueSlideView.hide();
-	// $.clueSlideView.height = 0;
-	// $.sendOneLetter.hide();
-	// $.sendOneLetter.height = 0;
-	// $.lblnextClue.hide();
-	// $.lblnextClue.height = 0;
-	// $.nextClue.hide();
-	// $.nextClue.height = 0;
-// 	
+
 	// $.lettersView.show();
 	// $.lettersView.height = Ti.UI.SIZE;
 	// $.wordClue.show();

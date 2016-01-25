@@ -396,8 +396,6 @@ function addSpecificClueZone(id) {
 		if(id < 10){			
 			var zoneColl = fetchAllLetters();
 			var letterZone = zoneColl[id - 1];
-			
-			Ti.API.info(JSON.stringify(letterZone));
 
 			var clueAnnotation = MapModule.createAnnotation({
 				latitude : letterZone.latitude,
