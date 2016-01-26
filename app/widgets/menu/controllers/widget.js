@@ -47,6 +47,11 @@ function navigate(e) {
 				var interactive = Alloy.createController('interactive').getView().open();
 				break;
 			}
+			case "newsfeed_row" : {
+				//Navigera till Instagramflöde
+				var newsfeed = Alloy.createController('newsfeed').getView().open();
+				break;
+			}
 			case "boat_row" : {
 				//Navigera till Båtresan
 			 var args = {

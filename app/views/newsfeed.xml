@@ -1,0 +1,6 @@
+<Alloy>
+	<Window id="newsfeedWindow">
+	<View id="newsfeedView" class="headView"></View>
+	<Widget src="menu" name="widget"></Widget>	
+	</Window>	
+</Alloy>
