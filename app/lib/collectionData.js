@@ -137,6 +137,13 @@ function returnIconsByTrailId(trailId) {
 //-----------------------------------------------------------
 // hotspot
 //-----------------------------------------------------------
+function returnHotspots() {
+	hotspot_Collection.fetch();
+	var hotsJson = hotspot_Collection.toJSON();
+
+	return hotsJson;
+}
+
 function returnSpecificHotspotsByTrailId(trailId) {
 	hotspot_Collection.fetch({
 		query : getHotspotsByTrailId + trailId + '"'
