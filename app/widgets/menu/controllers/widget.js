@@ -18,7 +18,6 @@ function navigate(e) {
 			// }
 			case "home_row" : {
 				//Navigera till Index
-				Ti.API.info("Hem tryckt!");
 				var home = Alloy.createController('index').getView().open();
 				break;
 			}
@@ -53,7 +52,8 @@ function navigate(e) {
 				break;
 			}
 			case "boat_row" : {
-				//Navigera till Båtresan
+				//Navigera till Båtresan	
+				
 			 var args = {
 				 id : 8,
 				 title : 'Båtresan',
@@ -135,3 +135,4 @@ $.geoSwitchBoat.addEventListener('change', function() {
 		Alloy.Globals.stopBoatGPS();
 	}
 });
+

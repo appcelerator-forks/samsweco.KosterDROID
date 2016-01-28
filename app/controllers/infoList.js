@@ -109,6 +109,17 @@ function getInfoDetails(e) {
 
 }
 
-function closeWindow(){
-	$.infoList = null;
-}
+
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+ 	$.infoWindow.close();
+	$.off();
+};
+
+var back = function(){
+	$.infoWindow.close();
+};
+
+$.infoWindow.addEventListener('androidback', back);

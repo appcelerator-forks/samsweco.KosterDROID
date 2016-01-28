@@ -7,12 +7,9 @@
 	<Model src="letterModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
-	<Window id="mapWindow" onBlur="closeWindow">
+	<Window id="mapWindow" onBlur="cleanup">
 	<View id="container">
 		<View id="mapView"></View>
-		<!-- <View id="widgetView">
-			<Widget src="mapmenu" name="widget"></Widget>
-		</View> -->
 		<View id="btnViewMapMenu">
 			<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
 		</View>

@@ -8,7 +8,7 @@
 	<Collection src="jsonFilesModel"></Collection>
 	<Model src="letterModel" />		
 	
-	<Window id="hotspotDetail" class="container" onBlur="closeWindow">
+	<Window id="hotspotDetail" class="container" onBlur="cleanup">
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
 				<ScrollableView id="slideShowHotspotDetail" showPagingControl="true"/>	

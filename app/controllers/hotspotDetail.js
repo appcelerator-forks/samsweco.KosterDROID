@@ -78,14 +78,16 @@ function selectHotspotPics() {
 //-----------------------------------------------------------
 // Rensar vid stängning
 //-----------------------------------------------------------
- var cleanup = function() {
-	$.destroy();
-	$.off();
-	$.hotspotDetail = null;
+  var cleanup = function() {
+ 	 $.hotspotDetail.close();
+	 $.off();	
 };
 
-$.hotspotDetail.addEventListener('close', cleanup);
+var back = function(){
+	$.hotspotDetail.close();
+};
 
-function closeWindow(){
-	$.hotspotDetail = null;
-}
+//$.infoDetail.addEventListener('close', cleanup);
+$.hotspotDetail.addEventListener('androidback', back);
+
+

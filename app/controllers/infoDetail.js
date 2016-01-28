@@ -189,6 +189,21 @@ function showRules(infTxt, linktitle){
 	}
 }
 
-function closeWindow(){
-	$.infoDetail = null;
-}
+
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+ 	$.infoDetail.close();
+	$.off();
+};
+
+
+var back = function(){
+	$.infoDetail.close();
+};
+
+//$.infoDetail.addEventListener('close', cleanup);
+$.infoDetail.addEventListener('androidback', back);
+
+	

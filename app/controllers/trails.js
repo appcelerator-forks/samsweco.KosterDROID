@@ -158,6 +158,17 @@ function showIcons(id) {
 	}
 }
 
-function closeWindow(){
-	$.trails = null;
-}
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+	$.off();
+	$.trailWindow.close();
+
+};
+
+var back = function(){
+	$.trailWindow.close();
+};
+
+$.trailWindow.addEventListener('androidback', back);

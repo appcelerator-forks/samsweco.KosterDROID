@@ -23,6 +23,7 @@ displayBigMap();
 function displayBigMap() {
 	try {
 		$.mapView.add(showMap(bigMap));
+		Ti.API.info("display map");
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 	}	
@@ -89,7 +90,21 @@ function closeMenu() {
 	menuOpen = false;
 }
 
-function closeWindow(){
-	$.map = null;
-}
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {
+	$.off();
+	bigMap.removeEventListener('click', evtList);
+	bigMap.removeAllAnnotations();
+	$.mapWindow.close();
+};
+
+var back = function(){
+	$.mapWindow.close();
+};
+
+$.mapWindow.addEventListener('androidback', back);
+
+
 

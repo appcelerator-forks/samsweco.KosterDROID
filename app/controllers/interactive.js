@@ -380,11 +380,20 @@ function startOver() {
 	}
 }
 
-var cleanup = function() {
-	stopGPS();
-	$.destroy();
+//-----------------------------------------------------------
+// Rensar vid stängning
+//-----------------------------------------------------------
+ var cleanup = function() {	
 	$.off();
-	$.interactiveWindow = null;
+	interactiveMap.removeEventListener('click', evtList);
+	interactiveMap.removeAllAnnotations();
+	$.interactiveWindow.close();
 };
 
-$.interactiveWindow.addEventListener('close', cleanup);
+var back = function(){
+	$.interactiveWindow.close();
+};
+
+$.interactiveWindow.addEventListener('androidback', back);
+
+

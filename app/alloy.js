@@ -28,21 +28,21 @@
 var MapModule = require('ti.map');
 Alloy.Globals.MapModule = MapModule;
 
-bigMap = MapModule.createView({
+var bigMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
 	userLocation : true,
 	height : '100%',
 	width : Ti.UI.FILL
 });
-detailMap = MapModule.createView({
+var detailMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
 	userLocation : true,
 	height : '100%',
 	width : Ti.UI.FILL
 });
-interactiveMap = MapModule.createView({
+var interactiveMap = MapModule.createView({
 	mapType : MapModule.HYBRID_TYPE,
 	animate : true,
 	userLocation : true,
@@ -172,5 +172,6 @@ Titanium.App.addEventListener('destroy', function() {
 		Alloy.Globals.stopGPS();
 	}
 });
+
 
 

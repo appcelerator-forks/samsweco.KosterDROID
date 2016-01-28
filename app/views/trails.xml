@@ -7,7 +7,7 @@
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
 	
-	<Window id="trailWindow" onBlur="closeWindow">
+	<Window id="trailWindow" onBlur="cleanup">
 		
 	<View class="container">
 		<ScrollView class="headView" scrollType="vertical">

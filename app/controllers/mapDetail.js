@@ -120,15 +120,15 @@ detailMap.addEventListener('click', evtLists);
 // Rensar vid stängning
 //-----------------------------------------------------------
  var cleanup = function() {
-	$.destroy();
+
 	$.off();
-	$.detailwin = null;
 	detailMap.removeEventListener('click', evtList);
 	detailMap.removeAllAnnotations();
 };
 
-$.detailwin.addEventListener('close', cleanup);
 
-function closeWindow(){
-	$.mapDetail = null;
-}
+var back = function(){
+	$.detailwin.close();
+};
+
+$.detailwin.addEventListener('androidback', back);

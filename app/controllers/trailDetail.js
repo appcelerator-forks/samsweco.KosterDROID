@@ -247,14 +247,16 @@ function changeLabel() {
 //-----------------------------------------------------------
 // Rensar vid stängning
 //-----------------------------------------------------------
-// var cleanup = function() {
-	// $.destroy();
-	// $.off();
-	// $.trailDetail = null;
-// };
-// 
-// $.trailDetail.addEventListener('close', cleanup);
+ var cleanup = function() {
 
-function closeWindow(){
-	$.trailDetail = null;
-}
+	$.off();
+	detailMap.removeEventListener('click', evtList);
+	detailMap.removeAllAnnotations();
+	$.trailDetail.close();
+	};
+
+var back = function(){
+	$.trailDetail.close();
+};
+
+$.trailDetail.addEventListener('androidback', back);
