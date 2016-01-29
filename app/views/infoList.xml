@@ -6,7 +6,8 @@
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
-	<Window id="infoWindow" onBlur="cleanup">
+	
+	<Window id="infoWindow"> <!--  onBlur="cleanup" -->
 
 	<View class="container">
 		<ScrollView class="headView" scrollType="vertical">

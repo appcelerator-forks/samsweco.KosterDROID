@@ -30,33 +30,29 @@ function setRowData() {
 					id : hotspotRows[i].name,
 					height : '90dp',
 					top : '0dp',
-					hasChild : true
-				});
-
-				var listItem = Ti.UI.createView({
-					layout : 'vertical',
-					height : Ti.UI.SIZE,
-					width : Ti.UI.FILL,
+					hasChild : true,
+					rightImage : '/pins/androidarrow2.png'
 				});
 
 				var img = Ti.UI.createImageView({
-					height : '70dp',
-					width : '115dp',
+					height : '80dp',
+					width : '125dp',
 					image : '/pics/' + hotspotRows[i].cover_pic,
 					left : '5dp',
-					top : '10dp'
+					top : '5dp'
 				});
 
 				var labelView = Ti.UI.createView({
-					height : Ti.UI.SIZE,
-					width : Ti.UI.FILL,
+					height : Ti.UI.FILL,
+					width : Ti.UI.SIZE,
 					backgroundColor : 'white',
 					layout : 'vertical'
 				});
 
 				var lblName = Ti.UI.createLabel({
 					color : '#FCAF17',
-					left : '5dp',
+					left : '10dp',
+					top: '40%',
 					font : {
 						fontSize : '14dp',
 						fontFamily : 'Raleway-Medium'
@@ -65,7 +61,7 @@ function setRowData() {
 				});
 
 				labelView.add(lblName);
-
+				
 				row.add(img);
 				row.add(labelView);
 
