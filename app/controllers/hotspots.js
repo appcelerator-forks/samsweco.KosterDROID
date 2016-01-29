@@ -5,18 +5,6 @@ var args = arguments[0] || {};
 setRowData();
 
 //-----------------------------------------------------------
-// Sätter label med rätt font som windowtitle
-//-----------------------------------------------------------
-var windowTitle = Ti.UI.createLabel({
-	text: "Sevärdheter",
-	font: {
-		fontSize: '17dp',
-		fontFamily: 'Raleway-Medium'
-	}
-});
-$.hotspotWindow.titleControl = windowTitle;
-
-//-----------------------------------------------------------
 // Sorterar sevärdheterna i bokstavsordning
 //-----------------------------------------------------------
 function sortByName(a, b) {
@@ -54,7 +42,7 @@ function setRowData() {
 				var img = Ti.UI.createImageView({
 					height : '70dp',
 					width : '115dp',
-					image : '/images/' + hotspotRows[i].cover_pic,
+					image : '/pics/' + hotspotRows[i].cover_pic,
 					left : '5dp',
 					top : '10dp'
 				});
@@ -118,8 +106,7 @@ function showHotspotDetailView(e) {
 			y : y
 		};
 
-		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-		$.hotspotNav.openWindow(hotDet);
+		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 		
 		hotspotDetail = null;
 	} catch(e) {

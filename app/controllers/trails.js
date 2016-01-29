@@ -116,8 +116,6 @@ function showTrailDetails(e) {
 			color : trailjsonObj[0].color,
 			jsonfile : trailjsonObj[0].JSONfile
 		};
-		
-		Ti.API.info("trailDetailArgs: ", args);
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView().open();
 	} catch(e) {
