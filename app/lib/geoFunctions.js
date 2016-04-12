@@ -238,7 +238,7 @@ function userIsNearHotspot() {
 				var radius = hotspotsToLoop[h].radie;
 
 				if (isInsideRadius(hotlat, hotlon, radius)) {
-					alertOnHotspot(hotspotsToLoop[h].name, hotspotsToLoop[h].infoTxt, hotspotsToLoop[h].id);
+					alertOnHotspot(hotspotsToLoop[b].name, hotspotsToLoop[b].infoTxt, hotspotsToLoop[b].id, hotspotsToLoop[b].engelsk_beskrivning, hotspotsToLoop[b].engelsk_titel);
 					setHotspotAlerted(hotspotsToLoop[h].id);
 				}
 			}
@@ -268,7 +268,7 @@ function userOnBoatTrip() {
 				var bradius = boatHotspots[b].radie;
 
 				if (isInsideRadius(blat, blon, bradius)) {
-					alertOnHotspot(boatHotspots[b].name, boatHotspots[b].infoTxt, boatHotspots[b].id);
+					alertOnHotspot(boatHotspots[b].name, boatHotspots[b].infoTxt, boatHotspots[b].id, boatHotspots[b].engelsk_beskrivning, boatHotspots[b].engelsk_titel);
 					boatHotspots[b].alerted = 1;
 
 					alertedArray.push(boatTripHotspots[b].name);
@@ -283,18 +283,28 @@ function userOnBoatTrip() {
 	}
 }
 
-function alertOnHotspot(hottitle, infoText, hotid) {
+function alertOnHotspot(hottitle, infoText, hotid, engtxt, engtitle) {
 	try {
 		var dialog = Ti.UI.createAlertDialog({
-			message : 'Nu börjar du närma dig ' + hottitle + '!',
-			buttonNames : ['Läs mer', 'Stäng']
+			// message : 'Nu börjar du närma dig ' + hottitle + '!',
+			// buttonNames : ['Läs mer', 'Stäng']	
 		});
+		
+		if(language == 'svenska'){
+			dialog.message = 'Nu börjar du närma dig ' + hottitle + '!';
+			dialog.buttonNames = ['Läs mer', 'Stäng'];
+		} else {
+			dialog.message = 'You are approaching ' + hottitle + '!';
+			dialog.buttonNames = ['Read more', 'Close'];
+		}
 
 		dialog.addEventListener('click', function(e) {
 			if (e.index == 0) {
 				var hotspotTxt = {
 					title : hottitle,
+					titleEng : engtitle,
 					infoTxt : infoText,
+					infoTxtEng : engtxt,
 					id : hotid
 				};
 
@@ -327,8 +337,8 @@ function userIsNearLetter() {
 				if (isInsideRadius(lat, lon, letterradius)) {
 					var letterId = col[p].id;
 					var letterclue = col[p].clue;
-
-					alertLetter(letterclue, letterId);
+					var engclue = col[p].clue_eng;
+					alertLetter(letterclue, letterId, engclue);
 					setAlertedOne(letterId);
 				}
 			}
@@ -340,10 +350,20 @@ function userIsNearLetter() {
 
 function alertLetter(clue, id) {
 	var message = Ti.UI.createAlertDialog({
-		title : 'Du närmar dig bokstav nummer ' + id + '!',
-		buttonNames : ['Gå till bokstavsjakten', 'Stäng'],
-		message : 'Ledtråd: ' + clue
+		// title : 'Du närmar dig bokstav nummer ' + id + '!',
+		// buttonNames : ['Gå till bokstavsjakten', 'Stäng'],
+		// message : 'Ledtråd: ' + clue	
 	});
+
+	if(language == 'svenska'){
+		message.title = 'Du närmar dig bokstav nummer ' + id + '!',
+		message.message = 'Ledtråd: ' + clue;
+		message.buttonNames = ['Gå till bokstavsjakten', 'Stäng'];
+	} else {
+		message.title = 'You are approaching letter number ' + id + '!',
+		message.message = 'Clue: ' + clue_eng;
+		message.buttonNames = ['Go to the letter hunt', 'Close'];
+	}
 
 	message.addEventListener('click', function(e) {
 		if (e.index == 0) {

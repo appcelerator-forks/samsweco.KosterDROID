@@ -6,8 +6,14 @@ var args = arguments[0] || {};
 // Args skickade från listvy
 //-----------------------------------------------------------
 try {
-	$.lblInfoTitle.text = args.name || "Title";
-	$.lblInfoText.text = args.infoTxt || "Info";
+	if(language == 'svenska'){
+		$.lblInfoTitle.text = args.name || "Title";
+		$.lblInfoText.text = args.infoTxt || "Info";
+	} else {
+		$.lblInfoTitle.text = args.nameEng || "Title";
+		$.lblInfoText.text = args.infoTxtEng || "Info";
+	}
+	
 	$.infoImg.image = "/pics/" + args.img;
 	var id = args.id;
 	
@@ -66,9 +72,16 @@ function setRowData() {
 				font : {
 					fontSize : '13dp',
 				},
-				color : '#0098C3',
-				text : urlList[i].linkname
+				color : '#0098C3'
+				//text : urlList[i].linkname
 			});
+			
+			
+			if(language == 'svenska'){
+				linkName.text = urlList[i].linkname;
+			} else {
+				linkName.text = urlList[i].linkname_eng;
+			}
 
 			row.add(linkName);
 			tableViewData.push(row);
@@ -96,14 +109,22 @@ function getLink(e) {
 		var rowId = e.rowData.id;
 		var urlById = returnUrlById(rowId);
 
-		if(rowId != 3 && rowId != 4){			
-			var web = urlById[0].url;
-			openLink(web); 
-		} else if(rowId == 3 || rowId == 4){
-			var txt = urlById[0].url;
-			var titl = urlById[0].linkname; 
-			showRules(txt, titl);
+		var txt;
+		var titl; 
+		
+		if(language == 'svenska'){
+			txt = urlById[0].url;
+			titl = urlById[0].linkname;
+		} else {
+			txt = urlById[0].url_eng;
+			titl = urlById[0].linkname_eng;
 		}
+		
+		if(rowId != 3 && rowId != 4){			
+			openLink(txt); 
+		} else if(rowId == 3 || rowId == 4){			
+			showRules(txt, titl);
+		} 
 		
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Informationssidan");
@@ -138,6 +159,7 @@ function showRules(infTxt, linktitle){
 			layout : 'vertical',
 			top : '0dp',
 			backgroundColor : 'white',
+			// ÄNDRA
 			backButtonTitle : "Tillbaka"
 		});
 

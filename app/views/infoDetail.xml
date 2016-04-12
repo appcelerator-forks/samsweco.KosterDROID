@@ -14,7 +14,7 @@
 			</View>
 			<Label id="lblInfoTitle"></Label>
 			<Label id="lblInfoText"></Label>
-			<Label id="lblLink" text="Klicka på länken nedan för att se mer information: "/>
+			<Label id="lblLink" text="L('links_lbl')"/>
 			<View id="linkView">
 			<TableView id="tableView" onClick="getLink">
 				<TableViewRow class="row" onClick="getLink" />

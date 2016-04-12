@@ -15,11 +15,15 @@ function showinfoDetails(info) {
 		var selectedInfo = info.row;
 		var args = {
 			name : selectedInfo.name,
+			nameEng : selectedInfo.name_eng,
 			infoTxt : selectedInfo.infoTxt,
+			infoTxtEng : selectedInfo.infoTxt_eng,
 			link : selectedInfo.link,
 			img : selectedInfo.image,
 			desc : selectedInfo.desc
 		};
+		
+		alert('selectedInfo: ' + JSON.stringify(selectedInfo));
 
 		var infoDetail = Alloy.createController("infoDetail", args).getView().open();
 	} catch(e) {
@@ -67,9 +71,15 @@ function setRowData() {
 				font : {
 					fontSize : '14dp',
 					fontFamily: 'Raleway-Medium'
-				},
-				text : rows[i].name
+				}
+				//text : rows[i].name
 			});
+
+			if(language == 'svenska'){
+				lblName.text = rows[i].name;
+			} else {
+				lblName.text = rows[i].name_eng;
+			}
 
 			labelView.add(lblName);
 
@@ -94,11 +104,13 @@ function getInfoDetails(e) {
 
 		var infoText = {
 			name : jsonObjInfo[0].name,
+			nameEng : jsonObjInfo[0].name_eng,
 			infoTxt : jsonObjInfo[0].infoTxt,
+			infoTxtEng : jsonObjInfo[0].infoTxt_eng,
 			id : id,
 			img : jsonObjInfo[0].cover_img,
 			link : jsonObjInfo[0].url,
-			desc : jsonObjInfo[0].desc,
+			desc : jsonObjInfo[0].desc
 		};
 
 		var infoDetail = Alloy.createController("infoDetail", infoText).getView().open();

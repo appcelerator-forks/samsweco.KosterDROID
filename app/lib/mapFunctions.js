@@ -209,7 +209,7 @@ function displayTrailMarkers(maptype) {
 				id : trailJson[i].name,
 				latitude : trailJson[i].pinLat,
 				longitude : trailJson[i].pinLon,
-				title : trailJson[i].name,
+				//title : trailJson[i].name,
 				subtitle : trailJson[i].area + ', ' + trailJson[i].length + ' km',
 				rightButton : '/pins/androidarrow2.png',
 				centerOffset : {
@@ -221,6 +221,12 @@ function displayTrailMarkers(maptype) {
 					fontStyle : 'Raleway-Light'
 				}
 			});
+
+			if(language == 'svenska'){
+				markerAnnotation.title = trailJson[i].name;
+			} else {
+				markerAnnotation.title = trailJson[i].name_eng;
+			}
 
 			if(trailJson[i].name != 'Båtresan'){
 				markerAnnotation.image = '/images/pin-' + trailJson[i].pincolor + '.png';
@@ -241,11 +247,28 @@ function displayTrailMarkers(maptype) {
 function showHotspot(name) {
 	try {
 		var jsonObjHot = returnSpecificHotspotsByName(name);
+		var hotspotId;
+		var x;
+		var y;
+		
+		if(jsonObjHot[0].id == 32){
+			hotspotId = 42;
+			x = 58.893085;
+			y = 11.047972;
+		} else {
+			hotspotId = jsonObjHot[0].id;
+			x = jsonObjHot[0].xkoord;
+			y = jsonObjHot[0].ykoord;
+		}
 
 		var hotspotTxt = {
-			title : name,
+			title : jsonObjHot[0].name,
+			titleEng : jsonObjHot[0].engelsk_titel,
 			infoTxt : jsonObjHot[0].infoTxt,
-			id : jsonObjHot[0].id
+			infoTxtEng : jsonObjHot[0].engelsk_beskrivning,
+			id : hotspotId,
+			x : x,
+			y : y
 		};
 
 		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
@@ -266,8 +289,8 @@ function displayAllMarkers() {
 				id : markersJSON[u].name,
 				latitude : markersJSON[u].xkoord,
 				longitude : markersJSON[u].ykoord,
-				title : markersJSON[u].name,
-				subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
+				//title : markersJSON[u].name,
+				//subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
 				image : '/images/flag.png',
 				centerOffset : {
 					x : -3,
@@ -276,6 +299,14 @@ function displayAllMarkers() {
 				rightButton : '/pins/androidarrow2.png',
 				name : 'hotspot'
 			});
+			
+			if(language == 'svenska'){
+				markerHotspot.title = markersJSON[u].name;
+				markerHotspot.subtitle = 'Läs mer om ' + markersJSON[u].name + ' här!';
+			} else {
+				markerHotspot.title = markersJSON[u].engelsk_titel;
+				markerHotspot.subtitle = 'Read more about ' + markersJSON[u].engelsk_titel + ' here!';
+			}
 
 			markerHotspotArray.push(markerHotspot);
 		}
@@ -343,12 +374,20 @@ function displaySpecificMarkers(id, maptype) {
 				id : specificHotspots[u].name,
 				latitude : specificHotspots[u].xkoord,
 				longitude : specificHotspots[u].ykoord,
-				title : specificHotspots[u].name,
-				subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',
+				// title : specificHotspots[u].name,
+				// subtitle : 'Läs mer om ' + specificHotspots[u].name + ' här!',			
 				image : '/images/flag.png',
 				rightButton : '/pins/androidarrow2.png',
 				name : 'hotspot'
 			});
+			
+			if(language == 'svenska'){
+				markerSpecificHotspot.title = specificHotspots[u].name;
+				markerSpecificHotspot.subtitle = 'Läs mer om ' + specificHotspots[u].name + ' här!';
+			} else {
+				markerSpecificHotspot.title = specificHotspots[u].engelsk_titel;
+				markerSpecificHotspot.subtitle = 'Read more about ' + specificHotspots[u].engelsk_titel + ' here!';
+			}
 
 			markerSpecHotspotArray.push(markerSpecificHotspot);
 		}

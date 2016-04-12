@@ -8,7 +8,7 @@ setRowData();
 // Läser in data till alla listitems
 //-----------------------------------------------------------
 function setRowData() {
-	try {
+	// try {
 		var tableViewData = [];
 		var rows = returnTrails();
 
@@ -51,8 +51,8 @@ function setRowData() {
 					font : {
 						fontSize : '14dp',
 						fontFamily : 'Raleway-Medium'
-					},
-					text : rows[i].name
+					}
+					//text : rows[i].name
 				});
 
 				var lblDistance = Ti.UI.createLabel({
@@ -62,8 +62,8 @@ function setRowData() {
 					font : {
 						fontSize : '12dp',
 						fontFamily : 'Raleway-Light'
-					},
-					text : 'Sträcka : ' + rows[i].length + " km"
+					}
+					//text : 'Sträcka : ' + rows[i].length + " km"
 				});
 
 				var lblArea = Ti.UI.createLabel({
@@ -76,6 +76,14 @@ function setRowData() {
 					},
 					text : rows[i].area
 				});
+
+				if(language == 'svenska'){
+					lblName.text = rows[i].name;
+					lblDistance.text = 'Sträcka : ' + rows[i].length + " km";
+				} else {
+					lblName.text = rows[i].name_eng;
+					lblDistance.text = 'Distance : ' + rows[i].length + " km";
+				}
 
 				var iconView = showIcons(rows[i].id);
 
@@ -91,16 +99,16 @@ function setRowData() {
 			}
 		}
 		$.table.data = tableViewData;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
+	// }
 }
 
 //-----------------------------------------------------------
 // Öppnar trail detail med args för den valda leden
 //-----------------------------------------------------------
 function showTrailDetails(e) {
-	try {
+	// try {
 		var id = e.rowData.id;
 
 		var trailjsonObj = returnSpecificTrailById(id);
@@ -108,8 +116,10 @@ function showTrailDetails(e) {
 		var args = {
 			id : id,
 			title : trailjsonObj[0].name,
+			titleEng : trailjsonObj[0].name_eng,
 			length : trailjsonObj[0].length,
 			infoTxt : trailjsonObj[0].infoTxt,
+			infoTxtEng : trailjsonObj[0].infoTxt_eng,
 			area : trailjsonObj[0].area,
 			zoomlat : trailjsonObj[0].zoomLat,
 			zoomlon : trailjsonObj[0].zoomLon,
@@ -118,9 +128,9 @@ function showTrailDetails(e) {
 		};
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView().open();
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
+	// }
 }
 
 //-----------------------------------------------------------

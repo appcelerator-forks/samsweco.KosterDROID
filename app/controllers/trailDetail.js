@@ -6,12 +6,19 @@ var args = arguments[0] || {};
 //-----------------------------------------------------------
 // Args från trails - klick på item i listan
 //-----------------------------------------------------------
-// try {
-$.trailDetail.title = args.title;
-$.lblTrailName.text = args.title || 'Default Name';
+	
+if(language == 'svenska'){
+	$.trailDetail.title = args.title;
+	$.lblTrailName.text = args.title || 'Default Name';
+	$.lblTrailInfo.text = args.infoTxt || 'Default infoText';
+} else {
+	$.trailDetail.title = args.titleEng;
+	$.lblTrailName.text = args.titleEng || 'Default Name';
+	$.lblTrailInfo.text = args.infoTxtEng || 'Default infoText';
+}
+	
 $.lblTrailLength.text = args.length + " kilometer" || 'Default Length';
 $.lblTrailArea.text = args.area || 'Default Color';
-$.lblTrailInfo.text = args.infoTxt || 'Default infoText';
 
 var trailId = args.id;
 globalTrailID = trailId;
@@ -19,13 +26,19 @@ globalTrailID = trailId;
 if (args.title == 'Äventyrsslingan') {
 	$.btnSendTo.show();
 	$.btnSendTo.height = '30dp';
-	$.btnSendTo.title = 'Gå till bokstavsjakten!';
+	$.btnSendTo.title = String.format(L('goToGame_btn'), '');
 
 	$.btnSendTo.addEventListener('click', function() {
 		var interactive = Alloy.createController('interactive').getView().open();
 		$.trailDetail.close();
 	});
 } 
+
+if(args.title == 'Båtresan'){	
+	$.btnTrailOnMap.title = String.format(L('goToDetailMapBoat_btn'), '');	
+} else {
+	$.btnTrailOnMap.title = String.format(L('goToDetailMap_btn'), '');
+}
 
 
 
@@ -35,7 +48,7 @@ if (args.title == 'Äventyrsslingan') {
 selectTrailPics();
 LoadHotspotList();
 showIcons();
-changeLabel();
+// changeLabel();
 
 //-----------------------------------------------------------
 // hämtar info för den vandringsled som ska öppnas i detaljvy
@@ -71,7 +84,7 @@ function selectTrailPics() {
 		var lblImgTxt = Ti.UI.createLabel({
 			left : '15dp',
 			top : '1dp',
-			text : jsonMedia[i].img_txt,
+			//text : jsonMedia[i].img_txt,
 			color : 'white',
 			font : {
 				fontSize : '14dp',
@@ -80,6 +93,13 @@ function selectTrailPics() {
 				fontFamily : 'Raleway-Light'
 			}
 		});
+		
+		if(language == 'svenska'){
+			lblImgTxt.text = jsonMedia[i].img_txt;
+		} else {
+			lblImgTxt.text = jsonMedia[i].img_txt_eng;
+		}
+
 
 		var backgroundView = Ti.UI.createView({
 			layout : 'vertical',
@@ -103,7 +123,7 @@ function selectTrailPics() {
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
 function showHotspotDetail(e) {		
-	try {
+	// try {
 		var jsonObjHot = returnSpecificHotspotsByName(e.rowData.id);
 		var hotspotId;
 		var x;
@@ -121,7 +141,9 @@ function showHotspotDetail(e) {
 
 		var hotspotTxt = {
 			title : jsonObjHot[0].name,
+			titleEng : jsonObjHot[0].engelsk_titel,
 			infoTxt : jsonObjHot[0].infoTxt,
+			infoTxtEng : jsonObjHot[0].engelsk_beskrivning,
 			id : hotspotId,
 			x : x,
 			y : y
@@ -130,9 +152,9 @@ function showHotspotDetail(e) {
 		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 		
 		hotspotDetail = null;
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Visa sevärdhet");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Visa sevärdhet");
+	// }
 }
 
 //-----------------------------------------------------------
@@ -175,9 +197,15 @@ function LoadHotspotList() {
 				font : {
 					fontSize : '14dp',
 					fontFamily : 'Raleway-Medium'
-				},
-				text : tableRow[i].name
+				}
+				//text : tableRow[i].name
 			});
+			
+			if(language == 'svenska'){
+				lblName.text = tableRow[i].name;
+			} else {
+				lblName.text = tableRow[i].engelsk_titel;
+			}
 
 			labelView.add(lblName);
 
@@ -229,20 +257,20 @@ function showIcons() {
 	}
 }
 
-//-----------------------------------------------------------
-// Sätter text i en label utefter vilken led som visas
-//-----------------------------------------------------------
-function changeLabel() {
-	try {
-		if (args.title != 'Båtleden') {
-			$.lblLangsVagen.text = 'Det här kan du se längs vägen:';
-		} else {
-			$.lblLangsVagen.text = 'Det här kan du läsa om på båtresan:';
-		}
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	}
-}
+// //-----------------------------------------------------------
+// // Sätter text i en label utefter vilken led som visas
+// //-----------------------------------------------------------
+// function changeLabel() {
+	// try {
+		// if (args.title != 'Båtleden') {
+			// $.lblLangsVagen.text = 'Det här kan du se längs vägen:';
+		// } else {
+			// $.lblLangsVagen.text = 'Det här kan du läsa om på båtresan:';
+		// }
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	// }
+// }
 
 //-----------------------------------------------------------
 // Rensar vid stängning

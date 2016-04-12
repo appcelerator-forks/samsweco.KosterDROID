@@ -3,8 +3,14 @@ Ti.include("/collectionData.js");
 
 var args = arguments[0] || {};
 
-$.lblHotspotName.text = args.title || "Name";
-$.lblHotspotInfoTxt.text = args.infoTxt || "Info";
+if(language == 'svenska'){
+	$.lblHotspotName.text = args.title || "Name";
+	$.lblHotspotInfoTxt.text = args.infoTxt || "Info";
+} else {
+	$.lblHotspotName.text = args.titleEng || "Name";
+	$.lblHotspotInfoTxt.text = args.infoTxtEng || "Info";
+}
+
 var hotspotId = args.id || "Id";
 var picId = args.filename || "filename";
 var latitude = args.x;
@@ -31,7 +37,7 @@ function showHotspotDetailMap(){
 // Hämtar bilder för bildspelet
 //-----------------------------------------------------------
 function selectHotspotPics() {
-	try {
+	// try {
 		var jsonMedia = returnSpecificPics(hotspotId);
 
 		for (var i = 0; i < jsonMedia.length; i++) {
@@ -45,7 +51,7 @@ function selectHotspotPics() {
 			var lblImgTxt = Ti.UI.createLabel({
 				left : '3dp',
 				top : '1dp',
-				text : jsonMedia[i].img_txt,
+				// text : jsonMedia[i].img_txt,
 				color : 'white',
 				font : {
 					fontSize : '14dp',
@@ -54,6 +60,12 @@ function selectHotspotPics() {
 					fontFamily: 'Raleway-Light'
 				}
 			});
+			
+			if(language == 'svenska'){
+				lblImgTxt.text = jsonMedia[i].img_txt;
+			} else {
+				lblImgTxt.text = jsonMedia[i].img_txt_eng;
+			}
 
 			var backgroundView = Ti.UI.createView({
 				layout : 'vertical',
@@ -68,9 +80,9 @@ function selectHotspotPics() {
 			$.slideShowHotspotDetail.addView(backgroundView);
 		}
 
-	} catch(e) {
-		newError("Något gick fel när sidan skulle laddas, prova igen!", "Sevärdhet");
-	}
+	// } catch(e) {
+		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Sevärdhet");
+	// }
 }
 
 //-----------------------------------------------------------

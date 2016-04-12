@@ -23,7 +23,6 @@ displayBigMap();
 function displayBigMap() {
 	try {
 		$.mapView.add(showMap(bigMap));
-		Ti.API.info("display map");
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartan");
 	}	
@@ -39,8 +38,10 @@ function showTrail(myName) {
 		var args = {
 			id : jsonObjTr[0].id,
 			title : myName,
+			titleEng : jsonObjTr[0].name_eng,
 			length : jsonObjTr[0].length,
 			infoTxt : jsonObjTr[0].infoTxt,
+			infoTxtEng : jsonObjTr[0].infoTxt_eng,
 			area : jsonObjTr[0].area,
 			color : jsonObjTr[0].color,
 			zoomlat : jsonObjTr[0].zoomLat,

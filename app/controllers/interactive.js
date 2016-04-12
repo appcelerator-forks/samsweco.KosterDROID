@@ -159,7 +159,7 @@ function setView() {
 function setLabelText() {
 	try {
 		var found = fetchFoundLettersCol();
-		$.lblCollectedLetters.text = 'Bokstäver: ';
+		$.lblCollectedLetters.text = String.format(L('foundLetters_lbl'), '');
 
 		for (var i = 0; i < found.length; i++) {
 			$.lblCollectedLetters.text += found[i].letter;
@@ -190,7 +190,6 @@ function checkIfStarted() {
 		Ti.API.info("foundLetterId: "+foundLetterId);
 		
 		if (foundLetterId > 0 && next_id < 9) {
-			Ti.API.info("I if:en");
 			setView();
 			$.slides.setCurrentPage = foundLetterId;
 

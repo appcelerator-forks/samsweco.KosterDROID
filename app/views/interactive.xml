@@ -19,33 +19,32 @@
 		
 		<View id="lettersView"> <!-- Vy som håller alla ledtrådar och fält för inmatning av ordet. -->	
 			<View id="wordView">
-				<Label id="wordClue" class="lbl" text="Skriv ordet du bildat av bokstäverna!"></Label>
+				<Label id="wordClue" class="lbl" text="L('writeWord_lbl')"></Label>
 				<TextField id="txtWord"></TextField>
-				<Button id="sendWord" class="btn" onClick="checkWord">Skicka ordet</Button>
-				<Label id="wordClueLbl" class="lbl" text="Ledtråd: En svävande geléklump i havet."></Label>
+				<Button id="sendWord" class="btn" onClick="checkWord" title="L('sendWord_btn')"></Button>
+				<Label id="wordClueLbl" class="lbl" text="L('wordClue_lbl')"></Label>
 			</View>	
 			<View id="letterView" >
 				<View class="h_view">
-					<TextField id="txtLetter" hintText="Skriv här"  hintTextColor="black"></TextField>
-					<Button id="sendOneLetter" onClick="sendLetter">Skicka bokstav</Button>	
+					<TextField id="txtLetter" hintText="L('hintWrite')"  hintTextColor="black"></TextField>
+					<Button id="sendOneLetter" onClick="sendLetter" title="L('sendLetter_btn')"></Button>	
 				</View>
-				<Label id="lblCollectedLetters" class="lbl">Bokstäver:</Label>
+				<Label id="lblCollectedLetters" class="lbl"></Label>
 				<View class="h_view">
-					<Button id="nextClue" onClick="toNextClue" >Visa saknad bokstav.</Button>
+					<Button id="nextClue" onClick="toNextClue" title="L('nextClue_lbl')"></Button>
 				</View>
 
 			</View>
 		</View>
 		
 		<View id="hideView"> <!-- Vy som göms när bokstavsjakten startats. -->
-			<Button id="btnStartQuiz" class="btn" onClick="startInteractive">Starta bokstavsjakten!</Button>
-			<Label id="lblWelcome" class="lbl">Välkommen till bokstavsjakten!</Label>
-			<Label id="lblInfoText" class="lbl">Vandra äventyrslingan och leta efter de 9 bokstäverna som finns gömda längs leden!</Label>
-			<Label id="lbls1" class="lbl">Längs vägen kommer du få ledtrådar som hjälper dig finna bokstäverna.</Label>
-			<Label id="lbls2" class="lbl">När du hittat alla bokstäver kan du försöka lista ut det hemliga ordet.</Label>
-			<Label id="lbls3" class="lbl">Du kan se bokstävernas ungefärliga läge och nummer med hjälp av de gröna cirklarna.</Label>
-			<Label id="lbls4" class="lbl">Om du råkar gå förbi en bokstav eller inte hittar den kan du ändå swipa till nästa ledtråd. 
-					Ifall detta inträffar kan du se de korrekta bokstäverna i slutet av slingan.</Label>		
+			<Button id="btnStartQuiz" class="btn" onClick="startInteractive" title="L('startGame_btn')"></Button>
+			<Label id="lblWelcome" class="lbl" text="L('welcomeGame_txt')"></Label>
+			<Label id="lblInfoText" class="lbl" text="L('gameFirstRow_lbl')"></Label>
+			<Label id="lbls1" class="lbl" text="L('gameSecondRow_lbl')"></Label>
+			<Label id="lbls2" class="lbl" text="L('gameThirdRow_lbl')"></Label>
+			<Label id="lbls3" class="lbl" text="L('gameFourthRow_lbl')"></Label>
+			<Label id="lbls4" class="lbl" text="L('gameFifthRow_lbl')"></Label>		
 		</View>
 	 </ScrollView>
 	 <Widget src="menu" name="widget"></Widget>	
