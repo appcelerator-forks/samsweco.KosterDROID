@@ -54,7 +54,6 @@ showIcons();
 // hämtar info för den vandringsled som ska öppnas i detaljvy
 //-----------------------------------------------------------
 function zoomMapTrail() {
-	// try {
 	var trail = {
 		id : args.id,
 		title : args.title,
@@ -67,11 +66,22 @@ function zoomMapTrail() {
 }
 
 //-----------------------------------------------------------
+// Sorterar bilderna i ordning
+//-----------------------------------------------------------
+function sortByName(a, b) {
+	var x = a.img_order;
+    var y = b.img_order;
+    
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+}
+
+//-----------------------------------------------------------
 // Hämtar bilder till bildspel för den valda vandringsleder
 //-----------------------------------------------------------
 function selectTrailPics() {
-	// try {
+	try {
 	var jsonMedia = returnSpecificTrailPics(trailId);
+	jsonMedia.sort(sortByName);
 
 	for (var i = 0; i < jsonMedia.length; i++) {
 		var img_view = Ti.UI.createImageView({
@@ -113,9 +123,9 @@ function selectTrailPics() {
 
 		$.slideShowTrails.addView(backgroundView);
 	}
-	// } catch(e) {
-	// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	// }
+	} catch(e) {
+	newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
+	}
 
 }
 

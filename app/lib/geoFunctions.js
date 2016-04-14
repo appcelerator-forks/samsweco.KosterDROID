@@ -238,7 +238,7 @@ function userIsNearHotspot() {
 				var radius = hotspotsToLoop[h].radie;
 
 				if (isInsideRadius(hotlat, hotlon, radius)) {
-					alertOnHotspot(hotspotsToLoop[b].name, hotspotsToLoop[b].infoTxt, hotspotsToLoop[b].id, hotspotsToLoop[b].engelsk_beskrivning, hotspotsToLoop[b].engelsk_titel);
+					alertOnHotspot(hotspotsToLoop[h].name, hotspotsToLoop[h].infoTxt, hotspotsToLoop[h].id, hotspotsToLoop[h].engelsk_beskrivning, hotspotsToLoop[h].engelsk_titel);
 					setHotspotAlerted(hotspotsToLoop[h].id);
 				}
 			}
@@ -255,8 +255,14 @@ function userIsNearHotspot() {
 function userOnBoatTrip() {	
 	try {
 		var boatdialog = Ti.UI.createAlertDialog({
-			buttonNames : ['Läs mer', 'Stäng']
+			// buttonNames : ['Läs mer', 'Stäng']	
 		});
+		
+		if(language == 'svenska'){
+			boatdialog.buttonNames = ['Läs mer', 'Stäng'];
+		} else {
+			boatdialog.buttonNames = ['Read more', 'Close'];
+		}
 
 		var boatHotspots = returnBoatHotspots();
 
@@ -348,12 +354,22 @@ function userIsNearLetter() {
 	}	
 }
 
-function alertLetter(clue, id) {
+function alertLetter(clue, id, clue_eng) {
 	var message = Ti.UI.createAlertDialog({
-		// title : 'Du närmar dig bokstav nummer ' + id + '!',
-		// buttonNames : ['Gå till bokstavsjakten', 'Stäng'],
-		// message : 'Ledtråd: ' + clue	
+		// title : 'Du närmar dig bokstav nummer ' + id + '!',		
+		// buttonNames : ['Gå till bokstavsjakten', 'Stäng'],	
+		//message : 'Ledtråd: ' + clue
 	});
+	
+	if(language == 'svenska'){
+		message.title = 'Du närmar dig bokstav nummer ' + id + '!',
+		message.message = 'Ledtråd: ' + clue;
+		message.buttonNames = ['Gå till bokstavsjakten', 'Stäng'];
+	} else {
+		message.title = 'You are approaching letter number ' + id + '!',
+		message.message = 'Clue: ' + clue_eng;
+		message.buttonNames = ['Go to the letter hunt', 'Close'];
+	}
 
 	if(language == 'svenska'){
 		message.title = 'Du närmar dig bokstav nummer ' + id + '!',

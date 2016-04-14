@@ -28,6 +28,30 @@ function displayMap() {
 	}
 
 }
+//-----------------------------------------------------------
+// Öppnar hotspotDetail med info om vald hotspot
+//-----------------------------------------------------------
+function showHotspot(name) {
+	try {
+		var jsonObjHot = returnSpecificHotspotsByName(name);
+
+		var hotspotTxt = {
+			title : name,
+			titleEng : jsonObjHot[0].engelsk_titel,
+			infoTxt : jsonObjHot[0].infoTxt,
+			infoTxtEng : jsonObjHot[0].engelsk_beskrivning,
+			id : jsonObjHot[0].id,
+			x : jsonObjHot[0].xkoord,
+			y : jsonObjHot[0].ykoord
+		};
+
+		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
+		$.interNav.openWindow(hotspotDetail);
+
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Interactiv - showHotspot");
+	}
+}
 
 $.slides.addEventListener('scrollend', function(e) {
 	try {
@@ -57,7 +81,7 @@ function setInteractiveViews() {
 			var clueTitle = Ti.UI.createLabel({
 				top : '5dp',
 				left : '5dp',
-				text : 'Ledtråd ' + (i + 1),
+				// text : 'Ledtråd ' + (i + 1),				
 				color : '#FCAF17',
 				font : {
 					fontSize : '16dp',
@@ -67,13 +91,21 @@ function setInteractiveViews() {
 
 			var clueTxt = Ti.UI.createLabel({
 				top : '2dp',
-				text : letterJSON[i].clue,
+				// text : letterJSON[i].clue,
 				color : 'black',
 				font : {
 					fontSize : '14dp',
 					fontFamily : 'Raleway-Light'
 				}
 			});
+			
+			if(language == 'svenska'){
+				clueTitle.text = 'Ledtråd ' + (i + 1);
+				clueTxt.text = letterJSON[i].clue;
+			} else {
+				clueTitle.text = 'Clue ' + (i + 1);
+				clueTxt.text = letterJSON[i].clue_eng;
+			}
 
 			var backgroundView = Ti.UI.createView({
 				layout : 'vertical',
@@ -116,10 +148,19 @@ function startInteractive() {
 	try {
 		if (!Ti.Geolocation.locationServicesEnabled) {
 			var alertDialog = Ti.UI.createAlertDialog({
-				title : 'Påminnelser',
-				message : 'Tillåt gpsen för att kunna få påminnelser när du närmar dig en bokstav!',
+				// title : 'Påminnelser',
+				// message : 'Tillåt gpsen för att kunna få påminnelser när du närmar dig en bokstav!',
 				buttonNames : ['OK']
 			});
+			
+			if(language == 'svenska'){
+				alertDialog.title = 'Påminnelser';
+				alertDialog.message = 'Tillåt appen att se din position för att kunna få påminnelser när du närmar dig en bokstav! Gå in på platstjänster i dina inställningar.';
+			} else {
+				alertDialog.title = 'Reminders';
+				alertDialog.message = 'Allow the app to see your position in order to get reminders when you approach a letter! Go to Location Services in your settings.';
+			}
+			
 			alertDialog.show();
 		}
 
@@ -229,18 +270,43 @@ function setLastView() {
 function toNextClue() {
 	try {
 		var nextDialog = Ti.UI.createAlertDialog({
-			message : 'Visa försvunnen bokstav?',
-			buttonNames : ['Ja, visa!', 'Stäng']
+			// message : 'Visa försvunnen bokstav?',
+			// buttonNames : ['Ja, visa!', 'Stäng']		
 		});
+		
+		if(language == 'svenska'){
+			nextDialog.message = 'Visa försvunnen bokstav?';
+			nextDialog.buttonNames = ['Ja, visa!', 'Stäng'];
+		} else {
+			nextDialog.message = 'Show missing letter?';
+			nextDialog.buttonNames = ['Yes, show it!', 'Close'];
+		}
 
 		nextDialog.addEventListener('click', function(e) {
 			if (e.index == 0) {
 				var lost = fetchOneLetter(foundLetterId);
-				lostLetter = lost[0].letter;
-				lostId = lost[0].id;
+				
+				if (lost != null) {
+					lostLetter = lost[0].letter;
+					lostId = lost[0].id;
 
-				$.txtLetter.value = '';
-				$.txtLetter.value = lostLetter;
+					$.txtLetter.value = '';
+					$.txtLetter.value = lostLetter;
+				} else {
+					var errorDialog = Ti.UI.createAlertDialog({
+						// message : 'Du har redan hittat alla bokstäver. Starta om appen och testa igen!',
+						// buttonNames : ['Stäng']					
+					});
+					
+					if(language == 'svenska'){
+						errorDialog.message = 'Du har redan hittat alla bokstäver. Starta om appen och testa igen!';
+						errorDialog.buttonNames = ['Stäng'];
+					} else {
+						errorDialog.message = 'You have already found all the letters. Restart the app and try again!';
+						errorDialog.buttonNames = ['Close'];
+					}
+
+				}
 			}
 		});
 
@@ -271,26 +337,40 @@ function sendLetter() {
 //-----------------------------------------------------------
 function checkLetter(letterToCheck) {
 	try {
-		var messageDialog = Ti.UI.createAlertDialog();
+		var messageDialog = Ti.UI.createAlertDialog({
+			buttonNames : ['OK']
+		});
 		var fetchLetter = fetchOneLetter(foundLetterId);
 		var correctLetter = fetchLetter[0].letter;
 
 		if (letterToCheck.length > 1) {
-			messageDialog.message = "Man får bara skriva in en bokstav.";
-			messageDialog.title = 'Ojdå, nu blev det fel';
-			messageDialog.buttonNames = ['OK'];
+			if(language == 'svenska'){
+				messageDialog.message = "Man får bara skriva in en bokstav.";
+				messageDialog.title = 'Ojdå, nu blev det fel';
+			} else {
+				messageDialog.message = "You only get to send one letter.";
+				messageDialog.title = 'Oops, something went wrong';
+			}
 
 			messageDialog.show();
 		} else if (letterToCheck.length < 1 && letterToCheck.length == " ") {
-			messageDialog.message = "Man måste skriva in en bokstav.";
-			messageDialog.title = 'Ojdå, nu blev det fel';
-			messageDialog.buttonNames = ['OK'];
+			if(language == 'svenska'){
+				messageDialog.message = "Man måste skriva in en bokstav.";
+				messageDialog.title = 'Ojdå, nu blev det fel';
+			} else {
+				messageDialog.message = "You have to send one letter.";
+				messageDialog.title = 'Oops, something went wrong';
+			}
 
 			messageDialog.show();
 		} else if (letterToCheck != correctLetter) {
-			messageDialog.message = "Är du säker på att " + letterToCheck + ' var rätt bokstav för ledtråd ' + foundLetterId + '? Kontrollera att du inte gått förbi en bokstav.';
-			messageDialog.title = 'Kontrollera bokstav';
-			messageDialog.buttonNames = ['OK'];
+			if(language == 'svenska'){
+				messageDialog.message = 'Är du säker på att ' + letterToCheck + ' var rätt bokstav för ledtråd ' + foundLetterId + '? Kontrollera att du inte gått förbi en bokstav.';
+				messageDialog.title = 'Ojdå, nu blev det fel';
+			} else {
+				messageDialog.message = 'Are you sure that ' + letterToCheck + ' was the correct letter? Check that you have not walked past the letter.';
+				messageDialog.title = 'Oops, something went wrong';
+			}
 
 			messageDialog.show();
 		} else {
@@ -322,10 +402,18 @@ function checkWord() {
 		var checkword = bigword.split(" ", 1);
 
 		var alertDialog = Ti.UI.createAlertDialog({
-			buttonNames : ['Stäng'],
-			title : "Fel ord"
+			// buttonNames : ['Stäng'],
+			// title : "Fel ord"
 		});
 
+		if(language == 'svenska'){
+			alertDialog.buttonNames = ['Stäng'];
+			alertDialog.title = "Fel ord";
+		} else {
+			alertDialog.buttonNames = ['Close'];
+			alertDialog.title = "Wrong word";
+		}
+		
 		if (checkword == word) {
 			removeClueZones();
 
@@ -338,7 +426,12 @@ function checkWord() {
 			$.wordClueLbl.hide();
 			$.wordClueLbl.height = 0;
 
-			$.lblCollectedLetters.text = 'Bra jobbat! Du hittade det rätta ordet!';
+			if(language == 'svenska'){
+				$.lblCollectedLetters.text = 'Bra jobbat! Du hittade det rätta ordet!';
+			} else {
+				$.lblCollectedLetters.text = 'Good job! You found the right word!';
+			}
+			
 			$.lblCollectedLetters.fontFamily = 'Raleway-Medium';
 			$.lblCollectedLetters.fontSize = '16dp';
 
@@ -346,7 +439,11 @@ function checkWord() {
 			startOver();
 			interactiveGPS = false;
 		} else {
-			alertDialog.message = "Försök igen! Du har snart klurat ut det!";
+			if(language == 'svenska'){
+				alertDialog.message = "Försök igen! Du har snart klurat ut det!";
+			} else {
+				alertDialog.message = "Try again! You will soon figure it out!";
+			}
 			alertDialog.show();
 		}
 	} catch(e) {
