@@ -11,7 +11,9 @@
     <fullscreen>true</fullscreen>
     <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
-    <guid>7f609be5-5d42-4ea9-9444-ee906e948628</guid>
+    <!-- <guid>7f609be5-5d42-4ea9-9444-ee906e948628</guid> -->
+    <!-- SANDRAS -->
+    <guid>b32a5b1c-0370-49e8-9111-e964da893320</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>
@@ -132,7 +134,7 @@
         <target device="iphone">false</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>5.1.1.GA</sdk-version>
+    <sdk-version>5.2.2.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

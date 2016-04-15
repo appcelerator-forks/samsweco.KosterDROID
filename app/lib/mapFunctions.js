@@ -209,11 +209,7 @@ function displayTrailMarkers(maptype) {
 				id : trailJson[i].name,
 				latitude : trailJson[i].pinLat,
 				longitude : trailJson[i].pinLon,
-<<<<<<< Updated upstream
 				//title : trailJson[i].name,
-=======
-				// title : trailJson[i].name,
->>>>>>> Stashed changes
 				subtitle : trailJson[i].area + ', ' + trailJson[i].length + ' km',
 				rightButton : '/pins/androidarrow2.png',
 				centerOffset : {
@@ -299,13 +295,8 @@ function displayAllMarkers() {
 				id : markersJSON[u].name,
 				latitude : markersJSON[u].xkoord,
 				longitude : markersJSON[u].ykoord,
-<<<<<<< Updated upstream
 				//title : markersJSON[u].name,
 				//subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',
-=======
-				// title : markersJSON[u].name,
-				// subtitle : 'Läs mer om ' + markersJSON[u].name + ' här!',			
->>>>>>> Stashed changes
 				image : '/images/flag.png',
 				centerOffset : {
 					x : -3,
