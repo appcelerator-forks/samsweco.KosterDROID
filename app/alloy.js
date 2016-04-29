@@ -23,16 +23,13 @@
 
 var language = "";
 
-if (Ti.Locale.currentLanguage == 'sv') { 
+if (Ti.Locale.currentLanguage == 'sv' || Ti.Locale.currentLanguage == 'nb') { 
 	Ti.App.Properties.setString('baseSavePath', Titanium.Filesystem.applicationDataDirectory + '/data/sv/');
-	language = 'svenska';	
+	language = 'svenska';
 } else {
 	Ti.App.Properties.setString('baseSavePath', Titanium.Filesystem.applicationDataDirectory + '/data/en/');
 	language = 'engelska';
 }
-
-alert(Ti.Locale.currentLanguage);
-alert(language);
 
 //-----------------------------------------------------------
 // Variabel för kartvyn
