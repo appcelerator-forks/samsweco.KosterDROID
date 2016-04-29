@@ -8,14 +8,6 @@ Ti.include("/collectionData.js");
 
 function navigate(e) {
 		switch 	(e.rowData.id) {
-			// case sv_row : {
-				// //Svenskt språk
-				// break;
-			// }
-			// case eng_row : {
-				// //Engelskt språk
-				// break;
-			// }
 			case "home_row" : {
 				//Navigera till Index
 				var home = Alloy.createController('index').getView().open();
@@ -70,15 +62,7 @@ function navigate(e) {
 			 	var trailDetail = Alloy.createController("trailDetail", args).getView().open();
 				break;
 			}
-			// case show_hot_row : {
-				// //Visa sevärdheter på kartan
-				// break;
-			// }
-			// case notification_row : {
-				// //Påminnelse i närheten av sevärdheter
-				// break;
-			// }
-}
+	}
 }
 
 
@@ -86,7 +70,7 @@ var mainMenuOpen = false;
 
 function openMainMenu() {
 	if (!mainMenuOpen) {
-		$.menuContainerView.height = '70%';
+		$.menuContainerView.height = '80%';
 		mainMenuOpen = true;
 		
 		$.lbl_menu_close.visible = true;

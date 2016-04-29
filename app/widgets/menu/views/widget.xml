@@ -8,13 +8,13 @@
 			<View id="notificationsView">
                 	<View class="switchView">
                 		<ImageView image="/images/sound.png"></ImageView>
-                		<Label class="lblSetGPSListener" text="L('reminder_lbl')"></Label>
+                		<Label class="lblSetGPSListener" text="L('reminder_lblHotspot')"></Label>
 							<Switch id="geoSwitchHotspot" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 					</View>
 			
                 	<View class="switchView">
                 		<ImageView image="/images/sound.png"></ImageView>
-                		<Label class="lblSetGPSListener" text="L('reminder_lbl')"></Label>				
+                		<Label class="lblSetGPSListener" text="L('reminder_lblBoattrip')"></Label>				
 						<Switch id="geoSwitchBoat" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 					</View>
 					

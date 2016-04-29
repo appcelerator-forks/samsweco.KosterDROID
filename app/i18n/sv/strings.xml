@@ -31,6 +31,8 @@
     <string name="interactive_row">Bokstavsjakten</string>
     <string name="newsfeed_row">Nyheter på Kosteröarna</string>
     <string name="reminder_lbl">Påminnelse</string>
+    <string name="reminder_lblHotspot">Påminnelse vid sevärdhet</string>
+    <string name="reminder_lblBoattrip">Påminnelse vid sevärdhet på båtturen</string>
     <string name="goToGame_btn">Gå till bokstavsjakten!</string>
     <string name="goToDetailMapBoat_btn">Visa på karta</string>
     <string name="goToDetailMap_btn">Visa led på karta</string>
