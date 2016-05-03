@@ -261,26 +261,10 @@ function showIcons() {
 
 			$.iconrow.add(covericon);
 		}
-
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
 	}
 }
-
-// //-----------------------------------------------------------
-// // Sätter text i en label utefter vilken led som visas
-// //-----------------------------------------------------------
-// function changeLabel() {
-	// try {
-		// if (args.title != 'Båtleden') {
-			// $.lblLangsVagen.text = 'Det här kan du se längs vägen:';
-		// } else {
-			// $.lblLangsVagen.text = 'Det här kan du läsa om på båtresan:';
-		// }
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled");
-	// }
-// }
 
 //-----------------------------------------------------------
 // Rensar vid stängning

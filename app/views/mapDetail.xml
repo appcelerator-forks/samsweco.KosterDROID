@@ -7,7 +7,7 @@
 	<Collection src="trailsModel" />
 	<Collection src="jsonFilesModel" />
 	
-	<Window id="detailwin" onBlur="cleanup">
+	<Window id="detailwin"> <!-- onBlur="cleanup" -->
 		<View id="mapDetailView"></View>
 	</Window>
 </Alloy>

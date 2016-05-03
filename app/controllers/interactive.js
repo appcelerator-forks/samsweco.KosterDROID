@@ -225,21 +225,19 @@ function setLabelText() {
 
 function checkIfStarted() {
 	try {
-		var next_id = fetchFoundLettersCol().length;
-		foundLetterId = next_id + 1;
-		
-		Ti.API.info("foundLetterId: "+foundLetterId);
+		var next_id = fetchFoundLettersCol();
+		foundLetterId = next_id.length;
 		
 		if (foundLetterId > 0 && next_id < 9) {
 			setView();
+			foundLetterId = next_id + 1;
 			$.slides.setCurrentPage = foundLetterId;
 
 			interactiveMap.removeAllAnnotations();
 			displaySpecificMarkers(7, interactiveMap);
 			getSpecificIconsForTrail(7, interactiveMap);
 			addSpecificClueZone(foundLetterId);
-			
-		} else if (started.length == 9) {
+		} else if (foundLetterId.length == 9) {
 			setLabelText();
 			setLastView();
 		}
@@ -483,11 +481,12 @@ function startOver() {
 	$.off();
 	interactiveMap.removeEventListener('click', evtList);
 	interactiveMap.removeAllAnnotations();
-	$.interactiveWindow.close();
+	// $.interactiveWindow.close();
 };
 
 var back = function(){
 	$.interactiveWindow.close();
+	cleanup();
 };
 
 $.interactiveWindow.addEventListener('androidback', back);

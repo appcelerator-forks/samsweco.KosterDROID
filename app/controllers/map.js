@@ -98,11 +98,11 @@ function closeMenu() {
 	$.off();
 	bigMap.removeEventListener('click', evtList);
 	bigMap.removeAllAnnotations();
-	$.mapWindow.close();
 };
 
 var back = function(){
 	$.mapWindow.close();
+	cleanup();
 };
 
 $.mapWindow.addEventListener('androidback', back);

@@ -30,22 +30,8 @@ function showMapDetail(){
 		$.mapDetailView.add(showDetailMap(detailMap, trailId, trailName, trailColor));
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
-	}	
+	}
 }
-
-// //-----------------------------------------------------------
-// // Switch för att aktivera location-event för hotspots/sevärdheter
-// //-----------------------------------------------------------
-// $.geoSwitch1.addEventListener('change', function(e) {
-	// if ($.geoSwitch1.value == true) {
-		// getUserPos('hotspot');
-		// hotspotGPS = true;
-	// }
-	// if($.geoSwitch1.value == false){
-		// Alloy.Globals.stopGPS();
-		// hotspotGPS = false;
-	// }
-// });
 
 //-----------------------------------------------------------
 // Funktioner för att visa och stänga kartmenyn 
@@ -108,8 +94,7 @@ function showHotspotfromDetailMap(hotId) {
 			y : y
 		};
 
-		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-		$.mapNav.openWindow(hotDet);
+		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 		
 		hotspotDetail = null;
 	} catch(e) {
@@ -127,7 +112,7 @@ var evtLists = function(evt){
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Kartfunktioner");
-	}	
+	}
 };
 detailMap.addEventListener('click', evtLists);
 
@@ -144,6 +129,7 @@ detailMap.addEventListener('click', evtLists);
 
 var back = function(){
 	$.detailwin.close();
+	cleanup();
 };
 
 $.detailwin.addEventListener('androidback', back);
