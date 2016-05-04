@@ -1,5 +1,4 @@
-Ti.include('/geoFunctions.js');
- $.koster.open();
+$.koster.open();
 var infoVisible = false;
 
 

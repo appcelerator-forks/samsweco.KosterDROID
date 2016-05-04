@@ -120,7 +120,6 @@ detailMap.addEventListener('click', evtLists);
 // Rensar vid stängning
 //-----------------------------------------------------------
  var cleanup = function() {
-
 	$.off();
 	detailMap.removeEventListener('click', evtList);
 	detailMap.removeAllAnnotations();
@@ -128,8 +127,8 @@ detailMap.addEventListener('click', evtLists);
 
 
 var back = function(){
-	$.detailwin.close();
 	cleanup();
+	$.detailwin.close();
 };
 
 $.detailwin.addEventListener('androidback', back);

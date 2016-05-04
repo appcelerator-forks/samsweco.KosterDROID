@@ -7,7 +7,7 @@
 	<Model src="letterModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
-	<Window id="interactiveWindow"> <!-- onBlur="cleanup" -->	
+	<Window id="interactiveWindow" onBlur="cleanup"> <!-- onBlur="cleanup" -->	
 	<ScrollView id="interactiveView" scrollType="vertical"> <!-- Scrollbar vy som håller allt innhåll. -->
 		
 		<View id="showFamilyTrail"> </View><!-- Kartan -->

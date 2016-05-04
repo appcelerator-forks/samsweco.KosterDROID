@@ -82,6 +82,7 @@ var myPosition = false;
 //-----------------------------------------------------------
 // Array som håller bokstäverna från bokstavsjakten.
 //-----------------------------------------------------------
+var mapExists = false;
 var lettersArray = [];
 var infospotArray = [];
 var markerHotspotArray = [];

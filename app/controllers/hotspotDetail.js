@@ -22,22 +22,12 @@ showHotspotDetailMap();
 function showHotspotDetailMap(){	
 	var map = showHotspotOnMap(latitude, longitude, hotspotId);
 	$.showHotspotMap.add(map);
-
-	// if(mapShowing == false){
-		// $.mapView.height = '40%';
-		// $.showHotspotMap.height = '75%';
-		// mapShowing = true;
-	// }else{
-		// $.mapView.height = '10%';
-		// $.showHotspotMap.height = 0;
-		// mapShowing = false;
-	// }
 }
 //-----------------------------------------------------------
 // Hämtar bilder för bildspelet
 //-----------------------------------------------------------
 function selectHotspotPics() {
-	// try {
+	try {
 		var jsonMedia = returnSpecificPics(hotspotId);
 
 		for (var i = 0; i < jsonMedia.length; i++) {
@@ -51,7 +41,6 @@ function selectHotspotPics() {
 			var lblImgTxt = Ti.UI.createLabel({
 				left : '3dp',
 				top : '1dp',
-				// text : jsonMedia[i].img_txt,
 				color : 'white',
 				font : {
 					fontSize : '14dp',
@@ -80,9 +69,9 @@ function selectHotspotPics() {
 			$.slideShowHotspotDetail.addView(backgroundView);
 		}
 
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Sevärdhet");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Sevärdhet");
+	}
 }
 
 //-----------------------------------------------------------
@@ -90,14 +79,14 @@ function selectHotspotPics() {
 //-----------------------------------------------------------
   var cleanup = function() {
  	 $.hotspotDetail.close();
-	 $.off();	
+	 $.off();
 };
 
 var back = function(){
 	$.hotspotDetail.close();
+	cleanup();
 };
 
-//$.infoDetail.addEventListener('close', cleanup);
 $.hotspotDetail.addEventListener('androidback', back);
 
 

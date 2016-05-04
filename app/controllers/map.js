@@ -95,7 +95,7 @@ function closeMenu() {
 // Rensar vid stängning
 //-----------------------------------------------------------
  var cleanup = function() {
-	$.off();
+ 	$.off();
 	bigMap.removeEventListener('click', evtList);
 	bigMap.removeAllAnnotations();
 };

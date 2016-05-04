@@ -6,6 +6,7 @@ var args = arguments[0] || {};
 //-----------------------------------------
 // Onload
 //-----------------------------------------------------------
+
 displayMap();
 checkIfStarted();
 
@@ -19,7 +20,7 @@ function displayMap() {
 		displaySpecificMarkers(7, interactiveMap);
 		getSpecificIconsForTrail(7, interactiveMap);
 		interactiveMap.addEventListener('click', function(evt) {
-			if (evt.clicksource == 'rightButton') {
+			if (evt.clicksource == 'rightPane') {
 				showHotspot(evt.annotation.id);
 			}
 		});
@@ -45,8 +46,7 @@ function showHotspot(name) {
 			y : jsonObjHot[0].ykoord
 		};
 
-		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-		$.interNav.openWindow(hotspotDetail);
+		var hotspotDetail = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Interactiv - showHotspot");
@@ -80,8 +80,7 @@ function setInteractiveViews() {
 
 			var clueTitle = Ti.UI.createLabel({
 				top : '5dp',
-				left : '5dp',
-				// text : 'Ledtråd ' + (i + 1),				
+				left : '5dp',			
 				color : '#FCAF17',
 				font : {
 					fontSize : '16dp',
@@ -123,15 +122,15 @@ function setInteractiveViews() {
 			$.slides.addView(backgroundView);
 		}
 		
-				var infoTxt = Ti.UI.createLabel({
-				top : '2dp',
-				text : 'Swipa åt sidan för att se nästa ledtråd',
-				color : 'black',
-				font : {
-					fontSize : '14dp',
-					fontFamily : 'Raleway-Light'
-				}
-			});
+		var infoTxt = Ti.UI.createLabel({
+			top : '2dp',
+			text : 'Swipa åt sidan för att se nästa ledtråd',
+			color : 'black',
+			font : {
+				fontSize : '14dp',
+				fontFamily : 'Raleway-Light'
+			}
+		});
 		
 		$.slides.add(infoTxt);
 		
@@ -144,12 +143,9 @@ function setInteractiveViews() {
 // Kickar igång spelet/jakten
 //-----------------------------------------------------------
 function startInteractive() {
-	Ti.API.info("startad");
 	try {
 		if (!Ti.Geolocation.locationServicesEnabled) {
 			var alertDialog = Ti.UI.createAlertDialog({
-				// title : 'Påminnelser',
-				// message : 'Tillåt gpsen för att kunna få påminnelser när du närmar dig en bokstav!',
 				buttonNames : ['OK']
 			});
 			
@@ -267,10 +263,7 @@ function setLastView() {
 //-----------------------------------------------------------
 function toNextClue() {
 	try {
-		var nextDialog = Ti.UI.createAlertDialog({
-			// message : 'Visa försvunnen bokstav?',
-			// buttonNames : ['Ja, visa!', 'Stäng']		
-		});
+		var nextDialog = Ti.UI.createAlertDialog();
 		
 		if(language == 'svenska'){
 			nextDialog.message = 'Visa försvunnen bokstav?';
@@ -291,10 +284,7 @@ function toNextClue() {
 					$.txtLetter.value = '';
 					$.txtLetter.value = lostLetter;
 				} else {
-					var errorDialog = Ti.UI.createAlertDialog({
-						// message : 'Du har redan hittat alla bokstäver. Starta om appen och testa igen!',
-						// buttonNames : ['Stäng']					
-					});
+					var errorDialog = Ti.UI.createAlertDialog();
 					
 					if(language == 'svenska'){
 						errorDialog.message = 'Du har redan hittat alla bokstäver. Starta om appen och testa igen!';
@@ -399,10 +389,7 @@ function checkWord() {
 		var bigword = check.toUpperCase();
 		var checkword = bigword.split(" ", 1);
 
-		var alertDialog = Ti.UI.createAlertDialog({
-			// buttonNames : ['Stäng'],
-			// title : "Fel ord"
-		});
+		var alertDialog = Ti.UI.createAlertDialog();
 
 		if(language == 'svenska'){
 			alertDialog.buttonNames = ['Stäng'];
@@ -466,8 +453,6 @@ function startOver() {
 
 		for (var i = 0; i < col.length; i++) {;
 			setLetterZero(col[i].id);
-
-			Ti.API.info(JSON.stringify(col[i].letter));
 		}
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
@@ -481,7 +466,6 @@ function startOver() {
 	$.off();
 	interactiveMap.removeEventListener('click', evtList);
 	interactiveMap.removeAllAnnotations();
-	// $.interactiveWindow.close();
 };
 
 var back = function(){
