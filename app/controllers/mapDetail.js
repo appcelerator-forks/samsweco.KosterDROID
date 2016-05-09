@@ -18,6 +18,8 @@ var zoomLon = args.zoomlon;
 // Onload
 //-----------------------------------------------------------
 detailMap.removeAllAnnotations();
+$.detailwin.remove(detailMap);
+
 showMapDetail();
 getSpecificIconsForTrail(trailId, detailMap);
 displaySpecificMarkers(trailId, detailMap);
@@ -51,12 +53,14 @@ function showMenu() {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Detaljkartan");
 	}
 }
+
 detailMap.addEventListener('singletap', function() {
 	if(menuDetailVisible){
 		closeDetailMenu();
 		menuDetailVisible = false;
 	}
 });
+
 function showDetailMenu(){
 	$.widgetView.height = '80dp';
 }

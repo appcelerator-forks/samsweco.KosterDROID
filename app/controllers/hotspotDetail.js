@@ -19,7 +19,7 @@ var longitude = args.y;
 selectHotspotPics();
 showHotspotDetailMap();
 
-function showHotspotDetailMap(){	
+function showHotspotDetailMap(){
 	var map = showHotspotOnMap(latitude, longitude, hotspotId);
 	$.showHotspotMap.add(map);
 }

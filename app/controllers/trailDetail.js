@@ -133,7 +133,7 @@ function selectTrailPics() {
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
 function showHotspotDetail(e) {		
-	// try {
+	try {
 		var jsonObjHot = returnSpecificHotspotsByName(e.rowData.id);
 		var hotspotId;
 		var x;
@@ -162,9 +162,9 @@ function showHotspotDetail(e) {
 		var hotDet = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 		
 		hotspotDetail = null;
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Visa sevärdhet");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Visa sevärdhet");
+	}
 }
 
 //-----------------------------------------------------------
@@ -237,7 +237,7 @@ function LoadHotspotList() {
 //-----------------------------------------------------------
 function sendToHotspot(e) {
 	try {
-		showHotspot(e.rowData.id);
+		showHotspotDetail(e.rowData.id);
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsled - SendToHotspot");
 	}
@@ -270,15 +270,10 @@ function showIcons() {
 // Rensar vid stängning
 //-----------------------------------------------------------
  var cleanup = function() {
-
 	$.off();
 	detailMap.removeEventListener('click', evtList);
 	detailMap.removeAllAnnotations();
 	$.trailDetail.close();
-	};
-
-var back = function(){
-	$.trailDetail.close();
 };
 
-$.trailDetail.addEventListener('androidback', back);
+$.trailDetail.addEventListener('androidback', cleanup);
