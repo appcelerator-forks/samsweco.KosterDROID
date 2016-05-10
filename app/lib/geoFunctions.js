@@ -238,7 +238,7 @@ function userIsNearHotspot() {
 				var radius = hotspotsToLoop[h].radie;
 
 				if (isInsideRadius(hotlat, hotlon, radius)) {
-					alertOnHotspot(hotspotsToLoop[h].name, hotspotsToLoop[h].infoTxt, hotspotsToLoop[h].id, hotspotsToLoop[h].engelsk_beskrivning, hotspotsToLoop[h].engelsk_titel, hotlan, hotlon);
+					alertOnHotspot(hotspotsToLoop[h].name, hotspotsToLoop[h].infoTxt, hotspotsToLoop[h].id, hotspotsToLoop[h].engelsk_beskrivning, hotspotsToLoop[h].engelsk_titel, hotlat, hotlon);
 					setHotspotAlerted(hotspotsToLoop[h].id);
 				}
 			}
