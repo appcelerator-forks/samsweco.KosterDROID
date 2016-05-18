@@ -14,11 +14,10 @@ function returnHotspotsToAlert() {
 
 function setHotspotAlerted(id) {
 	hotspotsModel.fetch({
-		'id' : id
+		id : id
 	});
-
 	hotspotsModel.set({
-		'alerted' : 1
+		alerted : 1
 	});
 	hotspotsModel.save();
 }
@@ -39,11 +38,11 @@ var lettersModel = Alloy.Models.letterModel;
 
 function setLetterOne(letterId, letter) {
 	lettersModel.fetch({
-		'id' : letterId
+		id : letterId
 	});
 
 	lettersModel.set({
-		'found' : 1
+		found : 1
 	});
 	lettersModel.save();
 	alerted = false;
@@ -112,7 +111,7 @@ function fetchOneLetter(lId) {
 // för påminnelser om sevärdheter eller bokstavsjakt
 //-----------------------------------------------------------
 function getUserPos(type) {
-	try {
+	try {		
 		Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS;
 		Titanium.Geolocation.pauseLocationUpdateAutomatically = true;
 		Titanium.Geolocation.distanceFilter = 3;
@@ -231,6 +230,11 @@ function userIsNearHotspot() {
 	try {
 		var hotspotsToLoop = returnHotspotsToAlert();
 
+		Ti.API.info('1');
+		Ti.API.info('length: ' + hotspotsToLoop.length);
+
+		// GÅR EJ IN OCH ALERTAR PÅ NY SEVÄRDHET
+
 		for (var h = 0; h < hotspotsToLoop.length; h++) {
 			if (hotspotsToLoop[h].alerted == 0) {
 				var hotlat = hotspotsToLoop[h].xkoord;
@@ -275,9 +279,9 @@ function userOnBoatTrip() {
 
 				if (isInsideRadius(blat, blon, bradius)) {
 					alertOnHotspot(boatHotspots[b].name, boatHotspots[b].infoTxt, boatHotspots[b].id, boatHotspots[b].engelsk_beskrivning, boatHotspots[b].engelsk_titel, blat, blon);
-					boatHotspots[b].alerted = 1;
-
-					alertedArray.push(boatTripHotspots[b].name);
+					setHotspotAlerted(boatHotspots[b].id);
+					alertedArray.push(boatHotspots[b].name);
+					
 					if (alertedArray.length == 8) {
 						Alloy.Globals.stopBoatGPS();
 					}
@@ -291,10 +295,9 @@ function userOnBoatTrip() {
 
 function alertOnHotspot(hottitle, infoText, hotid, engtxt, engtitle, x, y) {
 	try {
-		var dialog = Ti.UI.createAlertDialog({
-			// message : 'Nu börjar du närma dig ' + hottitle + '!',
-			// buttonNames : ['Läs mer', 'Stäng']	
-		});
+		var dialog = Ti.UI.createAlertDialog();
+		
+		Ti.API.info('2');
 		
 		if(language == 'svenska'){
 			dialog.message = 'Nu börjar du närma dig ' + hottitle + '!';
@@ -316,8 +319,7 @@ function alertOnHotspot(hottitle, infoText, hotid, engtxt, engtitle, x, y) {
 					y : y
 				};
 
-				var hotspotDetails = Alloy.createController("hotspotDetail", hotspotTxt).getView();
-				Alloy.CFG.tabs.activeTab.open(hotspotDetails);
+				var hotspotDetails = Alloy.createController("hotspotDetail", hotspotTxt).getView().open();
 			}
 		});
 

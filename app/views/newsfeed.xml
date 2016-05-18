@@ -1,6 +1,9 @@
 <Alloy>
+	<Model src="letterModel" />
+	<Model src="hotspotModel" />
+	
 	<Window id="newsfeedWindow" onBlur="cleanup">
-	<View id="newsfeedView" class="headView"></View>
-	<Widget src="menu" name="widget"></Widget>	
+		<View id="newsfeedView" class="headView"></View>
+		<Widget src="menu" name="widget"></Widget>	
 	</Window>	
 </Alloy>

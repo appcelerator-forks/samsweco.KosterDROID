@@ -22,12 +22,12 @@
        			 <View id="line2"></View>
 				<TableView id="table" onClick="navigate">
                 <TableViewRow title="L('home_row')" id="home_row" class="tblRow"/>
-                <TableViewRow title="L('information_row')" id="info_row" class="tblRow"/>
                 <TableViewRow title="L('boattrip_row')" id="boat_row" class="tblRow" />
-                <TableViewRow title="L('hikes_row')" id="trails_row" class="tblRow"/>
                 <TableViewRow title="L('hotspot_row')" id="hotspots_row"class="tblRow" />
+                <TableViewRow title="L('hikes_row')" id="trails_row" class="tblRow"/>
                 <TableViewRow title="L('map_row')" id="map_row" class="tblRow"/>
                 <TableViewRow title="L('interactive_row')" id="interactive_row" class="tblRow"/>
+                <TableViewRow title="L('information_row')" id="info_row" class="tblRow"/>
                 <TableViewRow title="L('newsfeed_row')" id="newsfeed_row" class="tblRow"/>
         </TableView>
         

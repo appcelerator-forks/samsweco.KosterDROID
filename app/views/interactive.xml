@@ -5,6 +5,7 @@
 	<Collection src="hotspot_trailsModel" />
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
+	<Model src="hotspotModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
 	<Window id="interactiveWindow" onBlur="cleanup"> <!-- onBlur="cleanup" -->	

@@ -6,6 +6,7 @@
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
+	<Model src="hotspotModel" />
 	
 	<Window id="infoWindow"> <!--  onBlur="cleanup" -->
 

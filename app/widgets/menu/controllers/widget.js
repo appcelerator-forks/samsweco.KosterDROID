@@ -98,14 +98,31 @@ function closeMainMenu() {
 // Startar och avslutar location-event för hotspots/sevärdheter
 //-----------------------------------------------------------
 $.geoSwitchHotspot.addEventListener('change', function(e) {
-	if ($.geoSwitchHotspot.value == true) {
-		Alloy.Globals.getUserPos('hotspot');
-		hotspotGPS = true;
-	}
-	if($.geoSwitchHotspot.value == false){
-		Alloy.Globals.stopGPS();
-		hotspotGPS = false;
-	}
+	if (!Ti.Geolocation.locationServicesEnabled) {
+		var alertDialog = Ti.UI.createAlertDialog({
+			buttonNames : ['OK']
+		});
+		
+		if(language == 'svenska'){
+			alertDialog.title = 'Påminnelser';
+			alertDialog.message = 'Tillåt appen att se din position för att kunna få påminnelser när du närmar dig en sevärdhet!';
+		} else {
+			alertDialog.title = 'Reminders';
+			alertDialog.message = 'Allow the app to see your position in order to get reminders when you approach an attraction!';
+		}
+		
+		alertDialog.show();
+		
+		$.geoSwitchHotspot.value = false;
+	} else {
+		if ($.geoSwitchHotspot.value == true) {
+			Alloy.Globals.getUserPos('hotspot');
+			hotspotGPS = true;
+		} else {
+			Alloy.Globals.stopGPS();
+			hotspotGPS = false;
+		}
+	} 
 });
 
 if(hotspotGPS){
@@ -115,10 +132,28 @@ if(hotspotGPS){
 }
 
 $.geoSwitchBoat.addEventListener('change', function() {
-	if ($.geoSwitchBoat.value == true) {
-		Alloy.Globals.getUserPos('boat');
+	if (!Ti.Geolocation.locationServicesEnabled) {
+		var alertDialog = Ti.UI.createAlertDialog({
+			buttonNames : ['OK']
+		});
+		
+		if(language == 'svenska'){
+			alertDialog.title = 'Påminnelser';
+			alertDialog.message = 'Tillåt appen att se din position för att kunna få påminnelser när du närmar dig en sevärdhet!';
+		} else {
+			alertDialog.title = 'Reminders';
+			alertDialog.message = 'Allow the app to see your position in order to get reminders when you approach an attraction!';
+		}
+		
+		alertDialog.show();
+		
+		$.geoSwitchBoat.value = false;
 	} else {
-		Alloy.Globals.stopBoatGPS();
-	}
+		if ($.geoSwitchBoat.value == true) {
+			Alloy.Globals.getUserPos('boat');
+		} else {
+			Alloy.Globals.stopBoatGPS();
+		}
+	} 	
+	
 });
-

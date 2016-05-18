@@ -6,7 +6,8 @@
 	<Collection src="trailsModel"/>
 	<Collection src="hotspot_trailsModel" />
 	<Collection src="jsonFilesModel"></Collection>
-	<Model src="letterModel" />		
+	<Model src="letterModel" />
+	<Model src="hotspotModel" />	
 	
 	<Window id="hotspotDetail" class="container" onBlur="cleanup">
 		<ScrollView class="headView" scrollType="vertical">
