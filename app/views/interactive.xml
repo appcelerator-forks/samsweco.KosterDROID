@@ -8,46 +8,46 @@
 	<Model src="hotspotModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
-	<Window id="interactiveWindow" onBlur="cleanup"> <!-- onBlur="cleanup" -->	
-	<ScrollView id="interactiveView" scrollType="vertical"> <!-- Scrollbar vy som håller allt innhåll. -->
-		
-		<View id="showFamilyTrail"> </View><!-- Kartan -->
-		<View id="clueSlideView"> <!-- Vy som håller ledtrådarna man scrollar mellan -->
-			<View class="lineView"></View>
-			<ScrollableView id="slides" scrollType="horizontal" showPagingControl="true" />
-			<View class="lineView"></View>
-		</View>
-		
-		<View id="lettersView"> <!-- Vy som håller alla ledtrådar och fält för inmatning av ordet. -->	
-			<View id="wordView">
-				<Label id="wordClue" class="lbl" text="L('writeWord_lbl')"></Label>
-				<TextField id="txtWord"></TextField>
-				<Button id="sendWord" class="btn" onClick="checkWord" title="L('sendWord_btn')"></Button>
-				<Label id="wordClueLbl" class="lbl" text="L('wordClue_lbl')"></Label>
-			</View>	
-			<View id="letterView" >
-				<View class="h_view">
-					<TextField id="txtLetter" hintText="L('hintWrite')"  hintTextColor="black"></TextField>
-					<Button id="sendOneLetter" onClick="sendLetter" title="L('sendLetter_btn')"></Button>	
+	<Window id="interactiveWindow"> <!-- onBlur="cleanup" -->	
+		<ScrollView id="interactiveView" scrollType="vertical"> <!-- Scrollbar vy som håller allt innhåll. -->
+			
+			<View id="showFamilyTrail"> </View><!-- Kartan -->
+			<View id="clueSlideView"> <!-- Vy som håller ledtrådarna man scrollar mellan -->
+				<View class="lineView"></View>
+				<ScrollableView id="slides" scrollType="horizontal" showPagingControl="true" />
+				<View class="lineView"></View>
+			</View>
+			
+			<View id="lettersView"> <!-- Vy som håller alla ledtrådar och fält för inmatning av ordet. -->	
+				<View id="wordView">
+					<Label id="wordClue" class="lbl" text="L('writeWord_lbl')"></Label>
+					<TextField id="txtWord" hintText="L('hintWrite')"></TextField>
+					<Button id="sendWord" class="btn" onClick="checkWord" title="L('sendWord_btn')"></Button>
+					<Label id="wordClueLbl" class="lbl" text="L('wordClue_lbl')"></Label>
+				</View>	
+				<View id="letterView">
+					<View class="h_view">
+						<TextField id="txtLetter" hintText="L('hintWrite')"  hintTextColor="black"></TextField>
+						<Button id="sendOneLetter" onClick="sendLetter" title="L('sendLetter_btn')"></Button>	
+					</View>
+					<Label id="lblCollectedLetters" class="lbl"></Label>
+					<View class="h_view">
+						<Button id="nextClue" onClick="toNextClue" title="L('nextClue_lbl')"></Button>
+					</View>
 				</View>
 				<Label id="lblCollectedLetters" class="lbl"></Label>
-				<View class="h_view">
-					<Button id="nextClue" onClick="toNextClue" title="L('nextClue_lbl')"></Button>
-				</View>
-
 			</View>
-		</View>
-		
-		<View id="hideView"> <!-- Vy som göms när bokstavsjakten startats. -->
-			<Button id="btnStartQuiz" class="btn" onClick="startInteractive" title="L('startGame_btn')"></Button>
-			<Label id="lblWelcome" class="lbl" text="L('welcomeGame_txt')"></Label>
-			<Label id="lblInfoText" class="lbl" text="L('gameFirstRow_lbl')"></Label>
-			<Label id="lbls1" class="lbl" text="L('gameSecondRow_lbl')"></Label>
-			<Label id="lbls2" class="lbl" text="L('gameThirdRow_lbl')"></Label>
-			<Label id="lbls3" class="lbl" text="L('gameFourthRow_lbl')"></Label>
-			<Label id="lbls4" class="lbl" text="L('gameFifthRow_lbl')"></Label>		
-		</View>
-	 </ScrollView>
-	 <Widget src="menu" name="widget"></Widget>	
+			
+			<View id="hideView"> <!-- Vy som göms när bokstavsjakten startats. -->
+				<Button id="btnStartQuiz" class="btn" onClick="startInteractive" title="L('startGame_btn')"></Button>
+				<Label id="lblWelcome" class="lbl" text="L('welcomeGame_txt')"></Label>
+				<Label id="lblInfoText" class="lbl" text="L('gameFirstRow_lbl')"></Label>
+				<Label id="lbls1" class="lbl" text="L('gameSecondRow_lbl')"></Label>
+				<Label id="lbls2" class="lbl" text="L('gameThirdRow_lbl')"></Label>
+				<Label id="lbls3" class="lbl" text="L('gameFourthRow_lbl')"></Label>
+				<Label id="lbls4" class="lbl" text="L('gameFifthRow_lbl')"></Label>		
+			</View>
+		 </ScrollView>
+	 <!-- <Widget src="menu" name="widget"></Widget>	 -->
 	</Window>
 </Alloy>

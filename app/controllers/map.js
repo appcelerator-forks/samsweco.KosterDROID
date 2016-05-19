@@ -2,8 +2,6 @@ Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
 Ti.include("/collectionData.js");
 
-var menuOpen = false;
-
 var args = arguments[0] || {};
 
 var zoomedName = args.name;
@@ -58,7 +56,7 @@ function showTrail(myName) {
 //-----------------------------------------------------------
 // Eventlistener för klick på trail eller hotspot
 //-----------------------------------------------------------
-bigMap.addEventListener('click', function(evt){
+var openDetailView = function(evt){
 	if (evt.clicksource == 'rightPane') {
 		if (evt.annotation.name == 'hotspot') {
 			showHotspot(evt.annotation.id);
@@ -66,46 +64,42 @@ bigMap.addEventListener('click', function(evt){
 			showTrail(evt.annotation.id);
 		}
 	}
-});
+};
+
+bigMap.addEventListener('click', openDetailView);
 
 //-----------------------------------------------------------
 // Funktioner för att öppna och stänga kartmenyn
 //-----------------------------------------------------------
 bigMap.addEventListener('singletap', function() {
-	closeMapMenu();
+	Alloy.Globals.openCloseMenu();
 });
 
 function openMenu() {
 	if (!menuOpen) {
-		$.widgetView.height = '30%';
-		menuOpen = true;
+		Alloy.Globals.openMapMenu();
 		$.btnMapMenu.backgroundImage = '/images/closeBurger.png';
 	} else {
-		closeMenu();
+		Alloy.Globals.closeMapMenu();
 		$.btnMapMenu.backgroundImage = '/images/hamburger.png';
 	}
-}
-
-function closeMenu() {
-	$.widgetView.height = '0dp';
-	menuOpen = false;
 }
 
 //-----------------------------------------------------------
 // Rensar vid stängning
 //-----------------------------------------------------------
- var cleanup = function() {
- 	$.off();
-	bigMap.removeEventListener('click', evtList);
-	bigMap.removeAllAnnotations();
-};
-
-var back = function(){
-	$.mapWindow.close();
-	cleanup();
-};
-
-$.mapWindow.addEventListener('androidback', back);
-
+ // var cleanup = function() {
+ 	// $.off();
+	// bigMap.removeEventListener('click', openDetailView);
+	// bigMap.removeAllAnnotations();
+// };
+// 
+// var back = function(){
+	// $.mapWindow.close();
+	// cleanup();
+// };
+// 
+// $.mapWindow.addEventListener('androidback', back);
+// 
 
 

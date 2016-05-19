@@ -125,7 +125,7 @@ detailMap.addEventListener('click', evtLists);
 //-----------------------------------------------------------
  var cleanup = function() {
 	$.off();
-	detailMap.removeEventListener('click', evtList);
+	detailMap.removeEventListener('click', evtLists);
 	detailMap.removeAllAnnotations();
 };
 

@@ -8,16 +8,16 @@
 	<Model src="hotspotModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
-	<Window id="mapWindow" onBlur="cleanup"> <!--  onBlur="cleanup" -->
-	<View id="container">
-		<View id="mapView"></View>
-		<View id="btnViewMapMenu">
-			<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
-		</View>
-	</View>				
-		<Widget src="menu" name="widget"></Widget>		
-		<View id="widgetView">
+	<!-- <Window id="mapWindow"> --> <!--  onBlur="cleanup" -->
+		<!-- <View id="container">
+			<View id="mapView"></View>
+			<View id="btnViewMapMenu">
+				<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
+			</View>
+		</View>	 -->			
+		<!-- <Widget src="menu" name="widget"></Widget>	 -->	
+		<!-- <View id="widgetView">
 			<Widget src="mapmenu" name="widget"></Widget>
-		</View>	
-	</Window>
+		</View>	 -->
+	<!-- </Window> -->
 </Alloy>

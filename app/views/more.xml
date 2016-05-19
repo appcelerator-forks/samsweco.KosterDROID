@@ -1,0 +1,24 @@
+<Alloy>
+	<Collection src="mediaModel" />
+	<Collection src="hotspotModel" />
+	<Collection src="infospotCoordinatesModel" />
+	<Collection src="letterModel" />
+	<Model src="letterModel" />
+	<Model src="hotspotModel" />
+	<Collection src="trailsModel" />
+	<Collection src="infospot_trailsModel" />
+	
+	<View class="container">
+		<ScrollView class="headView" scrollType="vertical">
+			<TableView id="table" onClick="navigate">
+				<!-- L('boattrip_row') -->
+				<TableViewRow title="L('boattrip_row')" id="boat_row" class="tblRow" />
+				<TableViewRow title="L('hotspot_row')" id="hotspots_row" class="tblRow" />
+				<TableViewRow title="L('interactive_row')" id="interactive_row" class="tblRow" />
+				<TableViewRow title="L('information_row')" id="info_row" class="tblRow" />
+				<TableViewRow title="L('newsfeed_row')" id="newsfeed_row" class="tblRow" />
+			</TableView>
+		</ScrollView>				
+	</View>
+	
+</Alloy>

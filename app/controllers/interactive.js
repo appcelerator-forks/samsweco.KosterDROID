@@ -6,7 +6,6 @@ var args = arguments[0] || {};
 //-----------------------------------------
 // Onload
 //-----------------------------------------------------------
-
 displayMap();
 checkIfStarted();
 
@@ -27,8 +26,8 @@ function displayMap() {
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten - display map");
 	}
-
 }
+
 //-----------------------------------------------------------
 // Öppnar hotspotDetail med info om vald hotspot
 //-----------------------------------------------------------
@@ -56,14 +55,12 @@ function showHotspot(name) {
 $.slides.addEventListener('scrollend', function(e) {
 	try {
 		removeClueZones();
-
 		var clueIndex = ($.slides.getCurrentPage() + 1);
 		addSpecificClueZone(clueIndex);
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten - evtlistener");
 	}
 });
-
 setInteractiveViews();
 
 function setInteractiveViews() {
@@ -90,7 +87,6 @@ function setInteractiveViews() {
 
 			var clueTxt = Ti.UI.createLabel({
 				top : '2dp',
-				// text : letterJSON[i].clue,
 				color : 'black',
 				font : {
 					fontSize : '14dp',
@@ -124,13 +120,18 @@ function setInteractiveViews() {
 		
 		var infoTxt = Ti.UI.createLabel({
 			top : '2dp',
-			text : 'Swipa åt sidan för att se nästa ledtråd',
 			color : 'black',
 			font : {
 				fontSize : '14dp',
 				fontFamily : 'Raleway-Light'
 			}
 		});
+		
+		if(language == 'svenska'){
+			infoTxt.text = 'Swipa åt sidan för att se nästa ledtråd';
+		} else {
+			infoTxt.text = 'Swipe to the side to see the next clue';
+		}
 		
 		$.slides.add(infoTxt);
 		
@@ -163,7 +164,7 @@ function startInteractive() {
 		setView();
 		getUserPos('letter');
 		interactiveGPS = true;
-
+		
 		interactiveMap.removeAllAnnotations();
 		addSpecificClueZone(1);
 		displaySpecificMarkers(7, interactiveMap);
@@ -185,8 +186,8 @@ function setView() {
 		$.hideView.hide();
 		$.hideView.height = 0;
 
-		 $.clueSlideView.height = Ti.UI.SIZE;
-		 $.clueSlideView.show();
+		$.clueSlideView.height = Ti.UI.SIZE;
+		$.clueSlideView.show();
 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten - set view");
@@ -209,9 +210,9 @@ function setLabelText() {
 				$.wordView.show();
 				$.wordView.height = Ti.UI.SIZE;
  
-				 $.lblScroll.hide();
-				 $.lblScroll.height = 0;
-				 $.clueSlideView.height = 0;
+				// $.lblScroll.hide();
+				// $.lblScroll.height = 0;
+				$.clueSlideView.height = 0;
 			}
 		}
 	} catch(e) {
@@ -222,40 +223,36 @@ function setLabelText() {
 function checkIfStarted() {
 	try {
 		var next_id = fetchFoundLettersCol();
-		foundLetterId = next_id.length;
 		
-		if (foundLetterId > 0 && next_id < 9) {
+		if (next_id.length > 0 && next_id.length < 9) {
 			setView();
-			foundLetterId = next_id + 1;
+			foundLetterId = next_id.length + 1;
 			$.slides.setCurrentPage = foundLetterId;
 
 			interactiveMap.removeAllAnnotations();
 			displaySpecificMarkers(7, interactiveMap);
 			getSpecificIconsForTrail(7, interactiveMap);
 			addSpecificClueZone(foundLetterId);
-		} else if (foundLetterId.length == 9) {
+		} else if (next_id.length == 9) {
 			setLabelText();
 			setLastView();
-		}
+		} 
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "Bokstavsjakten - check if started");
 	}
 }
 
-//function checkIfStarted() { try { var started = fetchFoundLettersCol(); var next_id = started.length; if (next_id > 0 && next_id < 9) { setView(); foundLetterId = next_id + 1; $.slides.currentPage = foundLetterId-1; interactiveMap.removeAllAnnotations(); displaySpecificMarkers(7, interactiveMap); getSpecificIconsForTrail(7, interactiveMap); addSpecificClueZone(foundLetterId); } else if (started.length == 9) { setLabelText(); setLastView(); } } catch(e) { newError("Ngot gick fel nr sidan skulle laddas, prova igen!", "Bokstavsjakten"); } }
-
 function setLastView() {
-
-	// $.lettersView.show();
-	// $.lettersView.height = Ti.UI.SIZE;
-	// $.wordClue.show();
-	// $.wordClue.height = Ti.UI.SIZE;
-	// $.wordClueLbl.show();
-	// $.wordClueLbl.height = Ti.UI.SIZE;
-	// $.sendWord.show();
-	// $.sendWord.height = '30dp';
-	// $.lblCollectedLetters.show();
-	// $.lblCollectedLetters.height = Ti.UI.SIZE;
+	$.lettersView.show();
+	$.lettersView.height = Ti.UI.SIZE;
+	$.wordClue.show();
+	$.wordClue.height = Ti.UI.SIZE;
+	$.wordClueLbl.show();
+	$.wordClueLbl.height = Ti.UI.SIZE;
+	$.sendWord.show();
+	$.sendWord.height = '30dp';
+	$.lblCollectedLetters.show();
+	$.lblCollectedLetters.height = Ti.UI.SIZE;
 }
 
 //-----------------------------------------------------------
@@ -454,6 +451,8 @@ function startOver() {
 		for (var i = 0; i < col.length; i++) {;
 			setLetterZero(col[i].id);
 		}
+		
+		foundLetterId = 1;
 	} catch(e) {
 		newError("Något gick fel när sidan skulle laddas, prova igen!", "geoFunctions - startOver");
 	}

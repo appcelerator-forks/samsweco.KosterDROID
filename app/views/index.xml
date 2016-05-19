@@ -1,22 +1,61 @@
 <Alloy>
 	<Collection src="mediaModel" />
+	<Collection src="jsonFilesModel" />
 	<Collection src="hotspotModel" />
+	<Collection src="hotspot_trailsModel" />
 	<Collection src="infospotCoordinatesModel" />
 	<Collection src="trailsModel"/>
 	<Collection src="letterModel" />
 	<Model src="letterModel" />
 	<Model src="hotspotModel" />
 	
-	<Window id="koster" class="container" backgroundImage="/pics/front.png">
-		<View class="headView">
-			<ImageView class="imgKoster" image="/pics/kosterhavet_logga.png"></ImageView>
-			<View id="lblView">
-				<Label id="firstLbl" class="lblFrontText" text="L('welcome_title')"></Label>
-				<Label id="secondLbl" class="lblFrontText" text="L('welcome_txt')"></Label> 
-			</View>
-		</View>
-		<View id="w_menu">
-			<Widget src="menu" name="widget"></Widget>
-		</View>
-	</Window>
+	<TabGroup id="tabs" backgroundColor="#fff" height="100%" tintColor="#0098C3">
+		<Tab id="koster" class="tabbar" title="L('home_row')" icon="/images/kosterStarMenu.png" >
+			
+			<!-- INNAN TAB -->
+			<Window id="koster" class="container" backgroundImage="/pics/front.png">
+				<View class="headView">
+					<ImageView class="imgKoster" image="/pics/kosterhavet_logga.png"></ImageView>
+					<View id="lblView">
+						<Label id="firstLbl" class="lblFrontText" text="L('welcome_title')"></Label>
+						<Label id="secondLbl" class="lblFrontText" text="L('welcome_txt')"></Label> 
+					</View>
+				</View>
+				<!-- <View id="w_menu">
+					<Widget src="menu" name="widget"></Widget>
+				</View> -->
+			</Window>
+			<!-- INNAN TAB -->
+			
+			
+		</Tab>
+		<Tab id="hikeTab" class="tabbar" title="L('hikes_row')" icon="/images/hikeMenu.png">
+			<Window id="hikeWin" title="Vandringsleder" onOpen="toTrails" />
+		</Tab>
+		<Tab id="maptab" class="tabbar" title="L('map_row')" icon="/images/mapMenu.png">
+			<Window id="mapWin">  <!-- onOpen="toMap" -->
+				
+				<View id="container">
+					<View id="mapView"></View>
+					<View id="btnViewMapMenu">
+						<Button id="btnMapMenu" backgroundImage="/images/hamburger.png" onClick="openMenu" />
+					</View>
+				</View>	
+				
+				<View id="widgetView">
+					<Widget src="mapmenu" name="widget"></Widget>
+				</View>		
+			</Window>
+		</Tab>
+		<Tab id="moretab" class="tabbar" title="L('more_row')" icon="/images/mapMenu.png">
+			<Window id="moreWin" onOpen="toMore" />
+		</Tab>
+		<!-- <Tab id="interactive" class="tabbar" title="Spel" icon="/images/quizMenu.png">
+			<Window id="interactiveWin" onOpen="toInteractive" exitOnClose="true"/>
+		</Tab>
+		<Tab id="info" class="tabbar" title="Info" icon="/images/infoMenu.png">
+			<Window id="infoWin" title="Information" onOpen="toInfo" exitOnClose="true" />
+		</Tab> -->
+	</TabGroup>
+			
 </Alloy>

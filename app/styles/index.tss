@@ -35,79 +35,25 @@
 	layout: 'vertical'
 }
 
-"#btnBoat": {
-	left: '10dp',
-	top: '9dp',
-	color: 'black',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Medium'
-	}
-}
-
-"#boatBtnView": {
-	height: '35dp',
-	width: '35%',
-	backgroundColor: 'white',
-	opacity: 0.8,
-	left: '13%',
-	borderRadius: 7,
-	color: '#0098C3',
-	layout : 'horizontal'
-}
-
-"#boatPikto": {
-	top: '5dp',
-	height: '25dp',
-	width: '25dp',
-	left: '5%'
-}
-
-"#btnAbout": {
-	left: '6dp',
-	top: '9dp',
-	color: 'black',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Medium'
-	}
-}
-
-"#btnAboutPic": {
-	height: '30dp',
-	width: '30dp',
-	top: '2dp'
-}
-
-"#appBtnView": {
-	right: '13%',
-	width : '35%',
-	layout: 'horizontal',
-	height: '35dp',
-	borderRadius: 7,
-	backgroundColor: 'white',
-	opacity: 0.8
-}
-
-"#horiView": {
-	width: Titanium.UI.FILL,
-	height: Titanium.UI.SIZE,
-	top: '45%'
-}
-
-"#widgetInfo": {
+"#widgetView": {
 	height: 0,
-	top: '30dp',
-	width: '90%',
-	opacity: 0.9,
-	borderRadius: 10,
-	backgroundColor: 'white',
-	visible: false
+	width: Titanium.UI.FILL,
+	bottom : 0
 }
 
-"#closeBtn": {
-	right: '10dp',
-	top: '10dp',
-	width: '20dp',
-	height: '20dp'
+"#btnMapMenu": {
+	height: '25dp',
+	width: '25dp'
+}
+
+"#btnViewMapMenu":{
+ 	top: '60dp',
+	right: '12dp',
+	height: '39dp',
+	width: '39dp',
+	backgroundColor: 'white',
+	opacity: 0.7,
+	visible: true,
+	borderRadius: 2,
+	borderWidth: 1
 }

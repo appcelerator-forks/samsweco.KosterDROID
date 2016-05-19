@@ -16,6 +16,6 @@
 			</TableView>
 		</ScrollView>
 	</View>
-	<Widget src="menu" name="widget"></Widget>
+	<!-- <Widget src="menu" name="widget"></Widget> -->
 	</Window>
 </Alloy>

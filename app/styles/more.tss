@@ -1,0 +1,21 @@
+"Window": {
+	backgroundColor: 'white'
+}
+
+".container": {
+	layout: 'vertical',
+	top: 0,
+	height: '93%'
+}
+
+".headView": {
+	layout: 'vertical',
+	width: Titanium.UI.FILL,
+	top: '0dp'
+}
+
+'.tblRow' : {	
+	height : '60dp',
+	width : Titanium.UI.FILL,
+	color: 'black'
+}

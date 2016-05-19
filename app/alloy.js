@@ -109,6 +109,8 @@ var badplats = false;
 var information = false;
 var eldplats = false;
 
+var menuOpen = false;
+
 //-----------------------------------------------------------
 // Variabel för kartvyn
 //-----------------------------------------------------------
@@ -183,6 +185,5 @@ Titanium.App.addEventListener('destroy', function() {
 		Alloy.Globals.stopGPS();
 	}
 });
-
 
 

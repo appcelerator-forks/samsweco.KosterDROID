@@ -25,9 +25,10 @@
     <string name="home_row">Hem</string>
     <string name="information_row">Turistinformation</string>
     <string name="boattrip_row">Båtresan</string>
-    <string name="hikes_row">Vandringsleder</string>
+    <string name="hikes_row">Vandring</string>
     <string name="hotspot_row">Sevärdheter</string>
     <string name="map_row">Karta</string>
+    <string name="more_row">Mer</string>
     <string name="interactive_row">Bokstavsjakten</string>
     <string name="newsfeed_row">Kosterhavet på Instagram</string>
     <string name="reminder_lbl">Påminnelse</string>

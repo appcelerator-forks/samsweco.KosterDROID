@@ -16,7 +16,7 @@
 }
 
 "#widgetView": {
-	height: '25%dp',
+	height: '25%',
 	width: Titanium.UI.FILL,
 	bottom : 0
 }

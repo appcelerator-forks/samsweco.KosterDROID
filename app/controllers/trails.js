@@ -8,7 +8,7 @@ setRowData();
 // Läser in data till alla listitems
 //-----------------------------------------------------------
 function setRowData() {
-	// try {
+	try {
 		var tableViewData = [];
 		var rows = returnTrails();
 
@@ -52,7 +52,6 @@ function setRowData() {
 						fontSize : '14dp',
 						fontFamily : 'Raleway-Medium'
 					}
-					//text : rows[i].name
 				});
 
 				var lblDistance = Ti.UI.createLabel({
@@ -63,7 +62,6 @@ function setRowData() {
 						fontSize : '12dp',
 						fontFamily : 'Raleway-Light'
 					}
-					//text : 'Sträcka : ' + rows[i].length + " km"
 				});
 
 				var lblArea = Ti.UI.createLabel({
@@ -99,16 +97,16 @@ function setRowData() {
 			}
 		}
 		$.table.data = tableViewData;
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
+	}
 }
 
 //-----------------------------------------------------------
 // Öppnar trail detail med args för den valda leden
 //-----------------------------------------------------------
 function showTrailDetails(e) {
-	// try {
+	try {
 		var id = e.rowData.id;
 
 		var trailjsonObj = returnSpecificTrailById(id);
@@ -128,9 +126,9 @@ function showTrailDetails(e) {
 		};
 
 		var trailDetail = Alloy.createController("trailDetail", args).getView().open();
-	// } catch(e) {
-		// newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
-	// }
+	} catch(e) {
+		newError("Något gick fel när sidan skulle laddas, prova igen!", "Vandringsleder");
+	}
 }
 
 //-----------------------------------------------------------
@@ -169,14 +167,14 @@ function showIcons(id) {
 //-----------------------------------------------------------
 // Rensar vid stängning
 //-----------------------------------------------------------
- var cleanup = function() {
-	$.off();
-	$.trailWindow.close();
+ // var cleanup = function() {
+	// $.off();
+	// $.trailWindow.close();
+// 
+// };
+// 
+// var back = function(){
+	// $.trailWindow.close();
+// };
 
-};
-
-var back = function(){
-	$.trailWindow.close();
-};
-
-$.trailWindow.addEventListener('androidback', back);
+// $.trailWindow.addEventListener('androidback', back);

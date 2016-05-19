@@ -25,9 +25,10 @@
     <string name="home_row">Home</string>
     <string name="information_row">Information</string>
     <string name="boattrip_row">Boat trip</string>
-    <string name="hikes_row">Hike trails</string>
+    <string name="hikes_row">Hike</string>
     <string name="hotspot_row">Attractions</string>
     <string name="map_row">Map</string>
+    <string name="more_row">More</string>
     <string name="interactive_row">Letter game</string>
     <string name="newsfeed_row">Kosterhavet on Instagram</string>
     <string name="reminder_lbl">Reminder</string>
