@@ -84,7 +84,7 @@ $.moreWin.addEventListener('blur', function(){
 // Öppnar kartmenyn
 //-----------------------------------------------------------
 function openMapMenu(){
-	$.widgetView.height = '30%';
+	$.widgetView.height = '35%';
 	menuOpen = true;
 }
 Alloy.Globals.openMapMenu = openMapMenu;

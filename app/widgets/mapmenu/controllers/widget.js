@@ -14,6 +14,43 @@ $.hotspotSwitch.addEventListener('change', function(e) {
 });
 
 //-----------------------------------------------------------
+// Startar och avslutar location-event för hotspots/sevärdheter
+//-----------------------------------------------------------
+$.geoSwitchHotspot.addEventListener('change', function(e) {
+	if (!Ti.Geolocation.locationServicesEnabled) {
+		var alertDialog = Ti.UI.createAlertDialog({
+			buttonNames : ['OK']
+		});
+		
+		if(language == 'svenska'){
+			alertDialog.title = 'Påminnelser';
+			alertDialog.message = 'Tillåt appen att se din position för att kunna få påminnelser när du närmar dig en sevärdhet!';
+		} else {
+			alertDialog.title = 'Reminders';
+			alertDialog.message = 'Allow the app to see your position in order to get reminders when you approach an attraction!';
+		}
+		
+		alertDialog.show();
+		
+		$.geoSwitchHotspot.value = false;
+	} else {
+		if ($.geoSwitchHotspot.value == true) {
+			Alloy.Globals.getUserPos('hotspot');
+			hotspotGPS = true;
+		} else {
+			Alloy.Globals.stopGPS();
+			hotspotGPS = false;
+		}
+	} 
+});
+
+if(hotspotGPS){
+	$.geoSwitchHotspot.value = true;
+} else {
+	$.geoSwitchHotspot.value = false;
+}
+
+//-----------------------------------------------------------
 // Funktioner för att tända och släcka infopunkter på kartan
 //-----------------------------------------------------------
 function showFarglage() {

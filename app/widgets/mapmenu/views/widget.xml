@@ -19,11 +19,18 @@
 		</View>
 		<View id="lineTwo" class="lineView"></View>
 		<View id="settingsView">
-			<View id="hotSwitchView" class="settingsHorizontalView">
-				<ImageView id="hotPic" image="/images/hotspotflag.png"></ImageView>
-				<Label id="btnShowHotspots" text="L('showHotspots_switch')"></Label>
-				<View id="v1">
+			<View class="hotSwitchView">
+				<ImageView class="hotPic" image="/images/hotspotflag.png"></ImageView>
+				<Label class="lblShowHotspots" text="L('showHotspots_switch')"></Label>
+				<View class="v1">
 					<Switch id="hotspotSwitch" class="switch" value="false"></Switch>
+				</View>
+			</View>
+			<View class="hotSwitchView">
+				<ImageView class="hotPic" image="/images/sound.png"></ImageView>
+				<Label class="lblShowHotspots" text="L('reminder_lblHotspot')"></Label>
+				<View class="v1">
+					<Switch id="geoSwitchHotspot" class="switch" value="false"></Switch>
 				</View>
 			</View>
 		</View>

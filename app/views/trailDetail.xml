@@ -19,6 +19,13 @@
 			<View id="btnHorizontalView">
 				<Button id="btnTrailOnMap" onClick="zoomMapTrail"></Button>
 				<Button id="btnSendTo"></Button>
+				
+				<View id="switchView">
+					<ImageView id="soundPic" image="/images/sound.png"></ImageView>
+					<Label class="lblSetGPSListener" text="L('reminder_lblBoattrip')"></Label>
+					<Switch id="geoSwitchBoat" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
+				</View>
+				
 			</View>
 			<View class="lbls">
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>

@@ -16,39 +16,15 @@
 	top: '10dp'
 }
 
-"#hotSwitchView": {
+".hotSwitchView": {
 	top: '0dp',
 	height: Titanium.UI.SIZE
 }
 
-"#gpsSwitchView": {
-	top: '0dp'
-}
-
-"#hotspotSwitch":{
-	right: '30dp'
-	// height: Titanium.UI.FILL,
-	// width: Titanium.UI.FILL
-}
-
-"#geoSwitch":{
-	right: '30dp',
-	top: '2dp'
-	// height: Titanium.UI.FILL,
-	// width: Titanium.UI.FILL
-}
-
-"#v1": {
+".v1": {
 	right: '30dp',
 	height: '30dp',
-	width: '100dp',
-	top: '0dp'
-}
-
-"#v2": {
-	right: '30dp',
-	height: '30dp',
-	width: '100dp',
+	width: '70dp',
 	top: '0dp'
 }
 
@@ -84,7 +60,7 @@
 	width : '30dp'
 }
 
-"#btnShowHotspots": {
+".lblShowHotspots": {
 	left: '30dp',
 	top: '8dp',
 	font: {
@@ -94,25 +70,12 @@
 	color: "#000000"
 }
 
-"#lblSetGPS": {
-	left: '30dp',
-	top: '8dp',
-	font: {
-		fontFamily: 'Raleway-Medium',
-		fontSize: '13dp'
-	},
-		color: "#000000"
-}
-
-"#hotPic": {
+".hotPic": {
 	left: '0dp',
 	height : '25dp',
 	width : '25dp'
 }
 
-"#soundPic": {
-	left: '2dp',
-	top: '3dp',
-	height : '20dp',
-	width : '20dp'
-}
+// ".switch": {
+	// right: '20dp'
+// }

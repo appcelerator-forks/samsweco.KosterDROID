@@ -152,36 +152,34 @@
 	}
 }
 
-// "#onMapView": {
-	// right: '15dp',
-	// layout: 'vertical'
-// }
-// 
-// "#onMap":{
-	// height: '50dp',
-	// width: '50dp'
-// }
+"#switchView": {
+	visible: false,
+	layout: 'horizontal',
+	witdh: Titanium.UI.FILL,
+	height : 0,
+	top : '10dp',
+	left : '15dp'
+}
 
+".lblSetGPSListener": {
+	left: '5dp',
+	color: 'black',
+	font: {
+		fontFamily: 'Raleway-Medium',
+		fontSize: 12
+	}
+}
 
+".switch": {
+	right: '10dp'
+}
 
 "#btnHorizontalView": {
 	layout : 'horizontal',
 	height : Titanium.UI.SIZE
 }
 
-"#boatSwitch": {
-	visible : false,
-	height : 0,
-	left: '10dp'
-}
-
-"#lblBoat": {
-	visible : false,
-	height : 0,
-	color: 'black',
-	left: '15dp',
-	font: {
-		fontSize: '14dp',
-		fontFamily: 'Raleway-Medium'
-	}
+"#soundPic": {
+	height : '20dp',
+	width : '20dp'
 }

@@ -32,13 +32,44 @@ if (args.title == 'Äventyrsslingan') {
 		var interactive = Alloy.createController('interactive').getView().open();
 		$.trailDetail.close();
 	});
-} 
+}
 
 if(args.title == 'Båtresan'){	
+	$.lblTrailName.top = '10dp';
 	$.btnTrailOnMap.title = String.format(L('goToDetailMapBoat_btn'), '');	
+	$.switchView.show();
+	$.switchView.height = Titanium.UI.SIZE;
 } else {
 	$.btnTrailOnMap.title = String.format(L('goToDetailMap_btn'), '');
 }
+
+
+$.geoSwitchBoat.addEventListener('change', function() {
+	if (!Ti.Geolocation.locationServicesEnabled) {
+		var alertDialog = Ti.UI.createAlertDialog({
+			buttonNames : ['OK']
+		});
+		
+		if(language == 'svenska'){
+			alertDialog.title = 'Påminnelser';
+			alertDialog.message = 'Tillåt appen att se din position för att kunna få påminnelser när du närmar dig en sevärdhet!';
+		} else {
+			alertDialog.title = 'Reminders';
+			alertDialog.message = 'Allow the app to see your position in order to get reminders when you approach an attraction!';
+		}
+		
+		alertDialog.show();
+		
+		$.geoSwitchBoat.value = false;
+	} else {
+		if ($.geoSwitchBoat.value == true) {
+			Alloy.Globals.getUserPos('boat');
+		} else {
+			Alloy.Globals.stopBoatGPS();
+		}
+	} 	
+	
+});
 
 
 
