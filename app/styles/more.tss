@@ -15,7 +15,9 @@
 }
 
 '.tblRow' : {	
-	height : '60dp',
+	left : '20dp',
+	height : '70dp',
 	width : Titanium.UI.FILL,
-	color: 'black'
+	color: 'black',
+	rightImage : '/pins/androidarrow2.png'
 }
