@@ -11,7 +11,6 @@
 	<View class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<TableView id="table" onClick="navigate">
-				<!-- L('boattrip_row') -->
 				<TableViewRow title="L('boattrip_row')" id="boat_row" class="tblRow" />
 				<TableViewRow title="L('hotspot_row')" id="hotspots_row" class="tblRow" />
 				<TableViewRow title="L('interactive_row')" id="interactive_row" class="tblRow" />

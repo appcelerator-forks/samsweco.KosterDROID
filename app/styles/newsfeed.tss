@@ -5,5 +5,5 @@
 ".headView": {
 	layout: 'vertical',
 	top: '0dp',
-	height: '93%'
+	height: '100%'
 }

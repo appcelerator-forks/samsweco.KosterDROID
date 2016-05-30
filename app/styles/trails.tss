@@ -5,6 +5,6 @@
 ".container": {
 	layout: 'vertical',
 	top: 0,
-	height: '93%'
+	height: '100%'
 }
 

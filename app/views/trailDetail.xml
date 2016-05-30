@@ -8,7 +8,7 @@
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
 	
-	<Window id="trailDetail" class="container"> <!-- onBlur="cleanup" -->
+	<Window id="trailDetail" class="container"> 
 		<ScrollView class="headView" scrollType="vertical">
 			<View id="slideView">
 				<ScrollableView id="slideShowTrails" scrollType="horizontal" showPagingControl="true" />
@@ -19,13 +19,11 @@
 			<View id="btnHorizontalView">
 				<Button id="btnTrailOnMap" onClick="zoomMapTrail"></Button>
 				<Button id="btnSendTo"></Button>
-				
 				<View id="switchView">
 					<ImageView id="soundPic" image="/images/sound.png"></ImageView>
 					<Label class="lblSetGPSListener" text="L('reminder_lblBoattrip')"></Label>
 					<Switch id="geoSwitchBoat" class="switch" value="false" titleOn="På" titleOff="Av"></Switch>
 				</View>
-				
 			</View>
 			<View class="lbls">
 				<Label id="lblTrailName" class="lbltrailDetail"></Label>

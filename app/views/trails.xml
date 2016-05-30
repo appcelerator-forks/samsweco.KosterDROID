@@ -7,9 +7,7 @@
 	<Model src="hotspotModel" />
 	<Collection src="trailsModel" />
 	<Collection src="infospot_trailsModel" />
-	
-	<!-- <Window id="trailWindow"> --> <!-- onBlur="cleanup" -->
-		
+
 	<View class="container">
 		<ScrollView class="headView" scrollType="vertical">
 			<TableView id="table" onClick="showTrailDetails">
@@ -18,6 +16,4 @@
 			</TableView>
 		</ScrollView>				
 	</View>
-		<!-- <Widget src="menu" name="widget"></Widget> -->
-	<!-- </Window> -->
 </Alloy>

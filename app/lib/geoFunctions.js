@@ -230,11 +230,6 @@ function userIsNearHotspot() {
 	try {
 		var hotspotsToLoop = returnHotspotsToAlert();
 
-		Ti.API.info('1');
-		Ti.API.info('length: ' + hotspotsToLoop.length);
-
-		// GÅR EJ IN OCH ALERTAR PÅ NY SEVÄRDHET
-
 		for (var h = 0; h < hotspotsToLoop.length; h++) {
 			if (hotspotsToLoop[h].alerted == 0) {
 				var hotlat = hotspotsToLoop[h].xkoord;

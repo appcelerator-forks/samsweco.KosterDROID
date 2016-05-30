@@ -8,17 +8,21 @@
 	<Model src="hotspotModel" />
 	<Collection src="infospotCoordinatesModel" />
 	
-	<Window id="interactiveWindow"> <!-- onBlur="cleanup" -->	
-		<ScrollView id="interactiveView" scrollType="vertical"> <!-- Scrollbar vy som håller allt innhåll. -->
+	<Window id="interactiveWindow">
+		<!-- Scrollbar vy som håller allt innhåll. -->
+		<ScrollView id="interactiveView" scrollType="vertical"> 
 			
-			<View id="showFamilyTrail"> </View><!-- Kartan -->
-			<View id="clueSlideView"> <!-- Vy som håller ledtrådarna man scrollar mellan -->
+			<!-- Kartan -->
+			<View id="showFamilyTrail"></View>
+			<!-- Vy som håller ledtrådarna man scrollar mellan -->
+			<View id="clueSlideView"> 
 				<View class="lineView"></View>
 				<ScrollableView id="slides" scrollType="horizontal" showPagingControl="true" />
 				<View class="lineView"></View>
 			</View>
 			
-			<View id="lettersView"> <!-- Vy som håller alla ledtrådar och fält för inmatning av ordet. -->	
+			<!-- Vy som håller alla ledtrådar och fält för inmatning av ordet. -->
+			<View id="lettersView"> 	
 				<View id="wordView">
 					<Label id="wordClue" class="lbl" text="L('writeWord_lbl')"></Label>
 					<TextField id="txtWord" hintText="L('hintWrite')"></TextField>
@@ -38,7 +42,8 @@
 				<Label id="lblCollectedLetters" class="lbl"></Label>
 			</View>
 			
-			<View id="hideView"> <!-- Vy som göms när bokstavsjakten startats. -->
+			<!-- Vy som göms när bokstavsjakten startats. -->
+			<View id="hideView"> 
 				<Button id="btnStartQuiz" class="btn" onClick="startInteractive" title="L('startGame_btn')"></Button>
 				<Label id="lblWelcome" class="lbl" text="L('welcomeGame_txt')"></Label>
 				<Label id="lblInfoText" class="lbl" text="L('gameFirstRow_lbl')"></Label>
@@ -48,6 +53,5 @@
 				<Label id="lbls4" class="lbl" text="L('gameFifthRow_lbl')"></Label>		
 			</View>
 		 </ScrollView>
-	 <!-- <Widget src="menu" name="widget"></Widget>	 -->
 	</Window>
 </Alloy>

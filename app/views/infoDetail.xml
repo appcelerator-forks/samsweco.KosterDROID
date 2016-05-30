@@ -8,7 +8,7 @@
 	<Model src="letterModel" />
 	<Model src="hotspotModel" />
 	
-	<Window id="infoDetail" class="container" onBlur="cleanup"> <!--  onBlur="cleanup" -->
+	<Window id="infoDetail" class="container" onBlur="cleanup">
 		<ScrollView class="headView" scrollType="vertical" showVerticalScrollIndicator="true">
 			<View id="slideView">
 				<ImageView id="infoImg"></ImageView>
@@ -17,9 +17,9 @@
 			<Label id="lblInfoText"></Label>
 			<Label id="lblLink" text="L('links_lbl')"/>
 			<View id="linkView">
-			<TableView id="tableView" onClick="getLink">
-				<TableViewRow class="row" onClick="getLink" />
-			</TableView>
+				<TableView id="tableView" onClick="getLink">
+					<TableViewRow class="row" onClick="getLink" />
+				</TableView>
 			</View>
 		</ScrollView>
 	</Window>

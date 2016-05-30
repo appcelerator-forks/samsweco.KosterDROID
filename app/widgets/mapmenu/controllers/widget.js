@@ -1,7 +1,7 @@
 Ti.include("/geoFunctions.js");
 Ti.include("/mapFunctions.js");
 
-//----------------------------------------------------------- // 
+//----------------------------------------------------------- 
 //Switch för att visa hotspots/sevärdheter på kartan 
 //----------------------------------------------------------- 
 
@@ -44,6 +44,10 @@ $.geoSwitchHotspot.addEventListener('change', function(e) {
 	} 
 });
 
+//----------------------------------------------------------- 
+// Kontrollerar om GPS är på och ändrar switch'ens value
+// till true isf
+//-----------------------------------------------------------
 if(hotspotGPS){
 	$.geoSwitchHotspot.value = true;
 } else {
